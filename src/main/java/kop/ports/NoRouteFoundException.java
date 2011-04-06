@@ -9,5 +9,6 @@ package kop.ports;
  */
 public class NoRouteFoundException extends Throwable {
 	public NoRouteFoundException(String s) {
+		super(s);
 	}
 }

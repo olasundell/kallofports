@@ -13,9 +13,14 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class Distance {
+	Port origin;
+	Port destination;
+
 	List<Route> routes;
 
-	public Distance() {
+	public Distance(Port origin, Port destination) {
+		this.origin = origin;
+		this.destination = destination;
 		routes = new ArrayList<Route>();
 	}
 
@@ -55,6 +60,14 @@ public class Distance {
 		}
 
 		return d;
+	}
+
+	public Port getOrigin() {
+		return origin;
+	}
+
+	public Port getDestination() {
+		return destination;
 	}
 
 	private class Route {

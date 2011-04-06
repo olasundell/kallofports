@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.Map;
 import kop.cargo.Cargo;
 import kop.cargo.CargoImpl;
+import kop.ports.NoRouteFoundException;
+import kop.ports.Port;
+import kop.ports.PositionOrDirection;
 
 /**
  *
@@ -26,6 +29,16 @@ public class Ship {
     private Map<Float, Float> fuelConsumption;
     private String name;
     private List<Cargo> cargoList;
+	private PositionOrDirection currentPosition;
+
+	public int getHoursToDestination() {
+		return currentPosition.getHoursToDest();
+	}
+
+	public void travel() {
+		// TODO something with costs
+		currentPosition.travel();
+	}
 
 	public enum ShipType {
 		TANKER,
@@ -36,8 +49,25 @@ public class Ship {
     public Ship(String name) {
         this.name=name;
         cargoList= new ArrayList<Cargo>();
+		currentPosition = new PositionOrDirection();
     }
-    
+
+	public Object getDistanceLeft() {
+		return currentPosition.getDistanceLeft();
+	}
+
+	public void setSail(Port origin, Port destination, double speed) throws NoRouteFoundException {
+		currentPosition.travelTo(origin, destination, speed, this);
+	}
+
+	public void setCurrentPort(Port currentPort) {
+		currentPosition.setCurrentPort(currentPort);
+	}
+
+	public boolean isAtSea() {
+		return currentPosition.isAtSea();
+	}
+
     public int getAvailableDWT() {
         int currentCargo = 0;
         

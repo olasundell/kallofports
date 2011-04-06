@@ -8,4 +8,7 @@ package kop.ports;
  * To change this template use File | Settings | File Templates.
  */
 public class NoSuchPortException extends Exception {
+	public NoSuchPortException(String s) {
+		super(s);
+	}
 }

@@ -8,6 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.mock;
 
 /**
  * Created by IntelliJ IDEA.
@@ -18,12 +20,12 @@ import static junit.framework.Assert.assertEquals;
  */
 public class DistanceTest {
 	Distance dist;
-	Ship hugeShip;
+	private Ship hugeShip;
 	private double longDist;
 	private double shortDist;
 	private double reallyShortDist;
-	private BulkShip smallShip;
-	private ContainerShip mediumShip;
+	private Ship smallShip;
+	private Ship mediumShip;
 
 	@Before
 	public void setup() {
@@ -31,22 +33,22 @@ public class DistanceTest {
 		shortDist = 123;
 		reallyShortDist=69;
 
-		dist = new Distance();
+		dist = new Distance(new Port(), new Port());
 		dist.addRoute(longDist,false,false);
 		dist.addRoute(shortDist,true,false);
 		dist.addRoute(reallyShortDist,true,true);
 
-		hugeShip = new TankerShip("Post Suezmax");
-		hugeShip.setDraft(25);
-		hugeShip.setBeam(100);
+		hugeShip = mock(Ship.class);
+		given(hugeShip.isPostSuezmax()).willReturn(true);
+		given(hugeShip.isPostPanamax()).willReturn(true);
 
-		mediumShip = new ContainerShip("Post Panamax");
-		mediumShip.setDraft(18);
-		mediumShip.setBeam(49);
+		mediumShip = mock(Ship.class);
+		given(mediumShip.isPostSuezmax()).willReturn(false);
+		given(mediumShip.isPostPanamax()).willReturn(true);
 
-		smallShip = new BulkShip("Small Ship");
-		smallShip.setDraft(1);
-		smallShip.setBeam(2);
+		smallShip = mock(Ship.class);
+		given(smallShip.isPostSuezmax()).willReturn(false);
+		given(smallShip.isPostPanamax()).willReturn(false);
 	}
 
 	@Test
