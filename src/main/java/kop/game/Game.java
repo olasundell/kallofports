@@ -6,6 +6,7 @@ import kop.ports.NoSuchPortException;
 import kop.ports.Port;
 import kop.ports.PortsOfTheWorld;
 import kop.ships.Ship;
+import kop.ships.ShipClassesFactory;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -25,6 +26,7 @@ public class Game {
 	private GregorianCalendar calendar;
 	private static Game instance;
 	private PortsOfTheWorld world;
+	private List<Ship> shipTypes;
 
 	public Game() {
 		world = new PortsOfTheWorld();
@@ -34,6 +36,11 @@ public class Game {
 	public static void createInstance() {
 		instance = new Game();
 		instance.populatePorts();
+		instance.createShipTypes();
+	}
+
+	private void createShipTypes() {
+//		shipTypes = new ShipClassesFactory().createShipTypes();
 	}
 
 	private void populatePorts() {

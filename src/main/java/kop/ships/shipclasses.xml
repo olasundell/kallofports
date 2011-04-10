@@ -1,0 +1,45 @@
+<shipclasses>
+	<container>
+		<!--
+		<shipclass>
+			<className>Feeder</className>
+			<price></price>
+			<ship>
+				<buildYear>2007</buildYear>
+				<className>CCS</className>
+				<dwt>4200T</dwt>
+				<grossTonnage>2970</grossTonnage>
+				<netTonnage>1579</netTonnage>
+				<loa>94.80M</loa>
+				<lbp>87.30</lbp>
+				<breadth>15.20</breadth>
+				<depth>7.80</depth>
+				<draft>6.00</draft>
+				<engineType>8320ZCd-6 GUANGZHOU DIESEL</engineType>
+				<maxSpeed>13</maxSpeed>
+				FUEL CONSUMPTION : 7.5MT IFO 120CST, 0.6MT MGO PER DAY
+			</ship>
+		</shipclass>
+		-->
+		<shipclass>
+			<className>Feeder</className>
+			<price>10.0</price>
+			<ship>
+				<dwt>10000</dwt>
+				<maxSpeed>20</maxSpeed>
+				<loa>100</loa>
+				<beam>20</beam>
+				<draft>7</draft>
+				<maxFuel>2000</maxFuel>
+				<dailyCost>1000</dailyCost>
+				<maxTEUs>800</maxTEUs>
+			</ship>
+		</shipclass>
+	</container>
+	<bulk>
+
+	</bulk>
+	<tankers>
+
+	</tankers>
+</shipclasses>

@@ -13,23 +13,45 @@ import kop.cargo.CargoImpl;
 import kop.ports.NoRouteFoundException;
 import kop.ports.Port;
 import kop.ports.PositionOrDirection;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Root;
 
 /**
  *
  * @author ola
  */
+@Root
 public class Ship {
-    private int dwt;
-    private double maxSpeed;
-    private double loa;
-	private double beam;
-    private double draft;
-    private double maxFuel;
+	@Element
     private double currentFuel;
-    private Map<Float, Float> fuelConsumption;
-    private String name;
+	@Element
+	protected int dwt;
+	@Element
+	private double maxSpeed;
+	@Element
+	private double loa;
+	@Element
+	private double beam;
+	@Element
+	private double draft;
+	@Element
+	private double maxFuel;
+	@Element
+	private double dailyCost;
+	private Map<Float, Float> fuelConsumption;
+
+	@Attribute
+	private String name;
+
     private List<Cargo> cargoList;
 	private PositionOrDirection currentPosition;
+
+	// needed for simple-xml
+	public Ship() {
+
+	}
 
 	public int getHoursToDestination() {
 		return currentPosition.getHoursToDest();
@@ -40,9 +62,13 @@ public class Ship {
 		currentPosition.travel();
 	}
 
+	public String getName() {
+		return name;
+	}
+
 	public enum ShipType {
 		TANKER,
-		BULK,
+		BULKER,
 		CONTAINER
 	};
 
@@ -137,11 +163,4 @@ public class Ship {
 		this.currentFuel = currentFuel;
 	}
 
-	public double getBeam() {
-		return beam;
-	}
-
-	public void setBeam(double beam) {
-		this.beam = beam;
-	}
 }

@@ -11,9 +11,17 @@ package kop.ships;
  */
 public class ContainerShip extends Ship {
     private int teus;
-    
-    public ContainerShip(String name) {
+	private int maxTEU;
+
+	public ContainerShip() {
+		super();
+	}
+
+	public ContainerShip(String name) {
         super(name);
     }
 
+	public void setMaxTEU(int maxTEU) {
+		this.maxTEU = maxTEU;
+	}
 }

@@ -5,6 +5,10 @@ import kop.ports.NoRouteFoundException;
 import kop.ports.Port;
 import org.junit.Before;
 import org.junit.Test;
+import org.simpleframework.xml.Serializer;
+import org.simpleframework.xml.core.Persister;
+
+import java.io.File;
 
 import static junit.framework.Assert.assertEquals;
 
@@ -36,6 +40,17 @@ public class ShipTest {
 	@Test
 	public void testIsPostSuezmax() throws Exception {
 
+	}
+
+	@Test
+	public void testSerializeDeserialize() throws Exception {
+		Ship ship = new ContainerShip("foobar");
+		Serializer serializer = new Persister();
+		File result = new File("foobar.xml");
+		serializer.write(ship, result);
+		File source = new File("foobar.xml");
+		ContainerShip r = serializer.read(ContainerShip.class, source);
+		assertEquals(ship.getName(), r.getName());
 	}
 
 	@Test

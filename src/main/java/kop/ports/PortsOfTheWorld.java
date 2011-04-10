@@ -28,7 +28,7 @@ public class PortsOfTheWorld {
 
 	private void createPorts() throws IOException {
 		PortFactory factory = new PortFactory();
-		ports = factory.createPorts(PATH_TO_PORT_TSV);
+//		ports = factory.createPorts(PATH_TO_PORT_TSV);
 	}
 
 	public Port putPort(String name) {
