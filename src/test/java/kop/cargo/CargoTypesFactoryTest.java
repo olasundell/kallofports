@@ -2,6 +2,9 @@ package kop.cargo;
 
 import org.junit.Test;
 
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+
 /**
  * Created by IntelliJ IDEA.
  * User: ola
@@ -11,7 +14,27 @@ import org.junit.Test;
  */
 public class CargoTypesFactoryTest {
 	@Test
-	public void testCreateCargoTypes() throws Exception {
+	public void testSaveCargoTypes() throws Exception {
+		CargoTypesFactory factory = new CargoTypesFactory();
+		ArrayList<CargoType> list = new ArrayList<CargoType>();
+		CargoType type = new CargoType();
+		type.setDescription("Lots of them");
+		type.setName("Chemicals");
+		type.setPackaging(CargoType.Packaging.chemical);
 
+		list.add(type);
+
+		factory.saveCargoTypes("testcargotypes.xml", list);
+	}
+
+	@Test
+	public void testCreateCargoTypes() throws Exception {
+		CargoTypesFactory factory = new CargoTypesFactory();
+		try {
+			factory.createCargoTypes("cargotypes.xml");
+		} catch (FileNotFoundException e) {
+			// obviously it didn't work. ignore.
+			factory.createCargoTypes("src/main/resources/cargotypes.xml");
+		}
 	}
 }

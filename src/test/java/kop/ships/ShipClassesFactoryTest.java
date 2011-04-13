@@ -3,7 +3,6 @@ package kop.ships;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -17,8 +16,8 @@ public class ShipClassesFactoryTest {
 	public void testSaveShipClasses() throws Exception {
 		ShipClassesFactory factory = new ShipClassesFactory();
 		ArrayList<ShipClass> list = new ArrayList<ShipClass>();
-		Ship ship = new Ship("foobar");
-		ShipClass shipClass = new ShipClass(ship, 10.0, "Feeder");
+		ShipBlueprint shipSpec = new ContainerShipBlueprint();
+		ShipClass shipClass = new ShipClass(shipSpec, 10.0, "Feeder");
 
 		list.add(shipClass);
 		factory.saveShipClasses("shipclasses.xml", list);

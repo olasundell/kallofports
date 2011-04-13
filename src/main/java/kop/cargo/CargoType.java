@@ -5,26 +5,56 @@
 
 package kop.cargo;
 
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
+
 /**
  *
  * @author ola
  */
+@Root
 public class CargoType {
-    private static int FOOD=1;
-    private static int METAL=2;
-	public static final CargoType FOODSTUFFS = new CargoType(FOOD);
+	public enum Packaging {
+		drybulk,
+		wetbulk,
+		container,
+		chemical
+	};
 
-	private enum Packaging {
-		BREAKBULK,
-		BULK,
-		TANKER,
+	@Attribute
+	private String name;
+	@Element(required = false)
+	private String description;
+	@Element
+	Packaging packaging;
+
+	public CargoType() {
 
 	}
 
-	private int type;
+	public String getName() {
+		return name;
+	}
 
-	public CargoType(int type) {
-		this.type = type;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Packaging getPackaging() {
+		return packaging;
+	}
+
+	public void setPackaging(Packaging packaging) {
+		this.packaging = packaging;
 	}
 }
 

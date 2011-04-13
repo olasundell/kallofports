@@ -1,8 +1,7 @@
 package kop.ports;
 
-import kop.ships.Ship;
+import kop.ships.ShipModel;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,7 +39,7 @@ public class PortsOfTheWorld {
 	}
 
 
-	public double getDistance(Port origin, Port destination, Ship ship) throws NoRouteFoundException {
+	public double getDistance(Port origin, Port destination, ShipModel ship) throws NoRouteFoundException {
 		for (Distance d: distances) {
 			if (d.getOrigin().equals(origin) && d.getDestination().equals(destination)) {
 				return d.shortestDistance(ship);

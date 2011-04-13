@@ -1,9 +1,6 @@
 package kop.ports;
 
-import kop.ships.BulkShip;
-import kop.ships.ContainerShip;
-import kop.ships.Ship;
-import kop.ships.TankerShip;
+import kop.ships.ShipModel;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,12 +17,12 @@ import static org.mockito.Mockito.mock;
  */
 public class DistanceTest {
 	Distance dist;
-	private Ship hugeShip;
+	private ShipModel hugeShip;
 	private double longDist;
 	private double shortDist;
 	private double reallyShortDist;
-	private Ship smallShip;
-	private Ship mediumShip;
+	private ShipModel smallShip;
+	private ShipModel mediumShip;
 
 	@Before
 	public void setup() {
@@ -38,15 +35,15 @@ public class DistanceTest {
 		dist.addRoute(shortDist,true,false);
 		dist.addRoute(reallyShortDist,true,true);
 
-		hugeShip = mock(Ship.class);
+		hugeShip = mock(ShipModel.class);
 		given(hugeShip.isPostSuezmax()).willReturn(true);
 		given(hugeShip.isPostPanamax()).willReturn(true);
 
-		mediumShip = mock(Ship.class);
+		mediumShip = mock(ShipModel.class);
 		given(mediumShip.isPostSuezmax()).willReturn(false);
 		given(mediumShip.isPostPanamax()).willReturn(true);
 
-		smallShip = mock(Ship.class);
+		smallShip = mock(ShipModel.class);
 		given(smallShip.isPostSuezmax()).willReturn(false);
 		given(smallShip.isPostPanamax()).willReturn(false);
 	}

@@ -26,6 +26,14 @@ public class ShipClassesFactory {
 		return list.list;
 	}
 
+	/*
+	Tankers:
+	Size 	1985 	2005
+	32,000–45,000 DWT 	US$18M 	$43M
+	80,000–105,000 DWT 	$22M 	$58M
+	250,000–280,000 DWT 	$47M 	$120M
+
+	 */
 	public void saveShipClasses(String fileName, ArrayList<ShipClass> list) throws Exception {
 		Serializer serializer = new Persister();
 		File result = new File(fileName);

@@ -1,7 +1,9 @@
 package kop.ports;
 
 import kop.game.Game;
-import kop.ships.Ship;
+import kop.ships.ShipModel;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
 
 import java.util.Date;
 
@@ -12,14 +14,23 @@ import java.util.Date;
  * Time: 4:35 PM
  * To change this template use File | Settings | File Templates.
  */
+@Root
 public class PositionOrDirection {
+	@Element(required = false)
 	private Port currentPort;
+	@Element(required = false)
 	private Port originPort;
+	@Element(required = false)
 	private Port destinationPort;
+	@Element
 	private double currentSpeed;
+	@Element
 	private double distanceLeft;
+	@Element
 	private int hoursToDest;
+	@Element(required = false)
 	private Date leftPortDate;
+	@Element(required = false)
 	private Date arrivedAtPortDate;
 
 	public Port getCurrentPort() {
@@ -63,7 +74,7 @@ public class PositionOrDirection {
 		this.originPort = originPort;
 	}
 
-	public void travelTo(Port origin, Port destination, double speed, Ship ship) throws NoRouteFoundException {
+	public void travelTo(Port origin, Port destination, double speed, ShipModel ship) throws NoRouteFoundException {
 		setCurrentPort(null);
 		setDestinationPort(destination);
 		setOriginPort(origin);

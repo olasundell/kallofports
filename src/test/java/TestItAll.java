@@ -20,10 +20,10 @@ public class TestItAll {
 		Port origin = world.putPort("Rotterdam");
 		Port destination = world.putPort("London");
 		FreightMarket market = new FreightMarket();
-		Cargo cargo = new CargoImpl(1, CargoType.FOODSTUFFS, 1.0, GregorianCalendar.getInstance().getTime());
+//		Cargo cargo = new CargoImpl(1, CargoType.FOODSTUFFS, 1.0, GregorianCalendar.getInstance().getTime());
 
-		market.generateFreight(origin, destination, cargo);
+//		market.generateFreight(origin, destination, cargo);
 
-		List<Freight> list = market.getFreightFromPort(origin);
+//		List<Freight> list = market.getFreightFromPort(origin);
 	}
 }

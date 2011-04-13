@@ -19,7 +19,7 @@ import static junit.framework.Assert.assertEquals;
  * Time: 1:51 PM
  * To change this template use File | Settings | File Templates.
  */
-public class ShipTest {
+public class ShipModelTest {
 	private static final double SPEED = 10.0;
 
 	@Before
@@ -44,18 +44,20 @@ public class ShipTest {
 
 	@Test
 	public void testSerializeDeserialize() throws Exception {
-		Ship ship = new ContainerShip("foobar");
+		ShipModel ship = new ContainerShipModel();
+		ship.setName("foobar");
 		Serializer serializer = new Persister();
 		File result = new File("foobar.xml");
 		serializer.write(ship, result);
 		File source = new File("foobar.xml");
-		ContainerShip r = serializer.read(ContainerShip.class, source);
+		ContainerShipModel r = serializer.read(ContainerShipModel.class, source);
 		assertEquals(ship.getName(), r.getName());
 	}
 
 	@Test
 	public void testTravel() throws Exception, NoRouteFoundException {
-		Ship ship = new ContainerShip("foobar");
+		ShipModel ship = new ContainerShipModel();
+		ship.setName("foobar");
 
 		Port origin = Game.getInstance().getPortByName("London");
 		Port destination = Game.getInstance().getPortByName("Haifa");

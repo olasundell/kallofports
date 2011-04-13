@@ -7,15 +7,13 @@ package kop.ships;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+
 import kop.cargo.Cargo;
-import kop.cargo.CargoImpl;
 import kop.ports.NoRouteFoundException;
 import kop.ports.Port;
 import kop.ports.PositionOrDirection;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
-import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
 /**
@@ -23,34 +21,21 @@ import org.simpleframework.xml.Root;
  * @author ola
  */
 @Root
-public class Ship {
+public abstract class ShipModel {
 	@Element
-    private double currentFuel;
-	@Element
-	protected int dwt;
-	@Element
-	private double maxSpeed;
-	@Element
-	private double loa;
-	@Element
-	private double beam;
-	@Element
-	private double draft;
-	@Element
-	private double maxFuel;
-	@Element
-	private double dailyCost;
-	private Map<Float, Float> fuelConsumption;
+    protected double currentFuel;
 
 	@Attribute
-	private String name;
+	protected String name;
 
-    private List<Cargo> cargoList;
-	private PositionOrDirection currentPosition;
+    protected List<Cargo> cargoList;
+	@Element
+	protected PositionOrDirection currentPosition;
+	@Element
+	protected ShipBlueprint shipBlueprint;
 
-	// needed for simple-xml
-	public Ship() {
-
+	public ShipModel() {
+		currentPosition = new PositionOrDirection();
 	}
 
 	public int getHoursToDestination() {
@@ -66,13 +51,17 @@ public class Ship {
 		return name;
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public enum ShipType {
 		TANKER,
 		BULKER,
 		CONTAINER
 	};
 
-    public Ship(String name) {
+    public ShipModel(String name) {
         this.name=name;
         cargoList= new ArrayList<Cargo>();
 		currentPosition = new PositionOrDirection();
@@ -101,58 +90,57 @@ public class Ship {
             currentCargo+=c.getWeight();
         }
         
-        return dwt-currentCargo;
+        return shipBlueprint.getDwt() -currentCargo;
     }
 
 	public boolean isPostPanamax() {
 		// TODO loa Container ship and passenger ship: 965 ft  294.13
-		return loa > 289.56 || beam > 32.31 || draft > 12.04;
 
+		return shipBlueprint.isPostPanamax();
 	}
 
 	public boolean isPostSuezmax() {
-//		20.1 m (66 ft) of draught for ships with the beam no wider than 50.0 m (164.0 ft) or 12.2 m (40 ft) of draught for ships with maximum allowed beam of 77.5 m (254 ft 3 in).
-		return (beam > 75.0 && draft > 12.2) || (beam > 50.0 && draft > 20.1);
+		return shipBlueprint.isPostSuezmax();
 	}
 
 	public int getDwt() {
-		return dwt;
+		return shipBlueprint.getDwt();
 	}
 
 	public void setDwt(int dwt) {
-		this.dwt = dwt;
+		shipBlueprint.setDwt(dwt);
 	}
 
 	public double getMaxSpeed() {
-		return maxSpeed;
+		return shipBlueprint.getMaxSpeed();
 	}
 
 	public void setMaxSpeed(double maxSpeed) {
-		this.maxSpeed = maxSpeed;
+		shipBlueprint.setMaxSpeed(maxSpeed);
 	}
 
 	public double getLoa() {
-		return loa;
+		return shipBlueprint.getLoa();
 	}
 
 	public void setLoa(double loa) {
-		this.loa = loa;
+		shipBlueprint.setLoa(loa);
 	}
 
 	public double getDraft() {
-		return draft;
+		return shipBlueprint.getDraft();
 	}
 
 	public void setDraft(double draft) {
-		this.draft = draft;
+		shipBlueprint.setDraft(draft);
 	}
 
 	public double getMaxFuel() {
-		return maxFuel;
+		return shipBlueprint.getMaxFuel();
 	}
 
 	public void setMaxFuel(double maxFuel) {
-		this.maxFuel = maxFuel;
+		shipBlueprint.setMaxFuel(maxFuel);
 	}
 
 	public double getCurrentFuel() {

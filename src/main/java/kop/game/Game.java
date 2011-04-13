@@ -5,8 +5,7 @@ import kop.ports.NoRouteFoundException;
 import kop.ports.NoSuchPortException;
 import kop.ports.Port;
 import kop.ports.PortsOfTheWorld;
-import kop.ships.Ship;
-import kop.ships.ShipClassesFactory;
+import kop.ships.ShipModel;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -26,7 +25,7 @@ public class Game {
 	private GregorianCalendar calendar;
 	private static Game instance;
 	private PortsOfTheWorld world;
-	private List<Ship> shipTypes;
+	private List<ShipModel> shipTypes;
 
 	public Game() {
 		world = new PortsOfTheWorld();
@@ -50,7 +49,7 @@ public class Game {
 		world.setDistance(haifa, london, 3320);
 	}
 
-	public double getDistance(Port origin, Port destination, Ship ship) throws NoRouteFoundException {
+	public double getDistance(Port origin, Port destination, ShipModel ship) throws NoRouteFoundException {
 		return world.getDistance(origin, destination, ship);
 	}
 

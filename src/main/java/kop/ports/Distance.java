@@ -1,6 +1,6 @@
 package kop.ports;
 
-import kop.ships.Ship;
+import kop.ships.ShipModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +44,7 @@ public class Distance {
 		return d;
 	}
 
-	public double shortestDistance(Ship ship) {
+	public double shortestDistance(ShipModel ship) {
 		if (routes.size() == 0) {
 			return -1;
 		}

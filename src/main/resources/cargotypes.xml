@@ -1,7 +1,7 @@
 <cargoTypeList>
 	<list>
 		<cargoType name="Veg oil">
-			<description></description>
+			<description>Vegetable oil</description>
 			<packaging>chemical</packaging>
 		</cargoType>
 		<cargoType name="Inorganic chemicals">

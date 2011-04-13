@@ -14,6 +14,11 @@ import java.util.Date;
 public class CargoImpl implements Cargo {
 	private int weight;
     private double pricePerTon;
+	// TODO the total price is the highest of either per volume or per weight
+	// a low-density (ie high volume per weight) cargo type will use up the available space.
+	// a high-density cargo type will use up the available weight.
+	// therefore the market rate is based on the highest of the two.
+	private double pricePerVolume;
     private CargoType type;
     private Date deadline;
     

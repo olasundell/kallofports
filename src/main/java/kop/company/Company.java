@@ -1,10 +1,9 @@
 package kop.company;
 
-import kop.ships.Ship;
+import kop.ships.ShipModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,17 +14,17 @@ import java.util.StringTokenizer;
  */
 public class Company {
 	private double money;
-	private List<Ship> ships;
+	private List<ShipModel> ships;
 	private List<Loan> loans;
 	private String name;
 
 	public Company() {
-		ships = new ArrayList<Ship>();
+		ships = new ArrayList<ShipModel>();
 		loans = new ArrayList<Loan>();
 	}
 
 	public void moveShips() {
-		for (Ship s: ships) {
+		for (ShipModel s: ships) {
 			s.travel();
 		}
 	}

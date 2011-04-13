@@ -1,6 +1,6 @@
 package kop.company;
 
-import kop.ships.Ship;
+import kop.ships.ShipModel;
 
 /**
  * Created by IntelliJ IDEA.
@@ -10,7 +10,7 @@ import kop.ships.Ship;
  * To change this template use File | Settings | File Templates.
  */
 public class Loan {
-	private Ship security;
+	private ShipModel security;
 	private double interest;
 	private double mortagePerMonth;
 	private double currentDebt;
@@ -36,11 +36,11 @@ public class Loan {
 		return Math.round(mortgage) + mortagePerMonth;
 	}
 
-	public Ship getSecurity() {
+	public ShipModel getSecurity() {
 		return security;
 	}
 
-	public void setSecurity(Ship security) {
+	public void setSecurity(ShipModel security) {
 		this.security = security;
 	}
 

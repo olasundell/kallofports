@@ -4,8 +4,6 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
-import java.util.Map;
-
 /**
  * Created by IntelliJ IDEA.
  * User: ola
@@ -20,13 +18,13 @@ public class ShipClass {
 	@Attribute
 	private String className;
 	@Element
-	Ship ship;
+	ShipBlueprint ship;
 
 	public ShipClass() {
 
 	}
 
-	public ShipClass(Ship ship, double cost, String className) {
+	public ShipClass(ShipBlueprint ship, double cost, String className) {
 		this.cost = cost;
 		this.className = className;
 		this.ship = ship;

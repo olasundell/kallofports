@@ -18,7 +18,7 @@ import static junit.framework.Assert.assertEquals;
 public class ShipClassTest {
 	@Test
 	public void testSerializeDeserialize() throws Exception {
-		ShipClass c = new ShipClass(new Ship("foobar"), 10.0, "Feeder");
+		ShipClass c = new ShipClass(new ContainerShipBlueprint(), 10.0, "Feeder");
 		Serializer serializer = new Persister();
 		File result = new File("foobar.xml");
 		serializer.write(c, result);
