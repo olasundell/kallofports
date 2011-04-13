@@ -1,0 +1,47 @@
+<cargoTypeList>
+	<list>
+		<cargoType name="Veg oil">
+			<description></description>
+			<packaging>chemical</packaging>
+		</cargoType>
+		<cargoType name="Inorganic chemicals">
+			<packaging>chemical</packaging>
+		</cargoType>
+		<cargoType name="Organic chemicals">
+			<packaging>chemical</packaging>
+		</cargoType>
+		<cargoType name="CPP/DPP">
+			<packaging>chemical</packaging>
+		</cargoType>
+		<cargoType name="Coal" >
+			<packaging>drybulk</packaging>
+		</cargoType>
+		<cargoType name="Grain">
+			<packaging>drybulk</packaging>
+		</cargoType>
+		<cargoType name="Iron">
+			<packaging>drybulk</packaging>
+		</cargoType>
+		<cargoType name="Bauxite">
+			<packaging>drybulk</packaging>
+		</cargoType>
+		<cargoType name="Wood chips">
+			<packaging>drybulk</packaging>
+		</cargoType>
+		<cargoType name="Cement">
+			<packaging>drybulk</packaging>
+		</cargoType>
+		<cargoType name="Dry edibles">
+			<packaging>drybulk</packaging>
+		</cargoType>
+		<cargoType name="Bulk minerals">
+			<packaging>drybulk</packaging>
+		</cargoType>
+		<cargoType name="Crude oil">
+			<packaging>drybulk</packaging>
+		</cargoType>
+		<cargoType name="">
+			<packaging>container</packaging>
+		</cargoType>
+	</list>
+</cargoTypeList>

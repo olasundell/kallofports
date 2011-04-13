@@ -1,0 +1,97 @@
+1 	Live animals. 	0101E
+2 	Meat and edible meat offal. 	0102E
+3 	Fish and crustaceans, molluscs and other aquatic invertebrates. 	0103E
+4 	Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included. 	0104E
+5 	Products of animal origin, not elsewhere specified or included. 	0105E
+6 	Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage. 	0206E
+7 	Edible vegetables and certain roots and tubers. 	0207E
+8 	Edible fruit and nuts; peel of citrus fruit or melons. 	0208E
+9 	Coffee, tea, maté and spices. 	0209E
+10 	Cereals. 	0210E
+11 	Products of the milling industry; malt; starches; inulin; wheat gluten. 	0211E
+12 	Oil seeds and oleaginous fruits; miscellaneous grains, seeds and fruit; industrial or medicinal plants; straw and fodder. 	0212E
+13 	Lac; gums, resins and other vegetable saps and extracts. 	0213E
+14 	Vegetable plaiting materials; vegetable products not elsewhere specified or included. 	0214E
+15 	Animal or vegetable fats and oils and their cleavage products; prepared edible fats; animal or vegetable waxes. 	0315E
+16 	Preparations of meat, of fish or of crustaceans, molluscs or other aquatic invertebrates. 	0416E
+17 	Sugars and sugar confectionery. 	0417E
+18 	Cocoa and cocoa preparations. 	0418E
+19 	Preparations of cereals, flour, starch or milk; pastrycooks' products. 	0419E
+20 	Preparations of vegetables, fruit, nuts or other parts of plants. 	0420E
+21 	Miscellaneous edible preparations. 	0421E
+22 	Beverages, spirits and vinegar. 	0422E
+23 	Residues and waste from the food industries; prepared animal fodder. 	0423E
+24 	Tobacco and manufactured tobacco substitutes. 	0424E
+25 	Salt; sulphur; earths and stone; plastering materials, lime and cement. 	0525E
+26 	Ores, slag and ash. 	0526E
+27 	Mineral fuels, mineral oils and products of their distillation; bituminous substances; mineral waxes. 	0527E
+28 	Inorganic chemicals; organic or inorganic compounds of precious metals, of rare-earth metals, of radioactive elements or of isotopes. 	0628E
+29 	Organic chemicals. 	0629E
+30 	Pharmaceutical products. 	0630E
+31 	Fertilisers. 	0631E
+32 	Tanning or dyeing extracts; tannins and their derivatives; dyes, pigments and other colouring matter; paints and varnishes; putty and other mastics; inks. 	0632E
+33 	Essential oils and resinoids; perfumery, cosmetic or toilet preparations. 	0633E
+34 	Soap, organic surface-active agents, washing preparations, lubricating preparations, artificial waxes, prepared waxes, polishing or scouring preparations, candles and similar articles, modelling pastes, "dental waxes" and dental preparations with a basis of plaster. 	0634E
+35 	Albuminoidal substances; modified starches; glues; enzymes. 	0635E
+36 	Explosives; pyrotechnic products; matches; pyrophoric alloys; certain combustible preparations. 	0636E
+37 	Photographic or cinematographic goods. 	0637E
+38 	Miscellaneous chemical products. 	0638E
+39 	Plastics and articles thereof. 	0739E
+40 	Rubber and articles thereof. 	0740E
+41 	Raw hides and skins (other than furskins) and leather. 	0841E
+42 	Articles of leather; saddlery and harness; travel goods, handbags and similar containers; articles of animal gut (other than silk-worm gut). 	0842E
+43 	Furskins and artificial fur; manufactures thereof. 	0843E
+44 	Wood and articles of wood; wood charcoal. 	0944E
+45 	Cork and articles of cork. 	0945E
+46 	Manufactures of straw, of esparto or of other plaiting materials; basketware and wickerwork. 	0946E
+47 	Pulp of wood or of other fibrous cellulosic material; recovered (waste and scrap) paper or paperboard. 	1047E
+48 	Paper and paperboard; articles of paper pulp, of paper or of paperboard. 	1048E
+49 	Printed books, newspapers, pictures and other products of the printing industry; manuscripts, typescripts and plans. 	1049E
+50 	Silk. 	1150E
+51 	Wool, fine or coarse animal hair; horsehair yarn and woven fabric. 	1151E
+52 	Cotton. 	1152E
+53 	Other vegetable textile fibres; paper yarn and woven fabrics of paper yarn. 	1153E
+54 	Man-made filaments. 	1154E
+55 	Man-made staple fibres. 	1155E
+56 	Wadding, felt and nonwovens; special yarns; twine, cordage, ropes and cables and articles thereof. 	1156E
+57 	Carpets and other textile floor coverings. 	1157E
+58 	Special woven fabrics; tufted textile fabrics; lace; tapestries; trimmings; embroidery. 	1158E
+59 	Impregnated, coated, covered or laminated textile fabrics; textile articles of a kind suitable for industrial use. 	1159E
+60 	Knitted or crocheted fabrics. 	1160E
+61 	Articles of apparel and clothing accessories, knitted or crocheted. 	1161E
+62 	Articles of apparel and clothing accessories, not knitted or crocheted. 	1162E
+63 	Other made up textile articles; sets; worn clothing and worn textile articles; rags. 	1163E
+64 	Footwear, gaiters and the like; parts of such articles. 	1264E
+65 	Headgear and parts thereof. 	1265E
+66 	Umbrellas, sun umbrellas, walking-sticks, seat-sticks, whips, riding-crops and parts thereof. 	1266E
+67 	Prepared feathers and down and articles made of feathers or of down; artificial flowers; articles of human hair. 	1267E
+68 	Articles of stone, plaster, cement, asbestos, mica or similar materials. 	1368E
+69 	Ceramic products. 	1369E
+70 	Glass and glassware. 	1370E
+71 	Natural or cultured pearls, precious or semi-precious stones, precious metals, metals clad with precious metal and articles thereof; imitation jewellery; coin. 	1471E
+72 	Iron and steel. 	1572E
+73 	Articles of iron or steel. 	1573E
+74 	Copper and articles thereof. 	1574E
+75 	Nickel and articles thereof. 	1575E
+76 	Aluminium and articles thereof. 	1576E
+77 	( Reserved for possible future use in the Harmonized System) 	1577E
+78 	Lead and articles thereof. 	1578E
+79 	Zinc and articles thereof. 	1579E
+80 	Tin and articles thereof. 	1580E
+81 	Other base metals; cermets; articles thereof. 	1581E
+82 	Tools, implements, cutlery, spoons and forks, of base metal; parts thereof of base metal. 	1582E
+83 	Miscellaneous articles of base metal. 	1583E
+84 	Nuclear reactors, boilers, machinery and mechanical appliances; parts thereof. 	1684E
+85 	Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles. 	1685E
+86 	Railway or tramway locomotives, rolling-stock and parts thereof; railway or tramway track fixtures and fittings and parts thereof; mechanical (including electro-mechanical) traffic signalling equipment of all kinds. 	1786E
+87 	Vehicles other than railway or tramway rolling-stock, and parts and accessories thereof. 	1787E
+88 	Aircraft, spacecraft, and parts thereof. 	1788E
+89 	Ships, boats and floating structures. 	1789E
+90 	Optical, photographic, cinematographic, measuring, checking, precision, medical or surgical instruments and apparatus; parts and accessories thereof. 	1890E
+91 	Clocks and watches and parts thereof. 	1891E
+92 	Musical instruments; parts and accessories of such articles. 	1892E
+93 	Arms and ammunition; parts and accessories thereof. 	1993E
+94 	Furniture; bedding, mattresses, mattress supports, cushions and similar stuffed furnishings; lamps and lighting fittings, not elsewhere specified or included; illuminated signs, illuminated name-plates and the like; prefabricated buildings. 	2094E
+95 	Toys, games and sports requisites; parts and accessories thereof. 	2095E
+96 	Miscellaneous manufactured articles. 	2096E
+97 	Works of art, collectors' pieces and antiques. 	2197E
