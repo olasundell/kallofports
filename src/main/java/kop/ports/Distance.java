@@ -12,11 +12,11 @@ import java.util.List;
  * Time: 3:53 PM
  * To change this template use File | Settings | File Templates.
  */
-public class Distance {
-	Port origin;
-	Port destination;
+class Distance {
+	private Port origin;
+	private Port destination;
 
-	List<Route> routes;
+	private List<Route> routes;
 
 	public Distance(Port origin, Port destination) {
 		this.origin = origin;

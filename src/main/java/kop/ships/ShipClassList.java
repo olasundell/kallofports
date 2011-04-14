@@ -15,7 +15,7 @@ import java.util.List;
  */
 
 @Root
-public class ShipClassList {
+class ShipClassList {
 	@ElementList
 	public ArrayList<ShipClass> list;
 

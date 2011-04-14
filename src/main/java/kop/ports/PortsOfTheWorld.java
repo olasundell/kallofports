@@ -25,7 +25,7 @@ public class PortsOfTheWorld {
 		distances = new ArrayList<Distance>();
 	}
 
-	private void createPorts() throws IOException {
+	private void createPorts()  {
 		PortFactory factory = new PortFactory();
 //		ports = factory.createPorts(PATH_TO_PORT_TSV);
 	}

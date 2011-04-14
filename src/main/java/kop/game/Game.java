@@ -27,7 +27,7 @@ public class Game {
 	private PortsOfTheWorld world;
 	private List<ShipModel> shipTypes;
 
-	public Game() {
+	private Game() {
 		world = new PortsOfTheWorld();
 		calendar = new GregorianCalendar(1970,0,0,0,0);
 	}
@@ -54,6 +54,10 @@ public class Game {
 	}
 
 	public static Game getInstance() {
+		if (instance==null) {
+			createInstance();
+		}
+
 		return instance;
 	}
 

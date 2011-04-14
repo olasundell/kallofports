@@ -1,5 +1,6 @@
 package kop.company;
 
+import kop.ships.ContainerShipModel;
 import kop.ships.ShipModel;
 
 import java.util.ArrayList;
@@ -30,11 +31,19 @@ public class Company {
 	}
 
 	public void doDailyCosts() {
-
+		double costs = 0;
+		for (ShipModel s: ships) {
+			costs += s.getBlueprint().getDailyCost();
+		}
+		setMoney(getMoney() - costs);
 	}
 
 	public void doMonthlyCosts() {
-
+		double costs = 0;
+		for (Loan l: loans) {
+			costs += l.doMortgage();
+		}
+		setMoney(getMoney() - costs);
 	}
 
 	public String getName() {
@@ -47,5 +56,17 @@ public class Company {
 
 	public int getNumberOfShips() {
 		return ships.size();
+	}
+
+	public void addShip(ShipModel shipModel) {
+		ships.add(shipModel);
+	}
+
+	public void setMoney(double money) {
+		this.money = money;
+	}
+
+	public void addLoan(Loan loan) {
+		loans.add(loan);
 	}
 }

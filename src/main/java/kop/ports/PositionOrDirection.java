@@ -58,7 +58,7 @@ public class PositionOrDirection {
 		return destinationPort;
 	}
 
-	public void setDestinationPort(Port destinationPort) {
+	void setDestinationPort(Port destinationPort) {
 		this.destinationPort = destinationPort;
 	}
 
@@ -70,7 +70,7 @@ public class PositionOrDirection {
 		return originPort;
 	}
 
-	public void setOriginPort(Port originPort) {
+	void setOriginPort(Port originPort) {
 		this.originPort = originPort;
 	}
 
@@ -91,7 +91,7 @@ public class PositionOrDirection {
 		return leftPortDate;
 	}
 
-	public void setLeftPortDate(Date leftPortDate) {
+	void setLeftPortDate(Date leftPortDate) {
 		this.leftPortDate = leftPortDate;
 	}
 
@@ -99,7 +99,7 @@ public class PositionOrDirection {
 		return arrivedAtPortDate;
 	}
 
-	public void setArrivedAtPortDate(Date arrivedAtPortDate) {
+	void setArrivedAtPortDate(Date arrivedAtPortDate) {
 		this.arrivedAtPortDate = arrivedAtPortDate;
 	}
 
@@ -107,7 +107,7 @@ public class PositionOrDirection {
 		return distanceLeft;
 	}
 
-	public void setCurrentSpeed(double currentSpeed) {
+	void setCurrentSpeed(double currentSpeed) {
 		this.currentSpeed = currentSpeed;
 	}
 

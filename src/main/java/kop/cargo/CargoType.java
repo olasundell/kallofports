@@ -20,13 +20,14 @@ public class CargoType {
 		wetbulk,
 		container,
 		chemical
-	};
+	}
 
 	@Attribute
 	private String name;
 	@Element(required = false)
 	private String description;
 	@Element
+	private
 	Packaging packaging;
 
 	public CargoType() {

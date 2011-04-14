@@ -9,7 +9,7 @@ package kop.ships;
  *
  * @author ola
  */
-public class BulkShipModel extends ShipModel {
+class BulkShipModel extends ShipModel {
     public BulkShipModel(String name) {
         super(name);
     }

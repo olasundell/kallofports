@@ -57,8 +57,6 @@ public class CargoImpl implements Cargo {
 		if (Double.compare(cargo.pricePerTon, pricePerTon) != 0) return false;
 		if (weight != cargo.weight) return false;
 		if (deadline != null ? !deadline.equals(cargo.deadline) : cargo.deadline != null) return false;
-		if (type != null ? !type.equals(cargo.type) : cargo.type != null) return false;
-
-		return true;
-	}
+			return !(type != null ? !type.equals(cargo.type) : cargo.type != null);
+		}
 }

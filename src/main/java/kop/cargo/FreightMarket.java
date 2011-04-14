@@ -18,7 +18,7 @@ public class FreightMarket {
 	private List<Freight> market;
 
 	public FreightMarket() {
-
+		market = new ArrayList<Freight>();
 	}
 
 	public void generateFreight(Port origin, Port destination, Cargo cargo) {

@@ -7,6 +7,6 @@ package kop.ships;
  * Time: 7:32 PM
  * To change this template use File | Settings | File Templates.
  */
-public class TankerShipBlueprint extends ShipBlueprint {
+class TankerShipBlueprint extends ShipBlueprint {
 
 }

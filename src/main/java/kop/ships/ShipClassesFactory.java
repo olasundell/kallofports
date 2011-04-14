@@ -16,7 +16,7 @@ import java.util.List;
  * Time: 9:09 PM
  * To change this template use File | Settings | File Templates.
  */
-public class ShipClassesFactory {
+class ShipClassesFactory {
 	public ArrayList<ShipClass> createShipClasses(String fileName) throws Exception {
 		Serializer serializer = new Persister();
 

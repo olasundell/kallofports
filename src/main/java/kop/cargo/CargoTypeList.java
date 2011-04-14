@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * To change this template use File | Settings | File Templates.
  */
 @Root
-public class CargoTypeList {
+class CargoTypeList {
 	@ElementList
 	ArrayList<CargoType> list;
 	public CargoTypeList() {}

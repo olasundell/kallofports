@@ -10,7 +10,7 @@ package kop.ports;
  * @author ola
  */
 public class Port {
-	String name;
+	private String name;
 	private String bunkerOil;
 	private String dieselOil;
 	private String countryCode;
@@ -35,9 +35,7 @@ public class Port {
 
 		Port port = (Port) o;
 
-		if (name != null ? !name.equals(port.name) : port.name != null) return false;
-
-		return true;
+		return !(name != null ? !name.equals(port.name) : port.name != null);
 	}
 
 	public void setBunkerOil(String bunkerOil) {

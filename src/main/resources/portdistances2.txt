@@ -1203,8 +1203,7 @@ Volos, Greece (south of Greece),
 1004
 Volos, Greece (via Corinth
 Canal), 987
-ANNAPOLIS, MARYLAND,
-U.S.A.
+ANNAPOLIS, MARYLAND, U.S.A.
 (38˚59'00"N., 76˚28'45"W.) For
 ocean distance via the Chesapeake
 Bay, subtract 20 miles from
@@ -1279,15 +1278,13 @@ Baltimore, Maryland, U.S.A. (via
 Crooked Island Passage), 1151
 Boston, Massachusetts, U.S.A.,
 1408
-Charleston, South Carolina,
-U.S.A., 813
+Charleston, South Carolina, U.S.A., 813
 Colon, Panama, 844
 Key West, Florida, U.S.A., 434
 Matanzas, Cuba, 407
 New York, New York, U.S.A.,
 1226
-Philadelphia, Pennsylvania,
-U.S.A., 1197
+Philadelphia, Pennsylvania, U.S.A., 1197
 Port Antonio, Jamaica, 288
 
 Bishop Rock, England, 449
@@ -1404,8 +1401,7 @@ Boma, Congo, 933
 Boston, Massachusetts, U.S.A.,
 4765
 Calabar, Nigeria, 305
-Charleston, South Carolina,
-U.S.A., 5070
+Charleston, South Carolina, U.S.A., 5070
 Colon, Panama, 5155
 Douala, Cameroon, 424
 Georgetown, Ascension Island,
@@ -1419,8 +1415,7 @@ Natal, Brazil, 2432
 New York, New York, U.S.A.,
 4885
 Norfolk, Virginia, U.S.A., 4943
-Philadelphia, Pennsylvania,
-U.S.A., 4983
+Philadelphia, Pennsylvania, U.S.A., 4983
 Pointe Noire, Congo, 838
 Port Harcourt, Nigeria, 319
 Port of Spain, Trinidad, 3910
@@ -1712,8 +1707,7 @@ Ports
 Arkhangel’sk, Russia, 3306
 Boston, Massachusetts, U.S.A.,
 801
-Charleston, South Carolina,
-U.S.A., 1489
+Charleston, South Carolina, U.S.A., 1489
 Colon, Panama, 2640
 Guantanamo, Cuba, 1976
 Halifax, Canada, 448
@@ -1723,10 +1717,8 @@ Lisboa, Portugal, 2101
 New York, New York, U.S.A.,
 1009
 Norfolk, Virginia, U.S.A., 1189
-Philadelphia, Pennsylvania,
-U.S.A., 1159
-Portsmouth, New Hampshire,
-U.S.A., 779
+Philadelphia, Pennsylvania, U.S.A., 1159
+Portsmouth, New Hampshire, U.S.A., 779
 Reykjavik, Iceland, 1584
 San Juan, Puerto Rico, 1840
 ARGOSTOLION, GREECE
@@ -1865,8 +1857,7 @@ Argentia, Canada, 3306
 Berlevag, Norway, 540
 Boston, Massachusetts, U.S.A.,
 4014
-Charleston, South Carolina,
-U.S.A., 4692
+Charleston, South Carolina, U.S.A., 4692
 Colon, Panama, 5820
 Dikson, Russia, 1105
 Frederikshavn, Denmark, 1805
@@ -1889,10 +1880,8 @@ of Iceland), 4320
 New York, New York, U.S.A.,
 4216
 Norfolk, Virginia, U.S.A., 4399
-Philadelphia, Pennsylvania,
-U.S.A., 4369
-Portsmouth, New Hampshire,
-U.S.A., 3992
+Philadelphia, Pennsylvania, U.S.A., 4369
+Portsmouth, New Hampshire, U.S.A., 3992
 Reykjavik, Iceland (direct), 1874
 Reykjavik, Iceland (south of
 Iceland), 1901
@@ -2162,8 +2151,7 @@ Buenos Aires, Argentina, 5435
 Cadiz, Spain, 375
 Cape Town, South Africa, 5270
 Casablanca, Morocco, 457
-Charleston, South Carolina,
-U.S.A., 3360
+Charleston, South Carolina, U.S.A., 3360
 Charlotte Amalie, Virgin Islands,
 3194
 Colon, Panama (via Mona
@@ -2280,8 +2268,7 @@ Buenos Aires, Argentina, 564
 Montevideo, Uruguay, 466
 New York, New York, U.S.A.,
 6154
-Philadelphia, Pennsylvania,
-U.S.A., 6201
+Philadelphia, Pennsylvania, U.S.A., 6201
 Santos, Brazil, 1292
 
 * JUNCTION POINT.—See Preface for use of junction points
@@ -2366,8 +2353,7 @@ Ports
 Belawan, Indonesia, 1422
 Manila, Philippines, 1057
 Mogpo, South Korea, 2308
-BALTIMORE, MARYLAND,
-U.S.A.
+BALTIMORE, MARYLAND, U.S.A.
 (39˚16'00"N., 76˚34'30"W.) to:
 Junction Points*
 Bishop Rock, England, 3224
@@ -2829,8 +2815,7 @@ Key West, Florida, U.S.A., 490
 Kingston, Jamaica, 265
 New York, New York, U.S.A.,
 1226
-Philadelphia, Pennsylvania,
-U.S.A., 1198
+Philadelphia, Pennsylvania, U.S.A., 1198
 BARAHONA, DOMINICAN
 REPUBLIC
 (18˚12'30"N., 71˚03'30"W.) to:
@@ -2841,8 +2826,7 @@ Barranquilla, Colombia, 497
 Kingston, Jamaica, 364
 San Juan, Puerto Rico, 294
 Willemstad, Curacao, 395
-BARBERS POINT, HAWAII,
-U.S.A.
+BARBERS POINT, HAWAII, U.S.A.
 (21˚16'51"N., 158˚06'00"W.) to:
 Junction Points*
 Panama, Panama, 4694
@@ -3084,8 +3068,7 @@ Barcelona, Venezuela, 661
 Carupano, Venezuela, 734
 Casilda, Cuba, 732
 Catia la Mar, Venezuela, 524
-Charleston, South Carolina,
-U.S.A., 1391
+Charleston, South Carolina, U.S.A., 1391
 Cienfuegos, Cuba, 755
 Colon, Panama, 336
 Fortaleza, Brazil, 685
@@ -3227,8 +3210,7 @@ St. John, Canada, 206
 
 BATON ROUGE, LOUISIANA, U.S.A.
 
-BATON ROUGE, LOUISIANA,
-U.S.A.
+BATON ROUGE, LOUISIANA, U.S.A.
 (30˚27'00"N., 91˚06'00"W.) Add
 115 miles to New Orleans
 distances.
@@ -3280,8 +3262,7 @@ Ports
 Bordeaux, France, 172
 El Ferrol del Caudillo, Spain, 322
 Horta, Azores, 1277
-BAYONNE, NEW JERSEY,
-U.S.A.
+BAYONNE, NEW JERSEY, U.S.A.
 (40˚41'00"N., 74˚01'00"W.) For
 ocean distance subtract 2 1/2 miles
 from New York distances.
@@ -3528,8 +3509,7 @@ Bridgetown, Barbados, 1154
 Buenos Aires, Argentina, 3274
 Cabedelo, Brazil, 1021
 Cadiz, Spain, 3286
-Charleston, South Carolina,
-U.S.A., 2773
+Charleston, South Carolina, U.S.A., 2773
 Charlotte Amalie, Virgin Islands,
 1598
 Cienfuegos, Cuba, 2460
@@ -3554,14 +3534,12 @@ New York, New York, U.S.A.,
 2975
 Norfolk, Virginia, U.S.A., 2832
 Paramaribo, Suriname, 747
-Philadelphia, Pennsylvania,
-U.S.A., 2950
+Philadelphia, Pennsylvania, U.S.A., 2950
 Ponta Delgada, Azores, 2678
 Port au Prince, Haiti, 2192
 Port of Spain, Trinidad, 1212
 Port Castries, St. Lucia, 1265
-Portsmouth, New Hampshire,
-U.S.A., 2959
+Portsmouth, New Hampshire, U.S.A., 2959
 Puerto de Hierro, Venezuela, 1215
 Recife, Brazil, 1084
 Rio de Janeiro, Brazil, 2174
@@ -3674,8 +3652,7 @@ BELOMORSK, RUSSIA
 (64˚32'00"N., 34˚48'00"E.) Add
 67 miles to Arkhangel’sk distances.
 
-BENICIA, CALIFORNIA,
-U.S.A.
+BENICIA, CALIFORNIA, U.S.A.
 (38˚02'30"N., 122˚08'00"W.)
 Add 24 miles to San Francisco
 distances.
@@ -3883,8 +3860,7 @@ Cap-Haitien, Haiti, 3565
 Cape Town, South Africa, 5772
 Cardiff, Wales, 176
 Cartagena, Colombia, 4138
-Charleston, South Carolina,
-U.S.A., 3368
+Charleston, South Carolina, U.S.A., 3368
 Charlotte Amalie, Virgin Islands,
 3369
 Cherbourg, France, 197
@@ -3954,8 +3930,7 @@ Middlesbrough, England, 591
 Milford Haven, Wales, 129
 Montevideo, Uruguay, 5834
 Narvik, Norway, 1505
-New London, Connecticut,
-U.S.A., 2849
+New London, Connecticut, U.S.A., 2849
 New York, New York, U.S.A.,
 2937
 Newcastle, England, 616
@@ -3964,8 +3939,7 @@ Norfolk, Virginia, U.S.A., 3101
 Oostende, Belgium, 400
 Oslo, Norway, 947
 Paramaribo, Suriname, 3602
-Philadelphia, Pennsylvania,
-U.S.A., 3082
+Philadelphia, Pennsylvania, U.S.A., 3082
 Plymouth, England, 106
 Ponta Delgada, Azores, 1103
 Port au Prince, Haiti (via
@@ -4007,8 +3981,7 @@ Walvisbaai, Namibia, 5165
 Washington, D.C., U.S.A., 3221
 Waterford, Ireland, 137
 Wilhelmshaven, Germany, 651
-Wilmington, North Carolina,
-U.S.A., 3304
+Wilmington, North Carolina, U.S.A., 3304
 Zarate, Argentina, 6075
 Zeebrugge, Belgium, 393
 BISSAU, GUINEA-BISSAU
@@ -4038,8 +4011,7 @@ Ports
 Kingston, Jamaica, 318
 La Habana, Cuba, 444
 San Juan, Puerto Rico, 549
-BOCA GRANDE, FLORIDA,
-U.S.A.
+BOCA GRANDE, FLORIDA, U.S.A.
 (26˚40'00"N., 82˚19'27"W.) to:
 Junction Points*
 Straits of Florida, 148
@@ -4260,8 +4232,7 @@ Boston, Massachusetts, U.S.A.,
 Buenos Aires, Argentina, 6009
 Cadiz, Spain, 952
 Cape Town, South Africa, 5820
-Charleston, South Carolina,
-U.S.A., 3700
+Charleston, South Carolina, U.S.A., 3700
 Dakar, Senegal, 2243
 Fort de France, Martinique, 3607
 Funchal, Madeira Island, 1192
@@ -4278,8 +4249,7 @@ La Pallice, France, 103
 Lagos, Nigeria, 3817
 Lisboa, Portugal, 732
 Luanda, Angola, 4623
-New London, Connecticut,
-U.S.A., 3153
+New London, Connecticut, U.S.A., 3153
 New Orleans, Louisiana, U.S.A.,
 4692
 New York, New York, U.S.A.,
@@ -4287,8 +4257,7 @@ New York, New York, U.S.A.,
 Norfolk, Virginia, U.S.A., 3405
 Panama, Panama (via Mona
 Passage), 4597
-Philadelphia, Pennsylvania,
-U.S.A., 3386
+Philadelphia, Pennsylvania, U.S.A., 3386
 Pictou, Canada, 2655
 Point Noire, Congo, 4437
 Ponta Delgada, Azores, 1256
@@ -4302,10 +4271,8 @@ Santa Cruz de Tenerife, Canary
 Islands, 1406
 St. Nazaire, France, 184
 Washington, D.C., U.S.A., 3543
-Wilmington, North Carolina,
-U.S.A., 3638
-BOSTON, MASSACHUSETTS,
-U.S.A.
+Wilmington, North Carolina, U.S.A., 3638
+BOSTON, MASSACHUSETTS, U.S.A.
 (42˚22'00"N., 71˚03'00"W.) to:
 Junction Points*
 Bishop Rock, England, 2769
@@ -4600,8 +4567,7 @@ Barrow in Furness, England, 416
 Boston, Massachusetts, U.S.A.,
 2838
 Cardiff, Wales, 277
-Charleston, South Carolina,
-U.S.A., 3452
+Charleston, South Carolina, U.S.A., 3452
 Colon, Panama (via Mona
 Passage), 4420
 Fishguard, Wales, 274
@@ -4611,8 +4577,7 @@ Holyhead, Wales, 345
 Liverpool, England, 410
 New York, New York, U.S.A.,
 3017
-Philadelphia, Pennsylvania,
-U.S.A., 3160
+Philadelphia, Pennsylvania, U.S.A., 3160
 Reykjavik, Iceland, 1181
 Rio de Janeiro, Brazil, 4841
 Rotterdam, Netherlands, 457
@@ -4683,8 +4648,7 @@ Belem, Brazil, 1154
 Boma, Congo, 4478
 Boston, Massachusetts, U.S.A.,
 1899
-Charleston, South Carolina,
-U.S.A., 1628
+Charleston, South Carolina, U.S.A., 1628
 Charlotte Amalie, Virgin Islands,
 442
 Colon, Panama, 1237
@@ -4701,8 +4665,7 @@ Nassau, Bahamas, 1284
 New York, New York, U.S.A.,
 1829
 Paramaribo, Suriname, 496
-Philadelphia, Pennsylvania,
-U.S.A., 1839
+Philadelphia, Pennsylvania, U.S.A., 1839
 Port au Prince, Haiti, 1070
 Port of Spain, Trinidad (via Boca
 Grande), 211
@@ -4870,8 +4833,7 @@ Tampico, Mexico, 267
 BRUGGE, BELGIUM
 (51˚13'25"N., 3˚13'25"E.) Add 8
 miles to Zeebrugge distances.
-BRUNSWICK, GEORGIA,
-U.S.A.
+BRUNSWICK, GEORGIA, U.S.A.
 (31˚08'00"N., 81˚29'40"W.) to:
 Junction Points*
 Montreal, Canada, 2074
@@ -4896,8 +4858,7 @@ Cobh, Ireland, 246
 Dover, England, 197
 King’s Lynn, England, 405
 Le Havre, France, 148
-BROOKLYN, NEW YORK,
-U.S.A.
+BROOKLYN, NEW YORK, U.S.A.
 (40˚40'00"N., 74˚01'00"W.) For
 ocean distances subtract 1 l/4 miles
 from New York distances.
@@ -4994,8 +4955,7 @@ Fremantle, Australia, 1183
 Port Darwin, Australia, 694
 Thursday Island, Australia, 1385
 Zanzibar, Tanzania, 4820
-BROWNSVILLE, TEXAS,
-U.S.A.
+BROWNSVILLE, TEXAS, U.S.A.
 (25˚57'06"N., 97˚24'00"W.) to:
 Junction Points*
 Straits of Florida, 793
@@ -5057,8 +5017,7 @@ Cadiz, Spain, 5293
 Caleta Olivia, Argentina, 865
 Cape Town, South Africa, 3720
 Cartagena, Colombia, 5154
-Charleston, South Carolina,
-U.S.A., 5822
+Charleston, South Carolina, U.S.A., 5822
 Charlotte Amalie, Virgin Islands,
 4648
 Charlottetown, Canada, 5831
@@ -5086,8 +5045,7 @@ New York, New York, U.S.A.,
 5871
 Norfolk, Virginia, U.S.A., 5824
 Paramaribo, Suriname, 3813
-Philadelphia, Pennsylvania,
-U.S.A., 5918
+Philadelphia, Pennsylvania, U.S.A., 5918
 Ponta Delgada, Azores, 4975
 Port au Prince, Haiti, 5258
 Port Castries, St. Lucia, 4375
@@ -5117,8 +5075,7 @@ St. John’s, Canada, 5663
 Sydney, Canada, 5749
 Ushuaia, Argentina, 1447
 Vigo, Spain, 5518
-Wilmington, North Carolina,
-U.S.A., 5805
+Wilmington, North Carolina, U.S.A., 5805
 BUKHTA NAGAYEVA,
 RUSSIA
 (59˚33'00"N., 150˚45'00"E.) to:
@@ -5240,8 +5197,7 @@ Ports
 Hobart, Tasmania, 332
 Melbourne, Australia, 223
 Sydney, Australia, 525
-BURNSIDE, LOUISIANA,
-U.S.A.
+BURNSIDE, LOUISIANA, U.S.A.
 (30˚08'00"N., 90˚55'00"W.) Add
 63 miles to New Orleans distances.
 BURUTU, NIGERIA
@@ -5268,8 +5224,7 @@ Dakar, Senegal, 1653
 Monrovia, Liberia, 986
 New York, New York, U.S.A.,
 4982
-Philadelphia, Pennsylvania,
-U.S.A., 5080
+Philadelphia, Pennsylvania, U.S.A., 5080
 Recife, Brazil, 2525
 BUSAN, SOUTH KOREA
 (35˚06'00"N., 129˚03'00"E.) to:
@@ -5446,8 +5401,7 @@ Bridgeport, Connecticut, U.S.A.,
 Buenos Aires, Argentina, 5293
 Cape Town, South Africa, 5078
 Casablanca, Morocco, 192
-Charleston, South Carolina,
-U.S.A., 3578
+Charleston, South Carolina, U.S.A., 3578
 Colon, Panama, 4286
 Dakar, Senegal, 1500
 Freetown, Sierra Leone, 1979
@@ -5465,8 +5419,7 @@ New York, New York, U.S.A.,
 Norfolk, Virginia, U.S.A., 3303
 Oporto, Portugal, 399
 Pepel, Sierra Leone, 2001
-Philadelphia, Pennsylvania,
-U.S.A., 3296
+Philadelphia, Pennsylvania, U.S.A., 3296
 Ponta Delgada, Azores, 930
 Port Stanley, Falkland Islands,
 5955
@@ -5783,8 +5736,7 @@ Tuxpan, Mexico, 375
 Veracruz, Mexico, 307
 Willemstad, Curacao, 1527
 
-CAMDEN, NEW JERSEY,
-U.S.A.
+CAMDEN, NEW JERSEY, U.S.A.
 (39˚57'00"N., 75˚08'00"W.) Use
 Philadelphia distances.
 
@@ -5906,8 +5858,7 @@ Port Castries, St. Lucia, 1908
 Santo Domingo, Dominican
 Republic, 1855
 St. John’s, Canada, 452
-Wilmington, North Carolina,
-U.S.A., 1074
+Wilmington, North Carolina, U.S.A., 1074
 
 Halifax, Canada, 413
 Hamilton, Bermuda, 651
@@ -5917,8 +5868,7 @@ Portland, Maine, U.S.A., 119
 Reykjavik, Iceland, 2341
 Yarmouth, Canada, 228
 CAPE COD CANAL (SOUTH
-END), MASSACHUSETTS,
-U.S.A.
+END), MASSACHUSETTS, U.S.A.
 (41˚37'49"N., 70˚41'52"W.) to:
 Junction Points*
 
@@ -5948,8 +5898,7 @@ Kingston, Jamaica, 326
 La Habana, Cuba, 631
 New York, New York, U.S.A.,
 1283
-Philadelphia, Pennsylvania,
-U.S.A., 1245
+Philadelphia, Pennsylvania, U.S.A., 1245
 Pointe a Pitre, Guadeloupe (via
 Mona Passage), 703
 Pointe a Pitre, Guadeloupe (via
@@ -5967,8 +5916,7 @@ Passage), 674
 Willemstad, Curacao (via
 Windward Passage), 697
 CAPE COD CANAL (NORTH
-END), MASSACHUSETTS,
-U.S.A.
+END), MASSACHUSETTS, U.S.A.
 (41˚46'40"N., 70˚29'20"W.) to:
 Junction Points*
 Cape of Good Hope, South Africa,
@@ -5999,8 +5947,7 @@ Fort de France, Martinique, 1698
 Kingston, Jamaica, 1564
 La Habana, Cuba, 1272
 Montevideo, Uraguay, 5928
-Philadelphia, Pennsylvania,
-U.S.A., 338
+Philadelphia, Pennsylvania, U.S.A., 338
 Port Castries, St. Lucia, 1733
 Recife, Brazil, 3633
 San Juan, Puerto Rico, 1410
@@ -6179,8 +6126,7 @@ Calcutta, India, 5603
 Cape Town, South Africa, 45
 Chalna, Mungla Anchorage,
 Bangladesh, 5458
-Charleston, South Carolina,
-U.S.A., 6838
+Charleston, South Carolina, U.S.A., 6838
 Chittagong, Bangladesh, 5492
 Cobh, Ireland, 5892
 Colombo, Sri Lanka, 4475
@@ -6250,8 +6196,7 @@ New York, New York, U.S.A.,
 Norfolk, Virginia, U.S.A., 6802
 Paranagua, Brazil, 3496
 Penang, Malaysia, 5291
-Philadelphia, Pennsylvania,
-U.S.A., 6874
+Philadelphia, Pennsylvania, U.S.A., 6874
 Port des Galets, Reunion Island,
 2120
 Port of Spain, Trinidad, 5337
@@ -6266,8 +6211,7 @@ Port Refuge, Cocos Islands, 4428
 Porto Alegre, Brazil, 3625
 Porto Grande, Cape Verde Islands,
 3958
-Portsmouth, New Hampshire,
-U.S.A., 6732
+Portsmouth, New Hampshire, U.S.A., 6732
 Rabat, Morocco, 5036
 Rangoon, Burma (east of
 Madagascar), 5610
@@ -6315,9 +6259,7 @@ Punta Arenas, Chile, 4631
 Strait of Gibraltar, 5064
 Straits of Florida, 6766
 Yucatan Channel, 6776
-Ports
-
-U.S.A., 6.820
+Ports U.S.A., 6.820
 CARDENAS, CUBA
 (23˚03'30"N., 81˚11'30"W.) to:
 Junction Points*
@@ -6329,8 +6271,7 @@ Guantanamo, Cuba, 539
 Hamilton, Bermuda, 1122
 Kingston, Jamaica, 703
 La Habana, Cuba, 88
-Philadelphia, Pennsylvania,
-U.S.A., 1124
+Philadelphia, Pennsylvania, U.S.A., 1124
 Port au Prince, Haiti, 603
 San Juan, Puerto Rico, 917
 Santo Domingo, Dominican
@@ -6349,8 +6290,7 @@ Boston, Massachusetts, U.S.A.,
 Brunswick, Georgia, U.S.A., 6857
 Buenos Aires, Argentina, 3831
 Cadiz, Spain, 5078
-Charleston, South Carolina,
-U.S.A., 6830
+Charleston, South Carolina, U.S.A., 6830
 Cienfuegos, Cuba, 6580
 Cobh, Ireland, 5894
 Colon, Panama, 6429
@@ -6372,8 +6312,7 @@ Montevideo, Uruguay, 3608
 New York, New York, U.S.A.,
 6786
 Norfolk, Virginia, U.S.A., 6790
-Philadelphia, Pennsylvania,
-U.S.A., 6867
+Philadelphia, Pennsylvania, U.S.A., 6867
 Ponta Delgada, Azores, 5040
 Portland, Maine, U.S.A., 6709
 Recife, Brazil, 3318
@@ -6524,8 +6463,7 @@ Porlamar, Margarita, Venezuela,
 Port au Prince, Haiti, 639
 Port of Spain, Trinidad, 932
 Port Castries, St. Lucia, 933
-Portsmouth, New Hampshire,
-U.S.A. (via Windward Passage
+Portsmouth, New Hampshire, U.S.A. (via Windward Passage
 and Crooked Island Passage),
 2053
 Puerto Barrios, Guatemala, 901
@@ -6543,8 +6481,7 @@ Veracruz, Mexico, 1510
 Washington, D.C., U.S.A. (via
 Windward Passage), 1794
 Willemstad, Curacao, 471
-Wilmington, North Carolina,
-U.S.A., 1494
+Wilmington, North Carolina, U.S.A., 1494
 CARTAGENA, SPAIN
 (37˚35'44"N., 0˚59'00"W.) to:
 Junction Points*
@@ -6684,8 +6621,7 @@ Lorient, France, 262
 Marin, Spain, 418
 New York, New York, U.S.A.,
 3087
-Philadelphia, Pennsylvania
-U.S.A., 3239
+Philadelphia, Pennsylvania U.S.A., 3239
 Quiberon, France, 246
 Stanley, Falkland Islands, 6548
 Villagarcia, Spain, 368
@@ -7109,8 +7045,7 @@ Carmen, Mexico (via Yucatan
 Channel and Windward
 Passage), 1658
 Cartagena, Colombia, 811
-Charleston, South Carolina,
-U.S.A., 1192
+Charleston, South Carolina, U.S.A., 1192
 Charlottetown, Canada, 1778
 Cienfuegos, Cuba, 973
 Colon, Panama, 1029
@@ -7139,15 +7074,13 @@ New Amsterdam, Guyana, 903
 New York, New York, U.S.A.,
 1434
 Norfolk, Virginia, U.S.A., 1296
-Philadelphia, Pennsylvania,
-U.S.A., 1434
+Philadelphia, Pennsylvania, U.S.A., 1434
 Pointe a Pitre, Guadeloupe, 267
 Port au Prince, Haiti, 628
 Port of Spain, Trinidad, 518
 Port Castries, St. Lucia, 346
 Portland, Maine, U.S.A., 1557
-Portsmouth, New Hampshire,
-U.S.A., 1534
+Portsmouth, New Hampshire, U.S.A., 1534
 Puerto Cabello, Venezuela, 506
 Puerto Cortes, Honduras, 1343
 Recife, Brazil, 2516
@@ -7221,8 +7154,7 @@ Baltimore, Maryland, U.S.A.,
 Boston, Massachusetts, U.S.A. (via
 Strait of Canso), 621
 Buenos Aires, Argentina, 5831
-Charleston, South Carolina,
-U.S.A., 1313
+Charleston, South Carolina, U.S.A., 1313
 Charlotte Amalie, Virgin Islands,
 1778
 Colon, Panama (via Strait of Canso
@@ -7234,8 +7166,7 @@ La Habana, Cuba, 1846
 Montevideo, Uruguay, 5717
 New York, New York, U.S.A. (via
 Strait of Canso), 832
-Philadelphia, Pennsylvania,
-U.S.A., 982
+Philadelphia, Pennsylvania, U.S.A., 982
 Portland, Maine, U.S.A. (via Strait
 of Canso), 579
 Recife, Brazil, 3658
@@ -7842,8 +7773,7 @@ Portland Bight, Jamaica, 536
 Portland, Maine, U.S.A., 2198
 Porto Grande, Cape Verde Islands,
 3240
-Portsmouth, New Hampshire,
-U.S.A. (via Windward Passage),
+Portsmouth, New Hampshire, U.S.A. (via Windward Passage),
 2174
 Progreso, Mexico, 1026
 Puerto Barrios, Guatemala, 78
@@ -7877,11 +7807,9 @@ Tuxpan, Mexico, 1455
 Veracruz, Mexico, 1420
 Vigo, Spain, 4194
 Willemstad, Curacao, 698
-Wilmington, North Carolina,
-U.S.A. (via Windward Passage),
+Wilmington, North Carolina, U.S.A. (via Windward Passage),
 1613
-Wilmington, North Carolina,
-U.S.A. (via Yucatan Channel),
+Wilmington, North Carolina, U.S.A. (via Yucatan Channel),
 1730
 Yarmouth, Canada, 2210
 COLONIA, URUGUAY
@@ -7900,16 +7828,14 @@ ARGENTINA
 
 Norfolk, Virginia, U.S.A., 3746
 Oporto, Portugal, 2105
-Philadelphia, Pennsylvania,
-U.S.A., 3775
+Philadelphia, Pennsylvania, U.S.A., 3775
 Pointe Noire, Congo, 1793
 Ponta Delgada, Azores, 1873
 Port Harcourt, Nigeria, 1392
 Port of Spain, Trinidad, 2856
 Porto Grande, Cape Verde Islands,
 792
-Portsmouth, New Hampshire,
-U.S.A., 3605
+Portsmouth, New Hampshire, U.S.A., 3605
 Recife, Brazil, 1645
 Rio de Janeiro, Brazil, 2627
 St. Helena Island, 1600
@@ -8104,8 +8030,7 @@ Murmansk, Russia, 2988
 New York, New York, U.S.A., 999
 Reykjavik, Iceland (via Strait of
 Belle Isle), 1516
-Wilmington, North Carolina,
-U.S.A., 1393
+Wilmington, North Carolina, U.S.A., 1393
 
 Ports
 Ketchikan, Alaska, U.S.A., 656
@@ -8118,8 +8043,7 @@ Junction Points*
 Panama, Panama, 683
 Punta Arenas, Chile, 4180
 
-CORPUS CHRISTI, TEXAS,
-U.S.A.
+CORPUS CHRISTI, TEXAS, U.S.A.
 (27˚49'00"N., 97˚24'00"W.) to:
 Junction Points*
 Straits of Florida, 803
@@ -8320,8 +8244,7 @@ Cadiz, Spain, 1500
 Cap-Haitien, Haiti, 3154
 Cape Town, South Africa, 3593
 Casablanca, Morocco, 1333
-Charleston, South Carolina,
-U.S.A., 3557
+Charleston, South Carolina, U.S.A., 3557
 Charlotte Amalie, Virgin Islands,
 2751
 Colon, Panama, 3694
@@ -8354,8 +8277,7 @@ New York, New York, U.S.A.,
 Norfolk, Virginia, U.S.A., 3408
 Oporto, Portugal, 1682
 Paramaribo, Suriname, 2315
-Philadelphia, Pennsylvania,
-U.S.A., 3441
+Philadelphia, Pennsylvania, U.S.A., 3441
 Ponta Delgada, Azores, 1459
 Port of Spain, Trinidad, 2628
 Port Castries, St. Lucia, 2543
@@ -8989,8 +8911,7 @@ Preveza, Greece, 181
 Salamis, Greece, 343
 Split, Croatia, 216
 Taranto, Italy, 183
-DUTCH HARBOR, ALASKA,
-U.S.A.
+DUTCH HARBOR, ALASKA, U.S.A.
 (53˚54'00"N., 166˚30'00"W.) to:
 Junction Points*
 Panama, Panama, 5246
@@ -9237,8 +9158,7 @@ Natal, Brazil, 2514
 New York, New York, U.S.A.,
 4968
 Norfolk, Virginia, U.S.A., 5013
-Philadelphia, Pennsylvania,
-U.S.A., 5081
+Philadelphia, Pennsylvania, U.S.A., 5081
 Port of Spain, Trinidad, 4022
 Sekondi, Ghana, 402
 Takoradi, Ghana, 404
@@ -9256,8 +9176,7 @@ Ports
 
 Dakar, Senegal, 1317
 Tangier, Morocco, 207
-EL SEGUNDO, CALIFORNIA,
-U.S.A.
+EL SEGUNDO, CALIFORNIA, U.S.A.
 (33˚54'33"N., 118˚27'31"W.) to:
 
 Ports
@@ -9434,8 +9353,7 @@ Adelaide, Australia, 889
 Albany, Australia, 224
 Murnie, Tasmania, 1275
 Melbourne, Australia, 1239
-EUREKA, CALIFORNIA,
-U.S.A.
+EUREKA, CALIFORNIA, U.S.A.
 (40˚48'00"N., 124˚10'00"W.) to:
 Junction Points*
 Panama, Panama, 3438
@@ -9461,8 +9379,7 @@ Honolulu, Hawaii, U.S.A., 2080
 Manzanillo, Mexico, 1750
 Valparaiso, Chile, 5335
 Zamboanga, Philippines, 6313
-EVERETT, WASHINGTON,
-U.S.A.
+EVERETT, WASHINGTON, U.S.A.
 (47˚58'53"N., 122˚14'06"W.)
 Subtract 9 miles from Seattle,
 Washington distances.
@@ -9604,8 +9521,7 @@ Boston, Massachusetts, U.S.A.,
 2633
 Cairn Ryan, Scotland, 338
 Cardiff, Wales, 246
-Charleston, South Carolina,
-U.S.A., 3239
+Charleston, South Carolina, U.S.A., 3239
 Charlotte Amalie, Virgin Islands,
 3279
 Cienfuegos, Cuba, 3992
@@ -9642,8 +9558,7 @@ New York, New York, U.S.A.,
 Newport, Wales, 258
 Norfolk, Virginia, U.S.A., 2977
 Paramaribo, Suriname, 3554
-Philadelphia, Pennsylvania,
-U.S.A., 2957
+Philadelphia, Pennsylvania, U.S.A., 2957
 Port au Prince, Haiti, 3619
 Port Talbot, Wales, 218
 Providence, Rhode Island, U.S.A.,
@@ -9657,8 +9572,7 @@ Swansea, Wales, 217
 Washington, D.C., U.S.A., 3112
 Waterford, Ireland, 110
 Willemstad, Curacao, 3708
-Wilmington, North Carolina,
-U.S.A., 3183
+Wilmington, North Carolina, U.S.A., 3183
 FATEH TERMINAL, UNITED
 ARAB EMIRATES
 (25˚36'00"N., 54˚31'00"E.) to:
@@ -9713,8 +9627,7 @@ Wilhelmshaven, Germany, 300
 FELTON, CUBA
 (20˚50'00"N., 75˚44'00"W.) See
 Antilla.
-FERNANDINA, FLORIDA,
-U.S.A.
+FERNANDINA, FLORIDA, U.S.A.
 (30˚41'00"N., 81˚27'40"W.) to:
 Ports
 Nassau, Bahamas, 450
@@ -9879,8 +9792,7 @@ Lisboa, Portugal, 3220
 Natal, Brazil, 2536
 New York, New York, U.S.A.,
 4905
-Philadelphia, Pennsylvania,
-U.S.A., 5080
+Philadelphia, Pennsylvania, U.S.A., 5080
 Port of Spain, Trinidad, 4114
 Porto Grande, Cape Verde Islands,
 2745
@@ -10091,16 +10003,14 @@ New York, New York, U.S.A.,
 3757
 Norfolk, Virginia, U.S.A., 3821
 Oporto, Portugal, 2161
-Philadelphia, Pennsylvania,
-U.S.A., 3862
+Philadelphia, Pennsylvania, U.S.A., 3862
 Pointe Noire, Congo, 1788
 Ponta Delgada, Azores, 1941
 Port of Spain, Trinidad, 2896
 Port Harcourt, Nigeria, 1397
 Porto Grande, Cape Verde Islands,
 871
-Portsmouth, New Hampshire,
-U.S.A., 3654
+Portsmouth, New Hampshire, U.S.A., 3654
 Recife, Brazil, 1632
 Rio de Janeiro, Brazil, 2613
 San Juan, Puerto Rico, 3141
@@ -10183,11 +10093,9 @@ Ports
 Baltimore, Maryland, U.S.A., 841
 Jacksonville, Florida, U.S.A., 304
 La Habana, Cuba, 286
-Philadelphia, Pennsylvania,
-U.S.A., 890
+Philadelphia, Pennsylvania, U.S.A., 890
 San Juan, Puerto Rico, 872
-Wilmington, North Carolina,
-U.S.A., 487
+Wilmington, North Carolina, U.S.A., 487
 
 Cape of Good Hope, South Africa,
 4755
@@ -10266,8 +10174,7 @@ New York, New York, U.S.A.
 (direct), 2761
 Norfolk, Virginia, U.S.A., 2907
 Oporto, Portugal, 650
-Philadelphia, Pennsylvania,
-U.S.A., 2901
+Philadelphia, Pennsylvania, U.S.A., 2901
 Plymouth, England, 1234
 Ponta Delgada, Azores, 550
 Port of Spain, Trinidad, 2819
@@ -10394,8 +10301,7 @@ Jacksonville, Florida, U.S.A.,
 La Habana, Cuba (via Mona
 Passage and Old Bahama
 Channel), 1548
-Philadelphia, Pennsylvania,
-U.S.A., 1999
+Philadelphia, Pennsylvania, U.S.A., 1999
 San Juan, Puerto Rico, 637
 Veracruz, Mexico, 2236
 Willemstad, Curacao, 542
@@ -10690,8 +10596,7 @@ Malabo, Equatorial Guinea, 1561
 Montevideo, Uruguay, 2824
 New York, New York, U.S.A.,
 4395
-Philadelphia, Pennsylvania,
-U.S.A., 4469
+Philadelphia, Pennsylvania, U.S.A., 4469
 Recife, Brazil, 1226
 Rio de Janeiro, Brazil, 1900
 St. Helena Island, 707
@@ -10741,13 +10646,11 @@ New York, New York, U.S.A.,
 2217
 Norfolk, Virginia, U.S.A., 2090
 Paramaribo, Suriname, 215
-Philadelphia, Pennsylvania,
-U.S.A., 2223
+Philadelphia, Pennsylvania, U.S.A., 2223
 Pointe a Pitre, Guadeloupe, 606
 Port of Spain, Trinidad, 376
 Port Castries, St. Lucia, 482
-Portsmouth, New Hampshire,
-U.S.A., 2284
+Portsmouth, New Hampshire, U.S.A., 2284
 Puerto Cortes, Honduras, 1933
 Recife, Brazil, 1781
 Rio de Janeiro, Brazil, 2853
@@ -10755,8 +10658,7 @@ Salvador, Brazil, 2172
 San Juan, Puerto Rico, 876
 Sint Nicolaashaven, Aruba, 856
 St. John’s, Antigua, 689
-Wilmington, North Carolina,
-U.S.A., 2011
+Wilmington, North Carolina, U.S.A., 2011
 GERALDTON, AUSTRALIA
 (28˚47'00"S., 114˚35'00"E.) to:
 Junction Points*
@@ -10855,8 +10757,7 @@ Ile d’Ouessant, France, 294
 Straits of Florida, 447
 Ports
 Ports
-Charleston, South Carolina,
-U.S.A., 806
+Charleston, South Carolina, U.S.A., 806
 New York, New York, U.S.A.,
 1216
 Nuevitas, Cuba, 82
@@ -10911,8 +10812,7 @@ Kingston, Jamaica, 263
 New York, New York, U.S.A.,
 1328
 Port au Prince, Haiti, 70
-GOOD HOPE, LOUISIANA,
-U.S.A.
+GOOD HOPE, LOUISIANA, U.S.A.
 (29˚59'35"N., 90˚24'00"W.) Add
 24 miles to New Orleans distances.
 GOOLE, ENGLAND
@@ -11085,8 +10985,7 @@ Ports
 Bergen, Norway, 250
 London, England, 542
 Oslo, Norway, 135
-GROTON, CONNECTICUT,
-U.S.A.
+GROTON, CONNECTICUT, U.S.A.
 (41˚21'30"N., 72˚05'15"W.) Use
 New London distances.
 GUANICA, PUERTO RICO
@@ -11218,8 +11117,7 @@ Port of Spain, Trinidad, 987
 Port Castries, St. Lucia, 922
 Porto Grande, Cape Verde Islands,
 2853
-Portsmouth, New Hampshire,
-U.S.A. (via Crooked Island
+Portsmouth, New Hampshire, U.S.A. (via Crooked Island
 Passage and Nantucket Light
 Buoy), 1512
 Puerto Cortes, Honduras, 770
@@ -11367,8 +11265,7 @@ Recife, Brazil, 2208
 Rio de Janeiro, Brazil, 3284
 Rio Grande, Brazil, 3984
 Santos, Brazil, 3467
-GULFPORT, MISSISSIPPI,
-U.S.A.
+GULFPORT, MISSISSIPPI, U.S.A.
 (30˚21'30"N., 89˚05'30"W.) to:
 Junction Points*
 Straits of Florida, 494
@@ -11742,8 +11639,7 @@ Brunswick, Georgia, U.S.A., 1210
 Buenos Aires, Argentina, 5731
 Cadiz, Spain, 2674
 Cape Town, South Africa, 6492
-Charleston, South Carolina,
-U.S.A., 1077
+Charleston, South Carolina, U.S.A., 1077
 Charlotte Amalie, Virgin Islands,
 1595
 Charlottetown, Canada (via Strait
@@ -11775,15 +11671,13 @@ Norfolk, Virginia, U.S.A., 790
 Paamiut (Frederickshaab),
 Greenland, 1406
 Parrsboro, Canada, 330
-Philadelphia, Pennsylvania,
-U.S.A., 746
+Philadelphia, Pennsylvania, U.S.A., 746
 Ponta Delgada, Azores, 1785
 Port au Prince, Haiti, 1671
 Port of Spain, Trinidad, 2059
 Port Castries, St. Lucia, 1850
 Portland, Maine, U.S.A., 338
-Portsmouth, New Hampshire,
-U.S.A., 359
+Portsmouth, New Hampshire, U.S.A., 359
 Recife, Brazil, 3558
 Reykjavik, Iceland, 1941
 Rio de Janeiro, Brazil, 4630
@@ -11798,8 +11692,7 @@ Savannah, Georgia, U.S.A., 1150
 St. John, Canada, 278
 St. John’s, Canada, 531
 Vigo, Spain, 2454
-Wilmington, North Carolina,
-U.S.A., 1016
+Wilmington, North Carolina, U.S.A., 1016
 HALMSTAD, SWEDEN
 (56˚39'06"N., 12˚50'36"E.) to:
 Junction Points*
@@ -11876,14 +11769,12 @@ New York, New York, U.S.A., 697
 Norfolk, Virginia, U.S.A., 683
 Nuevitas, Cuba, 988
 Paramaribo, Suriname, 1694
-Philadelphia, Pennsylvania,
-U.S.A., 746
+Philadelphia, Pennsylvania, U.S.A., 746
 Plymouth, Montserrat, 966
 Port au Prince, Haiti, 1016
 Port of Spain, Trinidad, 1346
 Port Castries, St. Lucia, 1149
-Portsmouth, New Hampshire,
-U.S.A., 723
+Portsmouth, New Hampshire, U.S.A., 723
 Recife, Brazil, 3038
 Rio de Janeiro, Brazil, 4110
 Roseau, Dominica, 1061
@@ -11894,8 +11785,7 @@ Republic, 992
 Saint Nicolaashaven, Aruba, 1263
 St. Georges, Grenada, 1256
 Washington, D.C., U.S.A., 806
-Wilmington, North Carolina,
-U.S.A., 746
+Wilmington, North Carolina, U.S.A., 746
 HAMINA, FINLAND
 (60˚30'40"N., 27˚11'00"E.) to:
 Junction Points*
@@ -12286,8 +12176,7 @@ Rapid Bay, Australia, 719
 Suva, Fiji Islands, 2198
 Sydney, Australia, 638
 Wellington, New Zealand, 1288
-HOBOKEN, NEW JERSEY,
-U.S.A.
+HOBOKEN, NEW JERSEY, U.S.A.
 (40˚45'00"N., 74˚01'00"W.) For
 ocean distances add 3 miles to New
 York distances.
@@ -12796,8 +12685,7 @@ Porto Grande, Cape Verde Islands,
 Santa Cruz de Tenerife, Canary
 Islands, 715
 Vigo, Spain, 453
-HUENEME, CALIFORNIA,
-U.S.A.
+HUENEME, CALIFORNIA, U.S.A.
 (34˚09'00"N., 119˚12'24"W.) See
 Port Hueneme.
 HULL, ENGLAND
@@ -13288,8 +13176,7 @@ Boston, Massachusetts, U.S.A.,
 2723
 Buenos Aires, Argentina, 6243
 Cairn Ryan, Scotland, 91
-Charleston, South Carolina,
-U.S.A., 3331
+Charleston, South Carolina, U.S.A., 3331
 Charlotte Amalie, Virgin Islands,
 3427
 Churchill, Canada (via 75 miles off
@@ -13330,14 +13217,12 @@ Miami, Florida, U.S.A., 3777
 Milford Haven, Wales, 286
 New Haven, Connecticut, U.S.A.,
 2867
-New London, Connecticut,
-U.S.A., 2815
+New London, Connecticut, U.S.A., 2815
 New York, New York, U.S.A.,
 2896
 Newport, Wales, 371
 Norfolk, Virginia, U.S.A., 3069
-Philadelphia, Pennsylvania,
-U.S.A., 3049
+Philadelphia, Pennsylvania, U.S.A., 3049
 Port of Spain, Trinidad, 3706
 Port Au Prince, Haiti, 3724
 Port Castries, St. Lucia, 3499
@@ -13654,10 +13539,8 @@ Murmansk, Russia, 2201
 New York, New York, U.S.A.,
 1933
 Norfolk, Virginia, U.S.A., 2116
-Philadelphia, Pennsylvania,
-U.S.A., 2086
-Portsmouth, New Hampshire,
-U.S.A., 1709
+Philadelphia, Pennsylvania, U.S.A., 2086
+Portsmouth, New Hampshire, U.S.A., 1709
 Qeqertarsuaq Godhavn,
 Greenland, 560
 Reykjavik, Iceland, 887
@@ -13758,8 +13641,7 @@ Venezia, Italy (via Corinth Canal),
 919
 Volos, Greece, 226
 Yumurtalik, Turkey, 639
-JACKSONVILLE, FLORIDA,
-U.S.A.
+JACKSONVILLE, FLORIDA, U.S.A.
 (30˚19'00"N., 81˚39'00"W.) to:
 
 * JUNCTION POINT.—See Preface for use of junction points
@@ -14060,8 +13942,7 @@ Tokuyama, Japan, 263
 Ube, Japan, 280
 Yokkaichi, Japan, 476
 Yokohama, Japan, 594
-KAHULUI, MAUI, HAWAII,
-U.S.A.
+KAHULUI, MAUI, HAWAII, U.S.A.
 (20˚54'00"N., 156˚28'31"W.) to:
 Junction Points*
 
@@ -14089,8 +13970,7 @@ Strait of Gibraltar, 4096
 Yucatan Channel, 362
 Ports
 
-JERSEY CITY, NEW JERSEY,
-U.S.A.
+JERSEY CITY, NEW JERSEY, U.S.A.
 (40˚43'00"N., 74˚02'00"W.) For
 ocean distances add 1 1/2 miles to
 New York distances.
@@ -14282,8 +14162,7 @@ distances.
 KANDLA, INDIA
 (23˚02'00"N., 70˚13'30"E.) Add
 76 l/2 miles to Okha distances.
-KANEOHE BAY, HAWAII,
-U.S.A.
+KANEOHE BAY, HAWAII, U.S.A.
 (21˚26'23"N., 157˚47'00"W.) to:
 Junction Points*
 Panama, Panama, 4686
@@ -14444,8 +14323,7 @@ KERCH, GEORGIA
 (45˚21'16"N., 36˚28'40"E.) to:
 Junction Points*
 
-KAUNAKAKAI, HAWAII,
-U.S.A.
+KAUNAKAKAI, HAWAII, U.S.A.
 (21˚05'00"N., 157˚02'00"W.) to:
 Junction Points*
 Panama, Panama, 4633
@@ -14529,8 +14407,7 @@ Catania, Sicily, 290
 Dubrovnik, Croatia, 208
 Patrai, Greece, 138
 Taranto, Italy, 167
-KETCHIKAN, ALASKA,
-U.S.A.
+KETCHIKAN, ALASKA, U.S.A.
 (55˚20'30"N., 131˚38'45"W.) to:
 Ports
 Cordova, Alaska, U.S.A., 656
@@ -14836,9 +14713,7 @@ Port de Paix, Haiti, 432
 Port of Spain, Trinidad, 1003
 Port Castries, St. Lucia, 950
 Portland, Maine, U.S.A., 1679
-Portsmouth, New Hampshire,
-
-U.S.A, 1655
+Portsmouth, New Hampshire, U.S.A, 1655
 Puerto Barrios, Guatemala, 715
 Puerto Cabello, Venezuela, 697
 Puerto Cabezas, Nicaragua, 451
@@ -14870,8 +14745,7 @@ Sydney, Canada, 1982
 Tampico, Mexico, 1252
 Tuxpan, Mexico, 1243
 Veracruz, Mexico, 1210
-Wilmington, North Carolina,
-U.S.A. (via Crooked Island
+Wilmington, North Carolina, U.S.A. (via Crooked Island
 Passage), 1115
 Yarmouth, Canada, 1710
 
@@ -15578,8 +15452,7 @@ Boston, Massachusetts, U.S.A.,
 Campeche, Mexico, 1635
 Carmen, Mexico, 1714
 Cartagena, Colombia, 614
-Charleston, South Carolina,
-U.S.A., 1549
+Charleston, South Carolina, U.S.A., 1549
 Charlotte Amalie, Virgin Islands,
 479
 Cienfuegos, Cuba, 1050
@@ -15607,8 +15480,7 @@ Norfolk, Virginia, U.S.A., 1687
 Oranjestad, Aruba, 207
 Paramaribo, Suriname, 832
 Pedernales, Venezuela, 359
-Philadelphia, Pennsylvania,
-U.S.A., 1838
+Philadelphia, Pennsylvania, U.S.A., 1838
 Pointe a Pitre, Guadeloupe, 467
 Port au Prince, Haiti, 801
 Port of Spain, Trinidad (south of
@@ -15665,8 +15537,7 @@ Cardenas, Cuba, 88
 Carmen, Mexico, 639
 Cartagena, Colombia (via Old
 Bahama Channel), 1142
-Charleston, South Carolina,
-U.S.A., 645
+Charleston, South Carolina, U.S.A., 645
 Charlotte Amalie, Virgin Islands,
 1048
 Charlottetown, Canada, 1846
@@ -15715,8 +15586,7 @@ Norfolk, Virginia, U.S.A., 992
 
 Nuevitas, Cuba, 344
 Pensacola, Florida, U.S.A., 515
-Philadelphia, Pennsylvania,
-U.S.A., 1162
+Philadelphia, Pennsylvania, U.S.A., 1162
 Pointe a Pitre, Guadeloupe (via
 Mona Passage), 1309
 Pointe a Pitre, Guadeloupe (via
@@ -15762,8 +15632,7 @@ Tampico, Mexico, 864
 Tuxpan, Mexico, 847
 Veracruz, Mexico, 814
 Willemstad, Curacao, 1144
-Wilmington, North Carolina,
-U.S.A., 1767
+Wilmington, North Carolina, U.S.A., 1767
 
 Puntarenas, Costa Rica, 383
 Salina Cruz, Mexico, 391
@@ -15954,8 +15823,7 @@ Boma, Congo, 977
 Boston, Massachusetts, U.S.A.,
 4774
 Calabar, Nigeria, 391
-Charleston, South Carolina,
-U.S.A., 5065
+Charleston, South Carolina, U.S.A., 5065
 Colon, Panama, 5050
 Douala, Cameroon, 442
 Georgetown, Ascension Island,
@@ -15967,8 +15835,7 @@ Natal, Brazil, 2425
 New York, New York, U.S.A.,
 4883
 Norfolk, Virginia, U.S.A., 4941
-Philadelphia, Pennsylvania,
-U.S.A., 4985
+Philadelphia, Pennsylvania, U.S.A., 4985
 Pointe Noire, Congo, 851
 Port of Spain, Trinidad, 3950
 Port Harcourt, Nigeria, 318
@@ -16042,8 +15909,7 @@ Boston, Massachusetts, U.S.A.,
 Maracaibo, Venezuela, 126
 New York, New York, U.S.A.,
 1796
-Philadelphia, Pennsylvania,
-U.S.A., 1786
+Philadelphia, Pennsylvania, U.S.A., 1786
 LATCHI, CYPRUS
 (35˚06'00"N., 32˚27'00"E.) See
 Khrysokhou Bay, Cyprus.
@@ -16086,9 +15952,7 @@ ISLANDS
 (28˚08'30"N., 15˚25'00"W.) to:
 Junction Points*
 
-Ports
-
-U.S.A., 3341
+Ports U.S.A., 3341
 Charlotte Amalie, Virgin Islands,
 2791
 Freetown, Sierra Leone, 1317
@@ -16281,8 +16145,7 @@ Boston, Massachusetts, U.S.A.,
 Colon, Panama, 645
 New York, New York, U.S.A.,
 1447
-Philadelphia, Pennsylvania,
-U.S.A., 1419
+Philadelphia, Pennsylvania, U.S.A., 1419
 Port au Prince, Haiti, 202
 
 Ports
@@ -16430,8 +16293,7 @@ Baltimore, Maryland, U.S.A.,
 Buenos Aires, Argentina, 4648
 Jacksonville, Florida, U.S.A.,
 1216
-Philadelphia, Pennsylvania,
-U.S.A., 1474
+Philadelphia, Pennsylvania, U.S.A., 1474
 Port of Spain, Trinidad, 470
 Willemstad, Curacao, 428
 LIMHAMN, SWEDEN
@@ -16491,8 +16353,7 @@ Passage), 1119
 Savannah, Georgia, U.S.A. (via
 Windward Passage), 1636
 Veracruz, Mexico, 1338
-Wilmington, North Carolina,
-U.S.A., 1680
+Wilmington, North Carolina, U.S.A., 1680
 
 LINGKAS, KALIMANTAN,
 INDONESIA
@@ -16529,8 +16390,7 @@ Buenos Aires, Argentina, 5339
 Cadiz, Spain, 253
 Cape Town, South Africa, 5134
 Casablanca, Morocco, 324
-Charleston, South Carolina,
-U.S.A., 3385
+Charleston, South Carolina, U.S.A., 3385
 Charlotte Amalie, Virgin Islands,
 3147
 Colon, Panama (via Mona
@@ -16555,8 +16415,7 @@ New York, New York, U.S.A.,
 2980
 Norfolk, Virginia, U.S.A., 3129
 Oporto, Portugal, 176
-Philadelphia, Pennsylvania,
-U.S.A., 3122
+Philadelphia, Pennsylvania, U.S.A., 3122
 Ponta Delgada, Azores, 783
 Port of Spain, Trinidad, 3287
 Port Castries, St. Lucia, 3111
@@ -16577,8 +16436,7 @@ Villagarcia, Spain, 264
 LISBON, PORTUGAL
 (38˚42'00"N., 9˚08'00"W.) See
 Lisboa.
-LITTLE CREEK, VIRGINIA,
-U.S.A.
+LITTLE CREEK, VIRGINIA, U.S.A.
 (36˚56'00"N., 76˚10'40"W.)
 Subtract 13 l/2 miles from Norfolk
 distances.
@@ -16591,8 +16449,7 @@ Colon, Panama, 2244
 Kingston, Jamaica, 1752
 New York, New York, U.S.A., 536
 Norfolk, Virginia, U.S.A., 715
-Philadelphia, Pennsylvania,
-U.S.A., 686
+Philadelphia, Pennsylvania, U.S.A., 686
 San Juan, Puerto Rico, 1540
 St. John, Canada, 212
 Sydney, Canada, 293
@@ -16861,8 +16718,7 @@ Blyth, England, 318
 Bremerhaven, Germany, 375
 Cardiff, Wales, 526
 
-LONG BEACH, CALIFORNIA,
-U.S.A.
+LONG BEACH, CALIFORNIA, U.S.A.
 (33˚46'12"N., 118˚13'18"W.)
 Use Los Angeles distances.
 LONGJI, CAMEROON
@@ -17689,8 +17545,7 @@ Yucatan Channel, 1096
 
 Ports
 Ports
-Charleston, South Carolina,
-U.S.A., 1105
+Charleston, South Carolina, U.S.A., 1105
 Cienfuegos, Cuba, 266
 Colon, Panama, 689
 Guantanamo, Cuba, 206
@@ -17749,8 +17604,7 @@ Windward Passage), 1804
 Boston, Massachusetts, U.S.A.,
 2001
 Cartagena, Colombia, 465
-Charleston, South Carolina,
-U.S.A., 1467
+Charleston, South Carolina, U.S.A., 1467
 Colon, Panama, 693
 Galveston, Texas, U.S.A., 1810
 La Habana, Cuba, 1173
@@ -17998,8 +17852,7 @@ New Orleans, Louisiana, U.S.A.,
 641
 New York, New York, U.S.A.,
 1167
-Philadelphia, Pennsylvania,
-U.S.A., 1147
+Philadelphia, Pennsylvania, U.S.A., 1147
 Port au Prince, Haiti, 617
 Puerto Padre, Cuba, 330
 San Juan, Puerto Rico, 931
@@ -18071,8 +17924,7 @@ Mayumba, Gabon, 282
 Port Nolloth, South Africa, 1559
 Swakopmund, South Africa, 1144
 Victoria, Cameroon, 770
-MATAGORDA BAY, TEXAS,
-U.S.A.
+MATAGORDA BAY, TEXAS, U.S.A.
 (28˚20'00"N., 96˚23'00"W.) to:
 Junction Points*
 
@@ -19030,8 +18882,7 @@ Boston, Massachusetts, U.S.A.,
 Bridgetown, Barbados, 4096
 Brunswick, Georgia, U.S.A., 5731
 Cape Town, South Africa, 3608
-Charleston, South Carolina,
-U.S.A., 5708
+Charleston, South Carolina, U.S.A., 5708
 Charlotte Amalie, Virgin Islands,
 4530
 Charlottetown, Canada, 5717
@@ -19048,8 +18899,7 @@ New York, New York, U.S.A.,
 5749
 Norfolk, Virginia, U.S.A., 5710
 Paranagua, Brazil, 797
-Philadelphia, Pennsylvania,
-U.S.A., 5804
+Philadelphia, Pennsylvania, U.S.A., 5804
 Port Castries, St. Lucia, 4261
 Portland, Maine, U.S.A., 5759
 Porto Alegre, Brazil, 482
@@ -19061,8 +18911,7 @@ Santos, Brazil, 893
 Savannah, Georgia, U.S.A., 5740
 St. Helena Island, 2936
 Valparaiso, Chile, 2740
-Wilmington, North Carolina,
-U.S.A., 5691
+Wilmington, North Carolina, U.S.A., 5691
 MONTREAL, CANADA*
 (45˚30'10"N., 73˚33'00"W.) to:
 Junction Points*
@@ -19310,8 +19159,7 @@ New York, New York, U.S.A.
 (south of Iceland), 3948
 Nuuk (Godthab), Greenland, 2598
 Oslo, Norway, 1450
-Philadelphia, Pennsylvania,
-U.S.A., 4042
+Philadelphia, Pennsylvania, U.S.A., 4042
 Portland, Maine, U.S.A., 3677
 Reykjavik, Iceland (north of
 Iceland), 1501
@@ -19697,8 +19545,7 @@ Junction Points*
 Bellingham, Washington, U.S.A.,
 76
 New Westminster, Canada, 47
-Port Angeles, Washington,
-U.S.A., 98
+Port Angeles, Washington, U.S.A., 98
 Prince Rupert, Canada, 453
 Seattle, Washington, U.S.A., 132
 Vancouver, Canada, 35
@@ -19854,8 +19701,7 @@ London, England, 1215
 Longyearbyen, Svalbard, 659
 Oslo, Norway, 993
 Pechenga, Russia, 500
-Philadelphia, Pennsylvania,
-U.S.A., 3911
+Philadelphia, Pennsylvania, U.S.A., 3911
 Rotterdam, Netherlands, 1139
 Stavanger, Norway, 713
 Stockholm, Sweden, 1612
@@ -19895,8 +19741,7 @@ Baltimore, Maryland, U.S.A., 880
 Boston, Massachusetts, U.S.A.,
 1173
 Bridgetown, Barbados, 1284
-Charleston, South Carolina,
-U.S.A., 507
+Charleston, South Carolina, U.S.A., 507
 Cienfuegos, Cuba, 868
 Colon, Panama, 1178
 Fernandina, Florida, U.S.A., 450
@@ -19911,16 +19756,14 @@ Miami, Florida, U.S.A., 191
 New York, New York, U.S.A., 962
 Norfolk, Virginia, U.S.A., 758
 Nuevitas, Cuba, 454
-Philadelphia, Pennsylvania,
-U.S.A., 930
+Philadelphia, Pennsylvania, U.S.A., 930
 Port au Prince, Haiti, 564
 San Juan, Puerto Rico, 799
 Santiago de Cuba, Cuba, 566
 Santo Domingo, Dominican
 Republic, 851
 Savannah, Georgia, U.S.A., 503
-Wilmington, North Carolina,
-U.S.A., 561
+Wilmington, North Carolina, U.S.A., 561
 
 New York, New York, U.S.A.,
 3532
@@ -20133,12 +19976,10 @@ Port Angeles, Washington, U.S.A.,
 Prince Rupert, Canada, 492
 Seattle, Washington, U.S.A., 126
 
-NEW ORLEANS, LOUISIANA,
-U.S.A.
+NEW ORLEANS, LOUISIANA, U.S.A.
 (29˚57'00"N., 90˚03'30"W.) to:
 
-NEW YORK, NEW YORK,
-U.S.A.
+NEW YORK, NEW YORK, U.S.A.
 (40˚42'00"N., 14˚01'00"W.) to:
 
 Akita, Japan, 450
@@ -20357,8 +20198,7 @@ Yarmouth, Canada (Nantucket
 Light Buoy), 464
 Yarmouth, Canada (via Pollok Rip
 Channel), 440
-NEWARK, NEW JERSEY,
-U.S.A.
+NEWARK, NEW JERSEY, U.S.A.
 (40˚42'00"N., 74˚09'00"W.) See
 Port Newark.
 NEWCASTLE, AUSTRALIA
@@ -20389,8 +20229,7 @@ Southampton, England, 421
 Stavanger, Norway, 349
 Wilhelmshaven, Germany, 367
 Zeebrugge, Belgium, 289
-NEWPORT, RHODE ISLAND,
-U.S.A.
+NEWPORT, RHODE ISLAND, U.S.A.
 (41˚29'50"N., 71˚19'50"W.)
 Subtract 20 miles from Providence
 distances.
@@ -20437,8 +20276,7 @@ Skagens Odde, Denmark, 445
 
 * JUNCTION POINT.—See Preface for use of junction points
 
-NEWPORT NEWS, VIRGINIA,
-U.S.A.
+NEWPORT NEWS, VIRGINIA, U.S.A.
 (36˚58'00"N., 76˚26'00"W.)
 Subtract 3 miles from Norfolk
 distances.
@@ -21031,8 +20869,7 @@ Boston, Massachusetts, U.S.A.,
 Caibarien, Cuba, 181
 Casilda, Cuba (via Windward
 Passage), 610
-Charleston, South Carolina,
-U.S.A., 750
+Charleston, South Carolina, U.S.A., 750
 Cienfuegos, Cuba, 649
 Fort de France, Martinique, 1035
 Fort Liberte, Haiti, 339
@@ -21104,8 +20941,7 @@ St. John’s, Canada, 1005
 NYKOBING, DENMARK
 (55˚54'48"N., 11˚40'42"E.) Add
 12 miles to Masnedsund distances.
-OAKLAND, CALIFORNIA,
-U.S.A.
+OAKLAND, CALIFORNIA, U.S.A.
 (37˚48'12"N., 122˚19'30"W.)
 Add 3 miles to San Francisco
 distances.
@@ -21319,8 +21155,7 @@ Hong Kong, China, 580
 Kuching, Sarawak, 992
 Pago Pago, American Samoa (via
 San Bernardino Strait), 4622
-OLYMPIA, WASHINGTON,
-U.S.A.
+OLYMPIA, WASHINGTON, U.S.A.
 (47˚03'06"N., 122˚54'18"W.)
 Add 44 miles to Seattle distances.
 ONEGA, RUSSIA
@@ -21920,8 +21755,7 @@ Volos, Greece (south of Greece),
 761
 Volos, Greece (via Corinth Canal),
 720
-PALM BEACH, FLORIDA,
-U.S.A.
+PALM BEACH, FLORIDA, U.S.A.
 (26˚46'18"N., 80˚01'32"W.) to:
 Junction Points*
 Cape of Good Hope, South Africa,
@@ -22111,8 +21945,7 @@ Cartagena, Colombia, 324
 Casilda, Cuba, 792
 Catia la Mar, Venezuela, 873
 Champerico, Guatemala, 954
-Charleston, South Carolina,
-U.S.A., 1607
+Charleston, South Carolina, U.S.A., 1607
 Charlotte Amalie, Virgin Islands,
 1072
 Charlottetown, Canada, 2578
@@ -22399,8 +22232,7 @@ Washington, D.C., U.S.A., 1957
 Wellington, New Zealand, 6505
 Whittier, Alaska, U.S.A., 4958
 Willemstad, Curacao, 742
-Wilmington, North Carolina,
-U.S.A., 1656
+Wilmington, North Carolina, U.S.A., 1656
 Weonsan, North Korea, 8038
 Wotho, Marshall Islands, 4882
 Xiamen, China (via Osumi
@@ -22560,8 +22392,7 @@ La Guaira, Venezuela, 832
 Natal, Brazil, 1476
 New York, New York, U.S.A.,
 2334
-Philadelphia, Pennsylvania,
-U.S.A., 2327
+Philadelphia, Pennsylvania, U.S.A., 2327
 Pointe a Pitre, Guadeloupe, 737
 Port of Spain, Trinidad, 546
 Puerto Cabello, Venezuela, 887
@@ -22569,8 +22400,7 @@ Rio de Janeiro, Brazil, 2713
 St. Georges, Grenada, 560
 St. John’s, Canada, 2518
 Willemstad, Curacao, 955
-Wilmington, North Carolina,
-U.S.A., 2148
+Wilmington, North Carolina, U.S.A., 2148
 PARANAGUA, BRAZIL
 (25˚30'00"S., 48˚31'00"W.) to:
 
@@ -22597,8 +22427,7 @@ Boston, Massachusetts, U.S.A.,
 Halifax, Canada, 330
 New York, New York, U.S.A., 591
 Norfolk, Virginia, U.S.A., 784
-Philadelphia, Pennsylvania,
-U.S.A., 743
+Philadelphia, Pennsylvania, U.S.A., 743
 St. John, Canada, 80
 Sydney, Canada, 545
 
@@ -22622,8 +22451,7 @@ PAULILLAC, FRANCE
 (45˚12'00"N., 0˚43'45"W.)
 Subtract 24 l/2 miles from
 Bordeaux distances.
-PEARL HARBOR, HAWAII,
-U.S.A.
+PEARL HARBOR, HAWAII, U.S.A.
 (21˚20'00"N., 157˚58'20"W.) to:
 Junction Points*
 Panama, Panama, 4692
@@ -22637,8 +22465,7 @@ PASAJES DE SAN JUAN,
 SPAIN
 (43˚19'30"N., 1˚55'00"W.) See
 Puerto de Pasajes.
-PASCAGOULA, MISSISSIPPI,
-U.S.A.
+PASCAGOULA, MISSISSIPPI, U.S.A.
 (30˚21'00"N., 88˚34'00"W.) to:
 Junction Points*
 Straits of Florida, 469
@@ -22795,8 +22622,7 @@ Tangier, Morocco, 3171
 
 Villa Cisneros, Western Sahara,
 2274
-PENSACOLA, FLORIDA,
-U.S.A.
+PENSACOLA, FLORIDA, U.S.A.
 (30˚24'00"N., 87˚13'00"W.) to:
 Junction Points*
 Straits of Florida, 431
@@ -22861,8 +22687,7 @@ Buenos Aires, Argentina, 6491
 Cairn Ryan, Scotland, 340
 Camp Lloyd, Greenland, 1828
 Cardiff, Wales, 609
-Charleston, South Carolina,
-U.S.A., 3506
+Charleston, South Carolina, U.S.A., 3506
 Charlotte Amalie, Virgin Islands,
 3616
 Churchill, Canada (via 75 miles off
@@ -22947,8 +22772,7 @@ Norfolk, Virginia, U.S.A., 3244
 Nuuk (Godthab), Greenland, 1630
 Oostende, Belgium, 509
 Oslo, Norway, 524
-Philadelphia, Pennsylvania,
-U.S.A., 3224
+Philadelphia, Pennsylvania, U.S.A., 3224
 Port au Prince, Haiti, 3898
 Port of Spain, Trinidad, 3913
 Port Castries, St. Lucia, 3704
@@ -22983,8 +22807,7 @@ Upernavik, Greenland, 2164
 Vardo, Norway, 1253
 Washington, D.C., U.S.A., 3379
 Wilhelmshaven, Germany, 501
-Wilmington, North Carolina,
-U.S.A., 3450
+Wilmington, North Carolina, U.S.A., 3450
 Zeebrugge, Belgium, 505
 PEPEL, SIERRA LEONE
 (8˚34'58"N., 13˚04'00"W.) to:
@@ -23021,8 +22844,7 @@ Takoradi, Ghana, 818
 PERTH, AUSTRALIA
 (31˚57'30"S., 115˚51'00"E.) Add
 12 miles to Fremantle distances.
-PETERSBURG, ALASKA,
-U.S.A.
+PETERSBURG, ALASKA, U.S.A.
 (56˚58'56"N., 132˚57'50"W.) to:
 
 Ports
@@ -23603,8 +23425,7 @@ Pointe a Pitre, Guadeloupe, 84
 POHANG, SOUTH KOREA
 (36˚02'42"N., 129˚23'30"E.) See
 Bohang, South Korea.
-POINT COMFORT, TEXAS,
-U.S.A.
+POINT COMFORT, TEXAS, U.S.A.
 (28˚35'44"N., 96˚33'51"W.) to:
 Junction Points*
 Straits of Florida, 797
@@ -23650,8 +23471,7 @@ New York, New York, U.S.A.,
 1652
 Norfolk, Virginia, U.S.A., 1527
 Paramaribo, Suriname, 737
-Philadelphia, Pennsylvania,
-U.S.A., 1658
+Philadelphia, Pennsylvania, U.S.A., 1658
 Plymouth, Montserrat, 84
 Port au Prince, Haiti (south of
 Hispaniola), 945
@@ -23772,8 +23592,7 @@ Cap-Haitien, Haiti (via Virgin
 Passage), 702
 Carmen, Mexico, 1885
 Cartagena, Colombia, 941
-Charleston, South Carolina,
-U.S.A., 1443
+Charleston, South Carolina, U.S.A., 1443
 Charlotte Amalie, Virgin Islands,
 267
 Cienfuegos, Cuba, 1204
@@ -23843,8 +23662,7 @@ Baltimore, Maryland, U.S.A.,
 1427
 Boston, Massachusetts, U.S.A.,
 1563
-Charleston, South Carolina,
-U.S.A., 1168
+Charleston, South Carolina, U.S.A., 1168
 Fort de France, Martinique, 381
 Guantanamo, Cuba (north of
 Hispaniola and via Mona
@@ -23857,8 +23675,7 @@ Channel and Mona Passage),
 981
 New York, New York, U.S.A.,
 1462
-Philadelphia, Pennsylvania,
-U.S.A., 1454
+Philadelphia, Pennsylvania, U.S.A., 1454
 Rio de Janeiro, Brazil, 3659
 Santiago de Cuba, Cuba (north of
 Hispaniola, and via Windward
@@ -23883,8 +23700,7 @@ Cadiz, Spain, 931
 Cap-Haitien, Haiti, 2646
 Cape Town, South Africa, 5040
 Casablanca, Morocco, 915
-Charleston, South Carolina,
-U.S.A., 2644
+Charleston, South Carolina, U.S.A., 2644
 Colon, Panama, 3379
 Dakar, Senegal, 1459
 El Ferrol del Caudillo, Spain, 870
@@ -24091,8 +23907,7 @@ Philadelphia, Pennsylvania, U.S.A.
 Savannah, Georgia, U.S.A. (via
 Windward Passage and Crooked
 Island Passage), 1012
-PORT ARTHUR, TEXAS,
-U.S.A.
+PORT ARTHUR, TEXAS, U.S.A.
 (29˚52'00"N., 93˚56'00"W.) to:
 Junction Points*
 Straits of Florida, 677
@@ -24145,8 +23960,7 @@ Cap-Haitien, Haiti, 195
 Cardenas, Cuba, 603
 Carmen, Mexico, 1219
 Cartagena, Colombia, 639
-Charleston, South Carolina,
-U.S.A., 961
+Charleston, South Carolina, U.S.A., 961
 Charlotte Amalie, Virgin Islands,
 628
 Cienfuegos, Cuba, 534
@@ -24256,16 +24070,14 @@ Montevideo, Uruguay, 4261
 New York, New York, U.S.A.,
 1747
 Norfolk, Virginia, U.S.A., 1620
-Philadelphia, Pennsylvania,
-U.S.A., 1753
+Philadelphia, Pennsylvania, U.S.A., 1753
 Pointe a Pitre, Guadeloupe, 141
 Port au Prince, Haiti, 950
 Port of Spain, Trinidad (east of
 Grenadine Islands), 231
 Port of Spain, Trinidad (west of
 Grenadine Islands), 230
-Portsmouth, New Hampshire,
-U.S.A., 1822
+Portsmouth, New Hampshire, U.S.A., 1822
 Puerto Cabello, Venezuela, 465
 Puerto Cortes, Honduras, 1578
 Recife, Brazil, 2202
@@ -24307,8 +24119,7 @@ Campeche, Mexico, 1848
 Cap-Haitien, Haiti, 767
 Carmen, Mexico, 1927
 Cartagena, Colombia, 933
-Charleston, South Carolina,
-U.S.A., 1532
+Charleston, South Carolina, U.S.A., 1532
 Charlotte Amalie, Virgin Islands,
 346
 Cienfuegos, Cuba, 1246
@@ -24523,8 +24334,7 @@ Ports
 Hobart, Tasmania, 593
 Nukualofa, Tonga Islands, 1987
 Wellington, New Zealand, 1229
-PORT LAVACA, TEXAS,
-U.S.A.
+PORT LAVACA, TEXAS, U.S.A.
 (28˚35'44"N., 96˚33'51"W.) See
 Point Comfort.
 
@@ -24643,8 +24453,7 @@ Townsville, Australia, 595
 PORT NADOR, MOROCCO
 (35˚17'00"N., 2˚56'00"W.) See
 Melilla.
-PORT NECHES, TEXAS,
-U.S.A.
+PORT NECHES, TEXAS, U.S.A.
 (29˚59'35"N., 93˚56'20"W.) Add
 13 miles to Port Arthur distances.
 PORT NEWARK, NEW
@@ -24716,8 +24525,7 @@ Carmen, Mexico, 1992
 Cartagena, Colombia, 932
 Carupano, Venezuela, 109
 Catia la Mar, Venezuela, 335
-Charleston, South Carolina,
-U.S.A., 1682
+Charleston, South Carolina, U.S.A., 1682
 Charlotte Amalie, Virgin Islands,
 518
 Cienfuegos, Cuba, 1310
@@ -24766,8 +24574,7 @@ Port Castries, St. Lucia (east of
 Grenadine Islands), 231
 Port Castries, St. Lucia (west of
 Grenadine Islands), 230
-Portsmouth, New Hampshire,
-U.S.A., 2024
+Portsmouth, New Hampshire, U.S.A., 2024
 Puerto la Cruz, Venezuela, 214
 Puerto Cabello, Venezuela, 395
 Puerto Cortes, Honduras, 1599
@@ -24795,8 +24602,7 @@ Turiamo, Venezuela, 384
 Tuxpan, Mexico, 2201
 Veracruz, Mexico, 2182
 Willemstad, Curacao, 456
-Wilmington, North Carolina
-U.S.A., 1703
+Wilmington, North Carolina U.S.A., 1703
 PORT PIRIE, AUSTRALIA
 (33˚10'20"S., 138˚00'45"E.) to:
 Junction Points*
@@ -25195,8 +25001,7 @@ Ports
 Ports
 Dublin, Ireland, 179
 Liverpool, England, 244
-PORT TAMPA, FLORIDA,
-U.S.A.
+PORT TAMPA, FLORIDA, U.S.A.
 (21˚51'40"N., 82˚33'20"W.)
 Subtract 5 miles from Tampa
 distances.
@@ -25320,9 +25125,7 @@ Dubrovnik, Croatia, 113
 Taranto, Italy, 232
 PORTO DI BRINDISI, ITALY
 (40˚38'38"N., 17˚57'03"E.) See
-Brindisi.
-
-U.S.A., 3057
+Brindisi.  U.S.A., 3057
 PORTO VECCHIO DI
 PIOMBINO, ITALY
 (42˚56'00"N., 10˚33'00"E.) to:
@@ -25384,8 +25187,7 @@ Monrovia, Liberia, 1069
 New York, New York, U.S.A.,
 2913
 Norfolk, Virginia, U.S.A., 2971
-Philadelphia, Pennsylvania,
-U.S.A., 3011
+Philadelphia, Pennsylvania, U.S.A., 3011
 Ponta Delgada, Azores, 1253
 Rio de Janeiro, Brazil, 2687
 Santa Cruz de Tenerife, Canary
@@ -25717,8 +25519,7 @@ New Orleans, Louisiana, U.S.A.
 New York, New York, U.S.A.,
 1804
 Norfolk, Virginia, U.S.A., 1603
-Philadelphia, Pennsylvania,
-U.S.A., 1774
+Philadelphia, Pennsylvania, U.S.A., 1774
 Santiago de Cuba, Cuba, 792
 Savannah, Georgia, U.S.A., 1224
 Veracruz, Mexico, 985
@@ -25833,8 +25634,7 @@ New Orleans, Louisiana, U.S.A.
 New York, New York, U.S.A.,
 1764
 Norfolk, Virginia, U.S.A., 1568
-Philadelphia, Pennsylvania,
-U.S.A., 1739
+Philadelphia, Pennsylvania, U.S.A., 1739
 Port Castries, St. Lucia, 1578
 Port of Spain, Trinidad, 1599
 Recife, Brazil, 3737
@@ -25856,8 +25656,7 @@ Panama, Panama, 1016
 Yucatan Channel, 1381
 Ports
 La Guaira, Venezuela, 145
-Philadelphia, Pennsylvania,
-U.S.A., 1900
+Philadelphia, Pennsylvania, U.S.A., 1900
 Port of Spain, Trinidad, 214
 PUERTO MADRYN,
 ARGENTINA
@@ -25955,8 +25754,7 @@ Guantanamo, Cuba (via Windward
 Passage), 262
 New York, New York, U.S.A.,
 1270
-Philadelphia, Pennsylvania,
-U.S.A., 1250
+Philadelphia, Pennsylvania, U.S.A., 1250
 Santiago de Cuba, Cuba, 311
 Santo Domingo, Dominican
 Republic, 295
@@ -25980,8 +25778,7 @@ Panama, Panama, 1035
 Yucatan Channel, 1399
 Ports
 La Guaira, Venezuela, 205
-Philadelphia, Pennsylvania,
-U.S.A., 1907
+Philadelphia, Pennsylvania, U.S.A., 1907
 Port of Spain, Trinidad, 200
 PUERTO TANAMO, CUBA
 (20˚42'00"N., 75˚20'00"W.) See
@@ -25991,8 +25788,7 @@ PUERTO VITA, CUBA
 Junction Points*
 Straits of Florida, 455
 Ports
-Charleston, South Carolina,
-U.S.A., 814
+Charleston, South Carolina, U.S.A., 814
 New York, New York, U.S.A.,
 1224
 Nuevitas, Cuba, 90
@@ -26083,8 +25879,7 @@ Callao, Peru, 2671
 89
 
 Cape Town, South Africa, 4279
-Charleston, South Carolina,
-U.S.A., 6868
+Charleston, South Carolina, U.S.A., 6868
 Charlotte Amalie, Virgin Islands,
 5714
 Charlottetown, Canada, 6907
@@ -26145,8 +25940,7 @@ Pago Pago, American Samoa,
 5181
 Papeete, French Polynesia, 4233
 Paranagua, Brazil, 2001
-Philadelphia, Pennsylvania,
-U.S.A., 6978
+Philadelphia, Pennsylvania, U.S.A., 6978
 Pisco, Peru, 2578
 Ponape, Caroline Islands, 7260
 Port Castries, St. Lucia, 5451
@@ -26207,8 +26001,7 @@ Wellington, New Zealand (via
 30˚S.), 6141
 Wellington, New Zealand (via
 50˚S.), 4634
-Wilmington, North Carolina,
-U.S.A., 6853
+Wilmington, North Carolina, U.S.A., 6853
 Xiamen, China, 10537
 Yokohama, Japan (via 30˚S.),
 9642
@@ -26443,8 +26236,7 @@ Lagos, Nigeria, 334
 Libreville, Gabon, 254
 New York, New York, U.S.A.,
 5121
-Philadelphia, Pennsylvania,
-U.S.A., 7399
+Philadelphia, Pennsylvania, U.S.A., 7399
 Sao Tome, Sao Tome, 246
 Takoradi, Ghana, 587
 QUEPOS, COSTA RICA
@@ -26830,8 +26622,7 @@ Brunswick, Georgia, U.S.A., 3672
 Buenos Aires, Argentina, 2181
 Cadiz, Spain, 3125
 Cape Town, South Africa, 3318
-Charleston, South Carolina,
-U.S.A., 3624
+Charleston, South Carolina, U.S.A., 3624
 Charlotte Amalie, Virgin Islands,
 2471
 Charlottetown, Canada, 3658
@@ -26857,8 +26648,7 @@ Montevideo, Uruguay, 2067
 New York, New York, U.S.A.,
 3698
 Norfolk, Virginia, U.S.A., 3651
-Philadelphia, Pennsylvania,
-U.S.A., 3745
+Philadelphia, Pennsylvania, U.S.A., 3745
 Ponta Delgada, Azores, 2803
 Port Castries, St. Lucia, 2151
 Portland, Maine, U.S.A., 3700
@@ -26956,10 +26746,8 @@ Norfolk, Virginia, U.S.A., 2677
 Nuuk (Godthab), Greenland, 1076
 Oslo, Norway, 1173
 Pechenga, Russia, 1460
-Philadelphia, Pennsylvania,
-U.S.A., 2648
-Portsmouth, New Hampshire,
-U.S.A., 2271
+Philadelphia, Pennsylvania, U.S.A., 2648
+Portsmouth, New Hampshire, U.S.A., 2271
 Qaanaaq (Thule), Greenland,
 1898
 Qaqortoq (Julianehaab), Greenland
@@ -27029,8 +26817,7 @@ Baltimore, Maryland, U.S.A.,
 Belem, Brazil, 3519
 Cape Town, South Africa, 5457
 Casablanca, Morocco, 700
-Charleston, South Carolina,
-U.S.A., 3388
+Charleston, South Carolina, U.S.A., 3388
 Cristobal, Panama, 4275
 Dakar, Senegal, 1879
 Freetown, Sierra Leone, 2354
@@ -27062,8 +26849,7 @@ Port Adelaide, Australia, 5259
 Port Darwin, Australia, 5505
 Sabang, Indonesia, 4208
 Zanzibar, Tanzania, 1535
-RICHMOND, CALIFORNIA,
-U.S.A.
+RICHMOND, CALIFORNIA, U.S.A.
 (37˚54'12"N., 122˚21'48"W.)
 Add 9 miles to San Francisco
 distances.
@@ -27190,8 +26976,7 @@ St. John, Canada, 4752
 St. John’s, Canada, 4563
 Sydney, Canada, 4648
 Vigo, Spain, 4418
-Wilmington, North Carolina,
-U.S.A., 4704
+Wilmington, North Carolina, U.S.A., 4704
 RIO GALLEGOS,
 ARGENTINA
 (51˚36'40"S., 69˚12'10"W.) to:
@@ -27214,8 +26999,7 @@ Brunswick, Georgia, U.S.A., 4744
 Buenos Aires, Argentina, 1151
 Cadiz, Spain, 4192
 Cape Town, South Africa, 3273
-Charleston, South Carolina,
-U.S.A., 4696
+Charleston, South Carolina, U.S.A., 4696
 Charlotte Amalie, Virgin Islands,
 3542
 Charlottetown, Canada, 4730
@@ -27245,8 +27029,7 @@ New York, New York, U.S.A.,
 4762
 Norfolk, Virginia, U.S.A., 4723
 Paramaribo, Suriname, 2713
-Philadelphia, Pennsylvania,
-U.S.A., 4817
+Philadelphia, Pennsylvania, U.S.A., 4817
 Ponce, Puerto Rico, 3659
 Ponta Delgada, Azores, 3875
 Port au Prince, Haiti, 4157
@@ -27764,8 +27547,7 @@ Bridgetown, Barbados, 2476
 Brunswick, Georgia, U.S.A., 4063
 Buenos Aires, Argentina, 1849
 Cabedelo, Brazil, 468
-Charleston, South Carolina,
-U.S.A., 4040
+Charleston, South Carolina, U.S.A., 4040
 Charlotte Amalie, Virgin Islands,
 2907
 Charlottetown, Canada, 4049
@@ -27777,8 +27559,7 @@ Montevideo, Uruguay, 1735
 New York, New York, U.S.A.,
 4089
 Norfolk, Virginia, U.S.A., 4042
-Philadelphia, Pennsylvania,
-U.S.A., 4136
+Philadelphia, Pennsylvania, U.S.A., 4136
 Port Castries, St. Lucia, 2593
 Portland, Maine, U.S.A., 4091
 Recife, Brazil, 399
@@ -27831,8 +27612,7 @@ Marin, Spain, 154
 Norfolk, Virginia, U.S.A., 5230
 Setubal, Portugal, 397
 Villagarcia, Spain, 143
-SAN DIEGO, CALIFORNIA,
-U.S.A.
+SAN DIEGO, CALIFORNIA, U.S.A.
 (32˚43'00"N., 117˚10'30"W.) to:
 Junction Points*
 Panama, Panama, 2843
@@ -28170,8 +27950,7 @@ Cape Town, South Africa, 5772
 Cardenas, Cuba, 917
 Cartagena, Colombia, 782
 Catia la Mar, Venezuela, 556
-Charleston, South Carolina,
-U.S.A., 1138
+Charleston, South Carolina, U.S.A., 1138
 Christiansted, St. Croix, 104
 Cienfuegos, Cuba (north of
 Hispaniola), 903
@@ -28225,8 +28004,7 @@ Nicaro Lengua de Pajaro, Cuba,
 Norfolk, Virginia, U.S.A., 1252
 Nuevitas, Cuba, 663
 Oranjestad, St. Eustatius, 195
-Philadelphia, Pennsylvania,
-U.S.A., 1395
+Philadelphia, Pennsylvania, U.S.A., 1395
 Pina, Panama, 1219
 Pointe a Pitre, Guadeloupe, 333
 Ponce, Puerto Rico, 157
@@ -28237,8 +28015,7 @@ Passage and west of St. Croix),
 418
 Port of Spain, Trinidad, 574
 Portland, Maine, U.S.A., 1531
-Portsmouth, New Hampshire,
-U.S.A., 1507
+Portsmouth, New Hampshire, U.S.A., 1507
 Puerto Cortes, Honduras, 1284
 Puerto Manati, Cuba, 639
 Puerto Padre, Cuba, 625
@@ -28271,9 +28048,7 @@ Tela, Honduras, 1258
 Veracruz, Mexico, 1780
 Vigo, Spain, 3228
 Willemstad, Curacao, 485
-Wilmington, North Carolina,
-
-U.S.A., 1153
+Wilmington, North Carolina, U.S.A., 1153
 Yarmouth, Canada, 1525
 SAN JUAN DEL SUR,
 NICARAGUA
@@ -28532,8 +28307,7 @@ Buenos Aires, Argentina, 4619
 Cadiz, Spain, 702
 Cape Town, South Africa, 4435
 Casablanca, Morocco, 548
-Charleston, South Carolina,
-U.S.A., 3275
+Charleston, South Carolina, U.S.A., 3275
 Charlotte Amalie, Virgin Islands,
 2764
 Colon, Panama, 3776
@@ -28551,8 +28325,7 @@ New York, New York, U.S.A.,
 
 Norfolk, Virginia, U.S.A., 3057
 Oporto, Portugal, 849
-Philadelphia, Pennsylvania,
-U.S.A., 3062
+Philadelphia, Pennsylvania, U.S.A., 3062
 Port of Spain, Trinidad, 2804
 Porto Grande, Sao Vincente, Cape
 Verde Islands, 849
@@ -28753,8 +28526,7 @@ Republic, 429
 Savannah, Georgia, U.S.A. (via
 Crooked Island Passage), 951
 Willemstad, Curacao, 627
-Wilmington, North Carolina,
-U.S.A., 1003
+Wilmington, North Carolina, U.S.A., 1003
 SANTO DOMINGO,
 DOMINICAN REPUBLIC
 (18˚28'00"N., 69˚52'30"W.) to:
@@ -28792,8 +28564,7 @@ Cape Town, South Africa, 5948
 Cardenas, Cuba, 887
 Carmen, Mexico, 1437
 Cartagena, Colombia, 610
-Charleston, South Carolina,
-U.S.A., 1190
+Charleston, South Carolina, U.S.A., 1190
 Charlotte Amalie, Virgin Islands,
 300
 Cienfuegos, Cuba, 716
@@ -28843,8 +28614,7 @@ Sydney, Canada, 1867
 Tuxpan, Mexico, 1624
 Veracruz, Mexico, 1596
 Willemstad, Curacao, 397
-Wilmington, North Carolina,
-U.S.A., 1210
+Wilmington, North Carolina, U.S.A., 1210
 
 99
 
@@ -28886,8 +28656,7 @@ Boston, Massachusetts, U.S.A.,
 4928
 Buenos Aires, Argentina, 1006
 Cape Town, South Africa, 3409
-Charleston, South Carolina,
-U.S.A., 4908
+Charleston, South Carolina, U.S.A., 4908
 Colon, Panama, 4476
 Fernando de Noronha, 1560
 Guiria, Venezuela, 3467
@@ -28897,8 +28666,7 @@ New York, New York, U.S.A.,
 4957
 Norfolk, Virginia, U.S.A., 4910
 Paranagua, Brazil, 163
-Philadelphia, Pennsylvania,
-U.S.A., 5004
+Philadelphia, Pennsylvania, U.S.A., 5004
 Portland, Maine, U.S.A., 4959
 Porto Alegre, Brazil, 758
 Quequen, Argentina, 1437
@@ -28932,8 +28700,7 @@ Yucatan Channel, 5073
 Ports
 Buenos Aires, Argentina, 950
 Cape Town, South Africa, 6671
-Charleston, South Carolina,
-U.S.A., 5103
+Charleston, South Carolina, U.S.A., 5103
 Colon, Panama, 4671
 Maldonado, Uruguay, 709
 
@@ -29185,8 +28952,7 @@ Maracaibo, Venezuela, 2073
 Rio de Janeiro, Brazil, 4973
 San Juan, Puerto Rico, 1564
 Yarmouth, Canada, 2704
-SEATTLE, WASHINGTON,
-U.S.A.
+SEATTLE, WASHINGTON, U.S.A.
 (47˚3'00"N., 122˚22'00"W.) to:
 Junction Points*
 Panama, Panama, 4020
@@ -30434,8 +30200,7 @@ Norfolk, Virginia, U.S.A. (via
 Mona Passage), 1600
 Norfolk, Virginia, U.S.A. (via
 Windward Passage), 1611
-Philadelphia, Pennsylvania,
-U.S.A., 1732
+Philadelphia, Pennsylvania, U.S.A., 1732
 Pointe a Pitre, Guadeloupe, 550
 Port Castries, St. Lucia, 532
 Port of Spain, Trinidad, 515
@@ -31068,11 +30833,9 @@ Ports
 Baltimore, Maryland, U.S.A., 875
 Jacksonville, Florida, U.S.A., 338
 La Habana, Cuba, 316
-Philadelphia, Pennsylvania,
-U.S.A., 924
+Philadelphia, Pennsylvania, U.S.A., 924
 San Juan, Puerto Rico, 858
-Wilmington, North Carolina,
-U.S.A., 521
+Wilmington, North Carolina, U.S.A., 521
 SOUTHAMPTON, ENGLAND
 (50˚53'00"N., 1˚23'30"W.) to:
 Junction Points*
@@ -31225,8 +30988,7 @@ New York, New York, U.S.A.,
 1842
 Paramaribo, Suriname, 560
 
-Philadelphia, Pennsylvania,
-U.S.A., 1848
+Philadelphia, Pennsylvania, U.S.A., 1848
 Port of Spain, Trinidad, 102
 ST. HELENA ISLAND, SOUTH
 ATLANTIC
@@ -31241,8 +31003,7 @@ Georgetown, Ascension Island,
 707
 Malabo, Equatorial Guinea, 1472
 Montevideo, Uruguay, 2936
-Philadelphia, Pennsylvania,
-U.S.A., 5169
+Philadelphia, Pennsylvania, U.S.A., 5169
 Rio de Janeiro, Brazil, 2161
 ST. JOHN, CANADA
 (45˚16'00"N., 66˚04'00"W.) to:
@@ -31279,8 +31040,7 @@ Philadelphia, Pennsylvania, U.S.A.
 (via Vineyard Sound), 673
 Port of Spain, Trinidad, 2113
 Portland, Maine, U.S.A., 215
-Portsmouth, New Hampshire,
-U.S.A., 1248
+Portsmouth, New Hampshire, U.S.A., 1248
 Rio de Janeiro, Brazil, 4752
 San Juan, Puerto Rico, 1614
 Santo Domingo, Dominican
@@ -31340,8 +31100,7 @@ New York, New York, U.S.A.,
 Norfolk, Virginia, U.S.A., 1277
 Nuuk (Godthab), Greenland, 1005
 Paramaribo, Suriname, 2518
-Philadelphia, Pennsylvania,
-U.S.A., 1254
+Philadelphia, Pennsylvania, U.S.A., 1254
 Ponta Delgada, Azores, 1326
 Port of Spain, Trinidad, 2288
 Qaanaaq (Thule), Greenland, 1800
@@ -31434,8 +31193,7 @@ La Pallice, France, 108
 ST. NICHOLAS, GREECE
 (35˚11'38"N., 25˚43'20"E.) See
 Ayios Nikolaos.
-ST. PETERSBURG, FLORIDA,
-U.S.A.
+ST. PETERSBURG, FLORIDA, U.S.A.
 (27˚46'00"N., 82˚37'00"W.)
 Subtract 15 miles from Tampa
 distances.
@@ -31483,8 +31241,7 @@ Colon, Panama, 2667
 Kingston, Jamaica, 2168
 Liverpool, Canada, 493
 New York, New York, U.S.A., 958
-Philadelphia, Pennsylvania,
-U.S.A., 1111
+Philadelphia, Pennsylvania, U.S.A., 1111
 Recife, Brazil, 3712
 St. John, Canada, 995
 Yarmouth, Canada, 623
@@ -31691,8 +31448,7 @@ Cartagena, Colombia, 4087
 Casablanca, Morocco, 166
 Catania, Sicily, 1081
 Ceuta, Morocco, 23
-Charleston, South Carolina,
-U.S.A., 3593
+Charleston, South Carolina, U.S.A., 3593
 Charlotte Amalie, Virgin Islands,
 3323
 Chioggia, Italy, 1682
@@ -31795,8 +31551,7 @@ Natal, Brazil, 3003
 Navplion, Greece, 1484
 New Haven, Connecticut, U.S.A.,
 3161
-New London, Connecticut,
-U.S.A., 3087
+New London, Connecticut, U.S.A., 3087
 New York, New York, U.S.A.,
 3176
 Nice, France, 788
@@ -31813,8 +31568,7 @@ Paphos, Cyprus, 1872
 Paramaribo, Suriname, 3275
 Patrai, Greece, 1350
 Pescara, Italy, 1515
-Philadelphia, Pennsylvania,
-U.S.A., 3319
+Philadelphia, Pennsylvania, U.S.A., 3319
 Piraievs, Greece (south of
 Greece), 1508
 Piraievs, Greece (via Corinth
@@ -31915,9 +31669,7 @@ Vlores, Albania, 1311
 Volos, Greece, 1657
 Washington, D.C., U.S.A., 3471
 Willemstad, Curacao, 3685
-Wilmington, North Carolina,
-
-U.S.A., 3524
+Wilmington, North Carolina, U.S.A., 3524
 Yumurtalik, Turkey, 1672
 STRAITS OF FLORIDA*
 (24˚25'00"N., 83˚00'00"W.) to:
@@ -31962,8 +31714,7 @@ Caibarien, Cuba, 252
 Cap-Haitien, Haiti, 604
 Cape Town, South Africa, 6778
 Cardenas, Cuba, 140
-Charleston, South Carolina,
-U.S.A., 644
+Charleston, South Carolina, U.S.A., 644
 Charlotte Amalie, Virgin Islands,
 1087
 Coatzacoalcos, Mexico, 757
@@ -32037,8 +31788,7 @@ Oranjestad, St. Eustatius, 1207
 Paramaribo, Suriname (via Mona
 Passage), 2014
 Pensacola, Florida, U.S.A., 431
-Philadelphia, Pennsylvania,
-U.S.A., 1168
+Philadelphia, Pennsylvania, U.S.A., 1168
 Pointe a Pitre, Guadeloupe (via
 Mona Passage), 1348
 Pointe a Pitre, Guadeloupe (via
@@ -32055,8 +31805,7 @@ Passage), 1533
 Portland, Maine, U.S.A., 1485
 Porto Grande, Cape Verde Islands,
 3314
-Portsmouth, New Hampshire,
-U.S.A., 1421
+Portsmouth, New Hampshire, U.S.A., 1421
 Praia Da Vitoria, Terceira, Azores,
 3017
 Puerto de Hierro, Venezuela, 2086
@@ -32098,8 +31847,7 @@ Tampico, Mexico, 832
 Tuxpan, Mexico, 792
 Vigo, Spain, 3809
 Willemstad, Curacao, 1184
-Wilmington, North Carolina,
-U.S.A., 735
+Wilmington, North Carolina, U.S.A., 735
 
 SUNDSVALL, SWEDEN
 (62˚23'12"N., 17˚21'30"E.) to:
@@ -32358,8 +32106,7 @@ Cardiff, Wales, 46
 Fishguard, Wales, 100
 Holyhead, Wales, 171
 Liverpool, England, 236
-SWEEPER COVE, ALASKA,
-U.S.A.
+SWEEPER COVE, ALASKA, U.S.A.
 (51˚51'30"N., 176˚38'00"W.) to:
 Junction Points*
 Panama, Panama, 5586
@@ -32495,15 +32242,13 @@ Liverpool, Canada, 293
 New York, New York, U.S.A., 808
 Norfolk, Virginia, U.S.A., 996
 Parrsboro, Canada, 545
-Philadelphia, Pennsylvania,
-U.S.A., 958
+Philadelphia, Pennsylvania, U.S.A., 958
 Port Castries, St. Lucia, 1967
 Port of Spain, Trinidad, 2189
 Portland, Maine, U.S.A., 556
 Porto Grande, Cape Verde Islands,
 2503
-Portsmouth, New Hampshire,
-U.S.A., 576
+Portsmouth, New Hampshire, U.S.A., 576
 Recife, Brazil, 3553
 Rio de Janeiro, Brazil, 4648
 Salvador, Brazil, 3967
@@ -32534,8 +32279,7 @@ Batangas, Philippines, 293
 Jolo, Philippines, 442
 Yap, Caroline Islands, 790
 Zamboanga, Philippines, 385
-TACOMA, WASHINGTON,
-U.S.A.
+TACOMA, WASHINGTON, U.S.A.
 (47˚16'00"N., 122˚26'00"W.)
 Add 21 miles to Seattle distances.
 TA-KU, CHINA
@@ -33704,8 +33448,7 @@ Oslo, Norway (via Store Baelt),
 467
 Oslo, Norway (via The Sound),
 314
-TRENTON, NEW JERSEY,
-U.S.A.
+TRENTON, NEW JERSEY, U.S.A.
 (40˚11'24"N., 74˚45'24"W.) Add
 28 miles to Philadelphia distances.
 
@@ -34268,8 +34011,7 @@ Al Basrah, Iraq, 444
 
 Buenos Aires, Argentina, 1447
 
-UNALAKLEET, ALASKA,
-U.S.A.
+UNALAKLEET, ALASKA, U.S.A.
 (63˚52'15"N., 160˚47'15"W.) to:
 
 USKUDAR, TURKEY
@@ -35013,8 +34755,7 @@ New York, New York, U.S.A.,
 2914
 Norfolk, Virginia, U.S.A., 3099
 Oporto, Portugal, 74
-Philadelphia, Pennsylvania,
-U.S.A., 3092
+Philadelphia, Pennsylvania, U.S.A., 3092
 Ponta Delgada, Azores, 828
 Porto Grande, Cape Verde Islands,
 1737
@@ -35156,8 +34897,7 @@ Baltimore, Maryland, U.S.A.,
 4581
 New York, New York, U.S.A.,
 4507
-Philadelphia, Pennsylvania,
-U.S.A., 4554
+Philadelphia, Pennsylvania, U.S.A., 4554
 Salvador, Brazil, 477
 
 Aleksandrovsk-Sakhalinskiy,
@@ -35506,8 +35246,7 @@ Luderitz Bay, Namibia, 240
 Mocamedes, Angola, 518
 New York, New York, U.S.A.,
 6228
-Philadelphia, Pennsylvania,
-U.S.A., 6318
+Philadelphia, Pennsylvania, U.S.A., 6318
 
 Ports
 Apra, Guam, 1334
@@ -35985,8 +35724,7 @@ Takoradi, Ghana, 4040
 Turiamo, Venezuela, 124
 Tuxpan, Mexico, 1786
 Veracruz, Mexico, 1756
-WILMINGTON, DELAWARE,
-U.S.A.
+WILMINGTON, DELAWARE, U.S.A.
 (39˚43'12"N., 75˚31'30"W.)
 Subtract 26 miles from
 Philadelphia distances.
@@ -36119,8 +35857,7 @@ Ports
 Kobenhavn, Denmark, 132
 Liepaja, Latvia, 379
 Stockholm, Sweden, 101
-WOMENS BAY, ALASKA,
-U.S.A.
+WOMENS BAY, ALASKA, U.S.A.
 (57˚42'30"N., 152˚31'30"W.) Via
 north of Woody Island. Add 6 miles
 to Kodiak distances.
@@ -36398,8 +36135,7 @@ New York, New York, U.S.A.
 New York, New York, U.S.A. (via
 Pollock Rip Channel), 440
 Norfolk, Virginia, U.S.A., 656
-Philadelphia, Pennsylvania,
-U.S.A., 616
+Philadelphia, Pennsylvania, U.S.A., 616
 Portland, Maine, U.S.A., 185
 San Juan, Puerto Rico, 1527
 Sydney, Canada, 416
@@ -36653,8 +36389,7 @@ YOKOSUKA, JAPAN
 (35˚17'30"N., 139˚39'30"E.)
 Subtract 6 miles from Yokohama
 distances.
-YORKTOWN, VIRGINIA,
-U.S.A.
+YORKTOWN, VIRGINIA, U.S.A.
 (37˚14'24"N., 76˚30'30"W.)
 Subtract 116 miles from Baltimore
 distances.
@@ -36693,8 +36428,7 @@ Cardenas, Cuba, 269
 Cartagena, Colombia, 891
 Casilda, Cuba, 307
 Catia la Mar, Venezuela, 1240
-Charleston, South Carolina,
-U.S.A., 815
+Charleston, South Carolina, U.S.A., 815
 Charlotte Amalie, Virgin Islands,
 1200
 Cienfuegos, Cuba, 285
@@ -36741,8 +36475,7 @@ Norfolk, Virginia, U.S.A., 1168
 Nuevitas, Cuba, 528
 Oranjestad, Aruba, 1024
 Pensacola, Florida, U.S.A., 531
-Philadelphia, Pennsylvania,
-U.S.A., 1339
+Philadelphia, Pennsylvania, U.S.A., 1339
 Pointe a Pitre, Guadeloupe, 1410
 Porlamar, Venezuela, 1407
 Port au Prince, Haiti, 741
@@ -36750,8 +36483,7 @@ Port Antonio, Jamaica, 536
 Port Arthur, Texas, U.S.A., 681
 Port Castries, St. Lucia, 1452
 Port of Spain, Trinidad, 1517
-Portsmouth, New Hampshire,
-U.S.A. (via outside Nantucket
+Portsmouth, New Hampshire, U.S.A. (via outside Nantucket
 Light Buoy), 1632
 Puerto la Cruz, Venezuela, 1381
 Puerto Barrios, Guatemala, 439

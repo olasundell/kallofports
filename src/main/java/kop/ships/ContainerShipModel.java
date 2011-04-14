@@ -14,6 +14,6 @@ public class ContainerShipModel extends ShipModel {
 
 	public ContainerShipModel() {
 		super();
-		shipBlueprint = new ContainerShipBlueprint();
+		blueprint = new ContainerShipBlueprint();
 	}
 }

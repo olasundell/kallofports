@@ -15,9 +15,9 @@ import java.util.Map;
  * Time: 4:19 PM
  * To change this template use File | Settings | File Templates.
  */
-public class PortFactory {
+class PortFactory {
 	// not used for anything except debugging purposes. :-)
-	String[] header;
+	private String[] header;
 	private Map<String, String> countryCodes;
 
 	public Map<String, Port> createPorts(String portFileName, String countryCodeFileName) throws IOException {

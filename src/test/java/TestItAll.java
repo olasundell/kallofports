@@ -14,7 +14,7 @@ import java.util.List;
  * Time: 12:21 PM
  * To change this template use File | Settings | File Templates.
  */
-public class TestItAll {
+class TestItAll {
 	public void freightMarketTest() {
 		PortsOfTheWorld world = new PortsOfTheWorld();
 		Port origin = world.putPort("Rotterdam");

@@ -16,7 +16,7 @@ import static org.mockito.Mockito.mock;
  * To change this template use File | Settings | File Templates.
  */
 public class DistanceTest {
-	Distance dist;
+	private Distance dist;
 	private ShipModel hugeShip;
 	private double longDist;
 	private double shortDist;

@@ -28,7 +28,7 @@ public abstract class ShipBlueprint {
 	private double dailyCost;
 	private Map<Float, Float> fuelConsumption;
 
-	public ShipBlueprint() {
+	ShipBlueprint() {
 	}
 
 	public boolean isPostPanamax() {
@@ -80,5 +80,13 @@ public abstract class ShipBlueprint {
 
 	public void setMaxFuel(double maxFuel) {
 		this.maxFuel = maxFuel;
+	}
+
+	public void setDailyCost(int dailyCost) {
+		this.dailyCost = dailyCost;
+	}
+
+	public double getDailyCost() {
+		return dailyCost;
 	}
 }

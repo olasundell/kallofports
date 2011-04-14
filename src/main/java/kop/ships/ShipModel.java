@@ -23,16 +23,16 @@ import org.simpleframework.xml.Root;
 @Root
 public abstract class ShipModel {
 	@Element
-    protected double currentFuel;
+	private double currentFuel;
 
 	@Attribute
-	protected String name;
+	private String name;
 
-    protected List<Cargo> cargoList;
+    private List<Cargo> cargoList;
 	@Element
-	protected PositionOrDirection currentPosition;
+	private PositionOrDirection currentPosition;
 	@Element
-	protected ShipBlueprint shipBlueprint;
+	ShipBlueprint blueprint;
 
 	public ShipModel() {
 		currentPosition = new PositionOrDirection();
@@ -55,13 +55,17 @@ public abstract class ShipModel {
 		this.name = name;
 	}
 
+	public ShipBlueprint getBlueprint() {
+		return blueprint;
+	}
+
 	public enum ShipType {
 		TANKER,
 		BULKER,
 		CONTAINER
-	};
+	}
 
-    public ShipModel(String name) {
+    ShipModel(String name) {
         this.name=name;
         cargoList= new ArrayList<Cargo>();
 		currentPosition = new PositionOrDirection();
@@ -90,57 +94,57 @@ public abstract class ShipModel {
             currentCargo+=c.getWeight();
         }
         
-        return shipBlueprint.getDwt() -currentCargo;
+        return blueprint.getDwt() -currentCargo;
     }
 
 	public boolean isPostPanamax() {
 		// TODO loa Container ship and passenger ship: 965 ft  294.13
 
-		return shipBlueprint.isPostPanamax();
+		return blueprint.isPostPanamax();
 	}
 
 	public boolean isPostSuezmax() {
-		return shipBlueprint.isPostSuezmax();
+		return blueprint.isPostSuezmax();
 	}
 
 	public int getDwt() {
-		return shipBlueprint.getDwt();
+		return blueprint.getDwt();
 	}
 
 	public void setDwt(int dwt) {
-		shipBlueprint.setDwt(dwt);
+		blueprint.setDwt(dwt);
 	}
 
 	public double getMaxSpeed() {
-		return shipBlueprint.getMaxSpeed();
+		return blueprint.getMaxSpeed();
 	}
 
 	public void setMaxSpeed(double maxSpeed) {
-		shipBlueprint.setMaxSpeed(maxSpeed);
+		blueprint.setMaxSpeed(maxSpeed);
 	}
 
 	public double getLoa() {
-		return shipBlueprint.getLoa();
+		return blueprint.getLoa();
 	}
 
 	public void setLoa(double loa) {
-		shipBlueprint.setLoa(loa);
+		blueprint.setLoa(loa);
 	}
 
 	public double getDraft() {
-		return shipBlueprint.getDraft();
+		return blueprint.getDraft();
 	}
 
 	public void setDraft(double draft) {
-		shipBlueprint.setDraft(draft);
+		blueprint.setDraft(draft);
 	}
 
 	public double getMaxFuel() {
-		return shipBlueprint.getMaxFuel();
+		return blueprint.getMaxFuel();
 	}
 
 	public void setMaxFuel(double maxFuel) {
-		shipBlueprint.setMaxFuel(maxFuel);
+		blueprint.setMaxFuel(maxFuel);
 	}
 
 	public double getCurrentFuel() {

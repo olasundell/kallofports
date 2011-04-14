@@ -15,7 +15,7 @@ import java.util.Map;
  * Time: 7:42 AM
  * To change this template use File | Settings | File Templates.
  */
-public class DistanceFactory {
+class DistanceFactory {
 	public List<Distance> createDistance(String fileName, Map<String, Port> ports) throws IOException {
 		List<Distance> list = new ArrayList<Distance>();
 

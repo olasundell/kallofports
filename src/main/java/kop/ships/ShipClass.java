@@ -12,12 +12,13 @@ import org.simpleframework.xml.Root;
  * To change this template use File | Settings | File Templates.
  */
 @Root
-public class ShipClass {
+class ShipClass {
 	@Element
 	private double cost;
 	@Attribute
 	private String className;
 	@Element
+	private
 	ShipBlueprint ship;
 
 	public ShipClass() {

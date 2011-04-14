@@ -7,7 +7,7 @@ package kop.ships;
  * Time: 4:28 PM
  * To change this template use File | Settings | File Templates.
  */
-public class TankerShipModel extends ShipModel {
+class TankerShipModel extends ShipModel {
 	int maxBarrels;
 
 	public TankerShipModel(String name) {
