@@ -5,14 +5,9 @@ import org.simpleframework.xml.core.Persister;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 4/11/11
- * Time: 10:26 AM
- * To change this template use File | Settings | File Templates.
+ * TODO replace this factory with kop.ships.ModelSerializer usage.
  */
 class CargoTypesFactory {
 	public ArrayList<CargoType> createCargoTypes(String fileName) throws Exception {

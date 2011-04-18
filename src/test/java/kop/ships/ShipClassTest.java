@@ -18,7 +18,13 @@ import static junit.framework.Assert.assertEquals;
 public class ShipClassTest {
 	@Test
 	public void testSerializeDeserialize() throws Exception {
-		ShipClass c = new ShipClass(new ContainerShipBlueprint(), 10.0, "Feeder");
+		// TODO replace this factory with kop.ships.ModelSerializer usage.
+		ContainerShipBlueprint blueprint = new ContainerShipBlueprint();
+		EngineList instance = EngineList.getInstance();
+		Engine anEngineForTest = instance.getAnEngineForTest();
+		blueprint.setEngine(anEngineForTest);
+
+		ShipClass c = new ShipClass(blueprint, 10.0, "Feeder");
 		Serializer serializer = new Persister();
 		File result = new File("foobar.xml");
 		serializer.write(c, result);

@@ -1,5 +1,6 @@
 package kop.game;
 
+import kop.cargo.FreightMarket;
 import kop.company.Company;
 import kop.ports.NoRouteFoundException;
 import kop.ports.NoSuchPortException;
@@ -26,10 +27,13 @@ public class Game {
 	private static Game instance;
 	private PortsOfTheWorld world;
 	private List<ShipModel> shipTypes;
+	private FreightMarket market;
+	private boolean paused = false;
 
 	private Game() {
 		world = new PortsOfTheWorld();
 		calendar = new GregorianCalendar(1970,0,0,0,0);
+		market = new FreightMarket();
 	}
 
 	public static void createInstance() {
@@ -65,6 +69,12 @@ public class Game {
 		return calendar.getTime();
 	}
 
+	public void mainLoop() {
+		while (isRunning()) {
+			stepTime();
+		}
+	}
+
 	public void stepTime() {
 		calendar.add(Calendar.HOUR, 1);
 		// TODO move ships
@@ -75,12 +85,23 @@ public class Game {
 			if (calendar.get(Calendar.HOUR) == 0) {
 				// a new day dawns
 				c.doDailyCosts();
+				generateDailyFreights();
 				if (calendar.get(Calendar.DAY_OF_MONTH)==0) {
 					// a new month!
 					c.doMonthlyCosts();
 				}
 			}
 		}
+	}
+
+	private void generateDailyFreights() {
+		for (Port p: world.getPortsAsList()) {
+			market.getFreightFromPort(p);
+		}
+	}
+
+	public boolean isRunning() {
+		return !paused;
 	}
 
 	public Port getPortByName(String portName) throws NoSuchPortException {

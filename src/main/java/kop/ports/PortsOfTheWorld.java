@@ -3,10 +3,7 @@ package kop.ports;
 import kop.ships.ShipModel;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -63,5 +60,9 @@ public class PortsOfTheWorld {
 		Distance d = new Distance(origin, destination);
 		d.addRoute(nm, false, false);
 		distances.add(d);
+	}
+
+	public Collection<Port> getPortsAsList() {
+		return ports.values();
 	}
 }

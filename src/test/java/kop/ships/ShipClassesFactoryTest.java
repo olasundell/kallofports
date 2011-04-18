@@ -17,7 +17,17 @@ public class ShipClassesFactoryTest {
 		ShipClassesFactory factory = new ShipClassesFactory();
 		ArrayList<ShipClass> list = new ArrayList<ShipClass>();
 		ShipBlueprint shipSpec = new ContainerShipBlueprint();
+
+		Engine engine = new Engine();
+		engine.setBsfc(178);
+		engine.setManufacturer("Deutz");
+		engine.setModelName("TBD 645 L9");
+		engine.setkW(3825);
+
+		shipSpec.setEngine(engine);
+
 		ShipClass shipClass = new ShipClass(shipSpec, 10.0, "Feeder");
+
 
 		list.add(shipClass);
 		factory.saveShipClasses("shipclasses.xml", list);

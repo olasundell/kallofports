@@ -18,6 +18,7 @@ public class Port {
 	private String harbourType;
 	private String drydock;
 	private String country;
+	private String unlocode;
 	// TODO add resource production stuff
 
 	public void setName(String name) {

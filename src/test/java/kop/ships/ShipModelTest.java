@@ -44,9 +44,14 @@ public class ShipModelTest {
 
 	@Test
 	public void testSerializeDeserialize() throws Exception {
+		// TODO use kop.ships.ModelSerializer for this.
 		ShipModel ship = new ContainerShipModel();
 		ship.setName("foobar");
+		ship.getBlueprint().setEngine(new Engine());
 		Serializer serializer = new Persister();
+		EngineList engineList = EngineList.getInstance();
+		ship.getBlueprint().setEngine(engineList.getAnEngineForTest());
+
 		File result = new File("foobar.xml");
 		serializer.write(ship, result);
 		File source = new File("foobar.xml");

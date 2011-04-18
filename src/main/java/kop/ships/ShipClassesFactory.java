@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by IntelliJ IDEA.
+ * TODO replace this factory with kop.ships.ModelSerializer usage.
  * User: ola
  * Date: 4/6/11
  * Time: 9:09 PM

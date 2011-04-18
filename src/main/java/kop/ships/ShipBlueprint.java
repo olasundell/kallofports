@@ -1,10 +1,7 @@
 package kop.ships;
 
 import org.simpleframework.xml.Element;
-import org.simpleframework.xml.ElementMap;
 import org.simpleframework.xml.Root;
-
-import java.util.Map;
 
 /**
  * A blueprint contains the constant attributes of a ship, for instance length, dwt and max speed.
@@ -14,6 +11,10 @@ import java.util.Map;
 public abstract class ShipBlueprint {
 	@Element
 	private int dwt;
+	@Element
+	private int grossTonnage;
+	@Element
+	private int netTonnage;
 	@Element
 	private double maxSpeed;
 	@Element
@@ -26,7 +27,8 @@ public abstract class ShipBlueprint {
 	private double maxFuel;
 	@Element
 	private double dailyCost;
-	private Map<Float, Float> fuelConsumption;
+	@Element
+	private Engine engine;
 
 	ShipBlueprint() {
 	}
@@ -88,5 +90,33 @@ public abstract class ShipBlueprint {
 
 	public double getDailyCost() {
 		return dailyCost;
+	}
+
+	public void setEngine(Engine engine) {
+		this.engine = engine;
+	}
+
+	public int getGrossTonnage() {
+		return grossTonnage;
+	}
+
+	public void setGrossTonnage(int grossTonnage) {
+		this.grossTonnage = grossTonnage;
+	}
+
+	public int getNetTonnage() {
+		return netTonnage;
+	}
+
+	public void setNetTonnage(int netTonnage) {
+		this.netTonnage = netTonnage;
+	}
+
+	public double getBeam() {
+		return beam;
+	}
+
+	public void setBeam(double beam) {
+		this.beam = beam;
 	}
 }
