@@ -20,4 +20,8 @@ public class ModelSerializer {
 		File result = new File(fileName);
 		serializer.write(aClass.cast(obj), result);
 	}
+
+	public static Object readFromFile(String resourceName, Class<ShipClassList> aClass) throws Exception {
+		return readFromFile(ClassLoader.getSystemClassLoader().getResource(resourceName), aClass);
+	}
 }

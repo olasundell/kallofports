@@ -1,5 +1,8 @@
 package kop.ui;
 
+import javax.swing.*;
+import java.awt.*;
+
 /**
  * Created by IntelliJ IDEA.
  * User: ola
@@ -8,4 +11,5 @@ package kop.ui;
  * To change this template use File | Settings | File Templates.
  */
 public class WorldFreightMarketWindow {
+
 }

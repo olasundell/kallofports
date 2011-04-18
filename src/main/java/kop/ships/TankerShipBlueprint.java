@@ -7,6 +7,10 @@ package kop.ships;
  * Time: 7:32 PM
  * To change this template use File | Settings | File Templates.
  */
-class TankerShipBlueprint extends ShipBlueprint {
+public class TankerShipBlueprint extends ShipBlueprint {
 
+	@Override
+	public ShipType getType() {
+		return ShipType.tanker;  //To change body of implemented methods use File | Settings | File Templates.
+	}
 }

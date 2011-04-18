@@ -16,7 +16,7 @@ import java.util.List;
 
 @Root
 class ShipClassList {
-	@ElementList
+	@ElementList(inline = true)
 	public ArrayList<ShipClass> list;
 
 	public ShipClassList() {

@@ -7,11 +7,10 @@ import kop.ports.NoSuchPortException;
 import kop.ports.Port;
 import kop.ports.PortsOfTheWorld;
 import kop.ships.ShipModel;
+import kop.ui.MainWindow;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
+import javax.swing.*;
+import java.util.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -29,11 +28,16 @@ public class Game {
 	private List<ShipModel> shipTypes;
 	private FreightMarket market;
 	private boolean paused = false;
+	private Company playerCompany;
 
 	private Game() {
 		world = new PortsOfTheWorld();
 		calendar = new GregorianCalendar(1970,0,0,0,0);
 		market = new FreightMarket();
+
+		companies = new ArrayList<Company>();
+		companies.add(new Company());
+		playerCompany = companies.get(0);
 	}
 
 	public static void createInstance() {
@@ -106,5 +110,9 @@ public class Game {
 
 	public Port getPortByName(String portName) throws NoSuchPortException {
 		return world.getPortByName(portName);
+	}
+
+	public Company getPlayerCompany() {
+		return playerCompany;
 	}
 }

@@ -69,4 +69,8 @@ public class Company {
 	public void addLoan(Loan loan) {
 		loans.add(loan);
 	}
+
+	public ShipModel getShip(int index) {
+		return ships.get(index);
+	}
 }

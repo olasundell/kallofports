@@ -3,6 +3,7 @@ package kop.ui;
 import kop.company.Company;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,4 +29,5 @@ public class CompanyInfoWindow {
 	public boolean isModified(Company data) {
 		return false;
 	}
+
 }

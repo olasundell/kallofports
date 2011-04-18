@@ -30,18 +30,24 @@ public abstract class ShipBlueprint {
 	@Element
 	private Engine engine;
 
+	public enum ShipType {
+		bulk { public String toString() { return "Bulk hauler"; } },
+		container { public String toString() { return "Container ship"; } },
+		tanker { public String toString() { return "Tanker"; } }
+	}
+
 	ShipBlueprint() {
 	}
 
 	public boolean isPostPanamax() {
 		// TODO loa Container ship and passenger ship: 965 ft  294.13
-		return loa > 289.56 || beam > 32.31 || draft > 12.04;
+		return getLoa() > 289.56 || getBeam() > 32.31 || getDraft() > 12.04;
 
 	}
 
 	public boolean isPostSuezmax() {
 //		20.1 m (66 ft) of draught for ships with the beam no wider than 50.0 m (164.0 ft) or 12.2 m (40 ft) of draught for ships with maximum allowed beam of 77.5 m (254 ft 3 in).
-		return (beam > 75.0 && draft > 12.2) || (beam > 50.0 && draft > 20.1);
+		return (getBeam() > 75.0 && getDraft() > 12.2) || (getBeam() > 50.0 && getDraft() > 20.1);
 	}
 
 	public int getDwt() {
@@ -119,4 +125,6 @@ public abstract class ShipBlueprint {
 	public void setBeam(double beam) {
 		this.beam = beam;
 	}
+
+	public abstract ShipType getType();
 }

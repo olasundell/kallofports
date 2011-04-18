@@ -1,5 +1,4 @@
 <shipclasses>
-	<container>
 		<!--
 		<shipclass>
 			<className>Feeder</className>
@@ -21,64 +20,61 @@
 			</ship>
 		</shipclass>
 		-->
-		<shipClass className="Delmas Libreville">
-			<cost>15.0</cost>
-			<ship class="kop.ships.ContainerShipBlueprint">
-				<dwt>27100</dwt>
-				<grossTonnage>24053</grossTonnage>
-				<netTonnage>12958</netTonnage>
-				<maxSpeed>21.0</maxSpeed>
-				<loa>205.5</loa>
-				<beam>27.4</beam>
-				<draft>10.12</draft>
-				<maxFuel></maxFuel>
-				<dailyCost></dailyCost>
-				<teu>2109</teu>
-				<engine modelName="B&amp;W 7L60MC">
-					<bsfc>172.0</bsfc>
-					<manufacturer>MAN Diesel</manufacturer>
-					<kW>13380.0</kW>
-				</engine>
-			</ship>
-		</shipClass>
-		<shipClass className="Heinz Schepers">
-		   <cost>10.0</cost>
-		   <ship class="kop.ships.ContainerShipBlueprint">
-			   <dwt>5335</dwt>
-			   <maxSpeed>15.0</maxSpeed>
-			   <loa>101.11</loa>
-			   <beam>18.2</beam>
-			   <draft>4.4</draft>
-			   <maxFuel>0.0</maxFuel>
-			   <dailyCost>0.0</dailyCost>
-			   <teu>509</teu>
-			   <engine modelName="TBD 645 L9">
-				   <bsfc>178.0</bsfc>
-				   <manufacturer>Deutz</manufacturer>
-				   <kW>3825.0</kW>
-			   </engine>
-		   </ship>
-	   </shipClass>
+	<shipClass className="Delmas Libreville">
+		<cost>15.0</cost>
+		<ship class="kop.ships.ContainerShipBlueprint">
+			<dwt>27100</dwt>
+			<grossTonnage>24053</grossTonnage>
+			<netTonnage>12958</netTonnage>
+			<maxSpeed>21.0</maxSpeed>
+			<loa>205.5</loa>
+			<beam>27.4</beam>
+			<draft>10.12</draft>
+			<maxFuel>5000</maxFuel>
+			<dailyCost>1200</dailyCost>
+			<maxTEU>2109</maxTEU>
+			<engine modelName="B&amp;W 7L60MC">
+				<bsfc>172.0</bsfc>
+				<manufacturer>MAN Diesel</manufacturer>
+				<kW>13380.0</kW>
+			</engine>
+		</ship>
+	</shipClass>
+	<shipClass className="Heinz Schepers">
+		<cost>10.0</cost>
+		<ship class="kop.ships.ContainerShipBlueprint">
+			<dwt>5335</dwt>
+			<grossTonnage>3992</grossTonnage>
+			<netTonnage>2233</netTonnage>
+			<maxSpeed>15.0</maxSpeed>
+			<loa>101.11</loa>
+			<beam>18.2</beam>
+			<draft>4.4</draft>
+			<maxFuel>0.0</maxFuel>
+			<dailyCost>0.0</dailyCost>
+			<maxTEU>509</maxTEU>
+			<engine modelName="TBD 645 L9">
+				<bsfc>178.0</bsfc>
+				<manufacturer>Deutz</manufacturer>
+				<kW>3825.0</kW>
+			</engine>
+		</ship>
+	</shipClass>
 
-		<shipclass>
-			<className>Feeder</className>
-			<price>10.0</price>
-			<ship>
-				<dwt>10000</dwt>
-				<maxSpeed>20</maxSpeed>
-				<loa>100</loa>
-				<beam>20</beam>
-				<draft>7</draft>
-				<maxFuel>2000</maxFuel>
-				<dailyCost>1000</dailyCost>
-				<maxTEUs>800</maxTEUs>
-			</ship>
-		</shipclass>
-	</container>
-	<bulk>
-
-	</bulk>
-	<tankers>
-
-	</tankers>
+	<!--
+	<shipclass>
+		<className>Feeder</className>
+		<price>10.0</price>
+		<ship>
+			<dwt>10000</dwt>
+			<maxSpeed>20</maxSpeed>
+			<loa>100</loa>
+			<beam>20</beam>
+			<draft>7</draft>
+			<maxFuel>2000</maxFuel>
+			<dailyCost>1000</dailyCost>
+			<maxTEUs>800</maxTEUs>
+		</ship>
+	</shipclass>
+	-->
 </shipclasses>

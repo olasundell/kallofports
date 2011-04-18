@@ -5,8 +5,11 @@ import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
 import java.io.File;
+import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.assertTrue;
 
 /**
  * Created by IntelliJ IDEA.
@@ -16,6 +19,12 @@ import static junit.framework.Assert.assertEquals;
  * To change this template use File | Settings | File Templates.
  */
 public class ShipClassTest {
+	@Test
+	public void getShipClasses() {
+		List<ShipClass> list = ShipClass.getShipClasses();
+		assertNotNull(list);
+		assertTrue(list.size() > 0);
+	}
 	@Test
 	public void testSerializeDeserialize() throws Exception {
 		// TODO replace this factory with kop.ships.ModelSerializer usage.
