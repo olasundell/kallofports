@@ -13,4 +13,8 @@ class TankerShipModel extends ShipModel {
 	public TankerShipModel(String name) {
 		super(name);
 	}
+
+	public TankerShipModel() {
+		super();
+	}
 }

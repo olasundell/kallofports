@@ -13,4 +13,8 @@ class BulkShipModel extends ShipModel {
     public BulkShipModel(String name) {
         super(name);
     }
+
+	public BulkShipModel() {
+		super();
+	}
 }

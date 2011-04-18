@@ -21,7 +21,7 @@
 		</shipclass>
 		-->
 	<shipClass className="Delmas Libreville">
-		<cost>15.0</cost>
+		<price>15000000</price>
 		<ship class="kop.ships.ContainerShipBlueprint">
 			<dwt>27100</dwt>
 			<grossTonnage>24053</grossTonnage>
@@ -41,7 +41,7 @@
 		</ship>
 	</shipClass>
 	<shipClass className="Heinz Schepers">
-		<cost>10.0</cost>
+		<price>10000000</price>
 		<ship class="kop.ships.ContainerShipBlueprint">
 			<dwt>5335</dwt>
 			<grossTonnage>3992</grossTonnage>

@@ -1,6 +1,6 @@
 package kop.company;
 
-import kop.ships.ContainerShipModel;
+import kop.ships.ShipClass;
 import kop.ships.ShipModel;
 
 import java.util.ArrayList;
@@ -72,5 +72,16 @@ public class Company {
 
 	public ShipModel getShip(int index) {
 		return ships.get(index);
+	}
+
+	public boolean purchaseShip(ShipClass shipClass) {
+		if (getMoney() < shipClass.getPrice()) {
+			return false;
+		}
+
+		setMoney(getMoney() - shipClass.getPrice());
+		addShip(ShipModel.createShip(shipClass));
+
+		return true;
 	}
 }

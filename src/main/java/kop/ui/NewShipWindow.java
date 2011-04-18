@@ -7,8 +7,8 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import javax.swing.*;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
-import java.awt.*;
-import java.util.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 /**
@@ -23,23 +23,41 @@ public class NewShipWindow {
 	private JPanel contentPane;
 	private JTable newShipTable;
 	private JButton purchase;
+	private List<ShipClass> shipClasses;
+
+	public NewShipWindow() {
+		if (shipClasses == null) {
+			shipClasses = ShipClass.getShipClasses();
+		}
+
+		purchase.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Game.getInstance().getPlayerCompany().purchaseShip(shipClasses.get(newShipTable.getSelectedRow()));
+			}
+		});
+	}
 
 	public JPanel getContentPane() {
 		return contentPane;
 	}
 
 	private void createUIComponents() {
-		newShipTable = new JTable(new NewShipTableModel());
+		if (shipClasses == null) {
+			shipClasses = ShipClass.getShipClasses();
+		}
+		newShipTable = new JTable(new NewShipTableModel(shipClasses));
 	}
 
 	private class NewShipTableModel implements TableModel {
-		List<ShipClass> shipClasses;
+		private List<ShipClass> shipClasses;
+
 		String columnNames[] = {
 			"Class type", "Class name", "Price"
 		};
 
-		NewShipTableModel() {
-			shipClasses = ShipClass.getShipClasses();
+		NewShipTableModel(List<ShipClass> shipClasses) {
+			this.shipClasses = shipClasses;
 		}
 		@Override
 		public int getRowCount() {
@@ -82,7 +100,7 @@ public class NewShipWindow {
 				case 1:
 					return shipClasses.get(rowIndex).getClassName();
 				case 2:
-					return shipClasses.get(rowIndex).getCost();
+					return shipClasses.get(rowIndex).getPrice();
 			}
 
 			throw new NotImplementedException();

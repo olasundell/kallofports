@@ -16,7 +16,7 @@ import java.util.List;
 @Root
 public class ShipClass {
 	@Element
-	private double cost;
+	private double price;
 	@Attribute
 	private String className;
 	@Element
@@ -28,8 +28,8 @@ public class ShipClass {
 
 	}
 
-	public ShipClass(ShipBlueprint ship, double cost, String className) {
-		this.cost = cost;
+	public ShipClass(ShipBlueprint ship, double price, String className) {
+		this.price = price;
 		this.className = className;
 		this.ship = ship;
 	}
@@ -46,12 +46,12 @@ public class ShipClass {
 		return l.list;
 	}
 
-	public double getCost() {
-		return cost;
+	public double getPrice() {
+		return price;
 	}
 
-	public void setCost(double cost) {
-		this.cost = cost;
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 	public String getClassName() {
@@ -62,7 +62,11 @@ public class ShipClass {
 		this.className = className;
 	}
 
-	public Object getClassType() {
+	public ShipBlueprint.ShipType getClassType() {
 		return ship.getType();
+	}
+
+	protected ShipBlueprint getBlueprint() {
+		return ship;
 	}
 }

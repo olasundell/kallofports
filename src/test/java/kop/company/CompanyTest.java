@@ -1,10 +1,15 @@
 package kop.company;
 
 import kop.ships.ContainerShipModel;
+import kop.ships.ShipClass;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertTrue;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,6 +20,7 @@ import static junit.framework.Assert.assertEquals;
  */
 public class CompanyTest {
 	private Company company;
+	private List<ShipClass> shipClasses;
 
 	@Before
 	public void setup() {
@@ -26,6 +32,7 @@ public class CompanyTest {
 
 		Loan loan = new Loan(1000,12);
 		company.addLoan(loan);
+		shipClasses = ShipClass.getShipClasses();
 	}
 
 	@Test
@@ -45,5 +52,21 @@ public class CompanyTest {
 		company.setMoney(1000);
 		company.doMonthlyCosts();
 		assertEquals(990.0, company.getMoney());
+	}
+
+	@Test
+	public void purchaseShipWithoutEnoughMoney() {
+		company.setMoney(1);
+		assertFalse(company.purchaseShip(shipClasses.get(0)));
+
+	}
+
+	@Test
+	public void purchaseShipAndAssertThatCurrentMoneyAddsUp() {
+		int money = 100000000;
+		company.setMoney(money);
+		assertTrue(company.purchaseShip(shipClasses.get(0)));
+		assertEquals(2,company.getNumberOfShips());
+		assertEquals(money - shipClasses.get(0).getPrice(), company.getMoney());
 	}
 }

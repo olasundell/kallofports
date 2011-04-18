@@ -59,10 +59,19 @@ public abstract class ShipModel {
 		return blueprint;
 	}
 
-	public enum ShipType {
-		TANKER,
-		BULKER,
-		CONTAINER
+	public static ShipModel createShip(ShipClass shipClass) {
+		ShipModel model = null;
+		switch (shipClass.getClassType()) {
+			case container:
+				model = new ContainerShipModel();
+			case tanker:
+				model = new TankerShipModel();
+			case bulk:
+				model = new BulkShipModel();
+		}
+		model.setBlueprint(shipClass.getBlueprint());
+
+		return model;
 	}
 
     ShipModel(String name) {
@@ -155,4 +164,7 @@ public abstract class ShipModel {
 		this.currentFuel = currentFuel;
 	}
 
+	public void setBlueprint(ShipBlueprint blueprint) {
+		this.blueprint = blueprint;
+	}
 }

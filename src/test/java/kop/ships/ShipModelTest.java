@@ -9,8 +9,10 @@ import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
 import java.io.File;
+import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -40,6 +42,14 @@ public class ShipModelTest {
 	@Test
 	public void testIsPostSuezmax() throws Exception {
 
+	}
+
+	@Test
+	public void createShipFromShipClass() {
+		List<ShipClass> shipClasses = ShipClass.getShipClasses();
+
+		ShipModel ship = ShipModel.createShip(shipClasses.get(0));
+		assertNotNull(ship);
 	}
 
 	@Test

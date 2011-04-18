@@ -19,6 +19,7 @@ public class MainWindow {
 	private JButton displayShips;
 	private JPanel contentPane;
 	private JButton newShip;
+	private JButton companyInfo;
 
 	public MainWindow() {
 		displayShips.addActionListener(new ActionListener() {
@@ -31,6 +32,12 @@ public class MainWindow {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				displayFrame("New ship", new NewShipWindow().getContentPane());
+			}
+		});
+		companyInfo.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				displayFrame("Company info", new CompanyInfoWindow().getContentPane());
 			}
 		});
 	}

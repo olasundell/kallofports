@@ -16,6 +16,7 @@ public class CompanyInfoWindow {
 	private JLabel companyName;
 	private JLabel currentFunds;
 	private JLabel numberOfShips;
+	private JPanel contentPane;
 
 	public void setData(Company data) {
 		companyName.setText(data.getName());
@@ -30,4 +31,7 @@ public class CompanyInfoWindow {
 		return false;
 	}
 
+	public JPanel getContentPane() {
+		return contentPane;
+	}
 }
