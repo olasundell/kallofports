@@ -1,6 +1,7 @@
 package kop.ui;
 
 import kop.company.Company;
+import kop.game.Game;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,19 +18,6 @@ public class CompanyInfoWindow {
 	private JLabel currentFunds;
 	private JLabel numberOfShips;
 	private JPanel contentPane;
-
-	public void setData(Company data) {
-		companyName.setText(data.getName());
-		currentFunds.setText(String.valueOf(data.getMoney()));
-		numberOfShips.setText(String.valueOf(data.getNumberOfShips()));
-	}
-
-	public void getData(Company data) {
-	}
-
-	public boolean isModified(Company data) {
-		return false;
-	}
 
 	public JPanel getContentPane() {
 		return contentPane;

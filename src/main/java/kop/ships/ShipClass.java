@@ -35,15 +35,19 @@ public class ShipClass {
 	}
 
 	public static List<ShipClass> getShipClasses() {
-		ShipClassList l = null;
-		try {
-			l = (ShipClassList) ModelSerializer.readFromFile("kop/ships/shipclasses.xml", ShipClassList.class);
-		} catch (Exception e) {
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-			return null;
+		if (shipClasses == null) {
+			ShipClassList l = null;
+			try {
+				l = (ShipClassList) ModelSerializer.readFromFile("kop/ships/shipclasses.xml", ShipClassList.class);
+			} catch (Exception e) {
+				e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+				return null;
+			}
+
+			shipClasses = l.list;
 		}
 
-		return l.list;
+		return shipClasses;
 	}
 
 	public double getPrice() {
