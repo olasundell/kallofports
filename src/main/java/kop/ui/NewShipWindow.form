@@ -7,60 +7,55 @@
     <properties/>
     <border type="none"/>
     <children>
-      <tabbedpane id="25a66" binding="ship">
+      <grid id="25fe7" layout-manager="GridBagLayout">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="200" height="200"/>
-          </grid>
+          <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
-        <properties>
-          <tabPlacement value="2"/>
-        </properties>
+        <properties/>
         <border type="none"/>
         <children>
-          <grid id="25fe7" layout-manager="GridBagLayout">
+          <component id="bf84f" class="javax.swing.JButton" binding="purchase">
             <constraints>
-              <tabbedpane title="New ship"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Purchase"/>
+            </properties>
+          </component>
+          <scrollpane id="b8a44">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties/>
             <border type="none"/>
             <children>
-              <scrollpane id="b8a44">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
+              <component id="6f329" class="javax.swing.JTable" binding="newShipTable" custom-create="true">
+                <constraints/>
                 <properties/>
-                <border type="none"/>
-                <children>
-                  <component id="6f329" class="javax.swing.JTable" binding="newShipTable" custom-create="true">
-                    <constraints/>
-                    <properties/>
-                  </component>
-                </children>
-              </scrollpane>
-              <component id="bf84f" class="javax.swing.JButton" binding="purchase">
-                <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-                <properties>
-                  <text value="Purchase"/>
-                </properties>
               </component>
             </children>
-          </grid>
-          <grid id="3069a" layout-manager="GridBagLayout">
-            <constraints>
-              <tabbedpane title="Used ship"/>
-            </constraints>
-            <properties/>
-            <border type="none"/>
-            <children/>
-          </grid>
+          </scrollpane>
         </children>
-      </tabbedpane>
+      </grid>
+      <component id="2807d" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Ship type"/>
+        </properties>
+      </component>
+      <component id="d8917" class="javax.swing.JComboBox" binding="shipTypeSelector" custom-create="true">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties/>
+      </component>
     </children>
   </grid>
 </form>

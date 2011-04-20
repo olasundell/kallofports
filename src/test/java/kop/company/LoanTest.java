@@ -16,14 +16,14 @@ public class LoanTest {
 	private final double AMOUNT = 10000;
 
 	@Test
-	public void testDoMortgage() throws Exception {
+	public void doMortgage() throws Exception {
 		Loan loan = new Loan(AMOUNT, INTEREST);
 		assertEquals(33.0, loan.doMortgage());
 		assertEquals(33.0, loan.doMortgage());
 	}
 
 	@Test
-	public void testDoMortgageWithPayback() {
+	public void doMortgageWithPayback() {
 		Loan loan = new Loan(AMOUNT, INTEREST);
 		loan.setMortagePerMonth(1000);
 		assertEquals(1033.0, loan.doMortgage());
@@ -32,7 +32,7 @@ public class LoanTest {
 	}
 
 	@Test
-	public void testDoMortgageFullyRepay() {
+	public void doMortgageFullyRepay() {
 		Loan loan = new Loan(AMOUNT, INTEREST);
 		loan.setMortagePerMonth(9000);
 		assertEquals(9033.0, loan.doMortgage());

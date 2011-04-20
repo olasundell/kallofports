@@ -9,11 +9,12 @@ import kop.ships.ShipModel;
  * Time: 4:24 PM
  * To change this template use File | Settings | File Templates.
  */
-class Loan {
+public class Loan {
 	private ShipModel security;
 	private double interest;
 	private double mortagePerMonth;
 	private double currentDebt;
+
 
 	public Loan(double debt, double interest) {
 		this.currentDebt = debt;

@@ -22,7 +22,7 @@ public class ShipClass {
 	@Element
 	private ShipBlueprint ship;
 
-	private static List<ShipClass> shipClasses;
+	private static ShipClassList shipClasses;
 
 	public ShipClass() {
 
@@ -36,15 +36,12 @@ public class ShipClass {
 
 	public static List<ShipClass> getShipClasses() {
 		if (shipClasses == null) {
-			ShipClassList l = null;
 			try {
-				l = (ShipClassList) ModelSerializer.readFromFile("kop/ships/shipclasses.xml", ShipClassList.class);
+				shipClasses = (ShipClassList) ModelSerializer.readFromFile("kop/ships/shipclasses.xml", ShipClassList.class);
 			} catch (Exception e) {
 				e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
 				return null;
 			}
-
-			shipClasses = l.list;
 		}
 
 		return shipClasses;

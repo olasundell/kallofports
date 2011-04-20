@@ -1,12 +1,14 @@
 package kop.ui;
 
 import kop.game.Game;
+import kop.ships.ShipBlueprint;
 import kop.ships.ShipClass;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.swing.*;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -19,11 +21,13 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class NewShipWindow {
-	private JTabbedPane ship;
 	private JPanel contentPane;
 	private JTable newShipTable;
 	private JButton purchase;
+	private JComboBox shipTypeSelector;
 	private List<ShipClass> shipClasses;
+	private NewShipTableModel tableModel;
+	private TableRowSorter<NewShipTableModel> sorter;
 
 	public NewShipWindow() {
 		if (shipClasses == null) {
@@ -36,6 +40,18 @@ public class NewShipWindow {
 				Game.getInstance().getPlayerCompany().purchaseShip(shipClasses.get(newShipTable.getSelectedRow()));
 			}
 		});
+		shipTypeSelector.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JComboBox source = (JComboBox) e.getSource();
+				Object o = source.getSelectedItem();
+				if (o instanceof ShipBlueprint.ShipType) {
+					sorter.setRowFilter(new ShipTypeRowFilter((ShipBlueprint.ShipType)o));
+				} else {
+					sorter.setRowFilter(null);
+				}
+			}
+		});
 	}
 
 	public JPanel getContentPane() {
@@ -46,7 +62,17 @@ public class NewShipWindow {
 		if (shipClasses == null) {
 			shipClasses = ShipClass.getShipClasses();
 		}
-		newShipTable = new JTable(new NewShipTableModel(shipClasses));
+
+		tableModel = new NewShipTableModel(shipClasses);
+		sorter = new TableRowSorter<NewShipTableModel>(tableModel);
+		newShipTable = new JTable(tableModel);
+		newShipTable.setRowSorter(sorter);
+
+		shipTypeSelector = new JComboBox();
+		shipTypeSelector.addItem("");
+		for (ShipBlueprint.ShipType type: ShipBlueprint.ShipType.values()) {
+			shipTypeSelector.addItem(type);
+		}
 	}
 
 	private class NewShipTableModel implements TableModel {
@@ -55,6 +81,7 @@ public class NewShipWindow {
 		String columnNames[] = {
 			"Class type", "Class name", "Price"
 		};
+		private Object filter = null;
 
 		NewShipTableModel(List<ShipClass> shipClasses) {
 			this.shipClasses = shipClasses;
@@ -119,6 +146,17 @@ public class NewShipWindow {
 		@Override
 		public void removeTableModelListener(TableModelListener l) {
 			//To change body of implemented methods use File | Settings | File Templates.
+		}
+	}
+
+	private class ShipTypeRowFilter extends RowFilter<NewShipTableModel, Integer> {
+		ShipBlueprint.ShipType type;
+		public ShipTypeRowFilter(ShipBlueprint.ShipType type) {
+			this.type = type;
+		}
+		@Override
+		public boolean include(Entry<? extends NewShipTableModel, ? extends Integer> entry) {
+			return entry.getValue(0).equals(type.toString());
 		}
 	}
 }

@@ -23,7 +23,7 @@ class ShipClassesFactory {
 		File source = new File(fileName);
 		ShipClassList list = serializer.read(ShipClassList.class, source);
 
-		return list.list;
+		return list;
 	}
 
 	/*
@@ -38,7 +38,7 @@ class ShipClassesFactory {
 		Serializer serializer = new Persister();
 		File result = new File(fileName);
 		ShipClassList scl = new ShipClassList();
-		scl.list = list;
+		scl.setList(list);
 		serializer.write(scl, result);
 	}
 }

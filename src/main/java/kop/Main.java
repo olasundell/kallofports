@@ -1,6 +1,6 @@
 package kop;
 
-import kop.ui.MainWindow;
+import kop.ui.StartGameWindow;
 
 import javax.swing.*;
 
@@ -13,7 +13,7 @@ import javax.swing.*;
  */
 public class Main {
 	public static void main(String[] args) {
-		displayFrame("kop.ui.MainWindow", new MainWindow().getContentPane());
+		displayFrame("Welcome to KoP!", new StartGameWindow().getContentPane());
 	}
 
 	public static void displayFrame(String title, JPanel contentPane) {

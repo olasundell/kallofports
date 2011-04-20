@@ -4,6 +4,7 @@ import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -15,9 +16,16 @@ import java.util.List;
  */
 
 @Root
-class ShipClassList {
-	@ElementList(inline = true)
-	public ArrayList<ShipClass> list;
+public class ShipClassList extends ArrayList<ShipClass> {
+	@ElementList
+	public Collection<ShipClass> getList() {
+		return this;
+	}
+
+	@ElementList
+	public void setList(Collection<ShipClass> list) {
+		this.addAll(list);
+	}
 
 	public ShipClassList() {
 	}
