@@ -2,14 +2,16 @@ package kop.game;
 
 import kop.cargo.FreightMarket;
 import kop.company.Company;
-import kop.ports.NoRouteFoundException;
-import kop.ports.NoSuchPortException;
-import kop.ports.Port;
-import kop.ports.PortsOfTheWorld;
+import kop.ports.*;
+import kop.ships.EngineList;
+import kop.ships.ModelSerializer;
 import kop.ships.ShipModel;
 import kop.ui.MainWindow;
 
 import javax.swing.*;
+import javax.swing.text.DateFormatter;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.*;
 
 /**
@@ -29,6 +31,10 @@ public class Game {
 	private FreightMarket market;
 	private boolean paused = false;
 	private Company playerCompany;
+	private String playerName;
+	private EngineList engineList;
+
+	private ArrayList<GameStateListener> listeners;
 
 	private Game() {
 		world = new PortsOfTheWorld();
@@ -38,9 +44,14 @@ public class Game {
 		companies = new ArrayList<Company>();
 		companies.add(new Company());
 		playerCompany = companies.get(0);
+		listeners = new ArrayList<GameStateListener>();
 	}
 
-	public static void createInstance() {
+	public void addListener(GameStateListener listener) {
+		listeners.add(listener);
+	}
+
+	private static void createInstance() {
 		instance = new Game();
 		instance.populatePorts();
 		instance.createShipTypes();
@@ -51,10 +62,7 @@ public class Game {
 	}
 
 	private void populatePorts() {
-		Port london = world.putPort("London");
-		Port haifa = world.putPort("Haifa");
-		world.setDistance(london, haifa, 3320);
-		world.setDistance(haifa, london, 3320);
+		world.populatePorts();
 	}
 
 	public double getDistance(Port origin, Port destination, ShipModel ship) throws NoRouteFoundException {
@@ -89,12 +97,19 @@ public class Game {
 			if (calendar.get(Calendar.HOUR) == 0) {
 				// a new day dawns
 				c.doDailyCosts();
-				generateDailyFreights();
 				if (calendar.get(Calendar.DAY_OF_MONTH)==0) {
 					// a new month!
 					c.doMonthlyCosts();
 				}
 			}
+		}
+		// a new day dawns
+		if (calendar.get(Calendar.HOUR) == 0) {
+			generateDailyFreights();
+		}
+
+		for (GameStateListener listener:listeners) {
+			listener.stateChanged();
 		}
 	}
 
@@ -114,5 +129,33 @@ public class Game {
 
 	public Company getPlayerCompany() {
 		return playerCompany;
+	}
+
+	public void setPlayerCompanyName(String text) {
+		getPlayerCompany().setName(text);
+	}
+
+	public void setPlayerName(String text) {
+		playerName = text;
+	}
+
+	public EngineList getEngineList() {
+		if (engineList == null) {
+			try {
+				engineList = (EngineList) ModelSerializer.readFromFile("kop/ships/engines.xml", EngineList.class);
+			} catch (Exception e) {
+				e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			}
+		}
+
+		return engineList;
+	}
+
+	public void setDate(Date d) {
+		calendar.setTime(d);
+	}
+
+	public String getCurrentDateAsString() {
+		return calendar.toString();
 	}
 }

@@ -15,7 +15,7 @@ import javax.swing.table.TableModel;
  * Time: 10:54 AM
  * To change this template use File | Settings | File Templates.
  */
-public class CompanyShipsWindow {
+public class CompanyShipsWindow implements Window {
 	private JTable shipStatusTable;
 	private JPanel contentPane;
 	TableModel model;
@@ -91,5 +91,10 @@ public class CompanyShipsWindow {
 
 	public JPanel getContentPane() {
 		return contentPane;
+	}
+
+	@Override
+	public String getTitle() {
+		return "Ship list";  //To change body of implemented methods use File | Settings | File Templates.
 	}
 }

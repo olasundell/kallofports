@@ -10,6 +10,15 @@ import java.awt.*;
  * Time: 7:42 AM
  * To change this template use File | Settings | File Templates.
  */
-public class WorldFreightMarketWindow {
+public class WorldFreightMarketWindow implements Window {
 
+	@Override
+	public JPanel getContentPane() {
+		return null;  //To change body of implemented methods use File | Settings | File Templates.
+	}
+
+	@Override
+	public String getTitle() {
+		return null;  //To change body of implemented methods use File | Settings | File Templates.
+	}
 }

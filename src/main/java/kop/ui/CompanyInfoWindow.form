@@ -61,6 +61,15 @@
           <text value="Label"/>
         </properties>
       </component>
+      <component id="ae383" class="javax.swing.JButton" binding="backButton" default-binding="true">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="6" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="1.0" weighty="1.0"/>
+        </constraints>
+        <properties>
+          <text value="Back"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>

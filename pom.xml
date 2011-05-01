@@ -33,5 +33,10 @@
 			<artifactId>simple-xml</artifactId>
 			<version>2.4.1</version>
 		</dependency>
+		<dependency>
+			<groupId>com.bbn</groupId>
+			<artifactId>openmap</artifactId>
+			<version>4.6.5</version>
+		</dependency>
 	</dependencies>
 </project>

@@ -1,5 +1,6 @@
 package kop.ui;
 
+import kop.Main;
 import kop.game.Game;
 import kop.ships.ShipBlueprint;
 import kop.ships.ShipClass;
@@ -20,11 +21,12 @@ import java.util.List;
  * Time: 7:41 AM
  * To change this template use File | Settings | File Templates.
  */
-public class NewShipWindow {
+public class NewShipWindow implements Window {
 	private JPanel contentPane;
 	private JTable newShipTable;
 	private JButton purchase;
 	private JComboBox shipTypeSelector;
+	private JButton cancelButton;
 	private List<ShipClass> shipClasses;
 	private NewShipTableModel tableModel;
 	private TableRowSorter<NewShipTableModel> sorter;
@@ -52,10 +54,21 @@ public class NewShipWindow {
 				}
 			}
 		});
+		cancelButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Main.displayFrame(new MainWindow());
+			}
+		});
 	}
 
 	public JPanel getContentPane() {
 		return contentPane;
+	}
+
+	@Override
+	public String getTitle() {
+		return "New ship";  //To change body of implemented methods use File | Settings | File Templates.
 	}
 
 	private void createUIComponents() {

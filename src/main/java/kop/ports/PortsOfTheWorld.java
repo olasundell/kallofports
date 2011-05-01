@@ -1,8 +1,10 @@
 package kop.ports;
 
+import kop.ships.ModelSerializer;
 import kop.ships.ShipModel;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.*;
 
 /**
@@ -13,18 +15,26 @@ import java.util.*;
  * To change this template use File | Settings | File Templates.
  */
 public class PortsOfTheWorld {
-	private Map<String, Port> ports;
+	private PortMap ports;
 	private List<Distance> distances;
-	private final String PATH_TO_PORT_TSV = "";
 
 	public PortsOfTheWorld() {
-		ports = new HashMap<String, Port>();
 		distances = new ArrayList<Distance>();
 	}
 
-	private void createPorts()  {
-		PortFactory factory = new PortFactory();
-//		ports = factory.createPorts(PATH_TO_PORT_TSV);
+	public void populatePorts()  {
+		try {
+//			ports = factory.createPorts();
+			ports = (PortMap) ModelSerializer.readFromFile("kop/ports/ports.xml", PortMap.class);
+		} catch (Exception e) {
+			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+		}
+	}
+
+	public static PortMap getPorts() {
+		PortsOfTheWorld instance = new PortsOfTheWorld();
+		instance.populatePorts();
+		return instance.ports;
 	}
 
 	public Port putPort(String name) {

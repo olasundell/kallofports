@@ -84,4 +84,12 @@ public class Company {
 
 		return true;
 	}
+
+	public void setName(String text) {
+		this.name = text;
+	}
+
+	public List<ShipModel> getShips() {
+		return ships;
+	}
 }

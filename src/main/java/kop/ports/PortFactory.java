@@ -2,9 +2,13 @@ package kop.ports;
 
 import au.com.bytecode.opencsv.CSVReader;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,16 +19,23 @@ import java.util.Map;
  * Time: 4:19 PM
  * To change this template use File | Settings | File Templates.
  */
-class PortFactory {
+public class PortFactory {
 	// not used for anything except debugging purposes. :-)
 	private String[] header;
 	private Map<String, String> countryCodes;
+	private final String portFileName = "kop/ports/worldports.xml";
+	private final String countryCodeFileName = "kop/ports/countrycodes.xml";
 
-	public Map<String, Port> createPorts(String portFileName, String countryCodeFileName) throws IOException {
-		countryCodes = createCountryCodes(countryCodeFileName);
+	public Map<String, Port> createPorts() throws IOException, URISyntaxException {
+		URL portURL = ClassLoader.getSystemClassLoader().getResource(portFileName);
+		URL countryURL = ClassLoader.getSystemClassLoader().getResource(countryCodeFileName);
+
+		countryCodes = createCountryCodes(countryURL.toURI());
 
 		HashMap<String, Port> ports = new HashMap<String, Port>();
-		CSVReader reader = new CSVReader(new FileReader(portFileName), '\t');
+
+		File source = new File(portURL.toURI());
+		CSVReader reader = new CSVReader(new FileReader(source), '\t');
 		String[] nextLine;
 
 		Port p;
@@ -41,10 +52,11 @@ class PortFactory {
 		return ports;
 	}
 
-	private Map<String, String> createCountryCodes(String fileName) throws IOException {
+	private Map<String, String> createCountryCodes(URI fileName) throws IOException, URISyntaxException {
 		Map<String, String> countryCodes = new HashMap<String, String>();
 
-		CSVReader reader = new CSVReader(new FileReader(fileName), '\t');
+		File source = new File(fileName);
+		CSVReader reader = new CSVReader(new FileReader(source), '\t');
 		String[] line;
 
 		// skip the first line

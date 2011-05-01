@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Map;
 
 import static org.junit.Assert.assertFalse;
@@ -19,10 +20,10 @@ import static org.junit.Assert.assertTrue;
  */
 public class PortFactoryTest {
 	@Test
-	public void testReadFromFile() throws IOException {
+	public void testReadFromFile() throws IOException, URISyntaxException {
 		PortFactory factory = new PortFactory();
 
-		Map<String, Port> map = factory.createPorts("src/main/resources/worldports.tsv", "src/main/resources/countrycodes.tsv");
+		Map<String, Port> map = factory.createPorts();
 		assertNotNull(map);
 		assertFalse(map.size() == 0);
 		Port p = map.get("ROTTERDAM");

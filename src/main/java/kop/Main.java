@@ -3,6 +3,9 @@ package kop;
 import kop.ui.StartGameWindow;
 
 import javax.swing.*;
+import java.awt.*;
+
+import static java.awt.BorderLayout.CENTER;
 
 /**
  * Created by IntelliJ IDEA.
@@ -12,15 +15,39 @@ import javax.swing.*;
  * To change this template use File | Settings | File Templates.
  */
 public class Main {
+	private static JFrame frame;
+	private static JInternalFrame internalFrame;
+	private static BorderLayout manager;
+	private static JPanel contentPane;
+
 	public static void main(String[] args) {
-		displayFrame("Welcome to KoP!", new StartGameWindow().getContentPane());
+		frame = new JFrame();
+		frame.setMinimumSize(new Dimension(1024,768));
+		manager = new BorderLayout();
+		frame.setLayout(manager);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+
+		displayFrame(new StartGameWindow());
 	}
 
-	public static void displayFrame(String title, JPanel contentPane) {
-		JFrame frame = new JFrame(title);
+	public static void displayFrame(kop.ui.Window window) {
+		frame.getContentPane().removeAll();
+		frame.getContentPane().add(window.getContentPane(), CENTER);
+		frame.getContentPane().validate();
+		frame.setTitle(window.getTitle());
+	}
+
+
+	/*
+	public static void displayFrame(kop.ui.Window window) {
+		window.getContentPane();
+		frame.setTitle(window.getTitle());
 		frame.setContentPane(contentPane);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.pack();
-		frame.setVisible(true);
+	}
+	*/
+
+	public static void exit() {
+		frame.dispose();
 	}
 }
