@@ -20,9 +20,14 @@ public class PortsOfTheWorld {
 
 	public PortsOfTheWorld() {
 		distances = new ArrayList<Distance>();
+		populatePorts();
 	}
 
 	public void populatePorts()  {
+		if (ports!=null) {
+			return;
+		}
+
 		try {
 //			ports = factory.createPorts();
 			ports = (PortMap) ModelSerializer.readFromFile("kop/ports/ports.xml", PortMap.class);

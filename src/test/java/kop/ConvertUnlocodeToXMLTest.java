@@ -72,7 +72,8 @@ public class ConvertUnlocodeToXMLTest {
 		assertNull(port);
 	}
 
-	@Test
+	// this test is very resource-heavy, thus we avoid it for now
+//	@Test
 	public void createPortMapFromHTMLShouldReturnInstance() throws IOException {
 		PortMap map = ConvertUnlocodeToXML.createPortMapFromHTML();
 		assertNotNull(map);

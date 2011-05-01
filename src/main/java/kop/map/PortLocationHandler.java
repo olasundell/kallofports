@@ -39,7 +39,7 @@ public class PortLocationHandler extends AbstractLocationHandler {
 			if (port.getLatitude() != null && port.getLongitude() != null) {
 				OMRect rect = new OMRect((float)port.getLatitude().getCoordinate(),
 						(float)port.getLongitude().getCoordinate(),
-						-2,-2,2,2);
+						-1,-1,1,1);
 				rect.setFillPaint(Color.red);
 				rect.setLinePaint(Color.red);
 				rect.setVisible(true);

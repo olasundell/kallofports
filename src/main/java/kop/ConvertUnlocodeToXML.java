@@ -160,6 +160,11 @@ public class ConvertUnlocodeToXML {
 
 		deg = deg.replaceFirst("^[0]+","");
 
+		if (deg.isEmpty()) {
+			// obviously the string came up all zeroes.
+			deg = "0";
+		}
+
 		latLong.setDeg(deg);
 		latLong.setMin(splitted[1].substring(0,2));
 		latLong.setHemisphere(String.valueOf(instr.charAt(instr.length() - 1)));

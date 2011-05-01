@@ -1,7 +1,6 @@
 package kop.map;
 
 import com.bbn.openmap.MapBean;
-import com.bbn.openmap.layer.location.BasicLocationHandler;
 import com.bbn.openmap.layer.location.LocationHandler;
 import com.bbn.openmap.layer.location.LocationLayer;
 import com.bbn.openmap.layer.shape.ShapeLayer;
@@ -24,14 +23,16 @@ public class MapBeanFactory {
 		MapBean mapBean = new MapBean();
 
 		ShapeLayer politicalMapLayer = createPoliticalMapLayer();
-		LocationLayer portMapLayer = createPortMapLayer();
+		LocationLayer portMapLayer = createPortLayer();
+		LocationLayer shipLayer = createShipLayer();
+		mapBean.add(shipLayer);
 		mapBean.add(portMapLayer);
 		mapBean.add(politicalMapLayer);
 
 		return mapBean;
 	}
 
-	private LocationLayer createPortMapLayer() {
+	private LocationLayer createPortLayer() {
 		LocationLayer locationLayer = new LocationLayer();
 		Properties locationProps = new Properties();
 		PortLocationHandler locationHandler = new PortLocationHandler();
@@ -56,6 +57,12 @@ public class MapBeanFactory {
 		locationLayer.setProperties(locationProps);
 
 		return locationLayer;
+	}
+
+	private LocationLayer createShipLayer() {
+		LocationLayer shipLayer = new LocationLayer();
+
+		return shipLayer;
 	}
 
 	private Properties createPortHandlerProperties() {
