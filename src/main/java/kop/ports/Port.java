@@ -5,6 +5,7 @@
 
 package kop.ports;
 
+import kop.map.LatLong;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
@@ -119,63 +120,4 @@ public class Port {
 		this.longitude = longitude.clone();
 	}
 
-	@Root
-	public static class LatLong {
-		private static final String WEST = "W";
-		private static final String SOUTH = "S";
-		@Element
-		String deg;
-		@Element
-		String min;
-		@Element
-		String hemisphere;
-
-		public LatLong() {
-
-		}
-
-		public LatLong(String deg, String min, String hemisphere) {
-			this.deg = deg;
-			this.min = min;
-			this.hemisphere = hemisphere;
-		}
-
-		public LatLong clone() {
-			return new LatLong(deg, min, hemisphere);
-		}
-
-		public double getCoordinate() {
-			double v = Double.parseDouble(deg);
-			v+=Double.parseDouble(min) / 60.0;
-			if (hemisphere.equals(WEST) || hemisphere.equals(SOUTH)) {
-				v = (double) (v * -1.0);
-			}
-
-			return (double)Math.round(v*1000)/1000;
-		}
-
-		public String getDeg() {
-			return deg;
-		}
-
-		public void setDeg(String deg) {
-			this.deg = deg;
-		}
-
-		public String getMin() {
-			return min;
-		}
-
-		public void setMin(String min) {
-			this.min = min;
-		}
-
-		public String getHemisphere() {
-			return hemisphere;
-		}
-
-		public void setHemisphere(String hemisphere) {
-			this.hemisphere = hemisphere;
-		}
-	}
 }

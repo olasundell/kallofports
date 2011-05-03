@@ -23,27 +23,26 @@ public class MapBeanFactory {
 		MapBean mapBean = new MapBean();
 
 		ShapeLayer politicalMapLayer = createPoliticalMapLayer();
-		LocationLayer portMapLayer = createPortLayer();
-		LocationLayer shipLayer = createShipLayer();
+		LocationLayer portMapLayer = createPortOrShipLayer(new PortLocationHandler(), "portlocationhandler");
+		LocationLayer shipLayer = createPortOrShipLayer(new ShipLocationHandler(), "shiplocationhandler");
 		mapBean.add(shipLayer);
-		mapBean.add(portMapLayer);
-		mapBean.add(politicalMapLayer);
+//		mapBean.add(portMapLayer);
+//		mapBean.add(politicalMapLayer);
 
 		return mapBean;
 	}
 
-	private LocationLayer createPortLayer() {
+	private LocationLayer createPortOrShipLayer(LocationHandler locationHandler, String portlocationhandler) {
 		LocationLayer locationLayer = new LocationLayer();
 		Properties locationProps = new Properties();
-		PortLocationHandler locationHandler = new PortLocationHandler();
-		LocationHandler[] handlers = { locationHandler };
+		LocationHandler[] handlers = {locationHandler};
 
 		locationLayer.setLocationHandlers(handlers);
 
-		String[] handlerNames = { "portlocationhandler" };
+		String[] handlerNames = {portlocationhandler};
 		locationLayer.setLocationHandlerNames(handlerNames);
 
-		Properties handlerProperties = createPortHandlerProperties();
+		Properties handlerProperties = createHandlerProperties();
 
 		locationHandler.setProperties(handlerProperties);
 
@@ -52,20 +51,14 @@ public class MapBeanFactory {
 		locationProps.setProperty("loclayer.declutterMatrix","com.bbn.openmap.layer.DeclutterMatrix");
 		locationProps.setProperty("loclayer.addToBeanContext","true");
 		locationProps.setProperty("loclayer.locationHandlers","portlocationhandler");
-		locationProps.setProperty("portlocationhandler.class","kop.map.PortLocationHandler");
+		locationProps.setProperty(portlocationhandler + ".class","kop.map.PortLocationHandler");
 
 		locationLayer.setProperties(locationProps);
 
 		return locationLayer;
 	}
 
-	private LocationLayer createShipLayer() {
-		LocationLayer shipLayer = new LocationLayer();
-
-		return shipLayer;
-	}
-
-	private Properties createPortHandlerProperties() {
+	private Properties createHandlerProperties() {
 		Properties portLocProps = new Properties();
 //		portLocProps.setProperty("portlocationhandler","locationColor=FF0000");
 		portLocProps.setProperty("portlocationhandler","nameColor=008C54");

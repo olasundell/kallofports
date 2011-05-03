@@ -3,6 +3,7 @@ package kop.map;
 import com.bbn.openmap.layer.location.AbstractLocationHandler;
 import com.bbn.openmap.layer.location.BasicLocation;
 import com.bbn.openmap.layer.location.Location;
+import com.bbn.openmap.omGraphics.OMLine;
 import com.bbn.openmap.omGraphics.OMRect;
 import kop.game.Game;
 import kop.ports.Port;
@@ -18,10 +19,10 @@ import java.util.Vector;
  * Created by IntelliJ IDEA.
  * User: ola
  * Date: 5/1/11
- * Time: 9:25 AM
+ * Time: 9:31 PM
  * To change this template use File | Settings | File Templates.
  */
-public class PortLocationHandler extends AbstractLocationHandler {
+public class ShipLocationHandler extends AbstractLocationHandler {
 	@Override
 	public Vector get(float v, float v1, float v2, float v3, Vector vector) {
 		Vector retVector;
@@ -32,31 +33,29 @@ public class PortLocationHandler extends AbstractLocationHandler {
 			retVector = vector;
 		}
 
-		PortMap ports = PortsOfTheWorld.getPorts();
+		List<ShipModel> ships = Game.getInstance().getPlayerCompany().getShips();
 
-		for (Port port: ports.values()) {
+		for (ShipModel ship: ships) {
 
-			if (port.getLatitude() != null && port.getLongitude() != null) {
-				OMRect rect = new OMRect((float)port.getLatitude().getCoordinate(),
-						(float)port.getLongitude().getCoordinate(),
-						-1,-1,1,1);
-				rect.setFillPaint(Color.blue);
-				rect.setLinePaint(Color.blue);
-				rect.setVisible(true);
+			OMLine line = new OMLine((float)ship.getLatitude(),
+					(float)ship.getLongitude(),
+					-1,-1,1,1);
+			line.setFillPaint(Color.red);
+			line.setLinePaint(Color.red);
+			line.setVisible(true);
 
-				Location location = new BasicLocation((float)port.getLatitude().getCoordinate(),
-						(float)port.getLongitude().getCoordinate(),
-						port.getName(),
-						rect);
+			Location location = new BasicLocation((float)ship.getLatitude(),
+					(float)ship.getLongitude(),
+					ship.getName(),
+					line);
 
 
-				location.setShowName(false);
-				location.setShowLocation(true);
-				location.setLocationHandler(this);
+			location.setShowName(false);
+			location.setShowLocation(true);
+			location.setLocationHandler(this);
 
-				//noinspection unchecked
-				retVector.add(location);
-			}
+			//noinspection unchecked
+			retVector.add(location);
 		}
 
 		return retVector;

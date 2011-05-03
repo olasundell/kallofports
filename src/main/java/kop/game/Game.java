@@ -3,9 +3,7 @@ package kop.game;
 import kop.cargo.FreightMarket;
 import kop.company.Company;
 import kop.ports.*;
-import kop.ships.EngineList;
-import kop.ships.ModelSerializer;
-import kop.ships.ShipModel;
+import kop.ships.*;
 import kop.ui.MainWindow;
 
 import javax.swing.*;
@@ -27,7 +25,7 @@ public class Game {
 	private GregorianCalendar calendar;
 	private static Game instance;
 	private PortsOfTheWorld world;
-	private List<ShipModel> shipTypes;
+	private ShipClassList shipClasses;
 	private FreightMarket market;
 	private boolean paused = false;
 	private Company playerCompany;
@@ -54,11 +52,15 @@ public class Game {
 	private static void createInstance() {
 		instance = new Game();
 		instance.populatePorts();
-		instance.createShipTypes();
+		instance.populateShipClasses();
 	}
 
-	private void createShipTypes() {
-//		shipTypes = new ShipClassesFactory().createShipTypes();
+	private void populateShipClasses() {
+		try {
+			shipClasses = (ShipClassList) ModelSerializer.readFromFile("kop/ships/shipclasses.xml", ShipClassList.class);
+		} catch (Exception e) {
+			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+		}
 	}
 
 	private void populatePorts() {
@@ -157,5 +159,9 @@ public class Game {
 
 	public String getCurrentDateAsString() {
 		return calendar.toString();
+	}
+
+	public ShipClassList getShipClasses() {
+		return shipClasses;
 	}
 }

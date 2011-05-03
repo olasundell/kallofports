@@ -33,10 +33,22 @@
 			<artifactId>simple-xml</artifactId>
 			<version>2.4.1</version>
 		</dependency>
+
+		<!-- these have been added manually -->
+		<dependency>
+			<groupId>kop</groupId>
+			<artifactId>routes</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
 		<dependency>
 			<groupId>com.bbn</groupId>
 			<artifactId>openmap</artifactId>
 			<version>4.6.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1</version>
 		</dependency>
 	</dependencies>
 </project>

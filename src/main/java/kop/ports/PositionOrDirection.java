@@ -1,6 +1,7 @@
 package kop.ports;
 
 import kop.game.Game;
+import kop.map.LatLong;
 import kop.ships.ShipModel;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
@@ -32,6 +33,10 @@ public class PositionOrDirection {
 	private Date leftPortDate;
 	@Element(required = false)
 	private Date arrivedAtPortDate;
+	@Element
+	private LatLong currentLatitude;
+	@Element
+	private LatLong currentLongitude;
 
 	public Port getCurrentPort() {
 		return currentPort;
@@ -41,7 +46,11 @@ public class PositionOrDirection {
 		this.currentPort = currentPort;
 		setDestinationPort(null);
 		setOriginPort(null);
-		setArrivedAtPortDate(Game.getInstance().getCurrentDate());
+		if (currentPort != null) {
+			setArrivedAtPortDate(Game.getInstance().getCurrentDate());
+			setCurrentLatitude(currentPort.getLatitude());
+			setCurrentLongitude(currentPort.getLongitude());
+		}
 	}
 
 	public boolean isInPort() {
@@ -75,7 +84,6 @@ public class PositionOrDirection {
 	}
 
 	public void travelTo(Port origin, Port destination, double speed, ShipModel ship) throws NoRouteFoundException {
-		setCurrentPort(null);
 		setDestinationPort(destination);
 		setOriginPort(origin);
 		setLeftPortDate(Game.getInstance().getCurrentDate());
@@ -113,5 +121,21 @@ public class PositionOrDirection {
 
 	public void travel() {
 		setDistanceLeft(getDistanceLeft() - currentSpeed);
+	}
+
+	public double getLongitude() {
+		return currentLongitude.getCoordinate();
+	}
+
+	public double getLatitude() {
+		return currentLatitude.getCoordinate();
+	}
+
+	private void setCurrentLatitude(LatLong currentLatitude) {
+		this.currentLatitude = currentLatitude;
+	}
+
+	private void setCurrentLongitude(LatLong currentLongitude) {
+		this.currentLongitude = currentLongitude;
 	}
 }

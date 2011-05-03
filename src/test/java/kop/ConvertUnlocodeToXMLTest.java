@@ -1,6 +1,6 @@
 package kop;
 
-import junit.framework.TestCase;
+import kop.map.LatLong;
 import kop.ports.Port;
 import kop.ports.PortMap;
 import org.junit.Test;
@@ -47,7 +47,7 @@ public class ConvertUnlocodeToXMLTest {
 
 	@Test
 	public void parseLatitudeShouldReturnInstance() {
-		Port.LatLong latLong = ConvertUnlocodeToXML.parse(LONGITUDE);
+		LatLong latLong = ConvertUnlocodeToXML.parse(LONGITUDE);
 		assertNotNull(latLong);
 		assertEquals("24", latLong.getDeg());
 		assertEquals("57", latLong.getMin());

@@ -1,9 +1,8 @@
 package kop;
 
 import au.com.bytecode.opencsv.CSVReader;
-import kop.game.Game;
+import kop.map.LatLong;
 import kop.ports.Port;
-import kop.ports.PortFactory;
 import kop.ports.PortMap;
 import kop.ports.PortsOfTheWorld;
 import kop.ships.ModelSerializer;
@@ -153,8 +152,8 @@ public class ConvertUnlocodeToXML {
 		return null;
 	}
 
-	protected static Port.LatLong parse(String instr) {
-		Port.LatLong latLong = new Port.LatLong();
+	protected static LatLong parse(String instr) {
+		LatLong latLong = new LatLong();
 		String[] splitted = instr.split("&deg ");
 		String deg = splitted[0];
 

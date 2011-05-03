@@ -167,4 +167,16 @@ public abstract class ShipModel {
 	public void setBlueprint(ShipBlueprint blueprint) {
 		this.blueprint = blueprint;
 	}
+
+	public double getLatitude() {
+		return currentPosition.getLatitude();
+	}
+
+	public double getLongitude() {
+		return currentPosition.getLongitude();
+	}
+
+	public void setPort(Port port) {
+		currentPosition.setCurrentPort(port);
+	}
 }

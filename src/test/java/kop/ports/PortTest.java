@@ -1,6 +1,5 @@
 package kop.ports;
 
-import junit.framework.TestCase;
 import kop.ships.ModelSerializer;
 import org.junit.Test;
 

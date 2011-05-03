@@ -56,6 +56,7 @@ public class ShipModelTest {
 		Serializer serializer = new Persister();
 		EngineList engineList = EngineList.getInstance();
 		ship.getBlueprint().setEngine(engineList.getAnEngineForTest());
+		ship.setPort(Game.getInstance().getPortByName("Singapore"));
 
 		File result = new File("foobar.xml");
 		serializer.write(ship, result);
@@ -64,14 +65,14 @@ public class ShipModelTest {
 		assertEquals(ship.getName(), r.getName());
 	}
 
-//	@Test
 	// TODO add this test again!
+//	@Test
 	public void testTravel() throws Exception, NoRouteFoundException {
 		ShipModel ship = new ContainerShipModel();
 		ship.setName("foobar");
 
-		Port origin = Game.getInstance().getPortByName("London");
-		Port destination = Game.getInstance().getPortByName("Haifa");
+		Port origin = Game.getInstance().getPortByName("Durban");
+		Port destination = Game.getInstance().getPortByName("New York");
 
 		ship.setCurrentPort(origin);
 		ship.setSail(origin, destination, SPEED);
