@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.bbn</groupId>
+  <artifactId>openmap</artifactId>
+  <version>4.6.5</version>
+  <versioning>
+    <versions>
+      <version>4.6.5</version>
+    </versions>
+    <lastUpdated>20110430115056</lastUpdated>
+  </versioning>
+</metadata>
