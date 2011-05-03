@@ -11,7 +11,7 @@
 	<repositories>
 		<repository>
 			<id>local</id>
-			<url>${basedir}/maven</url>
+			<url>${project.baseUri}/maven</url>
 		</repository>
 	</repositories>
 
