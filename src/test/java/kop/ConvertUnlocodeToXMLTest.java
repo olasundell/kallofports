@@ -61,7 +61,7 @@ public class ConvertUnlocodeToXMLTest {
 		assertEquals(60.167, port.getLatitude().getCoordinate());
 	}
 
-	@Test
+//	@Test
 	public void createPortFromFileShouldReturnInstance() throws IOException {
 		String fileName = "e-ships.net/ports/Finland/1476.htm";
 		Port port = ConvertUnlocodeToXML.createPortFromFile(fileName);

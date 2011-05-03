@@ -26,7 +26,7 @@ public class PortMapTest {
 		ModelSerializer.saveToFile("portmap.xml",PortMap.class, map);
 	}
 
-	@Test
+//	@Test
 	public void deserializePortMap() throws Exception {
 		PortMap map = (PortMap) ModelSerializer.readFromFile("portmap.xml", PortMap.class);
 		assertNotNull(map);
