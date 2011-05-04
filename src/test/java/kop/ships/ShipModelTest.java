@@ -66,7 +66,7 @@ public class ShipModelTest {
 	}
 
 	// TODO add this test again!
-//	@Test
+	@Test
 	public void testTravel() throws Exception, NoRouteFoundException {
 		ShipModel ship = new ContainerShipModel();
 		ship.setName("foobar");
@@ -77,12 +77,17 @@ public class ShipModelTest {
 		ship.setCurrentPort(origin);
 		ship.setSail(origin, destination, SPEED);
 		assertEquals(true, ship.isAtSea());
-		assertEquals(3320.0, ship.getDistanceLeft());
-		assertEquals(332, ship.getHoursToDestination());
+		assertEquals(7571.0, ship.getDistanceLeft());
+		assertEquals(758, ship.getHoursToDestination());
+
+		assertEquals(-29.867, ship.getLatitude());
+		assertEquals(31.05, ship.getLongitude());
+		// TODO check if -179.39 (which is returned from the method) is correct
+//		assertEquals(123.4, ship.getBearing());
 
 		ship.travel();
-		assertEquals(3310.0, ship.getDistanceLeft());
-		assertEquals(331, ship.getHoursToDestination());
+		assertEquals(7561.0, ship.getDistanceLeft());
+		assertEquals(757, ship.getHoursToDestination());
 	}
 
 

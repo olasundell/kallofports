@@ -3,7 +3,9 @@ package kop.map;
 import com.bbn.openmap.layer.location.AbstractLocationHandler;
 import com.bbn.openmap.layer.location.BasicLocation;
 import com.bbn.openmap.layer.location.Location;
+import com.bbn.openmap.omGraphics.OMGraphicConstants;
 import com.bbn.openmap.omGraphics.OMLine;
+import com.bbn.openmap.omGraphics.OMPoly;
 import com.bbn.openmap.omGraphics.OMRect;
 import kop.game.Game;
 import kop.ports.Port;
@@ -56,6 +58,28 @@ public class ShipLocationHandler extends AbstractLocationHandler {
 
 			//noinspection unchecked
 			retVector.add(location);
+
+			if (ship.isAtSea()) {
+				// add route to map.
+				Route route = ship.getCurrentRoute();
+				List<Route.Point> points = route.getPoints();
+				float f[] = new float[points.size()*2];
+				for (int i=0;i < points.size(); i++) {
+					f[i*2] = (float) points.get(i).getLatitude().getCoordinate();
+					f[i*2+1] = (float) points.get(i).getLongitude().getCoordinate();
+				}
+				OMPoly poly = new OMPoly(f, OMGraphicConstants.DECIMAL_DEGREES, OMGraphicConstants.LINETYPE_STRAIGHT);
+
+//				poly.setFillPaint(Color.green);
+				poly.setLinePaint(Color.green);
+
+				Location l2 = new BasicLocation((float)ship.getLatitude(),
+						(float)ship.getLongitude(),
+						ship.getName(),
+						poly);
+				retVector.add(l2);
+			}
+
 		}
 
 		return retVector;

@@ -1,5 +1,6 @@
 package kop.ports;
 
+import kop.map.Route;
 import kop.ships.ModelSerializer;
 import kop.ships.ShipModel;
 
@@ -52,13 +53,13 @@ public class PortsOfTheWorld {
 
 
 	public double getDistance(Port origin, Port destination, ShipModel ship) throws NoRouteFoundException {
-		for (Distance d: distances) {
-			if (d.getOrigin().equals(origin) && d.getDestination().equals(destination)) {
-				return d.shortestDistance(ship);
-			}
+		Route route = Route.getRoute(origin.getUnlocode(), destination.getUnlocode(), !ship.isPostPanamax(), !ship.isPostSuezmax());
+
+		if (route == null) {
+			throw new NoRouteFoundException("Could not find route between the ports "+origin.getName() + " and " + destination.getName());
 		}
 
-		throw new NoRouteFoundException("Could not find route between the ports "+origin.getName() + " and " + destination.getName());
+		return route.getNm();
 	}
 
 	public Port getPortByName(String portName) throws NoSuchPortException {

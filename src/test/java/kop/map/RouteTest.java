@@ -2,12 +2,14 @@ package kop.map;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
+import kop.ports.NoRouteFoundException;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
 
+import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -20,7 +22,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class RouteTest {
 	@Test
-	public void getRouteShouldReturnInstance() throws IOException, URISyntaxException {
+	public void getRouteShouldReturnInstance() throws IOException, URISyntaxException, NoRouteFoundException {
 
 		Route route = Route.getRoute("ZADUR", "USNYC", true, true);
 		assertRoute(route);
@@ -39,5 +41,17 @@ public class RouteTest {
 		List<Route.Point> points = route.getPoints();
 		assertNotNull(points);
 		assertTrue(points.size() > 0);
+	}
+
+//	@Test
+	// TODO this doesn't work atm, there's a small discrepancy of about 0.1% or so.
+	public void distanceBetweenRoutePointsShouldEqualTotal() throws NoRouteFoundException {
+		Route route = Route.getRoute("ZADUR", "USNYC", true, true);
+		double dist=0;
+		for (int i=0;i<route.getPoints().size() - 1;i++) {
+			dist+=route.getDistanceBetweenPoints(i,i+1);
+		}
+
+		assertEquals(route.getNm(), dist);
 	}
 }

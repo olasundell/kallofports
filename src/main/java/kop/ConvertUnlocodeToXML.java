@@ -35,8 +35,6 @@ public class ConvertUnlocodeToXML {
 				continue;
 			}
 
-			System.out.println(mappedPort);
-
 			mappedPort.setLatitude(htmlPort.getLatitude());
 			mappedPort.setLongitude(htmlPort.getLongitude());
 		}
@@ -88,8 +86,6 @@ public class ConvertUnlocodeToXML {
 				continue;
 			}
 
-			System.out.println(mappedPort);
-
 			mappedPort.setLatitude(tsvPort.getLatitude());
 			mappedPort.setLongitude(tsvPort.getLongitude());
 		}
@@ -117,7 +113,6 @@ public class ConvertUnlocodeToXML {
 	}
 
 	protected static Port createPortFromFile(String fileName) throws IOException {
-		System.out.println(fileName);
 		File portfile = new File(fileName);
 		BufferedReader portFileReader = new BufferedReader(new FileReader(portfile));
 		String row;

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kop.cargo.Cargo;
+import kop.map.Route;
 import kop.ports.NoRouteFoundException;
 import kop.ports.Port;
 import kop.ports.PositionOrDirection;
@@ -178,5 +179,13 @@ public abstract class ShipModel {
 
 	public void setPort(Port port) {
 		currentPosition.setCurrentPort(port);
+	}
+
+	public double getBearing() {
+		return currentPosition.getBearing();
+	}
+
+	public Route getCurrentRoute() {
+		return currentPosition.getCurrentRoute();
 	}
 }

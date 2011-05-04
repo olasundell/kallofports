@@ -26,8 +26,8 @@ public class MapBeanFactory {
 		LocationLayer portMapLayer = createPortOrShipLayer(new PortLocationHandler(), "portlocationhandler");
 		LocationLayer shipLayer = createPortOrShipLayer(new ShipLocationHandler(), "shiplocationhandler");
 		mapBean.add(shipLayer);
-//		mapBean.add(portMapLayer);
-//		mapBean.add(politicalMapLayer);
+		mapBean.add(portMapLayer);
+		mapBean.add(politicalMapLayer);
 
 		return mapBean;
 	}

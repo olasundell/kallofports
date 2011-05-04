@@ -28,6 +28,8 @@ public class LatLong {
 	String min;
 	@Element
 	String hemisphere;
+	@Element(required = false)
+	Double decimal=null;
 
 	public LatLong() {
 
@@ -48,6 +50,7 @@ public class LatLong {
 			}
 		}
 
+		decimal = Double.parseDouble(coord);
 		String[] split = coord.split("\\.");
 		deg = split[0].replaceAll("-","");
 		min = String.valueOf(Math.round(Double.parseDouble(split[1])*0.6));
@@ -64,13 +67,17 @@ public class LatLong {
 	}
 
 	public double getCoordinate() {
-		double v = Double.parseDouble(deg);
-		v+=Double.parseDouble(min) / 60.0;
-		if (hemisphere.equals(WEST) || hemisphere.equals(SOUTH)) {
-			v = (double) (v * -1.0);
+		if (decimal == null) {
+			double v = Double.parseDouble(deg);
+			v+=Double.parseDouble(min) / 60.0;
+			if (hemisphere.equals(WEST) || hemisphere.equals(SOUTH)) {
+				v = (double) (v * -1.0);
+			}
+
+			decimal = (double)Math.round(v*1000)/1000;
 		}
 
-		return (double)Math.round(v*1000)/1000;
+		return decimal;
 	}
 
 	public String getDeg() {

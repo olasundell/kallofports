@@ -1,7 +1,9 @@
 package kop.ports;
 
+import com.bbn.openmap.event.CenterEvent;
 import kop.game.Game;
 import kop.map.LatLong;
+import kop.map.Route;
 import kop.ships.ShipModel;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
@@ -37,6 +39,8 @@ public class PositionOrDirection {
 	private LatLong currentLatitude;
 	@Element
 	private LatLong currentLongitude;
+	private Route route;
+	private int routeLeg;
 
 	public Port getCurrentPort() {
 		return currentPort;
@@ -72,7 +76,7 @@ public class PositionOrDirection {
 	}
 
 	public int getHoursToDest() {
-		return (int) (getDistanceLeft() / currentSpeed);
+		return (int) Math.ceil(getDistanceLeft() / currentSpeed);
 	}
 
 	public Port getOriginPort() {
@@ -84,8 +88,16 @@ public class PositionOrDirection {
 	}
 
 	public void travelTo(Port origin, Port destination, double speed, ShipModel ship) throws NoRouteFoundException {
+		// an entirely new instance might neither have a current port nor be at sea.
+		if (isInPort() || !isAtSea()) {
+			setCurrentLatitude(origin.getLatitude());
+			setCurrentLongitude(origin.getLongitude());
+		}
+
+		setCurrentPort(null);
 		setDestinationPort(destination);
 		setOriginPort(origin);
+		setRoute(Route.getRoute(origin.getUnlocode(), destination.getUnlocode(), !ship.isPostPanamax(), !ship.isPostSuezmax()));
 		setLeftPortDate(Game.getInstance().getCurrentDate());
 		setDistanceLeft(Game.getInstance().getDistance(origin, destination, ship));
 		setCurrentSpeed(speed);
@@ -137,5 +149,38 @@ public class PositionOrDirection {
 
 	private void setCurrentLongitude(LatLong currentLongitude) {
 		this.currentLongitude = currentLongitude;
+	}
+
+	/**
+	 * Calculates bearing based on next route point.
+	 * @return current bearing in degrees
+	 */
+	public double getBearing() {
+		if (isInPort()) {
+			return 0.0;
+		}
+
+		double lat2 = getNextPoint().getLatitude().getCoordinate();
+		double lon2 = getNextPoint().getLongitude().getCoordinate();
+
+//		double dLat = Math.toRadians(lat2 -getLatitude());
+		double dLon = Math.toRadians(lon2 -getLongitude());
+
+		double y = Math.sin(dLon) * Math.cos(lon2);
+		double x = Math.cos(getLatitude())*Math.sin(lat2) - Math.sin(getLatitude())*Math.cos(lat2)*Math.cos(dLon);
+		return Math.round(100*Math.toDegrees(Math.atan2(y, x)))/100.0;
+	}
+
+	private Route.Point getNextPoint() {
+		return route.getPoints().get(routeLeg+1);
+	}
+
+	public void setRoute(Route route) {
+		this.route = route;
+		routeLeg = 0;
+	}
+
+	public Route getCurrentRoute() {
+		return route;
 	}
 }

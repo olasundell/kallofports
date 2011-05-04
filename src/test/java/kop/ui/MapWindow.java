@@ -3,6 +3,7 @@ package kop.ui;
 import com.bbn.openmap.MapBean;
 import kop.game.Game;
 import kop.map.MapBeanFactory;
+import kop.ports.NoRouteFoundException;
 import kop.ports.NoSuchPortException;
 import kop.ships.ShipModel;
 import org.junit.Test;
@@ -21,18 +22,18 @@ import static junit.framework.Assert.assertNotNull;
  * To change this template use File | Settings | File Templates.
  */
 public class MapWindow {
-	public static void main(String[] args) throws NoSuchPortException {
+	public static void main(String[] args) throws NoSuchPortException, NoRouteFoundException {
 		JFrame frame = createJFrame();
 		frame.setVisible(true);
 	}
 
 	@Test
-	public void createdJFrameWithMapBeanSmokeTest() throws NoSuchPortException {
+	public void createdJFrameWithMapBeanSmokeTest() throws NoSuchPortException, NoRouteFoundException {
 		JFrame frame = MapWindow.createJFrame();
 		assertNotNull(frame);
 	}
 
-	private static JFrame createJFrame() throws NoSuchPortException {
+	private static JFrame createJFrame() throws NoSuchPortException, NoRouteFoundException {
 		// Create a Swing frame
 		JFrame frame = new JFrame("Simple Map");
 
@@ -41,7 +42,8 @@ public class MapWindow {
 
 		ShipModel ship = ShipModel.createShip(Game.getInstance().getShipClasses().get(0));
 		Game.getInstance().getPlayerCompany().addShip(ship);
-		ship.setPort(Game.getInstance().getPortByName("Helsinki"));
+//		ship.setPort(Game.getInstance().getPortByName("Helsinki"));
+		ship.setSail(Game.getInstance().getPortByName("Durban"), Game.getInstance().getPortByName("Taranto"), 10.0);
 
 		// Create a MapBean
 		MapBean mapBean = new MapBeanFactory().createMapBean();
