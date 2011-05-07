@@ -31,7 +31,7 @@ public class ShipClassTest {
 		ContainerShipBlueprint blueprint = new ContainerShipBlueprint();
 		EngineList instance = EngineList.getInstance();
 		Engine anEngineForTest = instance.getAnEngineForTest();
-		blueprint.setEngine(anEngineForTest);
+		blueprint.addEngine(anEngineForTest);
 
 		ShipClass c = new ShipClass(blueprint, 10.0, "Feeder");
 		Serializer serializer = new Persister();

@@ -52,10 +52,10 @@ public class ShipModelTest {
 		// TODO use kop.ships.ModelSerializer for this.
 		ShipModel ship = new ContainerShipModel();
 		ship.setName("foobar");
-		ship.getBlueprint().setEngine(new Engine());
+		ship.getBlueprint().addEngine(new Engine());
 		Serializer serializer = new Persister();
 		EngineList engineList = EngineList.getInstance();
-		ship.getBlueprint().setEngine(engineList.getAnEngineForTest());
+		ship.getBlueprint().addEngine(engineList.getAnEngineForTest());
 		ship.setPort(Game.getInstance().getPortByName("Singapore"));
 
 		File result = new File("foobar.xml");

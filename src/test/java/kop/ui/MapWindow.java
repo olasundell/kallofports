@@ -40,9 +40,11 @@ public class MapWindow {
 		// Size the frame appropriately
 		frame.setSize(1024, 768);
 
+//		ShipModel ship = ShipModel.createShip(Game.getInstance().getShipClasses().get(2));
+//		Game.getInstance().getPlayerCompany().addShip(ship);
+//		ship.setSail(Game.getInstance().getPortByName("Durban"), Game.getInstance().getPortByName("Taranto"), 10.0);
 		ShipModel ship = ShipModel.createShip(Game.getInstance().getShipClasses().get(0));
 		Game.getInstance().getPlayerCompany().addShip(ship);
-//		ship.setPort(Game.getInstance().getPortByName("Helsinki"));
 		ship.setSail(Game.getInstance().getPortByName("Durban"), Game.getInstance().getPortByName("Taranto"), 10.0);
 
 		// Create a MapBean

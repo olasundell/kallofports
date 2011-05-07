@@ -1,7 +1,11 @@
 package kop.ships;
 
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A blueprint contains the constant attributes of a ship, for instance length, dwt and max speed.
@@ -27,16 +31,17 @@ public abstract class ShipBlueprint {
 	private double maxFuel;
 	@Element
 	private double dailyCost;
-	@Element
-	private Engine engine;
+	private List<Engine> engines;
 
 	public enum ShipType {
 		bulk { public String toString() { return "Bulk hauler"; } },
 		container { public String toString() { return "Container ship"; } },
-		tanker { public String toString() { return "Tanker"; } }
+		tanker { public String toString() { return "Tanker"; } },
+		lngcarrier{ public String toString() { return "LNG carrier"; } }
 	}
 
 	ShipBlueprint() {
+		engines = new ArrayList<Engine>();
 	}
 
 	public boolean isPostPanamax() {
@@ -98,8 +103,21 @@ public abstract class ShipBlueprint {
 		return dailyCost;
 	}
 
-	public void setEngine(Engine engine) {
-		this.engine = engine;
+	@ElementList
+	public void setEngines(List<String> modelNames) {
+		for (String e: modelNames) {
+			engines.add(EngineList.getInstance().getByName(e));
+		}
+	}
+
+	@ElementList
+	public List<String> getEngines() {
+		List<String> modelNames = new ArrayList<String>();
+		for (Engine e: engines) {
+			modelNames.add(e.getModelName());
+		}
+
+		return modelNames;
 	}
 
 	public int getGrossTonnage() {
@@ -124,6 +142,14 @@ public abstract class ShipBlueprint {
 
 	public void setBeam(double beam) {
 		this.beam = beam;
+	}
+
+	public void addEngine(Engine engine) {
+		engines.add(engine);
+	}
+
+	public double getFuelConsumption(double fractionOfMaxSpeed) {
+		return 0;
 	}
 
 	public abstract ShipType getType();

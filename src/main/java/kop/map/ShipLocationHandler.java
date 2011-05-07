@@ -70,7 +70,6 @@ public class ShipLocationHandler extends AbstractLocationHandler {
 				}
 				OMPoly poly = new OMPoly(f, OMGraphicConstants.DECIMAL_DEGREES, OMGraphicConstants.LINETYPE_STRAIGHT);
 
-//				poly.setFillPaint(Color.green);
 				poly.setLinePaint(Color.green);
 
 				Location l2 = new BasicLocation((float)ship.getLatitude(),

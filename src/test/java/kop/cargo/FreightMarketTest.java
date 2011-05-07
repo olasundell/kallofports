@@ -34,4 +34,19 @@ public class FreightMarketTest {
 		assertNotNull(list);
 		assertTrue(list.size() == 1);
 	}
+
+	@Test
+	public void listCargoTypes() throws Exception {
+		CargoTypeList cargoTypeList = FreightMarket.getCargoTypes();
+		assertNotNull(cargoTypeList);
+		assertTrue(cargoTypeList.size() > 0);
+	}
+
+	@Test
+	public void generateCargo() throws Exception {
+		CargoTypeList cargoTypeList = FreightMarket.getCargoTypes();
+		Cargo cargo = FreightMarket.generateCargo(cargoTypeList.get(0));
+		assertNotNull(cargo);
+		assertTrue(cargo.getWeight() > 0);
+	}
 }

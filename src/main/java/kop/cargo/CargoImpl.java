@@ -21,6 +21,8 @@ public class CargoImpl implements Cargo {
 	private double pricePerVolume;
     private CargoType type;
     private Date deadline;
+
+	public CargoImpl() {};
     
     public CargoImpl(int weight, CargoType type, double pricePerTon, Date deadline) {
         this.weight=weight;

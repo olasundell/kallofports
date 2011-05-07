@@ -4,6 +4,7 @@ import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -13,8 +14,16 @@ import java.util.ArrayList;
  * To change this template use File | Settings | File Templates.
  */
 @Root
-class CargoTypeList {
+class CargoTypeList extends ArrayList<CargoType> {
 	@ElementList
-	ArrayList<CargoType> list;
+	public void setList(List<CargoType> list) {
+		this.addAll(list);
+	}
+
+	@ElementList
+	public List<CargoType> getList() {
+		return this;
+	}
+
 	public CargoTypeList() {}
 }

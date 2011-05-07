@@ -1,3 +1,27 @@
+<!DOCTYPE shipClassList [
+		<!ELEMENT shipClassList (list)*>
+		<!ELEMENT list (shipClass)*>
+		<!ELEMENT shipClass (price|ship)*>
+		<!ATTLIST shipClass
+				className CDATA #REQUIRED>
+		<!ELEMENT price (#PCDATA)>
+		<!ELEMENT ship (dwt|grossTonnage|netTonnage|maxSpeed|loa|beam|draft|maxFuel|dailyCost|maxTEU|engines|lngCapacity)*>
+		<!ATTLIST ship
+				class CDATA #REQUIRED>
+		<!ELEMENT dwt (#PCDATA)>
+		<!ELEMENT grossTonnage (#PCDATA)>
+		<!ELEMENT netTonnage (#PCDATA)>
+		<!ELEMENT maxSpeed (#PCDATA)>
+		<!ELEMENT loa (#PCDATA)>
+		<!ELEMENT beam (#PCDATA)>
+		<!ELEMENT draft (#PCDATA)>
+		<!ELEMENT maxFuel (#PCDATA)>
+		<!ELEMENT dailyCost (#PCDATA)>
+		<!ELEMENT maxTEU (#PCDATA)>
+		<!ELEMENT engines (engine)*>
+		<!ELEMENT engine (#PCDATA)>
+		<!ELEMENT lngCapacity (#PCDATA)>
+		]>
 <shipClassList>
 	<!--
 	   <shipclass>
@@ -34,11 +58,9 @@
 				<maxFuel>5000</maxFuel>
 				<dailyCost>1200</dailyCost>
 				<maxTEU>2109</maxTEU>
-				<engine modelName="B&amp;W 7L60MC">
-					<bsfc>172.0</bsfc>
-					<manufacturer>MAN Diesel</manufacturer>
-					<kW>13380.0</kW>
-				</engine>
+				<engines>
+					<engine>B&amp;W 7L60MC</engine>
+				</engines>
 			</ship>
 		</shipClass>
 		<shipClass className="Heinz Schepers">
@@ -54,29 +76,75 @@
 				<maxFuel>0.0</maxFuel>
 				<dailyCost>0.0</dailyCost>
 				<maxTEU>509</maxTEU>
-				<engine modelName="TBD 645 L9">
-					<bsfc>178.0</bsfc>
-					<manufacturer>Deutz</manufacturer>
-					<kW>3825.0</kW>
-				</engine>
+				<engines>
+					<engine>TBD 645 L9</engine>
+				</engines>
 			</ship>
 		</shipClass>
-
+		<shipClass className="TI class tanker">
+			<price>120000000</price>
+			<ship class="kop.ships.TankerShipBlueprint">
+				<dwt>441585</dwt>
+				<loa>380.0</loa>
+				<beam>68.0</beam>
+				<draft>24.5</draft>
+				<grossTonnage>234006</grossTonnage>
+				<netTonnage>162447</netTonnage>
+				<maxSpeed>16.5</maxSpeed>
+				<maxFuel>11996</maxFuel>
+				<dailyCost>10000</dailyCost>
+				<engines>
+					<engine>9RTA84T-D</engine>
+				</engines>
+			</ship>
+		</shipClass>
+		<shipClass className="P-class tanker">
+			<price>100000000</price>
+			<ship class="kop.ships.TankerShipBlueprint">
+				<dwt>306397</dwt>
+				<engines>
+					<engine>B&amp;W 7S80MC</engine>
+				</engines>
+				<loa>333.96</loa>
+				<draft>22.52</draft>
+				<beam>58</beam>
+				<maxSpeed>15.0</maxSpeed>
+				<maxFuel>7547</maxFuel>
+				<grossTonnage>160216</grossTonnage>
+				<netTonnage>105889</netTonnage>
+				<dailyCost>8000</dailyCost>
+			</ship>
+		</shipClass>
+		<shipClass className="Gem class">
+			<price>100000000</price>
+			<ship class="kop.ships.LNGCarrierBlueprint">
+				<beam>44.2</beam>
+				<dailyCost>0.0</dailyCost>
+				<draft>11.47</draft>
+				<dwt>76000</dwt>
+				<engines>
+					<engine>12V50DF</engine>
+					<engine>12V50DF</engine>
+					<engine>6V50DF</engine>
+					<engine>6V50DF</engine>
+				</engines>
+				<grossTonnage>99600</grossTonnage>
+				<lngCapacity>155000</lngCapacity>
+				<netTonnage>31576</netTonnage>
+				<maxSpeed>20.0</maxSpeed>
+				<loa>288.0</loa>
+				<maxFuel>6700</maxFuel>
+			</ship>
+		</shipClass>
 		<!--
-	 <shipclass>
-		 <className>Feeder</className>
-		 <price>10.0</price>
-		 <ship>
-			 <dwt>10000</dwt>
-			 <maxSpeed>20</maxSpeed>
-			 <loa>100</loa>
-			 <beam>20</beam>
-			 <draft>7</draft>
-			 <maxFuel>2000</maxFuel>
-			 <dailyCost>1000</dailyCost>
-			 <maxTEUs>800</maxTEUs>
-		 </ship>
-	 </shipclass>
-	 -->
+		<shipClass className="E-class container ship">
+			<price>145000000</price>
+			<ship class="kop.ships.ContainerShipBlueprint">
+				<dwt>156907</dwt>
+				<engine>14RT-Flex96C</engine>
+				<maxSpeed>25.5</maxSpeed>
+			</ship>
+		</shipClass>
+		-->
 	</list>
 </shipClassList>

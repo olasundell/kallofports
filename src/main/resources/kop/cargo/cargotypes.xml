@@ -1,0 +1,65 @@
+<cargoTypeList>
+	<list>
+		<cargoType name="Chemicals">
+			<description>Lots of them</description>
+			<packaging>chemical</packaging>
+			<density>0.0</density>
+		</cargoType>
+		<cargoType name="MTBE">
+			<description>Methyl tert-butyl ether</description>
+			<packaging>wetbulk</packaging>
+			<density>0.0</density>
+		</cargoType>
+		<!-- TODO expand condensates into LNG/LPG variants -->
+		<cargoType name="Gas condensate">
+			<description>Lots of them</description>
+			<packaging>lng</packaging>
+			<density>0.0</density>
+		</cargoType>
+		<cargoType name="Naphtha">
+			<description>Lots of them</description>
+			<packaging>wetbulk</packaging>
+			<density>0.0</density>
+		</cargoType>
+		<cargoType name="Gasoil">
+			<description>Lots of them</description>
+			<packaging>wetbulk</packaging>
+			<density>0.0</density>
+		</cargoType>
+		<cargoType name="Gasoline">
+			<description>Lots of them</description>
+			<packaging>wetbulk</packaging>
+			<density>0.0</density>
+		</cargoType>
+		<cargoType name="Fuel oil">
+			<description>Lots of them</description>
+			<packaging>wetbulk</packaging>
+			<density>0.0</density>
+		</cargoType>
+		<cargoType name="Cycle oil">
+			<description>Lots of them</description>
+			<packaging>wetbulk</packaging>
+			<density>0.0</density>
+		</cargoType>
+		<cargoType name="Diesel">
+			<description>Lots of them</description>
+			<packaging>wetbulk</packaging>
+			<density>0.0</density>
+		</cargoType>
+		<cargoType name="Vegetable oil">
+			<description>Lots of them</description>
+			<packaging>chemical</packaging>
+			<density>0.0</density>
+		</cargoType>
+		<cargoType name="Kerosene">
+			<description>Lots of them</description>
+			<packaging>wetbulk</packaging>
+			<density>0.0</density>
+		</cargoType>
+		<cargoType name="Jet Fuel">
+			<description>Lots of them</description>
+			<packaging>wetbulk</packaging>
+			<density>0.0</density>
+		</cargoType>
+	</list>
+</cargoTypeList>

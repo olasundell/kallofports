@@ -19,7 +19,8 @@ public class CargoType {
 		drybulk,
 		wetbulk,
 		container,
-		chemical
+		chemical,
+		lng
 	}
 
 	@Attribute
@@ -27,8 +28,9 @@ public class CargoType {
 	@Element(required = false)
 	private String description;
 	@Element
-	private
-	Packaging packaging;
+	private Packaging packaging;
+	@Element
+	private double density;
 
 	public CargoType() {
 
@@ -56,6 +58,14 @@ public class CargoType {
 
 	public void setPackaging(Packaging packaging) {
 		this.packaging = packaging;
+	}
+
+	public double getDensity() {
+		return density;
+	}
+
+	public void setDensity(double density) {
+		this.density = density;
 	}
 }
 

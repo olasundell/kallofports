@@ -24,7 +24,7 @@ public class ShipClassesFactoryTest {
 		engine.setModelName("TBD 645 L9");
 		engine.setkW(3825);
 
-		shipSpec.setEngine(engine);
+		shipSpec.addEngine(engine);
 
 		ShipClass shipClass = new ShipClass(shipSpec, 10.0, "Feeder");
 

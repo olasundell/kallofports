@@ -1,7 +1,48 @@
+<!DOCTYPE engineList [
+		<!ELEMENT engineList (engine)*>
+		<!ELEMENT engine (bsfc|manufacturer|kW)* >
+		<!ATTLIST engine
+				modelName CDATA #REQUIRED>
+		<!ELEMENT bsfc (#PCDATA) >
+		<!ELEMENT manufacturer (#PCDATA)>
+		<!ELEMENT kW (#PCDATA)>
+		]>
 <engineList>
    <engine modelName="TBD 645 L9">
       <bsfc>178.0</bsfc>
       <manufacturer>Deutz</manufacturer>
       <kW>3825.0</kW>
    </engine>
+	<engine modelName="B&amp;W 7S80MC">
+		<bsfc>167</bsfc>
+		<manufacturer>MAN Diesel</manufacturer>
+		<kW>24580</kW>
+	</engine>
+	<engine modelName="B&amp;W 7L60MC">
+		<bsfc>172.0</bsfc>
+		<manufacturer>MAN Diesel</manufacturer>
+		<kW>13380.0</kW>
+	</engine>
+	<engine modelName="9RTA84T-D">
+		<bsfc>171.0</bsfc>
+		<kW>37800</kW>
+		<manufacturer>Wärtsilä</manufacturer>
+	</engine>
+	<engine modelName="6V50DF">
+		<bsfc>189</bsfc>
+		<kW>5850</kW>
+		<manufacturer>Wärtsilä</manufacturer>
+	</engine>
+	<engine modelName="12V50DF">
+		<bsfc>189.0</bsfc>
+		<kW>11700</kW>
+		<manufacturer>Wärtsilä</manufacturer>
+	</engine>
+	<!--
+	        Type:DMD MAN 7S80MC
+Rated power:25480KW 34650bhp
+Cylinder bore: 800mm
+Piston stroke: 3056mm
+Speed:79rpm
+BSFC: 167g/kwh -->
 </engineList>
