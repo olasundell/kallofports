@@ -7,7 +7,7 @@ package kop.ports;
  * Time: 5:23 PM
  * To change this template use File | Settings | File Templates.
  */
-public class NoRouteFoundException extends Throwable {
+public class NoRouteFoundException extends Exception {
 	public NoRouteFoundException(String s) {
 		super(s);
 	}

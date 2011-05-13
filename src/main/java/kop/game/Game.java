@@ -1,5 +1,6 @@
 package kop.game;
 
+import kop.cargo.Freight;
 import kop.cargo.FreightMarket;
 import kop.company.Company;
 import kop.ports.*;
@@ -33,16 +34,23 @@ public class Game {
 	private EngineList engineList;
 
 	private ArrayList<GameStateListener> listeners;
+	private Random random;
+	private Map<Company, List<Freight>> deliveredFreights;
 
-	private Game() {
+	protected Game() {
 		world = new PortsOfTheWorld();
 		calendar = new GregorianCalendar(1970,0,0,0,0);
 		market = new FreightMarket();
 
 		companies = new ArrayList<Company>();
-		companies.add(new Company());
-		playerCompany = companies.get(0);
+		resetPlayerCompany();
 		listeners = new ArrayList<GameStateListener>();
+		// TODO randseed will be zero for reproducing reasons. Fix this later!
+		random = new Random(0);
+		deliveredFreights = new HashMap<Company, List<Freight>>();
+
+		populatePorts();
+		populateShipClasses();
 	}
 
 	public void addListener(GameStateListener listener) {
@@ -51,8 +59,6 @@ public class Game {
 
 	private static void createInstance() {
 		instance = new Game();
-		instance.populatePorts();
-		instance.populateShipClasses();
 	}
 
 	private void populateShipClasses() {
@@ -91,13 +97,22 @@ public class Game {
 
 	public void stepTime() {
 		calendar.add(Calendar.HOUR, 1);
-		// TODO move ships
 
 		for (Company c: companies) {
-			c.moveShips();
+
+			try {
+				c.moveShips();
+			} catch (OutOfFuelException e) {
+				// TODO do something here.
+			}
 
 			if (calendar.get(Calendar.HOUR) == 0) {
 				// a new day dawns
+				if (deliveredFreights.get(c) != null) {
+					for (Freight f: deliveredFreights.get(c)) {
+						c.addMoney(f.getCargo().getTotalPrice());
+					}
+				}
 				c.doDailyCosts();
 				if (calendar.get(Calendar.DAY_OF_MONTH)==0) {
 					// a new month!
@@ -163,5 +178,42 @@ public class Game {
 
 	public ShipClassList getShipClasses() {
 		return shipClasses;
+	}
+
+	public Date getFutureDate(int days) {
+		return new Date(calendar.getTime().getTime() + days * 3600*24*1000);
+	}
+
+	public Random getRandom() {
+		return random;
+	}
+
+	protected PortsOfTheWorld getWorld() {
+		return world;
+	}
+
+	protected FreightMarket getMarket() {
+		return market;
+	}
+
+	public void addDeliveredFreights(Company c, Freight f) {
+		if (deliveredFreights.get(c) == null) {
+			deliveredFreights.put(c, new ArrayList<Freight>());
+		}
+		deliveredFreights.get(c).add(f);
+	}
+
+	public Collection<?> getDeliveredFreights(Company company) {
+		return deliveredFreights.get(company);
+	}
+
+	public boolean isNextTimeStepNewDay() {
+		return calendar.get(Calendar.HOUR) == calendar.getActualMaximum(Calendar.HOUR);
+	}
+
+	protected void resetPlayerCompany() {
+		companies.clear();
+		companies.add(new Company());
+		playerCompany = companies.get(0);
 	}
 }

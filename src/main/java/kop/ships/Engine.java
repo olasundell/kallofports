@@ -49,4 +49,9 @@ public class Engine {
 	public void setkW(double kW) {
 		this.kW = kW;
 	}
+
+	public double getFuelUsage(double delta) {
+		// without the 1000000 this would be grammes per hour. Dividing makes it metric tonnes.
+		return bsfc * kW * delta / 1000000;
+	}
 }

@@ -34,7 +34,7 @@ public class ShipClass {
 		this.ship = ship;
 	}
 
-	public static List<ShipClass> getShipClasses() {
+	public static ShipClassList getShipClasses() {
 		if (shipClasses == null) {
 			try {
 				shipClasses = (ShipClassList) ModelSerializer.readFromFile("kop/ships/shipclasses.xml", ShipClassList.class);

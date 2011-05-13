@@ -1,13 +1,11 @@
 package kop.cargo;
 
+import kop.game.Game;
 import kop.ports.Port;
 import kop.ports.PortsOfTheWorld;
 import kop.ships.ModelSerializer;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -24,7 +22,7 @@ public class FreightMarket {
 		market = new ArrayList<Freight>();
 	}
 
-	public void generateFreight(Port origin, Port destination, Cargo cargo) {
+	public Freight generateFreight(Port origin, Port destination, Cargo cargo) {
 		Freight f = new Freight();
 
 		f.setOrigin(origin);
@@ -32,6 +30,8 @@ public class FreightMarket {
 		f.setCargo(cargo);
 
 		market.add(f);
+
+		return f;
 	}
 
 	public List<Freight> getFreightFromPort(Port origin) {
@@ -55,9 +55,13 @@ public class FreightMarket {
 	}
 
 	public static Cargo generateCargo(CargoType type) {
-		CargoImpl cargo = new CargoImpl();
-		Random random = new Random();
-		cargo.setWeight(random.nextInt() % 100000 + 1);
+		CargoImpl cargo = new CargoImpl(type);
+		Random random = Game.getInstance().getRandom();
+
+		cargo.setWeight((int) Math.abs(random.nextGaussian() * 10000));
+
+		cargo.setPricePerVolume(Math.abs(random.nextGaussian() * 10));
+		cargo.setDeadline(Game.getInstance().getFutureDate((int) Math.abs(random.nextGaussian()*10)));
 		return cargo;
 	}
 }

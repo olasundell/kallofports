@@ -1,9 +1,13 @@
 package kop.company;
 
+import kop.cargo.Freight;
+import kop.game.Game;
+import kop.ships.OutOfFuelException;
 import kop.ships.ShipClass;
 import kop.ships.ShipModel;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -24,18 +28,29 @@ public class Company {
 		loans = new ArrayList<Loan>();
 	}
 
-	public void moveShips() {
+	public void moveShips() throws OutOfFuelException {
 		for (ShipModel s: ships) {
+			boolean atSea = s.isAtSea();
+
 			s.travel();
+
+			// TODO fix this, preferrably with a shipModel.justArrivedAtPortDamnit() or something akin to that.
+			if (atSea==true && s.isInPort()) {
+				// arrived
+
+				for (Freight f: s.getFreights()) {
+					if (f.getDestination().equals(s.getCurrentPosition().getCurrentPort())) {
+						Game.getInstance().addDeliveredFreights(this, f);
+					}
+				}
+				Collection<?> deliveredFreights = Game.getInstance().getDeliveredFreights(this);
+				s.getFreights().removeAll(deliveredFreights);
+			}
 		}
 	}
 
 	public void doDailyCosts() {
-		double costs = 0;
-		for (ShipModel s: ships) {
-			costs += s.getBlueprint().getDailyCost();
-		}
-		setMoney(getMoney() - costs);
+		setMoney(getMoney() - getDailyCosts());
 	}
 
 	public void doMonthlyCosts() {
@@ -91,5 +106,18 @@ public class Company {
 
 	public List<ShipModel> getShips() {
 		return ships;
+	}
+
+	public void addMoney(double money) {
+		setMoney(getMoney() + money);
+	}
+
+	public double getDailyCosts() {
+		double costs = 0;
+		for (ShipModel s: ships) {
+			costs += s.getBlueprint().getDailyCost();
+		}
+
+		return costs;
 	}
 }

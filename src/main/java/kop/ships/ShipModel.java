@@ -8,7 +8,7 @@ package kop.ships;
 import java.util.ArrayList;
 import java.util.List;
 
-import kop.cargo.Cargo;
+import kop.cargo.Freight;
 import kop.map.Route;
 import kop.ports.NoRouteFoundException;
 import kop.ports.Port;
@@ -29,23 +29,40 @@ public abstract class ShipModel {
 	@Attribute
 	private String name;
 
-    private List<Cargo> cargoList;
+    private List<Freight> freightList;
 	@Element
 	private PositionOrDirection currentPosition;
 	@Element
-	ShipBlueprint blueprint;
+	protected ShipBlueprint blueprint;
 
 	public ShipModel() {
 		currentPosition = new PositionOrDirection();
+		freightList = new ArrayList<Freight>();
 	}
 
 	public int getHoursToDestination() {
 		return currentPosition.getHoursToDest();
 	}
 
-	public void travel() {
-		// TODO something with costs
+	public void travel() throws OutOfFuelException {
+		if (!isAtSea()) {
+			return;
+		}
+
 		currentPosition.travel();
+		double newFuel = getCurrentFuel() - blueprint.getFuelConsumption(currentPosition.getCurrentSpeed());
+
+		if (newFuel <= 0) {
+			throw new OutOfFuelException();
+		}
+
+		setCurrentFuel(newFuel);
+		// TODO fix this mess.
+		// See Company class for suggestions.
+		if (isAtSea() && currentPosition.getDistanceLeft() <= 0) {
+			// we've arrived.
+			currentPosition.setCurrentPort(currentPosition.getDestinationPort());
+		}
 	}
 
 	public String getName() {
@@ -65,23 +82,29 @@ public abstract class ShipModel {
 		switch (shipClass.getClassType()) {
 			case container:
 				model = new ContainerShipModel();
+				break;
 			case tanker:
 				model = new TankerShipModel();
+				break;
 			case bulk:
 				model = new BulkShipModel();
+				break;
+			default:
+				model = null; //TODO this will provoke an NPE further down. Maybe we want to throw an exception here?
 		}
 		model.setBlueprint(shipClass.getBlueprint());
+		// TODO should we fill'er up by default? What if the player purchases a used vessel?
+		model.setCurrentFuel(model.getMaxFuel());
 
 		return model;
 	}
 
     ShipModel(String name) {
+		this();
         this.name=name;
-        cargoList= new ArrayList<Cargo>();
-		currentPosition = new PositionOrDirection();
     }
 
-	public Object getDistanceLeft() {
+	public double getDistanceLeft() {
 		return currentPosition.getDistanceLeft();
 	}
 
@@ -100,8 +123,8 @@ public abstract class ShipModel {
     public int getAvailableDWT() {
         int currentCargo = 0;
         
-        for (Cargo c: cargoList) {
-            currentCargo+=c.getWeight();
+        for (Freight f: freightList) {
+            currentCargo+=f.getCargo().getWeight();
         }
         
         return blueprint.getDwt() -currentCargo;
@@ -121,40 +144,20 @@ public abstract class ShipModel {
 		return blueprint.getDwt();
 	}
 
-	public void setDwt(int dwt) {
-		blueprint.setDwt(dwt);
-	}
-
 	public double getMaxSpeed() {
 		return blueprint.getMaxSpeed();
-	}
-
-	public void setMaxSpeed(double maxSpeed) {
-		blueprint.setMaxSpeed(maxSpeed);
 	}
 
 	public double getLoa() {
 		return blueprint.getLoa();
 	}
 
-	public void setLoa(double loa) {
-		blueprint.setLoa(loa);
-	}
-
 	public double getDraft() {
 		return blueprint.getDraft();
 	}
 
-	public void setDraft(double draft) {
-		blueprint.setDraft(draft);
-	}
-
 	public double getMaxFuel() {
 		return blueprint.getMaxFuel();
-	}
-
-	public void setMaxFuel(double maxFuel) {
-		blueprint.setMaxFuel(maxFuel);
 	}
 
 	public double getCurrentFuel() {
@@ -187,5 +190,21 @@ public abstract class ShipModel {
 
 	public Route getCurrentRoute() {
 		return currentPosition.getCurrentRoute();
+	}
+
+	public void addFreight(Freight freight) {
+		freightList.add(freight);
+	}
+
+	public List<Freight> getFreights() {
+		return freightList;
+	}
+
+	public PositionOrDirection getCurrentPosition() {
+		return currentPosition;
+	}
+
+	public boolean isInPort() {
+		return currentPosition.isInPort();
 	}
 }

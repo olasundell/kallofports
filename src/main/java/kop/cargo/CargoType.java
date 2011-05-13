@@ -29,7 +29,6 @@ public class CargoType {
 	private String description;
 	@Element
 	private Packaging packaging;
-	@Element
 	private double density;
 
 	public CargoType() {
@@ -60,12 +59,35 @@ public class CargoType {
 		this.packaging = packaging;
 	}
 
-	public double getDensity() {
+	@Element
+	public String getDensity() {
+		return String.valueOf(density);
+	}
+
+	public double getDensityAsDouble() {
 		return density;
+	}
+
+	@Element
+	public void setDensity(String density) {
+		if (density.matches("[0-9]+-[0-9]+")) {
+			String[] split = density.split("-");
+			double a = Double.parseDouble(split[0]);
+			double b = Double.parseDouble(split[1]);
+			setDensity((a+b)/2);
+		} else if (density.matches("[0-9]+(\\.[0-9]+)*")) {
+			setDensity(Double.parseDouble(density));
+		} else {
+			throw new NumberFormatException("Could not parse cargo type density string: "+density);
+		}
 	}
 
 	public void setDensity(double density) {
 		this.density = density;
+	}
+
+	public String toString() {
+		return "Packaging: "+packaging+" Density: "+getDensity();
 	}
 }
 

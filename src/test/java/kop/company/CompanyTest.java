@@ -1,7 +1,6 @@
 package kop.company;
 
-import kop.ships.ContainerShipModel;
-import kop.ships.ShipClass;
+import kop.ships.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -26,7 +25,7 @@ public class CompanyTest {
 	public void setup() {
 		company = new Company();
 
-		ContainerShipModel shipModel = new ContainerShipModel();
+		ContainerShipModel shipModel = (ContainerShipModel) ShipModel.createShip(ShipClass.getShipClasses().get(ShipBlueprint.ShipType.container,0));
 		shipModel.getBlueprint().setDailyCost(100);
 		company.addShip(shipModel);
 

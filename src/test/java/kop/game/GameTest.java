@@ -1,16 +1,15 @@
 package kop.game;
 
+import kop.cargo.*;
 import kop.ports.NoSuchPortException;
 import kop.ports.Port;
 import kop.ships.EngineList;
+import kop.ships.ShipModel;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Locale;
+import java.util.*;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
@@ -64,6 +63,8 @@ public class GameTest {
 		instance.addListener(listener);
 
 		Date before = instance.getCurrentDate();
+		assertTrue(instance.isNextTimeStepNewDay());
+
 		instance.stepTime();
 		Date now = instance.getCurrentDate();
 
@@ -78,6 +79,64 @@ public class GameTest {
 		assertEquals(Calendar.JANUARY,cal.get(Calendar.MONTH));
 		assertEquals(0,cal.get(Calendar.HOUR));
 		assertTrue(listener.state);
+	}
+
+	@Test
+	public void getDateForwardInTime() {
+		Date date = instance.getFutureDate(10);
+		assertTrue(date.after(instance.getCurrentDate()));
+	}
+
+	@Test
+	public void sailShipBuyAndDeliverCargo() throws Exception {
+		instance = Game.getInstance();
+		instance.resetPlayerCompany();
+
+		// add a ship
+		ShipModel ship = ShipModel.createShip(instance.getShipClasses().get(0));
+		instance.getPlayerCompany().addShip(ship);
+
+		// choose ports
+		Port fromPort = instance.getPortByName("Durban");
+		Port toPort = instance.getPortByName("Taranto");
+
+		// add freight from port A and port B
+		FreightMarket market = instance.getMarket();
+		Cargo cargo = FreightMarket.generateCargo(FreightMarket.getCargoTypes().getCargoTypeByPackaging(ship.getBlueprint().getCargoCapabilities().get(0)));
+		Freight freight = market.generateFreight(fromPort, toPort, cargo);
+		ship.addFreight(freight);
+
+		// route ship between A and B and set sail
+		ship.setSail(fromPort, toPort, 10.0);
+		double distanceLeft = ship.getDistanceLeft();
+
+		// time step, make sure things happen correctly.
+		instance.stepTime();
+		assertTrue(distanceLeft == ship.getDistanceLeft()+10);
+
+		// time step until arrived, make sure that freight is delivered properly.
+
+		// after this we've almost arrived
+		while (ship.getDistanceLeft() > 10) {
+			instance.stepTime();
+		}
+
+		double money = instance.getPlayerCompany().getMoney();
+		// arrive
+
+		if (instance.isNextTimeStepNewDay()) {
+			// if the day rolls here we will be slammed by daily costs, which will break the calculations below.
+			money -= instance.getPlayerCompany().getDailyCosts();
+		}
+		instance.stepTime();
+
+		// freight should have been delivered, money should be in the account.
+		List<Freight> freights = ship.getFreights();
+		assertTrue(freights.size() == 0);
+		double currentMoney = instance.getPlayerCompany().getMoney();
+		double totalPrice = freight.getCargo().getTotalPrice();
+		double expected = money + totalPrice;
+		assertEquals("Current money does not equal expected value.", expected, currentMoney);
 	}
 
 	private static class MyGameStateListener implements GameStateListener {

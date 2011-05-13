@@ -29,4 +29,27 @@ public class ShipClassList extends ArrayList<ShipClass> {
 
 	public ShipClassList() {
 	}
+
+	/**
+	 * TODO code is ugly and documentation is needed.
+	 * @param type
+	 * @param num
+	 * @return
+	 */
+
+	public ShipClass get(ShipBlueprint.ShipType type, int num) {
+		int i=0;
+
+		for (ShipClass c: this) {
+			if (c.getClassType().equals(type)) {
+				if (i == num) {
+					return c;
+				} else {
+					i++;
+				}
+			}
+		}
+
+		return null;
+	}
 }

@@ -1,9 +1,12 @@
 package kop.ships;
 
+import kop.cargo.Cargo;
+import kop.cargo.CargoType;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +35,31 @@ public abstract class ShipBlueprint {
 	@Element
 	private double dailyCost;
 	private List<Engine> engines;
+
+	/**
+	 * TODO fix this method and the corresponding XML so this isn't made up, ie use real values instead.
+	 * We might even do away with ship type?
+	 * @return
+	 */
+	public List<CargoType.Packaging> getCargoCapabilities() {
+		List<CargoType.Packaging> list = new ArrayList<CargoType.Packaging>();
+		switch (getType()) {
+			case container:
+				list.add(CargoType.Packaging.container);
+				break;
+			case tanker:
+				list.add(CargoType.Packaging.wetbulk);
+				break;
+			case bulk:
+				list.add(CargoType.Packaging.drybulk);
+				break;
+			case lngcarrier:
+				list.add(CargoType.Packaging.lng);
+				list.add(CargoType.Packaging.chemical);
+				break;
+		}
+		return  list;
+	}
 
 	public enum ShipType {
 		bulk { public String toString() { return "Bulk hauler"; } },
@@ -120,6 +148,16 @@ public abstract class ShipBlueprint {
 		return modelNames;
 	}
 
+	public double getFuelUsage(double speed) {
+		double usage=0;
+
+		for (Engine e: engines) {
+			usage+=e.getFuelUsage(speed/maxSpeed);
+		}
+
+		return usage;
+	}
+
 	public int getGrossTonnage() {
 		return grossTonnage;
 	}
@@ -148,8 +186,19 @@ public abstract class ShipBlueprint {
 		engines.add(engine);
 	}
 
-	public double getFuelConsumption(double fractionOfMaxSpeed) {
-		return 0;
+	/**
+	 * Calculates the hourly fuel usage based on current speed.
+	 * TODO this isn't exponential atm, it just uses the fraction of speed/maxSpeed. It needs to be fixed properly.
+	 * @param speed current ship speed
+	 * @return fuel usage at current speed
+	 */
+
+	public double getFuelConsumption(double speed) {
+		double consumption=0;
+		for (Engine e:engines) {
+			consumption+=e.getFuelUsage(speed/getMaxSpeed());
+		}
+		return consumption;
 	}
 
 	public abstract ShipType getType();

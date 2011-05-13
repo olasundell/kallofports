@@ -15,7 +15,6 @@ import java.util.Date;
  * User: ola
  * Date: 4/4/11
  * Time: 4:35 PM
- * To change this template use File | Settings | File Templates.
  */
 @Root
 public class PositionOrDirection {
@@ -46,6 +45,10 @@ public class PositionOrDirection {
 		return currentPort;
 	}
 
+	/**
+	 * Sets the current port and nulls destination and origin port, which in turn will switch values of is* methods.
+	 * @param currentPort Current port.
+	 */
 	public void setCurrentPort(Port currentPort) {
 		this.currentPort = currentPort;
 		setDestinationPort(null);
@@ -57,9 +60,18 @@ public class PositionOrDirection {
 		}
 	}
 
+	/**
+	 * Is the ship in a port?
+	 * @return true when currentPort isn't null, ie in a port.
+	 */
 	public boolean isInPort() {
 		return currentPort!=null;
 	}
+
+	/**
+	 * Is the ship at sea?
+	 * @return true when currentPort is null, and both originPort and destinationPort isn't.
+	 */
 
 	public boolean isAtSea() {
 		return currentPort == null &&
@@ -88,7 +100,7 @@ public class PositionOrDirection {
 	}
 
 	public void travelTo(Port origin, Port destination, double speed, ShipModel ship) throws NoRouteFoundException {
-		// an entirely new instance might neither have a current port nor be at sea.
+		// an entirely new model instance might neither have a current port nor be at sea.
 		if (isInPort() || !isAtSea()) {
 			setCurrentLatitude(origin.getLatitude());
 			setCurrentLongitude(origin.getLongitude());
@@ -182,5 +194,9 @@ public class PositionOrDirection {
 
 	public Route getCurrentRoute() {
 		return route;
+	}
+
+	public double getCurrentSpeed() {
+		return currentSpeed;
 	}
 }

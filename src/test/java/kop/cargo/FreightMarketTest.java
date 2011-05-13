@@ -4,6 +4,7 @@ import kop.game.Game;
 import kop.ports.Port;
 import org.junit.Test;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -45,8 +46,18 @@ public class FreightMarketTest {
 	@Test
 	public void generateCargo() throws Exception {
 		CargoTypeList cargoTypeList = FreightMarket.getCargoTypes();
-		Cargo cargo = FreightMarket.generateCargo(cargoTypeList.get(0));
+		Cargo cargo = FreightMarket.generateCargo(cargoTypeList.get(1));
+		checkCargoOK(cargo);
+		cargo = FreightMarket.generateCargo(cargoTypeList.getCargoTypeByPackaging(CargoType.Packaging.container));
+		checkCargoOK(cargo);
+
+		System.out.println(cargo);
+	}
+
+	private void checkCargoOK(Cargo cargo) {
 		assertNotNull(cargo);
 		assertTrue(cargo.getWeight() > 0);
+		assertTrue(cargo.getDaysLeft(Calendar.getInstance().getTime()) > 0);
+		assertTrue(cargo.getTotalPrice() > 0);
 	}
 }

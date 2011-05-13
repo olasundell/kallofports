@@ -9,7 +9,7 @@ import kop.ports.Port;
  * Time: 11:47 AM
  * To change this template use File | Settings | File Templates.
  */
-class Freight {
+public class Freight {
 	private Port origin;
 	private Port destination;
 	private Cargo cargo;
@@ -22,7 +22,7 @@ class Freight {
 		this.origin = origin;
 	}
 
-	Port getDestination() {
+	public Port getDestination() {
 		return destination;
 	}
 
@@ -30,7 +30,7 @@ class Freight {
 		this.destination = destination;
 	}
 
-	Cargo getCargo() {
+	public Cargo getCargo() {
 		return cargo;
 	}
 
