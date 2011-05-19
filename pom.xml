@@ -38,15 +38,11 @@
 		<dependency>
 			<groupId>org.simpleframework</groupId>
 			<artifactId>simple-xml</artifactId>
-			<version>2.4.1</version>
+			<version>2.5.3</version>
 		</dependency>
 
+
 		<!-- these have been added manually -->
-		<dependency>
-			<groupId>kop</groupId>
-			<artifactId>routes</artifactId>
-			<version>0.1-SNAPSHOT</version>
-		</dependency>
 		<dependency>
 			<groupId>com.bbn</groupId>
 			<artifactId>openmap</artifactId>

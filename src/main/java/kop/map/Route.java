@@ -2,6 +2,7 @@ package kop.map;
 
 import com.bbn.openmap.geo.GeoPoint;
 import kop.ports.NoRouteFoundException;
+import kop.ports.NoSuchPortException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -120,9 +121,16 @@ public class Route {
 		String unlocodes = from.replaceAll(" ", "") + "-" + to.replaceAll(" ", "");
 
 		String fileName = unlocodes +"-suez_" + suez + "-panama_"+panama+".json";
-		InputStream stream = ClassLoader.getSystemClassLoader().getResourceAsStream("routes/" + from.substring(0, 2) + "/" + fileName);
+		String resourceName = "routes/" + from.substring(0, 2) + "/" + fileName;
+		InputStream stream = ClassLoader.getSystemClassLoader().getResourceAsStream(resourceName);
+
+		if (stream == null) {
+			throw new NoRouteFoundException(String.format("Resource %s wasn't found, hence no route information could be loaded.", resourceName));
+		}
+
 		BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
 		String jsonstr = null;
+
 		try {
 			jsonstr = reader.readLine();
 		} catch (IOException e) {

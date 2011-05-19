@@ -50,7 +50,7 @@ public class MapBeanFactory {
 		locationProps.setProperty("loclayer.useDeclutter","false");
 		locationProps.setProperty("loclayer.declutterMatrix","com.bbn.openmap.layer.DeclutterMatrix");
 		locationProps.setProperty("loclayer.addToBeanContext","true");
-		locationProps.setProperty("loclayer.locationHandlers","portlocationhandler");
+		locationProps.setProperty("loclayer.locationHandlers",portlocationhandler);
 		locationProps.setProperty(portlocationhandler + ".class","kop.map.PortLocationHandler");
 
 		locationLayer.setProperties(locationProps);
