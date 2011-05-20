@@ -27,41 +27,54 @@ import java.util.List;
  */
 public class RouteCalculator {
 	private static float scale = 2;
-	ShapeLayer world;
+	private static int southOffset = 20;
+	private static int northOffset = 20;
+
+	ShapeLayer basicMapShape;
 	MapBean mapBean;
 
-	protected static final int SOUTH_OFFSET = 20;
-	protected static final int NORTH_OFFSET = 20;
 
-	private int LATITUDE_SIZE = (int) ((180 - NORTH_OFFSET - SOUTH_OFFSET)* scale);
+	private int LATITUDE_SIZE = (int) ((180 - northOffset - southOffset)* scale);
 	private int LONGITUDE_SIZE = (int) (360* scale);
 	Point[][] points = new Point[LATITUDE_SIZE][LONGITUDE_SIZE];
 	List<Shape> shapeList;
 
-	RouteCalculator() throws Exception {
+	RouteCalculator() {
 		shapeList = new ArrayList<Shape>();
 		mapBean = new MapBean();
-		world = createWorldLayer();
+		basicMapShape = createWorldLayer();
 
-//		LocationLayer pointLayer = createPointLayer();
-//
-//		mapBean.add(pointLayer);
-		mapBean.add(world);
+		mapBean.add(basicMapShape);
+	}
 
-//		drawPointLayer();
-//
-//		World obj = new World(points);
-//		ModelSerializer.saveToFile("world.xml", World.class, obj);
+	public void drawRoute(double lat1, double lon1, double lat2, double lon2) {
+		Point start = points[reverseLat(lat1)][reverseLon(lon1)];
+		Point goal = points[reverseLat(lat1)][reverseLon(lon2)];
+		drawRoute(start, goal);
+	}
 
-		World obj2 = (World) ModelSerializer.readFromFile(new File("world.xml").toURI().toURL(), World.class);
-		points = obj2.getPointsAsArray();
-
+	public void drawRoute(Point start, Point goal) {
 		AStarUtil aStarUtil = new AStarUtil();
-		Point start = points[reverseLat(60)][reverseLon(0)];
-		Point goal = points[reverseLat(0)][reverseLon(75)];
 		AStarUtil.ASRoute route = aStarUtil.aStar(start, goal, points);
-		LocationLayer routeLayer = createRouteLayer(route);
-		mapBean.add(routeLayer, 0);
+		if (route!= null) {
+			LocationLayer routeLayer = createRouteLayer(route);
+			mapBean.add(routeLayer, 0);
+		}
+	}
+
+	public void initializePoints(World world) {
+		points = world.getPointsAsArray();
+	}
+
+	public World readWorldFromFile() throws Exception {
+		return (World) ModelSerializer.readFromFile(new File("world.xml").toURI().toURL(), World.class);
+	}
+
+	public World createWorld() {
+		LocationLayer pointLayer = createPointLayer();
+		mapBean.add(pointLayer,0);
+		drawPointLayer();
+		return new World(points);
 	}
 
 	private LocationLayer createRouteLayer(AStarUtil.ASRoute route) {
@@ -93,7 +106,7 @@ public class RouteCalculator {
 	}
 
 	public void drawPointLayer() {
-		OMGraphicList list = world.prepare();
+		OMGraphicList list = basicMapShape.prepare();
 		Iterator<OMGraphic> iterator = list.iterator();
 
 		//	pointLayer.prepare();
@@ -104,7 +117,7 @@ public class RouteCalculator {
 		float lat;
 		float lon;
 
-		Projection projection = world.getProjection();
+		Projection projection = basicMapShape.getProjection();
 
 		for (int i=0;i<points.length;i++) {
 			System.out.println("i is "+i);
@@ -118,12 +131,12 @@ public class RouteCalculator {
 		}
 	}
 
-	protected static int reverseLat(float lat) {
-		return Math.abs(Math.round((lat * scale - 90)));
+	protected static int reverseLat(double lat) {
+		return (int) Math.abs(Math.round((lat- 90)*scale));
 	}
 
-	protected static int reverseLon(float lon) {
-		return Math.abs(Math.round((lon * scale - 180)));
+	protected static int reverseLon(double lon) {
+		return (int) Math.abs(Math.round((lon - 180)*2));
 	}
 
 	protected static float calcLon(int j) {
@@ -131,7 +144,7 @@ public class RouteCalculator {
 	}
 
 	protected static float calcLat(int i) {
-		return 90 - NORTH_OFFSET - i/scale;
+		return 90 - northOffset - i/scale;
 	}
 
 	public static float getScale() {
@@ -221,30 +234,20 @@ public class RouteCalculator {
 		return false;
 	}
 
-	public static void main(String[] args) {
-		RouteCalculator calc=null;
-		try {
-			calc = new RouteCalculator();
-		} catch (Exception e) {
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-		}
-		// Create a Swing frame
-		JFrame frame = new JFrame("Simple Map");
+	public static int getSouthOffset() {
+		return southOffset;
+	}
 
-		// Size the frame appropriately
-		frame.setSize(1024, 768);
+	public static void setSouthOffset(int southOffset) {
+		RouteCalculator.southOffset = southOffset;
+	}
 
-		// Add the map to the frame
-		MapBean mapBean1 = calc.getMapBean();
-		frame.getContentPane().add(mapBean1);
+	public static int getNorthOffset() {
+		return northOffset;
+	}
 
-		frame.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				System.exit(0);
-			}
-		});
-
-		frame.setVisible(true);
+	public static void setNorthOffset(int northOffset) {
+		RouteCalculator.northOffset = northOffset;
 	}
 
 	public MapBean getMapBean() {
@@ -345,6 +348,29 @@ public class RouteCalculator {
 		public void reloadData() {
 			//To change body of implemented methods use File | Settings | File Templates.
 		}
+	}
+
+	public static void main(String[] args) {
+		RouteCalculator calc=null;
+		try {
+			calc = new RouteCalculator();
+		} catch (Exception e) {
+			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+		}
+		JFrame frame = new JFrame("Simple Map");
+		frame.setSize(1024, 768);
+
+		MapBean mapBean = calc.getMapBean();
+		frame.getContentPane().add(mapBean);
+//		ModelSerializer.saveToFile("world.xml", World.class, obj);
+
+		frame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
+			}
+		});
+
+		frame.setVisible(true);
 	}
 
 }
