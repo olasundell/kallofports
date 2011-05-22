@@ -18,39 +18,56 @@ import static org.junit.Assert.assertArrayEquals;
  * To change this template use File | Settings | File Templates.
  */
 public class PointTest {
-	private Point[][] world;
+	private NewWorld world;
 
 	@Before
 	public void setUp() throws Exception {
-		world = WorldTest.createWorld();
+		world = Util.getBlankWorld();
 	}
 
 	@Test
 	public void getY() {
-		assertEquals(world.length - 1, world[0][0].getY(-1, world));
+		assertEquals(world.lats[0].longitudes.length - 1, world.lats[0].longitudes[0].getY(-1, world));
 	}
 
 	@Test
 	public void getNeighbours() {
-		Point p = world[2][2];
+		Point p = world.lats[2].longitudes[2];
 		Point[] arr = {
-				world[1][1], world[1][2], world[1][3],
-				world[2][1],			  world[2][3],
-				world[3][1], world[3][2], world[3][3]
+				world.lats[1].longitudes[1], world.lats[1].longitudes[2], world.lats[1].longitudes[3],
+				world.lats[2].longitudes[1],			  world.lats[2].longitudes[3],
+				world.lats[3].longitudes[1], world.lats[3].longitudes[2], world.lats[3].longitudes[3]
 		};
 
 		List<Point> result = p.getNeighbours(world);
 		assertNotNull(result);
 		assertArrayEquals(arr, result.toArray());
 
-		p = world[0][0];
+		p = world.lats[0].longitudes[0];
 		Point[] arr2 = {
-				world[0][9],			  world[0][1],
-				world[1][9], world[1][0], world[1][1]
+				world.lats[0].longitudes[world.lats[0].longitudes.length-1],			  world.lats[0].longitudes[1],
+				world.lats[1].longitudes[world.lats[0].longitudes.length-1], world.lats[1].longitudes[0], world.lats[1].longitudes[1]
 		};
 
 		result = p.getNeighbours(world);
 		assertNotNull(result);
 		assertArrayEquals(arr2, result.toArray());
+	}
+
+	@Test
+	public void totalCost() {
+		Point previous = null;
+		double dist=0;
+		for (int i=0;i<10;i++) {
+			Point p = new Point(i,i);
+			if (previous != null) {
+				p.setParent(previous);
+				dist+=p.distance(previous);
+			}
+			previous = p;
+		}
+
+		assertEquals(dist, previous.getTotalCost());
+
 	}
 }

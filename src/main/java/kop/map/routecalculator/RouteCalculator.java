@@ -1,6 +1,5 @@
 package kop.map.routecalculator;
 
-import com.bbn.openmap.LatLonPoint;
 import com.bbn.openmap.MapBean;
 import com.bbn.openmap.layer.location.*;
 import com.bbn.openmap.layer.shape.ShapeLayer;
@@ -17,6 +16,7 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.*;
 import java.util.List;
+import java.util.concurrent.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -26,58 +26,66 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class RouteCalculator {
-	private static float scale = 2;
-	private static int southOffset = 20;
-	private static int northOffset = 20;
-
 	ShapeLayer basicMapShape;
 	MapBean mapBean;
 
-
-	private int LATITUDE_SIZE = (int) ((180 - northOffset - southOffset)* scale);
-	private int LONGITUDE_SIZE = (int) (360* scale);
-	Point[][] points = new Point[LATITUDE_SIZE][LONGITUDE_SIZE];
+	NewWorld points = null;
 	List<Shape> shapeList;
 
 	RouteCalculator() {
 		shapeList = new ArrayList<Shape>();
 		mapBean = new MapBean();
 		basicMapShape = createWorldLayer();
-
 		mapBean.add(basicMapShape);
 	}
 
+	public void drawPointLayer() {
+		if (points == null) {
+//			try {
+//				points = readWorldFromFile();
+//			} catch (Exception e) {
+				NewWorld w = calculateWorld(NewWorld.getDefaultLatitudeSize(), NewWorld.getDefaultLongitudeSize());
+				try {
+					ModelSerializer.saveToFile("newworld.xml", NewWorld.class, w);
+				} catch (Exception e1) {
+					e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+				}
+				points = w;
+//			}
+		}
+		LocationLayer pointLayer = createPointLayer();
+		mapBean.add(pointLayer,0);
+
+	}
+
 	public void drawRoute(double lat1, double lon1, double lat2, double lon2) {
-		Point start = points[reverseLat(lat1)][reverseLon(lon1)];
-		Point goal = points[reverseLat(lat1)][reverseLon(lon2)];
+		int i = points.reverseLat(lat1);
+		int i1 = points.reverseLon(lon1);
+		Point start = points.lats[i].longitudes[i1];
+		int i2 = points.reverseLat(lat2);
+		int i3 = points.reverseLon(lon2);
+		Point goal = points.lats[i2].longitudes[i3];
+		if (start==null || goal == null) {
+			throw new NullPointerException("Either start or goal is null");
+		}
 		drawRoute(start, goal);
 	}
 
-	public void drawRoute(Point start, Point goal) {
+	private void drawRoute(Point start, Point goal) {
 		AStarUtil aStarUtil = new AStarUtil();
-		AStarUtil.ASRoute route = aStarUtil.aStar(start, goal, points);
+		ASRoute route = aStarUtil.aStar(start, goal, points);
 		if (route!= null) {
 			LocationLayer routeLayer = createRouteLayer(route);
 			mapBean.add(routeLayer, 0);
 		}
 	}
 
-	public void initializePoints(World world) {
-		points = world.getPointsAsArray();
+	public NewWorld readWorldFromFile() throws Exception {
+		return (NewWorld) ModelSerializer.readFromFile(new File("newworld.xml").toURI().toURL(), NewWorld.class);
 	}
 
-	public World readWorldFromFile() throws Exception {
-		return (World) ModelSerializer.readFromFile(new File("world.xml").toURI().toURL(), World.class);
-	}
 
-	public World createWorld() {
-		LocationLayer pointLayer = createPointLayer();
-		mapBean.add(pointLayer,0);
-		drawPointLayer();
-		return new World(points);
-	}
-
-	private LocationLayer createRouteLayer(AStarUtil.ASRoute route) {
+	private LocationLayer createRouteLayer(ASRoute route) {
 		LocationLayer locationLayer = new LocationLayer();
 		Properties locationProps = new Properties();
 		String locationHandlerName = "routelocationhandler";
@@ -105,54 +113,38 @@ public class RouteCalculator {
 		return locationLayer;
 	}
 
-	public void drawPointLayer() {
+	public NewWorld calculateWorld() {
+		return calculateWorld(NewWorld.getDefaultLatitudeSize(),NewWorld.getDefaultLongitudeSize());
+	}
+
+	public NewWorld calculateWorld(int latitudeSize, int longitudeSize) {
+		return calculateWorld(new NewWorld(latitudeSize, longitudeSize));
+	}
+
+	public NewWorld calculateWorld(NewWorld world) {
 		OMGraphicList list = basicMapShape.prepare();
 		Iterator<OMGraphic> iterator = list.iterator();
 
-		//	pointLayer.prepare();
-
-		// make recursive.
 		getShapes(iterator);
-
-		float lat;
-		float lon;
 
 		Projection projection = basicMapShape.getProjection();
 
-		for (int i=0;i<points.length;i++) {
+		points = world;
+
+		ExecutorService service = Executors.newFixedThreadPool(3);
+		ArrayList<WorldCreationWorker> workers = new ArrayList<WorldCreationWorker>();
+
+		for (int i=0;i<points.lats.length;i++) {
 			System.out.println("i is "+i);
-			for (int j=0;j<points[i].length;j++) {
-				lat = calcLat(i);
-				lon = calcLon(j);
-				if (isWater(projection.forward(lat, lon))) {
-					points[i][j] = new Point(i,j,lat,lon);
-				}
-			}
+			workers.add(new WorldCreationWorker(points, points.calcLat(i), i, projection, shapeList));
 		}
-	}
+		try {
+			service.invokeAll(workers);
+		} catch (InterruptedException e) {
+			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+		}
 
-	protected static int reverseLat(double lat) {
-		return (int) Math.abs(Math.round((lat- 90)*scale));
-	}
-
-	protected static int reverseLon(double lon) {
-		return (int) Math.abs(Math.round((lon - 180)*2));
-	}
-
-	protected static float calcLon(int j) {
-		return j / scale - 180;
-	}
-
-	protected static float calcLat(int i) {
-		return 90 - northOffset - i/scale;
-	}
-
-	public static float getScale() {
-		return scale;
-	}
-
-	public static void setScale(float scale) {
-		RouteCalculator.scale = scale;
+		return points;
 	}
 
 	private void getShapes(Iterator<OMGraphic> iterator) {
@@ -234,22 +226,6 @@ public class RouteCalculator {
 		return false;
 	}
 
-	public static int getSouthOffset() {
-		return southOffset;
-	}
-
-	public static void setSouthOffset(int southOffset) {
-		RouteCalculator.southOffset = southOffset;
-	}
-
-	public static int getNorthOffset() {
-		return northOffset;
-	}
-
-	public static void setNorthOffset(int northOffset) {
-		RouteCalculator.northOffset = northOffset;
-	}
-
 	public MapBean getMapBean() {
 			return mapBean;
 	}
@@ -265,8 +241,8 @@ public class RouteCalculator {
 				retVector = vector;
 			}
 
-			for (Point[] arr: points) {
-				for (Point p: arr) {
+			for (NewWorld.LatitudeArr arr: points.lats) {
+				for (Point p: arr.longitudes) {
 					if (p!=null) {
 						OMRect rect = new OMRect(p.getCoord().getLatitude(),
 								p.getCoord().getLongitude(),
@@ -301,9 +277,9 @@ public class RouteCalculator {
 	}
 
 	private class RouteLocationHandler extends AbstractLocationHandler {
-		private AStarUtil.ASRoute route;
+		private ASRoute route;
 
-		public RouteLocationHandler(AStarUtil.ASRoute route) {
+		public RouteLocationHandler(ASRoute route) {
 			this.route = route;
 		}
 
@@ -317,17 +293,17 @@ public class RouteCalculator {
 				retVector = vector;
 			}
 
-			for (LatLonPoint p: route.points) {
+			for (Point p: route.points) {
 				if (p!=null) {
-					OMRect rect = new OMRect(p.getLatitude(),
-							p.getLongitude(),
+					OMRect rect = new OMRect(p.getCoord().getLatitude(),
+							p.getCoord().getLongitude(),
 							-1,-1,1,1);
 					rect.setFillPaint(Color.white);
 					rect.setLinePaint(Color.white);
 					rect.setVisible(true);
 
-					Location location = new BasicLocation(p.getLatitude(),
-							p.getLongitude(),
+					Location location = new BasicLocation(p.getCoord().getLatitude(),
+							p.getCoord().getLongitude(),
 							"",
 							rect);
 
@@ -359,6 +335,9 @@ public class RouteCalculator {
 		}
 		JFrame frame = new JFrame("Simple Map");
 		frame.setSize(1024, 768);
+
+		calc.drawPointLayer();
+		calc.drawRoute(60, 0, 0, 75);
 
 		MapBean mapBean = calc.getMapBean();
 		frame.getContentPane().add(mapBean);

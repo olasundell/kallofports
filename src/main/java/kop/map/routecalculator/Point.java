@@ -2,6 +2,7 @@ package kop.map.routecalculator;
 
 import com.bbn.openmap.LatLonPoint;
 import com.bbn.openmap.proj.Length;
+import kop.ports.Port;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
@@ -17,7 +18,7 @@ import java.util.List;
 * To change this template use File | Settings | File Templates.
 */
 @Root
-public class Point {
+public class Point implements Cloneable {
 	private LatLonPoint coord;
 	private Point parent;
 	private double parentCost;
@@ -30,6 +31,10 @@ public class Point {
 		coord = new LatLonPoint();
 	}
 
+	Point(double lat, double lon) {
+		this((float)lat, (float)lon);
+	}
+
 	Point(float lat, float lon) {
 		this(0,0,lat,lon);
 	}
@@ -38,6 +43,11 @@ public class Point {
 		this.x = x;
 		this.y = y;
 		coord = new LatLonPoint(lat, lon);
+	}
+
+	public Point(Port port) {
+		this((float)port.getLatitude().getCoordinate(),
+				(float)port.getLongitude().getCoordinate());
 	}
 
 	public double getParentCost() {
@@ -49,18 +59,33 @@ public class Point {
 		double v = parentCost;
 
 		if (parent!=null) {
+			if (this == parent || parent.getParent() == parent || parent.getParent() == this) {
+				throw new IllegalArgumentException("Circular reference!");
+			}
+
 			v += parent.getTotalCost();
 		}
 
 		return v;
 	}
 
-	private void setParentCost(float parentCost) {
+	private void setParentCost(double parentCost) {
 		this.parentCost = parentCost;
 	}
 
+	public void resetParent() {
+		parent = null;
+	}
+
 	public void setParent(Point p) {
-		setParentCost((float) distance(p));
+		if (p == this) {
+			throw new IllegalArgumentException("Trying to create a circular reference by setting parent to this!");
+		}
+
+		if (p.getParent() == this) {
+			throw new IllegalArgumentException("Trying to create a circular reference by setting parent's parent to this!");
+		}
+		setParentCost(distance(p));
 		parent = p;
 	}
 
@@ -68,7 +93,7 @@ public class Point {
 		return parent;
 	}
 
-	public List<Point> getNeighbours(Point[][] world) {
+	public List<Point> getNeighbours(NewWorld world) {
 		ArrayList<Point> list = new ArrayList<Point>();
 
 		// TODO this could, of course, be a little bit prettier
@@ -76,30 +101,26 @@ public class Point {
 		int yPlus = getY(1, world);
 
 		if (x > 0) {
-			list.add(world[x-1][yMinus]);
-			list.add(world[x-1][y]);
-			list.add(world[x-1][yPlus]);
+			list.add(world.lats[x-1].longitudes[yMinus]);
+			list.add(world.lats[x-1].longitudes[y]);
+			list.add(world.lats[x-1].longitudes[yPlus]);
 		}
 
-		list.add(world[x][yMinus]);
-		list.add(world[x][yPlus]);
+		list.add(world.lats[x].longitudes[yMinus]);
+		list.add(world.lats[x].longitudes[yPlus]);
 
-		if (x < world.length-1) {
-			list.add(world[x+1][yMinus]);
-			list.add(world[x+1][y]);
-			list.add(world[x+1][yPlus]);
+		if (x < world.lats.length-1) {
+			list.add(world.lats[x+1].longitudes[yMinus]);
+			list.add(world.lats[x+1].longitudes[y]);
+			list.add(world.lats[x+1].longitudes[yPlus]);
 		}
 
 		return list;
 	}
 
-	protected int getY(int rel, Point[][] world) {
-		return (y+rel+world[0].length) % world[0].length;
+	protected int getY(int rel, NewWorld world) {
+		return (y+rel+world.lats[0].longitudes.length) % world.lats[0].longitudes.length;
 	}
-
-//	public float distance(Point p) {
-//		return Length.NM.fromRadians(coord.distance(p.getCoord()));
-//	}
 
 	public double distance(Point p) {
 		double radius = 6371.009;
@@ -154,5 +175,15 @@ public class Point {
 	@Element
 	public void setLon(float lon) {
 		coord.setLongitude(lon);
+	}
+
+	public Object clone() {
+		try {
+			return super.clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+		}
+
+		return null;
 	}
 }

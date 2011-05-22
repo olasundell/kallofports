@@ -1,6 +1,10 @@
 package kop.map.routecalculator;
 
+import kop.game.Game;
+import kop.ports.NoSuchPortException;
+import kop.ports.Port;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -17,12 +21,19 @@ import static junit.framework.Assert.*;
 public class AStarUtilTest {
 	private AStarUtil aStarUtil;
 
-	private Point[][] world;
+	private NewWorld world;
+	private static NewWorld smallWorld;
+
+	@BeforeClass
+	public static void init() {
+		smallWorld = Util.getWorld((float) 0.5);
+	}
 
 	@Before
 	public void setup() {
 		aStarUtil = new AStarUtil();
-		world = WorldTest.createWorld();
+//		world = RouteCalculatorTest.getSmallWorld();
+		world = Util.getBlankWorld();
 	}
 
 	@Test
@@ -30,35 +41,95 @@ public class AStarUtilTest {
 		ArrayList<Point> list = new ArrayList<Point>();
 
 		for (int i=0;i<9;i++) {
-			list.add(world[((int) Math.floor(i / 3))][i%3]);
+			list.add(world.lats[((int) Math.floor(i / 3))].longitudes[i%3]);
 		}
 
 		list.remove(4);
 
-		Point ret = aStarUtil.getLowestF(list, world[1][1], world[3][3]);
+		Point ret = aStarUtil.getLowestF(list, world.lats[1].longitudes[1], world.lats[3].longitudes[3]);
 		assertNotNull(ret);
 		assertEquals(list.get(7), ret);
 
-		ret = aStarUtil.getLowestF(list, world[1][1], world[3][0]);
+		ret = aStarUtil.getLowestF(list, world.lats[1].longitudes[1], world.lats[3].longitudes[0]);
 		assertNotNull(ret);
 		// why not list.get(5)? Because the differences in distance between latitudes and longitudes!
-		assertEquals(list.get(6), ret);
+		assertEquals(list.get(5), ret);
 	}
+
 
 	@Test
 	public void aStar() {
-		world[3][3] = null;
-		world[3][4] = null;
-		world[3][5] = null;
-		AStarUtil.ASRoute route = aStarUtil.aStar(1,1,5,8,world);
+		NewWorld world = Util.getBlankWorld(0.1,0,0);
+		for (int i=0;i<world.lats[2].longitudes.length;i++) {
+			if (i==1) {
+				continue;
+			}
+			world.lats[2].longitudes[i] = null;
+		}
+
+		for (int i=0;i<world.lats[4].longitudes.length;i++) {
+			if (i==7) {
+				continue;
+			}
+			world.lats[4].longitudes[i] = null;
+		}
+
+		for (int j=5;j<13;j++) {
+			for (int i=8;i<world.lats[j].longitudes.length - (j*2 - 5);i++) {
+				world.lats[j].longitudes[i] = null;
+			}
+		}
+
+		for (int i=5;i<world.lats.length-1;i++) {
+			world.lats[i].longitudes[world.lats[i].longitudes.length-1] = null;
+		}
+
+		Point start = world.lats[15].longitudes[30];
+//		Point goal = world.lats[1].longitudes[1];
+		Point goal = world.lats[10].longitudes[5];
+
+		ASRoute route = aStarUtil.aStar(start,goal,world);
 		assertNotNull(route);
 		assertNotSame(0, route.getNumberOfPoints());
 		float totalDistance = route.getTotalDistance();
 		assertTrue(totalDistance > 0);
+		String s = world.toString(route);
+		System.out.println(s);
 	}
 
-//	@Test
-	public void reconstructPath() {
+	@Test
+	public void findClosestPoint() throws NoSuchPortException {
+		Point p = aStarUtil.findClosestPointForPort(Game.getInstance().getPortByName("Aberdeen"),
+				smallWorld);
+		assertNotNull(p);
 
+		p = aStarUtil.findClosestPointForPort(Game.getInstance().getPortByName("Gothenburg"),
+				smallWorld);
+		assertNotNull(p);
+
+		p = aStarUtil.findClosestPoint(AStarUtil.panamaPacific, smallWorld);
+		assertNotNull(p);
+	}
+
+	@Test
+	public void findRouteThroughCanal() throws NoSuchPortException {
+		Point start = aStarUtil.findClosestPointForPort(Game.getInstance().getPortByName("Barcelona"),
+				smallWorld);
+		Point goal = aStarUtil.findClosestPointForPort(Game.getInstance().getPortByName("Durban"),
+				smallWorld);
+
+		ASRoute route = aStarUtil.findRouteThroughSuezCanal(goal, start, smallWorld);
+		assertNotNull(route);
+	}
+
+	@Test
+	public void findRouteBetweenTwoPorts() throws NoSuchPortException {
+		Port start = Game.getInstance().getPortByName("Gothenburg");
+		Port goal = Game.getInstance().getPortByName("New York");
+
+		ASDistance distance = aStarUtil.aStar(start, goal, smallWorld);
+
+		assertNotNull(distance);
+		assertEquals((float) goal.getLatitude().getCoordinate(), distance.shortestRoute().points.get(0).getCoord().getLatitude());
 	}
 }
