@@ -6,8 +6,7 @@
 package kop.ships;
 
 /**
- *
- * @author ola
+ * Model for bulk ships.
  */
 class BulkShipModel extends ShipModel {
     public BulkShipModel(String name) {

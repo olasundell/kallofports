@@ -7,11 +7,7 @@ import java.util.List;
 import java.util.concurrent.*;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 5/20/11
- * Time: 6:11 PM
- * To change this template use File | Settings | File Templates.
+ * Thread run by RouteCalculator to calculate graticules, it checks a NewWorld.LatitudeArr for isWater.
  */
 public class WorldCreationWorker implements Callable<NewWorld.LatitudeArr> {
 	private NewWorld points;

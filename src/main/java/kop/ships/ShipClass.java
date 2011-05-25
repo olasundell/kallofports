@@ -7,11 +7,7 @@ import org.simpleframework.xml.Root;
 import java.util.List;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 4/8/11
- * Time: 11:17 AM
- * To change this template use File | Settings | File Templates.
+ *
  */
 @Root
 public class ShipClass {

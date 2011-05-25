@@ -8,8 +8,7 @@ package kop.cargo;
 import java.util.Date;
 
 /**
- *
- * @author ola
+ * Implementation of the Cargo interface.
  */
 public class CargoImpl implements Cargo {
 	private int weight;

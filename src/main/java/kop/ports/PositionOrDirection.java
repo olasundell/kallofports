@@ -11,10 +11,7 @@ import org.simpleframework.xml.Root;
 import java.util.Date;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 4/4/11
- * Time: 4:35 PM
+ * Describes the position or direction for a ship, with util methods to boot. It's either going somewhere or it's in port.
  */
 @Root
 public class PositionOrDirection {
@@ -99,6 +96,14 @@ public class PositionOrDirection {
 		this.originPort = originPort;
 	}
 
+	/**
+	 * Starts a travel via the shortest route from Port to Port.
+	 * @param origin
+	 * @param destination
+	 * @param speed
+	 * @param ship
+	 * @throws NoRouteFoundException
+	 */
 	public void travelTo(Port origin, Port destination, double speed, ShipModel ship) throws NoRouteFoundException {
 		// an entirely new model instance might neither have a current port nor be at sea.
 		if (isInPort() || !isAtSea()) {

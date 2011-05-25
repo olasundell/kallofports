@@ -8,11 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 4/3/11
- * Time: 3:53 PM
- * To change this template use File | Settings | File Templates.
+ * The ASDistance (A* or A Star Distance) class contains all relevant ASRoutes between two Ports and helper methods to use them.
+ * @see ASRoute
  */
 public class ASDistance {
 	private Port origin;
@@ -30,6 +27,11 @@ public class ASDistance {
 		routes.add(route);
 	}
 
+	/**
+	 * Returns the shortest ASRoute for this ASDistance
+	 * TODO we should use a ShipModel parameter and check for panamax and suezmax.
+	 * @return the shortest ASRoute
+	 */
 	public ASRoute shortestRoute() {
 		if (routes.size() == 0) {
 			return null;
@@ -48,10 +50,20 @@ public class ASDistance {
 		return route;
 	}
 
+	/**
+	 * Returns the shortest route's distance in nautical miles.
+	 * @return
+	 */
 	public double shortestDistance() {
 		return shortestRoute().getTotalDistance();
 	}
 
+	/**
+	 * Returns the shortest route's distance in nautical miles, given the provided ShipModel's size.
+	 * @param ship used to check for panamax and suezmax.
+	 * @return the shortest distance in nautical miles.
+	 * TODO use shortestRoute with parameters instead.
+	 */
 	public double shortestDistance(ShipModel ship) {
 		if (routes.size() == 0) {
 			return -1;

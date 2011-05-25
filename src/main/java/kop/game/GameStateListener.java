@@ -3,11 +3,7 @@ package kop.game;
 import java.util.EventListener;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 4/30/11
- * Time: 7:20 PM
- * To change this template use File | Settings | File Templates.
+ * Implement this if you'd like to be notified whenever the game state changes. Good if you're an UI, for instance.
  */
 public interface GameStateListener extends EventListener {
 	public void stateChanged();

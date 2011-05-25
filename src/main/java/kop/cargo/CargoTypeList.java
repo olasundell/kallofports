@@ -10,11 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 4/11/11
- * Time: 10:50 AM
- * To change this template use File | Settings | File Templates.
+ * A list of cargo types, which extends ArrayList. Used for serialisation purposes.
  */
 @Root
 public class CargoTypeList extends ArrayList<CargoType> {

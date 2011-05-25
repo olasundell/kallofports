@@ -18,7 +18,7 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 /**
- *
+ * The abstract ship model class, contains the majority of the logic and attributes for a ship model instance.
  * @author ola
  */
 @Root
@@ -43,6 +43,11 @@ public abstract class ShipModel {
 	public int getHoursToDestination() {
 		return currentPosition.getHoursToDest();
 	}
+
+	/**
+	 * Moves the ship one increment.
+	 * @throws OutOfFuelException
+	 */
 
 	public void travel() throws OutOfFuelException {
 		if (!isAtSea()) {
@@ -77,8 +82,13 @@ public abstract class ShipModel {
 		return blueprint;
 	}
 
+	/**
+	 * Creates a ShipModel instance from a ShipClass description.
+	 * @param shipClass
+	 * @return
+	 */
 	public static ShipModel createShip(ShipClass shipClass) {
-		ShipModel model = null;
+		ShipModel model;
 		switch (shipClass.getClassType()) {
 			case container:
 				model = new ContainerShipModel();
@@ -120,6 +130,11 @@ public abstract class ShipModel {
 		return currentPosition.isAtSea();
 	}
 
+	/**
+	 * Calculates available deadweight tonnage.
+	 * TODO ignores fuel level.
+	 * @return
+	 */
     public int getAvailableDWT() {
         int currentCargo = 0;
         

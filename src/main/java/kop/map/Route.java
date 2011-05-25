@@ -15,11 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 5/2/11
- * Time: 5:01 PM
- * To change this template use File | Settings | File Templates.
+ * @deprecated old route implementation, use ASRoute instead.
+ * @see kop.map.routecalculator.ASRoute
  */
 public class Route {
 	private String from;

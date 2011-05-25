@@ -19,11 +19,10 @@ import java.util.List;
 import java.util.concurrent.*;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 5/15/11
- * Time: 3:45 PM
- * To change this template use File | Settings | File Templates.
+ * This is a util and test class used to create the discrete approximation of a world, and to display ASroutes in a JFrame.
+ * It is multithreaded and uses WorldCreationWorkers in a thread pool.
+ * TODO serialise/deserialise the graticuled world with something else than XML (I went into that with open eyes, mind you)
+ * TODO low priority: refactor the duplicated LocationHandler code.
  */
 public class RouteCalculator {
 	ShapeLayer basicMapShape;
@@ -39,8 +38,12 @@ public class RouteCalculator {
 		mapBean.add(basicMapShape);
 	}
 
+	/**
+	 * Draws the PointLayer, which overlays the world map with graticule points.
+	 */
 	public void drawPointLayer() {
 		if (points == null) {
+			// TODO serialise
 //			try {
 //				points = readWorldFromFile();
 //			} catch (Exception e) {
@@ -58,6 +61,14 @@ public class RouteCalculator {
 
 	}
 
+	/**
+	 * Calculates and draws a route between two lat/lon pairs.
+	 * @param lat1
+	 * @param lon1
+	 * @param lat2
+	 * @param lon2
+	 */
+
 	public void drawRoute(double lat1, double lon1, double lat2, double lon2) {
 		int i = points.reverseLat(lat1);
 		int i1 = points.reverseLon(lon1);
@@ -71,6 +82,12 @@ public class RouteCalculator {
 		drawRoute(start, goal);
 	}
 
+	/**
+	 * Draws a route between two Points.
+	 * @param start
+	 * @param goal
+	 */
+
 	private void drawRoute(Point start, Point goal) {
 		AStarUtil aStarUtil = new AStarUtil();
 		ASRoute route = aStarUtil.aStar(start, goal, points);
@@ -80,10 +97,20 @@ public class RouteCalculator {
 		}
 	}
 
+	/**
+	 * TODO replace read from file with something more sane than XML.
+	 * @return
+	 * @throws Exception
+	 */
 	public NewWorld readWorldFromFile() throws Exception {
 		return (NewWorld) ModelSerializer.readFromFile(new File("newworld.xml").toURI().toURL(), NewWorld.class);
 	}
 
+	/**
+	 * Creates route layer from an ASRoute.
+	 * @param route
+	 * @return
+	 */
 
 	private LocationLayer createRouteLayer(ASRoute route) {
 		LocationLayer locationLayer = new LocationLayer();
@@ -113,14 +140,29 @@ public class RouteCalculator {
 		return locationLayer;
 	}
 
+	/**
+	 * @deprecated use calculateWorld(NewWorld world) instead
+	 * @return
+	 */
 	public NewWorld calculateWorld() {
 		return calculateWorld(NewWorld.getDefaultLatitudeSize(),NewWorld.getDefaultLongitudeSize());
 	}
 
+	/**
+	 * @deprecated use calculateWorld(NewWorld world) instead
+	 * @param latitudeSize
+	 * @param longitudeSize
+	 * @return
+	 */
 	public NewWorld calculateWorld(int latitudeSize, int longitudeSize) {
 		return calculateWorld(new NewWorld(latitudeSize, longitudeSize));
 	}
 
+	/**
+	 * Calculates world based on the settings in the parameter instance.
+	 * @param world
+	 * @return
+	 */
 	public NewWorld calculateWorld(NewWorld world) {
 		OMGraphicList list = basicMapShape.prepare();
 		Iterator<OMGraphic> iterator = list.iterator();
@@ -147,6 +189,11 @@ public class RouteCalculator {
 		return points;
 	}
 
+	/**
+	 * Creates a list of Shapes used in isWater.
+	 * @param iterator
+	 */
+
 	private void getShapes(Iterator<OMGraphic> iterator) {
 		while (iterator.hasNext()) {
 			OMGraphic next = iterator.next();
@@ -156,6 +203,11 @@ public class RouteCalculator {
 			shapeList.add(next.getShape());
 		}
 	}
+
+	/**
+	 * Creates point layer and handler.
+	 * @return
+	 */
 
 	private LocationLayer createPointLayer() {
 		LocationLayer locationLayer = new LocationLayer();
@@ -185,6 +237,11 @@ public class RouteCalculator {
 		return locationLayer;
 	}
 
+	/**
+	 * Creates handler properties.
+	 * @param locationHandlerName
+	 * @return
+	 */
 	private Properties createHandlerProperties(String locationHandlerName) {
 		Properties portLocProps = new Properties();
 //		portLocProps.setProperty("portlocationhandler","locationColor=FF0000");
@@ -194,6 +251,11 @@ public class RouteCalculator {
 		portLocProps.setProperty(locationHandlerName,"override=true");
 		return portLocProps;
 	}
+
+	/**
+	 * Creates the world map layer, from the shapefile. This ShapeLayer is used for all the graticule calculations.
+	 * @return
+	 */
 
 	private ShapeLayer createWorldLayer() {
 		ShapeLayer shapeLayer = new ShapeLayer();
@@ -207,6 +269,12 @@ public class RouteCalculator {
 		return shapeLayer;
 	}
 
+	/**
+	 * isWater checks if a java.awt.Point p is contained by any shapes, and if so, returns true.
+	 * @deprecated the relevant implementation of this method is now in the WorldCreationWorker class.
+	 * @param p
+	 * @return
+	 */
 	private boolean isWater(java.awt.Point p) {
 		for (Shape s: shapeList) {
 //			if (s!=null && s.intersects(i, j , i , j)) {
@@ -216,6 +284,13 @@ public class RouteCalculator {
 		}
 		return false;
 	}
+
+	/**
+	 * @deprecated this isn't used at all anymore, and we should remove it.
+	 * @param i
+	 * @param j
+	 * @return
+	 */
 	private boolean isWater(double i, double j) {
 		for (Shape s: shapeList) {
 //			if (s!=null && s.intersects(i, j , i , j)) {
@@ -230,6 +305,9 @@ public class RouteCalculator {
 			return mapBean;
 	}
 
+	/**
+	 * LocationHandler for the graticule layer.
+	 */
 	private class PointLocationHandler extends AbstractLocationHandler {
 		@Override
 		public Vector get(float v, float v1, float v2, float v3, Vector vector) {
@@ -275,6 +353,10 @@ public class RouteCalculator {
 			//To change body of implemented methods use File | Settings | File Templates.
 		}
 	}
+
+	/**
+	 * LocationHandler for the route layer.
+	 */
 
 	private class RouteLocationHandler extends AbstractLocationHandler {
 		private ASRoute route;
@@ -325,6 +407,11 @@ public class RouteCalculator {
 			//To change body of implemented methods use File | Settings | File Templates.
 		}
 	}
+
+	/**
+	 * Creates a JFrame with a mapBean in it and calculates graticule points based on a shapefile.
+	 * @param args
+	 */
 
 	public static void main(String[] args) {
 		RouteCalculator calc=null;

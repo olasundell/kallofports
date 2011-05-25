@@ -7,11 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 4/26/11
- * Time: 7:56 PM
- * To change this template use File | Settings | File Templates.
+ * A map of all ports, with the name as key.
  */
 @Root
 public class PortMap extends HashMap<String, Port> {

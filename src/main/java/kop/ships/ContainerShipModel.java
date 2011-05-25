@@ -1,12 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package kop.ships;
 
 /**
- *
+ * Model for container ships.
  * @author ola
  */
 public class ContainerShipModel extends ShipModel {

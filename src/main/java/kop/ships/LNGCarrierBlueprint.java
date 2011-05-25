@@ -3,11 +3,7 @@ package kop.ships;
 import org.simpleframework.xml.Element;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 5/5/11
- * Time: 8:04 PM
- * To change this template use File | Settings | File Templates.
+ * Blueprint for LNG carriers.
  */
 public class LNGCarrierBlueprint extends ShipBlueprint {
 	@Element

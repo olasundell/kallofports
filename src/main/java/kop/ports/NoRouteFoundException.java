@@ -1,11 +1,7 @@
 package kop.ports;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 4/4/11
- * Time: 5:23 PM
- * To change this template use File | Settings | File Templates.
+ * Whenever you can't find a route, this class is there with a pesky instance.
  */
 public class NoRouteFoundException extends Exception {
 	public NoRouteFoundException(String s) {

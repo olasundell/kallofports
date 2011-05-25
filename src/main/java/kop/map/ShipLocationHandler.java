@@ -18,11 +18,7 @@ import java.util.List;
 import java.util.Vector;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 5/1/11
- * Time: 9:31 PM
- * To change this template use File | Settings | File Templates.
+ * LocationHandler for ships.
  */
 public class ShipLocationHandler extends AbstractLocationHandler {
 	@Override

@@ -3,11 +3,7 @@ package kop.cargo;
 import kop.ports.Port;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 4/3/11
- * Time: 11:47 AM
- * To change this template use File | Settings | File Templates.
+ * A Freight is a Cargo from an origin Port to a destination Port.
  */
 public class Freight {
 	private Port origin;
@@ -43,7 +39,7 @@ public class Freight {
 			return true;
 		}
 
-		Freight f=null;
+		Freight f;
 
 		if (o instanceof Freight) {
 			f= (Freight) o;

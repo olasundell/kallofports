@@ -5,11 +5,9 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 /**
-* Created by IntelliJ IDEA.
-* User: ola
-* Date: 5/2/11
-* Time: 4:46 PM
-* To change this template use File | Settings | File Templates.
+ * Old implementation to keep track of Latitude and Longitude points.
+ * @deprecated use the OpenMap LatLonPoint instead.
+ * @see com.bbn.openmap.LatLonPoint
 */
 @Root
 public class LatLong {

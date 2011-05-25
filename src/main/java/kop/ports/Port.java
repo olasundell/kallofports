@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package kop.ports;
 
 import kop.map.LatLong;
@@ -11,8 +6,7 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 /**
- *
- * @author ola
+ * Port model.
  */
 @Root
 public class Port {

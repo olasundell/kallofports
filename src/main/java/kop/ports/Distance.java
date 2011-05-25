@@ -6,11 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 4/3/11
- * Time: 3:53 PM
- * To change this template use File | Settings | File Templates.
+ * @deprecated use ASDistance instead.
+ * @see kop.map.routecalculator.ASDistance
  */
 class Distance {
 	private Port origin;

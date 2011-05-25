@@ -5,12 +5,10 @@ import kop.ports.Port;
 import java.util.ArrayList;
 
 /**
-* Created by IntelliJ IDEA.
-* User: ola
-* Date: 5/22/11
-* Time: 3:47 PM
-* To change this template use File | Settings | File Templates.
-*/
+ *  Contains the route Points between two destinations, keeps track of whether the ship passes either major canal.
+ *  The points are ordered so that the first element is the parent of the second, etc.
+ *  Parentage is used in the A* algorithm.
+ */
 public class ASRoute {
 	private boolean suez;
 	private boolean panama;
@@ -20,6 +18,10 @@ public class ASRoute {
 		points = new ArrayList<Point>();
 	}
 
+	/**
+	 * Adds point to the route and sets the point's parent accordingly.
+	 * @param p
+	 */
 	public void addPoint(Point p) {
 		if (points.contains(p)) {
 			throw new IllegalArgumentException("The point which you are trying to add is already in the list!");
@@ -62,6 +64,10 @@ public class ASRoute {
 		suez = true;
 	}
 
+	/**
+	 * Adds point to the beginning of the list, adjusts parents accordingly.
+	 * @param point
+	 */
 	public void addPointFirst(Point point) {
 		if (points.contains(point)) {
 			throw new IllegalArgumentException("The point which you are trying to add is already in the list!");

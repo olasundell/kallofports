@@ -8,11 +8,8 @@ import com.bbn.openmap.layer.shape.ShapeLayer;
 import java.util.Properties;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 4/30/11
- * Time: 10:55 PM
- * To change this template use File | Settings | File Templates.
+ * Creates a map bean.
+ * TODO add route layer or add routes to the ship layer.
  */
 public class MapBeanFactory {
 	public MapBeanFactory() {

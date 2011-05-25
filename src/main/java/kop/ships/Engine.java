@@ -4,6 +4,10 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
+/**
+ * Model for an engine, with util methods.
+ */
+
 @Root
 public class Engine {
 	@Element
@@ -50,8 +54,16 @@ public class Engine {
 		this.kW = kW;
 	}
 
-	public double getFuelUsage(double delta) {
+	/**
+	 * Gets the fuel usage for a fraction of the max power output.
+	 * @param fractionOfMaxKW the fraction of the max power output, where 1 is max and 0 is min.
+	 * @return
+	 */
+	public double getFuelUsage(double fractionOfMaxKW) {
+		if (fractionOfMaxKW > 1 || fractionOfMaxKW < 0) {
+			throw new IllegalArgumentException("The fraction of max power output must be between 0.0 and 1.0");
+		}
 		// without the 1000000 this would be grammes per hour. Dividing makes it metric tonnes.
-		return bsfc * kW * delta / 1000000;
+		return bsfc * kW * fractionOfMaxKW / 1000000;
 	}
 }

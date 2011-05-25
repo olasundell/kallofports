@@ -9,14 +9,11 @@ import java.net.URISyntaxException;
 import java.util.*;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 4/3/11
- * Time: 11:59 AM
- * To change this template use File | Settings | File Templates.
+ * Contains all ports in the world and some util methods as well!
  */
 public class PortsOfTheWorld {
 	private PortMap ports;
+	// TODO remove this.
 	private List<Distance> distances;
 
 	public PortsOfTheWorld() {
@@ -51,6 +48,14 @@ public class PortsOfTheWorld {
 		return p;
 	}
 
+	/**
+	 * @param origin
+	 * @param destination
+	 * @param ship
+	 * @return
+	 * @throws NoRouteFoundException
+	 * TODO this needs to be rewritten according to the new pathfinding.
+	 */
 
 	public double getDistance(Port origin, Port destination, ShipModel ship) throws NoRouteFoundException {
 		Route route = Route.getRoute(origin.getUnlocode(), destination.getUnlocode(), !ship.isPostPanamax(), !ship.isPostSuezmax());
@@ -72,6 +77,12 @@ public class PortsOfTheWorld {
 		return port;
 	}
 
+	/**
+	 * @deprecated Not relevant anymore, we're using A* SPF routing these days.
+	 * @param origin
+	 * @param destination
+	 * @param nm
+	 */
 	public void setDistance(Port origin, Port destination, int nm) {
 		Distance d = new Distance(origin, destination);
 		d.addRoute(nm, false, false);

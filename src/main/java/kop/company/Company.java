@@ -11,11 +11,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 4/3/11
- * Time: 2:00 PM
- * To change this template use File | Settings | File Templates.
+ * Represents a Company, either a player company or an AI dito (should we ever write an AI...)
  */
 public class Company {
 	private double money;
@@ -28,6 +24,11 @@ public class Company {
 		loans = new ArrayList<Loan>();
 	}
 
+	/**
+	 * Moves ships, given that they are at sea, and delivers freights should any moved ship arrive at its destination.
+	 * @throws OutOfFuelException if a ship runs out of fuel.
+	 */
+
 	public void moveShips() throws OutOfFuelException {
 		for (ShipModel s: ships) {
 			boolean atSea = s.isAtSea();
@@ -35,7 +36,7 @@ public class Company {
 			s.travel();
 
 			// TODO fix this, preferrably with a shipModel.justArrivedAtPortDamnit() or something akin to that.
-			if (atSea==true && s.isInPort()) {
+			if (atSea && s.isInPort()) {
 				// arrived
 
 				for (Freight f: s.getFreights()) {
@@ -49,10 +50,16 @@ public class Company {
 		}
 	}
 
+	/**
+	 * Subtracts daily costs from the company.
+	 */
 	public void doDailyCosts() {
 		setMoney(getMoney() - getDailyCosts());
 	}
 
+	/**
+	 * Subtracts monthly costs from the company, including mortgage from loans.
+	 */
 	public void doMonthlyCosts() {
 		double costs = 0;
 		for (Loan l: loans) {
@@ -89,6 +96,14 @@ public class Company {
 		return ships.get(index);
 	}
 
+	/**
+	 * Creates an instance of the provided ShipClass and subtracts the corresponding amount of money from the company.
+	 * TODO loans aren't implemented
+	 * TODO should we use an exception instead of boolean return?
+	 * @param shipClass the shipclass which will be purchased.
+	 * @return false if there isn't enough money for the transaction, in which case no ship will be purchased.
+	 */
+
 	public boolean purchaseShip(ShipClass shipClass) {
 		if (getMoney() < shipClass.getPrice()) {
 			return false;
@@ -111,6 +126,11 @@ public class Company {
 	public void addMoney(double money) {
 		setMoney(getMoney() + money);
 	}
+
+	/**
+	 * Calculates daily costs, nothing more.
+	 * @return daily costs for the Company instance.
+	 */
 
 	public double getDailyCosts() {
 		double costs = 0;

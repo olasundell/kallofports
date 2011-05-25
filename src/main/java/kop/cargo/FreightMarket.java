@@ -8,11 +8,7 @@ import kop.ships.ModelSerializer;
 import java.util.*;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 4/3/11
- * Time: 11:48 AM
- * To change this template use File | Settings | File Templates.
+ * The FreightMarket contains all Freights which are in Ports. Ie, those that are on ships should not be here.
  */
 public class FreightMarket {
 	private List<Freight> market;

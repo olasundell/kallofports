@@ -7,11 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 5/20/11
- * Time: 5:34 PM
- * To change this template use File | Settings | File Templates.
+ * Contains real arrays with lats and lons (no Collections here), originally used for XML persisting
+ * purposes but has outgrown original purpose.
  */
 @Root
 public class NewWorld {
@@ -19,6 +16,13 @@ public class NewWorld {
 	public static final int DEFAULT_SOUTH_OFFSET = 20;
 	public static final int DEFAULT_NORTH_OFFSET = 20;
 
+	/**
+	 * Scale of lats and lons.
+	 * If the scale is 1, then every lat and lon is represented by an array point.
+	 * If the scale is 2, then every .5 lat and lon is represented (70.5, 70, 69.5 and so on)
+	 * I leave it to the reader to figure out what happens when the scale is below 1.
+	 * A setting of 0 or less isn't recommended at all.
+	 */
 	private float scale = DEFAULT_SCALE;
 	private int southOffset = DEFAULT_SOUTH_OFFSET;
 	private int northOffset = DEFAULT_NORTH_OFFSET;
@@ -64,6 +68,10 @@ public class NewWorld {
 	}
 
 	public void setScale(float sc) {
+		if (sc <= 0) {
+			throw new IllegalArgumentException("Trying to set scale to zero or below will have funky divide by zero side effects. Is this wanted?");
+		}
+
 		scale = sc;
 	}
 
@@ -108,7 +116,17 @@ public class NewWorld {
 		return (int) (360* getScale());
 	}
 
-
+	/**
+	 * Returns a neat string with the world and route represented by:
+	 * . (sea)
+	 * X (land)
+	 * S (start point)
+	 * E (end point)
+	 * O (route between start and end)
+	 * TODO rewrite it so we use inner class toStrings with parameters.
+	 * @param route
+	 * @return
+	 */
 	public String toString(ASRoute route) {
 		String s="";
 
@@ -151,6 +169,9 @@ public class NewWorld {
 		return s;
 	}
 
+	/**
+	 * Contains an array of Points which represent longitudes. Mainly used for persistence purposes.
+	 */
 	public static class LatitudeArr {
 		@ElementArray(empty = true)
 		public Point[] longitudes;

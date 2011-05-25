@@ -15,11 +15,7 @@ import java.util.List;
 import java.util.Vector;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 5/1/11
- * Time: 9:25 AM
- * To change this template use File | Settings | File Templates.
+ * LocationHandler for the mapBean.
  */
 public class PortLocationHandler extends AbstractLocationHandler {
 	@Override

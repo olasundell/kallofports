@@ -14,11 +14,8 @@ import java.text.ParseException;
 import java.util.*;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 4/4/11
- * Time: 4:14 PM
- * To change this template use File | Settings | File Templates.
+ * Main class for the application. It contains almost all high-level logic and all references.
+ * TODO we might want to delegate out even more things here
  */
 public class Game {
 	private List<Company> companies;
@@ -33,10 +30,17 @@ public class Game {
 	private String playerName;
 	private EngineList engineList;
 
+	/**
+	 * TODO implement listeners where applicable, mainly UI. Work has started, but more can be done.
+	 */
 	private ArrayList<GameStateListener> listeners;
 	private Random random;
 	private Map<Company, List<Freight>> deliveredFreights;
 
+	/**
+	 * This constructor isn't meant to be used by the outside world
+	 * @see .getInstance()
+	 */
 	protected Game() {
 		world = new PortsOfTheWorld();
 		calendar = new GregorianCalendar(1970,0,0,0,0);
@@ -53,13 +57,25 @@ public class Game {
 		populateShipClasses();
 	}
 
+	/**
+	 * Registers listener for game update events.
+	 * @param listener
+	 */
 	public void addListener(GameStateListener listener) {
 		listeners.add(listener);
 	}
 
+	/**
+	 * Creates the static instance.
+	 */
+
 	private static void createInstance() {
 		instance = new Game();
 	}
+
+	/**
+	 * Deserialises shipclasses to a list.
+	 */
 
 	private void populateShipClasses() {
 		try {
@@ -69,14 +85,33 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Deserialises ports to a list.
+	 * TODO why is this different from populateShipClasses?
+	 */
+
 	private void populatePorts() {
 		world.populatePorts();
 	}
 
+	/**
+	 * Returns the distance in nautical miles between two ports given a ship.
+	 * @deprecated should this be used at all? Probably not.
+	 * TODO is this in use?
+	 * @param origin
+	 * @param destination
+	 * @param ship
+	 * @return
+	 * @throws NoRouteFoundException
+	 */
 	public double getDistance(Port origin, Port destination, ShipModel ship) throws NoRouteFoundException {
 		return world.getDistance(origin, destination, ship);
 	}
 
+	/**
+	 * Factory method for the Game singleton.
+	 * @return The singleton we use everywhere.
+	 */
 	public static Game getInstance() {
 		if (instance==null) {
 			createInstance();
@@ -89,11 +124,19 @@ public class Game {
 		return calendar.getTime();
 	}
 
+	/**
+	 * This method is meant to be the main loop when we're running the UI, which will in turn listen for events
+	 */
+
 	public void mainLoop() {
 		while (isRunning()) {
 			stepTime();
 		}
 	}
+
+	/**
+	 * The innermost method in the application, it increments time by one hour and modifies the internal state accordingly.
+	 */
 
 	public void stepTime() {
 		calendar.add(Calendar.HOUR, 1);
@@ -106,8 +149,8 @@ public class Game {
 				// TODO do something here.
 			}
 
+			// a new day dawns for the current company.
 			if (calendar.get(Calendar.HOUR) == 0) {
-				// a new day dawns
 				if (deliveredFreights.get(c) != null) {
 					for (Freight f: deliveredFreights.get(c)) {
 						c.addMoney(f.getCargo().getTotalPrice());
@@ -120,7 +163,7 @@ public class Game {
 				}
 			}
 		}
-		// a new day dawns
+		// a new day dawns for the entire world.
 		if (calendar.get(Calendar.HOUR) == 0) {
 			generateDailyFreights();
 		}
@@ -129,6 +172,10 @@ public class Game {
 			listener.stateChanged();
 		}
 	}
+
+	/**
+	 * Creates new freights.
+	 */
 
 	private void generateDailyFreights() {
 		for (Port p: world.getPortsAsList()) {
@@ -155,6 +202,12 @@ public class Game {
 	public void setPlayerName(String text) {
 		playerName = text;
 	}
+
+	/**
+	 * Returns the singleton engine list.
+	 * TODO why is the engine list instance created in the getter when the other lists have their own factory methods?
+	 * @return
+	 */
 
 	public EngineList getEngineList() {
 		if (engineList == null) {
@@ -207,6 +260,10 @@ public class Game {
 		return deliveredFreights.get(company);
 	}
 
+	/**
+	 * If the next time step is a new day, this returns true.
+	 * @return
+	 */
 	public boolean isNextTimeStepNewDay() {
 		return calendar.get(Calendar.HOUR) == calendar.getActualMaximum(Calendar.HOUR);
 	}

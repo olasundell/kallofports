@@ -10,11 +10,13 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 /**
- *
- * @author ola
+ * Describes the properties of a type of cargo.
  */
 @Root
 public class CargoType {
+	/**
+	 * What capability a ship must have to be able to transport this type of cargo.
+	 */
 	public enum Packaging {
 		drybulk,
 		wetbulk,

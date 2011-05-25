@@ -10,6 +10,10 @@ import java.lang.annotation.Annotation;
 import java.net.URI;
 import java.net.URL;
 
+/**
+ * XML serialiser/deserialiser class with static util methods..
+ */
+
 public class ModelSerializer {
 	public static Object readFromFile(URL fileName, Class<?> aClass) throws Exception {
 //		Strategy strategy = new AnnotationStrategy();
@@ -28,6 +32,13 @@ public class ModelSerializer {
 		serializer.write(aClass.cast(obj), result);
 	}
 
+	/**
+	 * Deserialises a file on the class path to an instance of the the provided class.
+	 * @param resourceName
+	 * @param aClass
+	 * @return
+	 * @throws Exception
+	 */
 	public static Object readFromFile(String resourceName, Class<?> aClass) throws Exception {
 		return readFromFile(ClassLoader.getSystemClassLoader().getResource(resourceName), aClass);
 	}

@@ -3,11 +3,7 @@ package kop.company;
 import kop.ships.ShipModel;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 4/4/11
- * Time: 4:24 PM
- * To change this template use File | Settings | File Templates.
+ * Represents a loan with security, interest and monthly mortgage amount should the player wish to
  */
 public class Loan {
 	private ShipModel security;
@@ -22,8 +18,8 @@ public class Loan {
 	}
 
 	/**
-	 * Monthly mortgage.
-	 * @return the monthly cost
+	 * Monthly mortgage, mortgage amount (which will be subtracted from the loan), and interest.
+	 * @return the monthly interest cost plus the mortgage amount.
 	 */
 	public double doMortgage() {
 		double mortgage = currentDebt * (interest / 1200);

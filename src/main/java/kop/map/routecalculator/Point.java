@@ -11,12 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-* Created by IntelliJ IDEA.
-* User: ola
-* Date: 5/17/11
-* Time: 8:10 AM
-* To change this template use File | Settings | File Templates.
-*/
+ * A lat/lon point with edge cost/path cost capabilities
+ */
 @Root
 public class Point implements Cloneable {
 	private LatLonPoint coord;
@@ -54,6 +50,10 @@ public class Point implements Cloneable {
 		return parentCost;
 	}
 
+	/**
+	 * Calculates the total cost for a path from this point and backwards to its origin.
+	 * @return
+	 */
 	public double getTotalCost() {
 		// TODO do we want to save this result for optimisation?
 		double v = parentCost;
@@ -93,10 +93,14 @@ public class Point implements Cloneable {
 		return parent;
 	}
 
+	/**
+	 * Gets neighbouring points from world. Wraps longitude if necessary, doesn't wrap latitude however.
+	 * @param world
+	 * @return
+	 */
 	public List<Point> getNeighbours(NewWorld world) {
 		ArrayList<Point> list = new ArrayList<Point>();
 
-		// TODO this could, of course, be a little bit prettier
 		int yMinus = getY(-1, world);
 		int yPlus = getY(1, world);
 

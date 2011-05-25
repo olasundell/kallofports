@@ -8,11 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 4/15/11
- * Time: 7:38 PM
- * To change this template use File | Settings | File Templates.
+ * A list of engines, meant as a singleton.
+ * @author Ola Sundell
  */
 @Root
 public class EngineList {

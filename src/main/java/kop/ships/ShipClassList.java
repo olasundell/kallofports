@@ -8,11 +8,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 4/9/11
- * Time: 2:59 PM
- * To change this template use File | Settings | File Templates.
+ * List of ship classes.
  */
 
 @Root

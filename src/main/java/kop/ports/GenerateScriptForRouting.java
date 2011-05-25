@@ -5,11 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: 4/26/11
- * Time: 8:19 PM
- * To change this template use File | Settings | File Templates.
+ * @deprecated Now we do our own routing. This isn't used anymore.
  */
 public class GenerateScriptForRouting {
 	private static final String WGET_URL_BEGIN = "http://www.portworld.com/map/map-route.php?fromport=";

@@ -11,10 +11,7 @@ import java.util.List;
 
 /**
  * TODO replace this factory with kop.ships.ModelSerializer usage.
- * User: ola
- * Date: 4/6/11
- * Time: 9:09 PM
- * To change this template use File | Settings | File Templates.
+ * @deprecated
  */
 class ShipClassesFactory {
 	public ArrayList<ShipClass> createShipClasses(String fileName) throws Exception {

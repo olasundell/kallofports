@@ -12,12 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-* Created by IntelliJ IDEA.
-* User: ola
-* Date: 5/17/11
-* Time: 9:09 PM
-* To change this template use File | Settings | File Templates.
-*/
+ * Old world implementation.
+ * @deprecated Use NewWorld instead. Go west!
+ */
 @Root
 public class World {
 	@Element
