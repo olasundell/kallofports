@@ -1,4 +1,4 @@
-package kop.ships;
+package kop.ships.engine;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;

@@ -6,8 +6,8 @@ import kop.ports.NoRouteFoundException;
 import kop.ports.NoSuchPortException;
 import kop.ports.Port;
 import kop.ports.PortProxy;
-import kop.ships.EngineList;
-import kop.ships.ShipModel;
+import kop.ships.engine.EngineList;
+import kop.ships.model.ShipModel;
 import org.junit.Before;
 import org.junit.Test;
 

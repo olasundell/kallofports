@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package kop.ships;
+package kop.ships.model;
 
 /**
  * Model for bulk ships.

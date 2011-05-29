@@ -1,13 +1,19 @@
-<!DOCTYPE engineList [
-		<!ELEMENT engineList (engine)*>
-		<!ELEMENT engine (bsfc|manufacturer|kW)* >
-		<!ATTLIST engine
-				modelName CDATA #REQUIRED>
-		<!ELEMENT bsfc (#PCDATA) >
-		<!ELEMENT manufacturer (#PCDATA)>
-		<!ELEMENT kW (#PCDATA)>
-		]>
-<engineList>
+<!--<!DOCTYPE engineList [-->
+		<!--<!ELEMENT engineList (engine)*>-->
+		<!--<!ELEMENT engine (bsfc|manufacturer|kW)* >-->
+		<!--<!ATTLIST engine-->
+				<!--modelName CDATA #REQUIRED>-->
+		<!--<!ELEMENT bsfc (#PCDATA) >-->
+		<!--<!ELEMENT manufacturer (#PCDATA)>-->
+		<!--<!ELEMENT kW (#PCDATA)>-->
+		<!--]>-->
+
+<engineList xmlns="http://www.atrosys.se/kop/schema/engine">
+	<engine modelName="qwe">
+		<bsfc>0</bsfc>
+		<manufacturer>ladlas</manufacturer>
+		<kW>3</kW>
+	</engine>
    <engine modelName="TBD 645 L9">
       <bsfc>178.0</bsfc>
       <manufacturer>Deutz</manufacturer>

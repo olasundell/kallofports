@@ -1,13 +1,9 @@
 package kop.ports;
 
-import com.bbn.openmap.event.CenterEvent;
 import kop.game.Game;
-import kop.map.LatLong;
-import kop.map.Route;
 import kop.map.routecalculator.ASRoute;
-import kop.map.routecalculator.AStarUtil;
 import kop.map.routecalculator.Point;
-import kop.ships.ShipModel;
+import kop.ships.model.ShipModel;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
@@ -119,7 +115,6 @@ public class PositionOrDirection {
 		setCurrentPort(null);
 		setDestinationPort(destination);
 		setOriginPort(origin);
-//		setRoute(Route.getRoute(origin.getUnlocode(), destination.getUnlocode(), !ship.isPostPanamax(), !ship.isPostSuezmax()));
 		setRoute(Game.getInstance().getRoute(origin, destination, ship));
 		setLeftPortDate(Game.getInstance().getCurrentDate());
 		setDistanceLeft(getCurrentRoute().getTotalDistance());

@@ -6,14 +6,10 @@ import com.bbn.openmap.layer.location.Location;
 import com.bbn.openmap.omGraphics.OMGraphicConstants;
 import com.bbn.openmap.omGraphics.OMLine;
 import com.bbn.openmap.omGraphics.OMPoly;
-import com.bbn.openmap.omGraphics.OMRect;
 import kop.game.Game;
 import kop.map.routecalculator.*;
 import kop.map.routecalculator.Point;
-import kop.ports.Port;
-import kop.ports.PortMap;
-import kop.ports.PortsOfTheWorld;
-import kop.ships.ShipModel;
+import kop.ships.model.ShipModel;
 
 import java.awt.*;
 import java.util.ArrayList;

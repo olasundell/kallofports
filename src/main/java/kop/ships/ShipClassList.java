@@ -1,11 +1,11 @@
 package kop.ships;
 
+import kop.ships.blueprint.ShipBlueprint;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 /**
  * List of ship classes.

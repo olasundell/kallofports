@@ -1,4 +1,6 @@
-package kop.ships;
+package kop.ships.model;
+
+import kop.ships.blueprint.ContainerShipBlueprint;
 
 /**
  * Model for container ships.

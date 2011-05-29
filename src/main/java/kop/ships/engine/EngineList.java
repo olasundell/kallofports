@@ -1,5 +1,6 @@
-package kop.ships;
+package kop.ships.engine;
 
+import kop.ships.ModelSerializer;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 

@@ -166,12 +166,12 @@ public class ConvertUnlocodeToXML {
 		return latLong;
 	}
 
+	// TODO I doubt we'll ever use this class again, but if we do, this method needs to be fixed.
 	protected static Port createPort(String latitude, String longitude, String unlocode) {
 		Port port = new Port();
 
-		// TODO I doubt we'll ever use this class again, but if we do, this needs to be fixed.
-//		port.setLatitude(parse(latitude));
-//		port.setLongitude(parse(longitude));
+		port.setLatitude(parse(latitude).getCoordinate());
+		port.setLongitude(parse(longitude).getCoordinate());
 		port.setUnlocode(unlocode);
 
 		return port;

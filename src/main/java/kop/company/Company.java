@@ -4,7 +4,7 @@ import kop.cargo.Freight;
 import kop.game.Game;
 import kop.ships.OutOfFuelException;
 import kop.ships.ShipClass;
-import kop.ships.ShipModel;
+import kop.ships.model.ShipModel;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -1,4 +1,4 @@
-package kop.ships;
+package kop.ships.blueprint;
 
 import org.simpleframework.xml.Element;
 

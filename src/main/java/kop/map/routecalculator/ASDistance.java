@@ -1,11 +1,8 @@
 package kop.map.routecalculator;
 
-import com.bbn.openmap.tools.roads.Route;
 import kop.ports.NoRouteFoundException;
-import kop.ports.NoSuchPortException;
-import kop.ports.Port;
 import kop.ports.PortProxy;
-import kop.ships.ShipModel;
+import kop.ships.model.ShipModel;
 
 import java.util.ArrayList;
 import java.util.List;

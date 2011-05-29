@@ -1,5 +1,8 @@
 package kop.ships;
 
+import kop.ships.blueprint.ContainerShipBlueprint;
+import kop.ships.blueprint.ShipBlueprint;
+import kop.ships.engine.Engine;
 import org.junit.Test;
 
 import java.util.ArrayList;

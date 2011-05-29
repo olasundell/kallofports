@@ -2,7 +2,7 @@ package kop.ui;
 
 import kop.Main;
 import kop.game.Game;
-import kop.ships.ShipBlueprint;
+import kop.ships.blueprint.ShipBlueprint;
 import kop.ships.ShipClass;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 

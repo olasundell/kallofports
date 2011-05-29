@@ -1,6 +1,6 @@
 package kop.company;
 
-import kop.ships.ShipModel;
+import kop.ships.model.ShipModel;
 
 /**
  * Represents a loan with security, interest and monthly mortgage amount should the player wish to

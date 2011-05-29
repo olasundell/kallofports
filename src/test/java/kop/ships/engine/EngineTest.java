@@ -1,5 +1,8 @@
-package kop.ships;
+package kop.ships.engine;
 
+import kop.ships.ModelSerializer;
+import kop.ships.engine.Engine;
+import kop.ships.engine.EngineList;
 import org.junit.Before;
 import org.junit.Test;
 import org.simpleframework.xml.Serializer;

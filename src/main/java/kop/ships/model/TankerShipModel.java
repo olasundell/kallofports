@@ -1,4 +1,4 @@
-package kop.ships;
+package kop.ships.model;
 
 /**
  * Ship model for tankers.

@@ -4,14 +4,11 @@ import com.bbn.openmap.layer.location.AbstractLocationHandler;
 import com.bbn.openmap.layer.location.BasicLocation;
 import com.bbn.openmap.layer.location.Location;
 import com.bbn.openmap.omGraphics.OMRect;
-import kop.game.Game;
 import kop.ports.Port;
 import kop.ports.PortMap;
 import kop.ports.PortsOfTheWorld;
-import kop.ships.ShipModel;
 
 import java.awt.*;
-import java.util.List;
 import java.util.Vector;
 
 /**

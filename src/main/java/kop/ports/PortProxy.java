@@ -13,9 +13,7 @@ import org.simpleframework.xml.Root;
 public class PortProxy {
 	private Port delegatePort;
 
-	public PortProxy() {
-
-	}
+	public PortProxy() {}
 
 	public PortProxy(Port port) {
 		delegatePort = port;

@@ -5,8 +5,7 @@ import kop.game.Game;
 import kop.map.MapBeanFactory;
 import kop.ports.NoRouteFoundException;
 import kop.ports.NoSuchPortException;
-import kop.ships.ShipModel;
-import org.junit.Test;
+import kop.ships.model.ShipModel;
 
 import javax.swing.*;
 import java.awt.event.WindowAdapter;

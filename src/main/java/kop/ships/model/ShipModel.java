@@ -3,18 +3,19 @@
  * and open the template in the editor.
  */
 
-package kop.ships;
+package kop.ships.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import kop.cargo.Freight;
-import kop.map.Route;
 import kop.map.routecalculator.ASRoute;
 import kop.ports.NoRouteFoundException;
-import kop.ports.Port;
 import kop.ports.PortProxy;
 import kop.ports.PositionOrDirection;
+import kop.ships.OutOfFuelException;
+import kop.ships.blueprint.ShipBlueprint;
+import kop.ships.ShipClass;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
@@ -48,7 +49,7 @@ public abstract class ShipModel {
 
 	/**
 	 * Moves the ship one increment.
-	 * @throws OutOfFuelException
+	 * @throws kop.ships.OutOfFuelException
 	 */
 
 	public void travel() throws OutOfFuelException {

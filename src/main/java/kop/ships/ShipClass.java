@@ -1,10 +1,9 @@
 package kop.ships;
 
+import kop.ships.blueprint.ShipBlueprint;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
-
-import java.util.List;
 
 /**
  *
@@ -63,7 +62,7 @@ public class ShipClass {
 		return ship.getType();
 	}
 
-	protected ShipBlueprint getBlueprint() {
+	public ShipBlueprint getBlueprint() {
 		return ship;
 	}
 }

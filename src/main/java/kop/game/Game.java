@@ -6,6 +6,8 @@ import kop.company.Company;
 import kop.map.routecalculator.*;
 import kop.ports.*;
 import kop.ships.*;
+import kop.ships.engine.EngineList;
+import kop.ships.model.ShipModel;
 
 import java.util.*;
 
@@ -93,20 +95,6 @@ public class Game {
 
 	private void populatePorts() throws Exception {
 		worldPorts.populatePorts();
-	}
-
-	/**
-	 * Returns the distance in nautical miles between two ports given a ship.
-	 * @deprecated should this be used at all? Probably not.
-	 * TODO is this in use by anything except the test class?
-	 * @param origin
-	 * @param destination
-	 * @param ship
-	 * @return
-	 * @throws NoRouteFoundException
-	 */
-	public double getDistance(Port origin, Port destination, ShipModel ship) throws NoRouteFoundException {
-		return worldPorts.getDistance(origin, destination, ship);
 	}
 
 	/**

@@ -18,7 +18,6 @@ import static org.junit.Assert.assertTrue;
  */
 public class PortTest {
 	@Test
-	// TODO add cargo type
 	public void serializePortWithLatLong() throws Exception {
 		Port port = new Port();
 		port.setName("Aberdeen");

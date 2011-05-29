@@ -2,7 +2,7 @@ package kop.ui;
 
 import kop.company.Company;
 import kop.game.Game;
-import kop.ships.ShipModel;
+import kop.ships.model.ShipModel;
 
 import javax.swing.*;
 import javax.swing.event.TableModelListener;

@@ -1,12 +1,12 @@
-package kop.ships;
+package kop.ships.blueprint;
 
-import kop.cargo.Cargo;
 import kop.cargo.CargoType;
+import kop.ships.engine.Engine;
+import kop.ships.engine.EngineList;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 

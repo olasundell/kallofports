@@ -47,7 +47,7 @@
 	<list>
 		<shipClass className="Delmas Libreville">
 			<price>15000000</price>
-			<ship class="kop.ships.ContainerShipBlueprint">
+			<ship class="kop.ships.blueprint.ContainerShipBlueprint">
 				<dwt>27100</dwt>
 				<grossTonnage>24053</grossTonnage>
 				<netTonnage>12958</netTonnage>
@@ -65,7 +65,7 @@
 		</shipClass>
 		<shipClass className="Heinz Schepers">
 			<price>10000000</price>
-			<ship class="kop.ships.ContainerShipBlueprint">
+			<ship class="kop.ships.blueprint.ContainerShipBlueprint">
 				<dwt>5335</dwt>
 				<grossTonnage>3992</grossTonnage>
 				<netTonnage>2233</netTonnage>
@@ -83,7 +83,7 @@
 		</shipClass>
 		<shipClass className="TI class tanker">
 			<price>120000000</price>
-			<ship class="kop.ships.TankerShipBlueprint">
+			<ship class="kop.ships.blueprint.TankerShipBlueprint">
 				<dwt>441585</dwt>
 				<loa>380.0</loa>
 				<beam>68.0</beam>
@@ -100,7 +100,7 @@
 		</shipClass>
 		<shipClass className="P-class tanker">
 			<price>100000000</price>
-			<ship class="kop.ships.TankerShipBlueprint">
+			<ship class="kop.ships.blueprint.TankerShipBlueprint">
 				<dwt>306397</dwt>
 				<engines>
 					<engine>B&amp;W 7S80MC</engine>
@@ -117,7 +117,7 @@
 		</shipClass>
 		<shipClass className="Gem class">
 			<price>100000000</price>
-			<ship class="kop.ships.LNGCarrierBlueprint">
+			<ship class="kop.ships.blueprint.LNGCarrierBlueprint">
 				<beam>44.2</beam>
 				<dailyCost>0.0</dailyCost>
 				<draft>11.47</draft>
@@ -139,7 +139,7 @@
 		<!--
 		<shipClass className="E-class container ship">
 			<price>145000000</price>
-			<ship class="kop.ships.ContainerShipBlueprint">
+			<ship class="kop.ships.blueprint.ContainerShipBlueprint">
 				<dwt>156907</dwt>
 				<engine>14RT-Flex96C</engine>
 				<maxSpeed>25.5</maxSpeed>

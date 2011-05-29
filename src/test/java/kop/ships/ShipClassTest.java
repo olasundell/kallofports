@@ -1,5 +1,8 @@
 package kop.ships;
 
+import kop.ships.blueprint.ContainerShipBlueprint;
+import kop.ships.engine.Engine;
+import kop.ships.engine.EngineList;
 import org.junit.Test;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
