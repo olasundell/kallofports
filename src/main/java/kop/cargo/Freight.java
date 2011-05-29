@@ -1,28 +1,29 @@
 package kop.cargo;
 
 import kop.ports.Port;
+import kop.ports.PortProxy;
 
 /**
  * A Freight is a Cargo from an origin Port to a destination Port.
  */
 public class Freight {
-	private Port origin;
-	private Port destination;
+	private PortProxy origin;
+	private PortProxy destination;
 	private Cargo cargo;
 
-	public Port getOrigin() {
+	public PortProxy getOrigin() {
 		return origin;
 	}
 
-	public void setOrigin(Port origin) {
+	public void setOrigin(PortProxy origin) {
 		this.origin = origin;
 	}
 
-	public Port getDestination() {
+	public PortProxy getDestination() {
 		return destination;
 	}
 
-	public void setDestination(Port destination) {
+	public void setDestination(PortProxy destination) {
 		this.destination = destination;
 	}
 

@@ -89,7 +89,7 @@ public class CargoType {
 	}
 
 	public String toString() {
-		return "Packaging: "+packaging+" Density: "+getDensity();
+		return "Name: "+name+" Packaging: "+packaging+" Density: "+getDensity();
 	}
 }
 

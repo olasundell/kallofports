@@ -1,9 +1,13 @@
 package kop.ports;
 
-import kop.map.LatLong;
+import com.bbn.openmap.proj.coords.DMSLatLonPoint;
+import kop.cargo.CargoType;
+import kop.map.routecalculator.Point;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
+
+import java.util.List;
 
 /**
  * Port model.
@@ -22,9 +26,21 @@ public class Port {
 	private String drydock;
 	private String country;
 	@Element(required = false)
-	private LatLong latitude;
+	Point position;
 	@Element(required = false)
-	private LatLong longitude;
+	LatLong longitude;
+	@Element(required = false)
+	LatLong latitude;
+	@Element(required = false)
+	private PortCargoTypeList portCargoTypes;
+
+	// TODO this constructor should most probably be private, anyone who wants a port should use the factory methods.
+	public Port() {
+		position = new Point();
+		position.setLat(-1);
+		position.setLon(-1);
+		portCargoTypes = new PortCargoTypeList();
+	}
 	// TODO add resource production stuff
 
 	public void setName(String name) {
@@ -59,11 +75,34 @@ public class Port {
 	}
 
 	public void setLatitude(String deg, String min, String hemisphere) {
-		latitude = new LatLong(deg, min, hemisphere);
+		setLatitude(Integer.valueOf(deg), Integer.valueOf(min), hemisphere);
+	}
+
+	public void setLatitude(int deg, int min, String hemisphere) {
+		DMSLatLonPoint p = new DMSLatLonPoint(hemisphere.equals("S"),
+				deg,
+				min,
+				0,
+				false,
+				0,
+				0,
+				(float) 0.0);
+		position.setLat(p.getDecimalLatitude());
 	}
 
 	public void setLongitude(String deg, String min, String hemisphere) {
-		longitude = new LatLong(deg, min, hemisphere);
+		setLongitude(Integer.valueOf(deg), Integer.valueOf(min), hemisphere);
+	}
+	public void setLongitude(int deg, int min, String hemisphere) {
+		DMSLatLonPoint p = new DMSLatLonPoint(false,
+				0,
+				0,
+				0,
+				hemisphere.equals("E"),
+				deg,
+				min,
+				0);
+		position.setLon(p.getDecimalLongitude());
 	}
 
 	public void setHarbourSize(String harbourSize) {
@@ -98,20 +137,65 @@ public class Port {
 		return getUnlocode() + " " + getName();
 	}
 
-	public LatLong getLatitude() {
-		return latitude;
+	private void initializePosition() {
+		position = new Point();
+		setLatitude(latitude.deg, latitude.min, latitude.hemisphere);
+		setLongitude(longitude.deg, longitude.min, longitude.hemisphere);
 	}
 
-	public LatLong getLongitude() {
-		return longitude;
+	public double getLatitude() {
+		if (position.getLat() == -1) {
+			initializePosition();
+		}
+		return position.getLat();
 	}
 
-	public void setLatitude(LatLong latitude) {
-		this.latitude = latitude.clone();
+	public double getLongitude() {
+		if (position==null || position.getLon() == -1.0) {
+			initializePosition();
+		}
+		return position.getLon();
 	}
 
-	public void setLongitude(LatLong longitude) {
-		this.longitude = longitude.clone();
+	public void setLatitude(double latitude) {
+		position.setLat((float) latitude);
 	}
 
+	public void setLongitude(double longitude) {
+		position.setLon((float) longitude);
+	}
+
+	public Point getPosition() {
+		if (position == null || position.getLat() == -1.0) {
+			initializePosition();
+		}
+		return position;
+	}
+
+	public void addCargoType(CargoType cargoType) {
+		portCargoTypes.add(new PortCargoType(cargoType));
+	}
+
+	public void addAllCargoTypes(List<CargoType> cargoTypeList) {
+		for (CargoType t: cargoTypeList) {
+			addCargoType(t);
+		}
+	}
+
+	public PortProxy getProxy() {
+		return new PortProxy(this);
+	}
+
+	@Root
+	public static class LatLong {
+		@Element
+		int deg;
+		@Element
+		int min;
+		@Element
+		String hemisphere;
+
+		public LatLong() {
+		}
+	}
 }

@@ -3,6 +3,7 @@ package kop.map.routecalculator;
 import com.bbn.openmap.LatLonPoint;
 import com.bbn.openmap.proj.Length;
 import kop.ports.Port;
+import kop.ports.PortProxy;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
@@ -41,9 +42,9 @@ public class Point implements Cloneable {
 		coord = new LatLonPoint(lat, lon);
 	}
 
-	public Point(Port port) {
-		this((float)port.getLatitude().getCoordinate(),
-				(float)port.getLongitude().getCoordinate());
+	public Point(PortProxy port) {
+		this((float)port.getLatitude(),
+				(float)port.getLongitude());
 	}
 
 	public double getParentCost() {
@@ -189,5 +190,9 @@ public class Point implements Cloneable {
 		}
 
 		return null;
+	}
+
+	public String toString() {
+		return String.format("lat %f lon %f x %d y %d",getLat(), getLon(), x, y);
 	}
 }

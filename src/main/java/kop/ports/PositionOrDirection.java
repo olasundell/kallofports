@@ -4,6 +4,9 @@ import com.bbn.openmap.event.CenterEvent;
 import kop.game.Game;
 import kop.map.LatLong;
 import kop.map.Route;
+import kop.map.routecalculator.ASRoute;
+import kop.map.routecalculator.AStarUtil;
+import kop.map.routecalculator.Point;
 import kop.ships.ShipModel;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
@@ -16,11 +19,11 @@ import java.util.Date;
 @Root
 public class PositionOrDirection {
 	@Element(required = false)
-	private Port currentPort;
+	private PortProxy currentPort;
 	@Element(required = false)
-	private Port originPort;
+	private PortProxy originPort;
 	@Element(required = false)
-	private Port destinationPort;
+	private PortProxy destinationPort;
 	@Element
 	private double currentSpeed;
 	@Element
@@ -32,13 +35,15 @@ public class PositionOrDirection {
 	@Element(required = false)
 	private Date arrivedAtPortDate;
 	@Element
-	private LatLong currentLatitude;
-	@Element
-	private LatLong currentLongitude;
-	private Route route;
+	private Point currentPosition;
+	private ASRoute route;
 	private int routeLeg;
 
-	public Port getCurrentPort() {
+	public PositionOrDirection() {
+		currentPosition = new Point();
+	}
+
+	public PortProxy getCurrentPort() {
 		return currentPort;
 	}
 
@@ -46,7 +51,7 @@ public class PositionOrDirection {
 	 * Sets the current port and nulls destination and origin port, which in turn will switch values of is* methods.
 	 * @param currentPort Current port.
 	 */
-	public void setCurrentPort(Port currentPort) {
+	public void setCurrentPort(PortProxy currentPort) {
 		this.currentPort = currentPort;
 		setDestinationPort(null);
 		setOriginPort(null);
@@ -76,11 +81,11 @@ public class PositionOrDirection {
 				destinationPort != null;
 	}
 
-	public Port getDestinationPort() {
+	public PortProxy getDestinationPort() {
 		return destinationPort;
 	}
 
-	void setDestinationPort(Port destinationPort) {
+	void setDestinationPort(PortProxy destinationPort) {
 		this.destinationPort = destinationPort;
 	}
 
@@ -88,11 +93,11 @@ public class PositionOrDirection {
 		return (int) Math.ceil(getDistanceLeft() / currentSpeed);
 	}
 
-	public Port getOriginPort() {
+	public PortProxy getOriginPort() {
 		return originPort;
 	}
 
-	void setOriginPort(Port originPort) {
+	void setOriginPort(PortProxy originPort) {
 		this.originPort = originPort;
 	}
 
@@ -104,7 +109,7 @@ public class PositionOrDirection {
 	 * @param ship
 	 * @throws NoRouteFoundException
 	 */
-	public void travelTo(Port origin, Port destination, double speed, ShipModel ship) throws NoRouteFoundException {
+	public void travelTo(PortProxy origin, PortProxy destination, double speed, ShipModel ship) throws NoRouteFoundException {
 		// an entirely new model instance might neither have a current port nor be at sea.
 		if (isInPort() || !isAtSea()) {
 			setCurrentLatitude(origin.getLatitude());
@@ -114,9 +119,10 @@ public class PositionOrDirection {
 		setCurrentPort(null);
 		setDestinationPort(destination);
 		setOriginPort(origin);
-		setRoute(Route.getRoute(origin.getUnlocode(), destination.getUnlocode(), !ship.isPostPanamax(), !ship.isPostSuezmax()));
+//		setRoute(Route.getRoute(origin.getUnlocode(), destination.getUnlocode(), !ship.isPostPanamax(), !ship.isPostSuezmax()));
+		setRoute(Game.getInstance().getRoute(origin, destination, ship));
 		setLeftPortDate(Game.getInstance().getCurrentDate());
-		setDistanceLeft(Game.getInstance().getDistance(origin, destination, ship));
+		setDistanceLeft(getCurrentRoute().getTotalDistance());
 		setCurrentSpeed(speed);
 	}
 
@@ -153,19 +159,19 @@ public class PositionOrDirection {
 	}
 
 	public double getLongitude() {
-		return currentLongitude.getCoordinate();
+		return currentPosition.getLon();
 	}
 
 	public double getLatitude() {
-		return currentLatitude.getCoordinate();
+		return currentPosition.getLat();
 	}
 
-	private void setCurrentLatitude(LatLong currentLatitude) {
-		this.currentLatitude = currentLatitude;
+	private void setCurrentLatitude(double currentLatitude) {
+		currentPosition.setLat((float) currentLatitude);
 	}
 
-	private void setCurrentLongitude(LatLong currentLongitude) {
-		this.currentLongitude = currentLongitude;
+	private void setCurrentLongitude(double currentLongitude) {
+		currentPosition.setLon((float) currentLongitude);
 	}
 
 	/**
@@ -177,8 +183,8 @@ public class PositionOrDirection {
 			return 0.0;
 		}
 
-		double lat2 = getNextPoint().getLatitude().getCoordinate();
-		double lon2 = getNextPoint().getLongitude().getCoordinate();
+		double lat2 = getNextPoint().getLat();
+		double lon2 = getNextPoint().getLon();
 
 //		double dLat = Math.toRadians(lat2 -getLatitude());
 		double dLon = Math.toRadians(lon2 -getLongitude());
@@ -188,16 +194,16 @@ public class PositionOrDirection {
 		return Math.round(100*Math.toDegrees(Math.atan2(y, x)))/100.0;
 	}
 
-	private Route.Point getNextPoint() {
+	private Point getNextPoint() {
 		return route.getPoints().get(routeLeg+1);
 	}
 
-	public void setRoute(Route route) {
+	public void setRoute(ASRoute route) {
 		this.route = route;
 		routeLeg = 0;
 	}
 
-	public Route getCurrentRoute() {
+	public ASRoute getCurrentRoute() {
 		return route;
 	}
 

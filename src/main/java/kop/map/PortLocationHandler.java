@@ -28,20 +28,25 @@ public class PortLocationHandler extends AbstractLocationHandler {
 			retVector = vector;
 		}
 
-		PortMap ports = PortsOfTheWorld.getPorts();
+		PortMap ports = null;
+		try {
+			ports = PortsOfTheWorld.getPorts();
+		} catch (Exception e) {
+			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+		}
 
 		for (Port port: ports.values()) {
 
-			if (port.getLatitude() != null && port.getLongitude() != null) {
-				OMRect rect = new OMRect((float)port.getLatitude().getCoordinate(),
-						(float)port.getLongitude().getCoordinate(),
+			if (port.getLatitude() != 0.0 && port.getLongitude() != 0.0) {
+				OMRect rect = new OMRect((float)port.getLatitude(),
+						(float)port.getLongitude(),
 						-1,-1,1,1);
 				rect.setFillPaint(Color.blue);
 				rect.setLinePaint(Color.blue);
 				rect.setVisible(true);
 
-				Location location = new BasicLocation((float)port.getLatitude().getCoordinate(),
-						(float)port.getLongitude().getCoordinate(),
+				Location location = new BasicLocation((float)port.getLatitude(),
+						(float)port.getLongitude(),
 						port.getName(),
 						rect);
 

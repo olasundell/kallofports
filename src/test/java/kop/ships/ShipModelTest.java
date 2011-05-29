@@ -3,6 +3,7 @@ package kop.ships;
 import kop.game.Game;
 import kop.ports.NoRouteFoundException;
 import kop.ports.Port;
+import kop.ports.PortProxy;
 import org.junit.Before;
 import org.junit.Test;
 import org.simpleframework.xml.Serializer;
@@ -55,16 +56,18 @@ public class ShipModelTest {
 		ShipModel ship = new ContainerShipModel();
 		ship.setName("foobar");
 		ship.getBlueprint().addEngine(new Engine());
-		Serializer serializer = new Persister();
+
 		EngineList engineList = EngineList.getInstance();
 		ship.getBlueprint().addEngine(engineList.getAnEngineForTest());
-		ship.setPort(Game.getInstance().getPortByName("Singapore"));
+		Port singapore = Game.getInstance().getPortByName("Singapore");
+		ship.setPort(singapore.getProxy());
 
-		File result = new File("foobar.xml");
-		serializer.write(ship, result);
-		File source = new File("foobar.xml");
-		ContainerShipModel r = serializer.read(ContainerShipModel.class, source);
+		String fileName = "containershipmodel.xml";
+		ModelSerializer.saveToFile(fileName,ContainerShipModel.class, ship);
+		ShipModel r = (ShipModel) ModelSerializer.readFromFile(new File(fileName).toURI().toURL(), ContainerShipModel.class);
 		assertEquals(ship.getName(), r.getName());
+		assertNotNull(ship.getCurrentPosition().getCurrentPort());
+		assertEquals(singapore.getUnlocode(),ship.getCurrentPosition().getCurrentPort().getUnlocode());
 	}
 
 	// TODO rewrite this using the correct factory methods for ShipModel instancing.
@@ -73,8 +76,8 @@ public class ShipModelTest {
 		ShipModel ship = new ContainerShipModel();
 		ship.setName("foobar");
 
-		Port origin = Game.getInstance().getPortByName("Durban");
-		Port destination = Game.getInstance().getPortByName("New York");
+		PortProxy origin = Game.getInstance().getPortByName("Durban").getProxy();
+		PortProxy destination = Game.getInstance().getPortByName("New York").getProxy();
 
 		ship.setCurrentPort(origin);
 		ship.setCurrentFuel(ship.getMaxFuel());

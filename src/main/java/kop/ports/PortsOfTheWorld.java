@@ -16,25 +16,20 @@ public class PortsOfTheWorld {
 	// TODO remove this.
 	private List<Distance> distances;
 
-	public PortsOfTheWorld() {
+	public PortsOfTheWorld() throws Exception {
 		distances = new ArrayList<Distance>();
 		populatePorts();
 	}
 
-	public void populatePorts()  {
+	public void populatePorts() throws Exception {
 		if (ports!=null) {
 			return;
 		}
 
-		try {
-//			ports = factory.createPorts();
-			ports = (PortMap) ModelSerializer.readFromFile("kop/ports/ports.xml", PortMap.class);
-		} catch (Exception e) {
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-		}
+		ports = (PortMap) ModelSerializer.readFromFile("kop/ports/ports.xml", PortMap.class);
 	}
 
-	public static PortMap getPorts() {
+	public static PortMap getPorts() throws Exception {
 		PortsOfTheWorld instance = new PortsOfTheWorld();
 		instance.populatePorts();
 		return instance.ports;
@@ -91,5 +86,15 @@ public class PortsOfTheWorld {
 
 	public Collection<Port> getPortsAsList() {
 		return ports.values();
+	}
+
+	public Port getPortByUnlocode(String unlocode) throws NoSuchPortException {
+		for (Port p: ports.values()) {
+			if (p.getUnlocode().equals(unlocode)) {
+				return p;
+			}
+		}
+
+		throw new NoSuchPortException(String.format("Could not find port based on unlocode %s", unlocode));
 	}
 }

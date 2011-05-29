@@ -12,9 +12,9 @@ public class GenerateScriptForRouting {
 	private static final String WGET_URL_MID = "&port=";
 
 	public static void main(String[] args) {
-		PortsOfTheWorld	 world = new PortsOfTheWorld();
-		world.populatePorts();
 		try {
+			PortsOfTheWorld	 world = new PortsOfTheWorld();
+
 			FileWriter writer = new FileWriter("porturls.txt");
 
 			ArrayList<Port> list = new ArrayList<Port>();
@@ -32,7 +32,7 @@ public class GenerateScriptForRouting {
 			}
 
 			writer.close();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
 		}
 

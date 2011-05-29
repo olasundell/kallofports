@@ -8,12 +8,15 @@ import com.bbn.openmap.omGraphics.OMLine;
 import com.bbn.openmap.omGraphics.OMPoly;
 import com.bbn.openmap.omGraphics.OMRect;
 import kop.game.Game;
+import kop.map.routecalculator.*;
+import kop.map.routecalculator.Point;
 import kop.ports.Port;
 import kop.ports.PortMap;
 import kop.ports.PortsOfTheWorld;
 import kop.ships.ShipModel;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -57,12 +60,12 @@ public class ShipLocationHandler extends AbstractLocationHandler {
 
 			if (ship.isAtSea()) {
 				// add route to map.
-				Route route = ship.getCurrentRoute();
-				List<Route.Point> points = route.getPoints();
+				ASRoute route = ship.getCurrentRoute();
+				ArrayList<Point> points = route.getPoints();
 				float f[] = new float[points.size()*2];
 				for (int i=0;i < points.size(); i++) {
-					f[i*2] = (float) points.get(i).getLatitude().getCoordinate();
-					f[i*2+1] = (float) points.get(i).getLongitude().getCoordinate();
+					f[i*2] = points.get(i).getLat();
+					f[i*2+1] = points.get(i).getLon();
 				}
 				OMPoly poly = new OMPoly(f, OMGraphicConstants.DECIMAL_DEGREES, OMGraphicConstants.LINETYPE_STRAIGHT);
 

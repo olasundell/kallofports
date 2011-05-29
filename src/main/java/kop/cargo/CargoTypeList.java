@@ -18,14 +18,23 @@ public class CargoTypeList extends ArrayList<CargoType> {
 
 	@ElementList
 	public void setList(List<CargoType> list) {
-		packagingMap = new HashMap<CargoType.Packaging, CargoTypeList>();
 		for (CargoType type: list) {
+			if (!this.contains(type)) {
+				add(type);
+			}
+		}
+//		this.addAll(list);
+		createPackingMap();
+	}
+
+	private void createPackingMap() {
+		packagingMap = new HashMap<CargoType.Packaging, CargoTypeList>();
+		for (CargoType type: this) {
 			if (packagingMap.get(type.getPackaging()) == null) {
 				packagingMap.put(type.getPackaging(), new CargoTypeList());
 			}
 			packagingMap.get(type.getPackaging()).add(type);
 		}
-		this.addAll(list);
 	}
 
 	@ElementList
@@ -38,5 +47,16 @@ public class CargoTypeList extends ArrayList<CargoType> {
 	public CargoType getCargoTypeByPackaging(CargoType.Packaging packaging) {
 		CargoTypeList list = packagingMap.get(packaging);
 		return list.get(Game.getInstance().getRandom().nextInt(list.size()));
+	}
+
+	public CargoTypeList find(String cargoTypeSubstr) {
+		CargoTypeList list = new CargoTypeList();
+		for (CargoType type: this) {
+			if (type.getName().toLowerCase().indexOf(cargoTypeSubstr.toLowerCase()) != -1) {
+				list.add(type);
+			}
+		}
+
+		return list;
 	}
 }

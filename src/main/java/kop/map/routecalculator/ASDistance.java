@@ -1,7 +1,10 @@
 package kop.map.routecalculator;
 
 import com.bbn.openmap.tools.roads.Route;
+import kop.ports.NoRouteFoundException;
+import kop.ports.NoSuchPortException;
 import kop.ports.Port;
+import kop.ports.PortProxy;
 import kop.ships.ShipModel;
 
 import java.util.ArrayList;
@@ -12,12 +15,12 @@ import java.util.List;
  * @see ASRoute
  */
 public class ASDistance {
-	private Port origin;
-	private Port destination;
+	private PortProxy origin;
+	private PortProxy destination;
 
 	private List<ASRoute> routes;
 
-	public ASDistance(Port origin, Port destination) {
+	public ASDistance(PortProxy origin, PortProxy destination) {
 		this.origin = origin;
 		this.destination = destination;
 		routes = new ArrayList<ASRoute>();
@@ -64,29 +67,33 @@ public class ASDistance {
 	 * @return the shortest distance in nautical miles.
 	 * TODO use shortestRoute with parameters instead.
 	 */
-	public double shortestDistance(ShipModel ship) {
+	public double shortestDistance(ShipModel ship) throws NoRouteFoundException {
+		return shortestRoute(ship).getTotalDistance();
+	}
+
+	public ASRoute shortestRoute(ShipModel ship) throws NoRouteFoundException {
 		if (routes.size() == 0) {
-			return -1;
+			throw new NoRouteFoundException("Route list is empty");
 		}
 
-		double d = routes.get(0).getTotalDistance();
+		ASRoute route = routes.get(0);
 
 		for (ASRoute r: routes) {
 			if (!(ship.isPostPanamax() && r.passesPanama()) &&
 					!(ship.isPostSuezmax() && r.passesSuez()) &&
-					r.getTotalDistance() < d) {
-				d = r.getTotalDistance();
+					r.getTotalDistance() < route.getTotalDistance()) {
+				route = r;
 			}
 		}
 
-		return d;
+		return route;
 	}
 
-	public Port getOrigin() {
+	public PortProxy getOrigin() {
 		return origin;
 	}
 
-	public Port getDestination() {
+	public PortProxy getDestination() {
 		return destination;
 	}
 }

@@ -1,5 +1,8 @@
 package kop.ports;
 
+import kop.cargo.CargoType;
+import kop.cargo.CargoTypeList;
+import kop.cargo.FreightMarket;
 import kop.game.Game;
 import kop.ships.ModelSerializer;
 import org.junit.Test;
@@ -15,14 +18,16 @@ import static org.junit.Assert.assertTrue;
  */
 public class PortTest {
 	@Test
+	// TODO add cargo type
 	public void serializePortWithLatLong() throws Exception {
 		Port port = new Port();
 		port.setName("Aberdeen");
 		port.setCountryCode("GB");
 		port.setUnlocode("GB ABD");
-		port.setLatitude("57","9","N");
-		port.setLongitude("2","5","W");
-		ModelSerializer.saveToFile("portwithlatlong.xml", Port.class, port);
+		port.setLatitude("57", "9", "N");
+		port.setLongitude("2", "5", "W");
+		port.addAllCargoTypes(FreightMarket.getCargoTypes().find("crude"));
+		ModelSerializer.saveToFile("portwithlatlongandcargotype.xml", Port.class, port);
 	}
 
 	@Test

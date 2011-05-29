@@ -8,6 +8,7 @@ import org.simpleframework.xml.strategy.Strategy;
 import java.io.File;
 import java.lang.annotation.Annotation;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 /**

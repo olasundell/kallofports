@@ -3,6 +3,7 @@ package kop.map.routecalculator;
 import org.simpleframework.xml.ElementArray;
 import org.simpleframework.xml.Root;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
@@ -45,6 +46,15 @@ public class NewWorld {
 		for (int i=0;i<lats.length;i++) {
 			lats[i] = new LatitudeArr(longitudeSize);
 		}
+	}
+
+	public static NewWorld getWorld(float scale) {
+		RouteCalculator calculator = new RouteCalculator();
+		NewWorld newWorld = new NewWorld(Math.round(180*scale),Math.round(360*scale));
+		newWorld.setScale(scale);
+		newWorld.setNorthOffset(0);
+		newWorld.setSouthOffset(0);
+		return calculator.calculateWorld(newWorld);
 	}
 
 	protected int reverseLat(double lat) {

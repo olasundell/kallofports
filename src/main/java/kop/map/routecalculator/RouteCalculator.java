@@ -31,7 +31,7 @@ public class RouteCalculator {
 	NewWorld points = null;
 	List<Shape> shapeList;
 
-	RouteCalculator() {
+	public RouteCalculator() {
 		shapeList = new ArrayList<Shape>();
 		mapBean = new MapBean();
 		basicMapShape = createWorldLayer();

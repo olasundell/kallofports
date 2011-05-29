@@ -2,6 +2,7 @@ package kop.cargo;
 
 import kop.game.Game;
 import kop.ports.Port;
+import kop.ports.PortProxy;
 import kop.ports.PortsOfTheWorld;
 import kop.ships.ModelSerializer;
 
@@ -13,12 +14,18 @@ import java.util.*;
 public class FreightMarket {
 	private List<Freight> market;
 	private static CargoTypeList cargoTypes;
+	private Game gameInstance;
 
 	public FreightMarket() {
 		market = new ArrayList<Freight>();
 	}
 
-	public Freight generateFreight(Port origin, Port destination, Cargo cargo) {
+	public FreightMarket(Game game) {
+		this();
+		gameInstance = game;
+	}
+
+	public Freight generateFreight(PortProxy origin, PortProxy destination, Cargo cargo) {
 		Freight f = new Freight();
 
 		f.setOrigin(origin);
@@ -30,7 +37,7 @@ public class FreightMarket {
 		return f;
 	}
 
-	public List<Freight> getFreightFromPort(Port origin) {
+	public List<Freight> getFreightFromPort(PortProxy origin) {
 		List<Freight> list = new ArrayList<Freight>();
 
 		for (Freight f: market) {
@@ -50,14 +57,19 @@ public class FreightMarket {
 		return cargoTypes;
 	}
 
-	public static Cargo generateCargo(CargoType type) {
+	public Cargo generateCargo(CargoType type) {
 		CargoImpl cargo = new CargoImpl(type);
-		Random random = Game.getInstance().getRandom();
+		Random random;
+		if (gameInstance == null) {
+			random = Game.getInstance().getRandom();
+		} else {
+			random = gameInstance.getRandom();
+		}
 
 		cargo.setWeight((int) Math.abs(random.nextGaussian() * 10000));
 
 		cargo.setPricePerVolume(Math.abs(random.nextGaussian() * 10));
-		cargo.setDeadline(Game.getInstance().getFutureDate((int) Math.abs(random.nextGaussian()*10)));
+		cargo.setDeadline(Game.getInstance().getFutureDate(1 + (int) Math.abs(random.nextGaussian()*100)));
 		return cargo;
 	}
 }

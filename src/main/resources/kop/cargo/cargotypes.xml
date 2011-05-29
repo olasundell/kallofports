@@ -27,6 +27,11 @@
 		</cargoType>
 
 		<!-- GENERAL WET BULK -->
+		<cargoType name="Crude oil">
+			<description>Unrefined oil</description>
+			<density>790-973</density>
+			<packaging>wetbulk</packaging>
+		</cargoType>
 		<cargoType name="MTBE">
 			<description>Methyl tert-butyl ether</description>
 			<packaging>wetbulk</packaging>
@@ -1462,13 +1467,13 @@
 		<cargoType name="Oil, linseed">
 			<density>942</density>
 			<description>foo</description>
-			<packaging>drybulk</packaging>
+			<packaging>wetbulk</packaging>
 		</cargoType>
 
 		<cargoType name="Oil, petroleum">
 			<density>881</density>
 			<description>foo</description>
-			<packaging>drybulk</packaging>
+			<packaging>wetbulk</packaging>
 		</cargoType>
 
 		<cargoType name="Oxygen">

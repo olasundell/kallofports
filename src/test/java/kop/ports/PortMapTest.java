@@ -5,6 +5,7 @@ import junit.framework.TestCase;
 import kop.ships.ModelSerializer;
 import org.junit.Test;
 
+import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
 
 /**
@@ -23,6 +24,7 @@ public class PortMapTest {
 		port.setName("London");
 		port.setUnlocode("GB LON");
 		map.put("London", port);
+		port.setLatitude(51.30);
 		ModelSerializer.saveToFile("portmap.xml",PortMap.class, map);
 	}
 
@@ -30,6 +32,8 @@ public class PortMapTest {
 	public void deserializePortMap() throws Exception {
 		PortMap map = (PortMap) ModelSerializer.readFromFile("portmap.xml", PortMap.class);
 		assertNotNull(map);
-		assertNotNull(map.get("London"));
+		Port london = map.get("London");
+		assertNotNull(london);
+		assertEquals(51.30,london.getLatitude());
 	}
 }

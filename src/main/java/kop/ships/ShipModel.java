@@ -10,8 +10,10 @@ import java.util.List;
 
 import kop.cargo.Freight;
 import kop.map.Route;
+import kop.map.routecalculator.ASRoute;
 import kop.ports.NoRouteFoundException;
 import kop.ports.Port;
+import kop.ports.PortProxy;
 import kop.ports.PositionOrDirection;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
@@ -100,7 +102,7 @@ public abstract class ShipModel {
 				model = new BulkShipModel();
 				break;
 			default:
-				model = null; //TODO this will provoke an NPE further down. Maybe we want to throw an exception here?
+				throw new IllegalArgumentException(String.format("Ship class has an illegal class type, %s", shipClass.getClassType()));
 		}
 		model.setBlueprint(shipClass.getBlueprint());
 		// TODO should we fill'er up by default? What if the player purchases a used vessel?
@@ -118,11 +120,11 @@ public abstract class ShipModel {
 		return currentPosition.getDistanceLeft();
 	}
 
-	public void setSail(Port origin, Port destination, double speed) throws NoRouteFoundException {
+	public void setSail(PortProxy origin, PortProxy destination, double speed) throws NoRouteFoundException {
 		currentPosition.travelTo(origin, destination, speed, this);
 	}
 
-	public void setCurrentPort(Port currentPort) {
+	public void setCurrentPort(PortProxy currentPort) {
 		currentPosition.setCurrentPort(currentPort);
 	}
 
@@ -195,7 +197,7 @@ public abstract class ShipModel {
 		return currentPosition.getLongitude();
 	}
 
-	public void setPort(Port port) {
+	public void setPort(PortProxy port) {
 		currentPosition.setCurrentPort(port);
 	}
 
@@ -203,7 +205,7 @@ public abstract class ShipModel {
 		return currentPosition.getBearing();
 	}
 
-	public Route getCurrentRoute() {
+	public ASRoute getCurrentRoute() {
 		return currentPosition.getCurrentRoute();
 	}
 

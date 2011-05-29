@@ -52,7 +52,7 @@ public class CargoImpl implements Cargo {
 
 	@Override
 	public int getDaysLeft(Date now) {
-        return (int) (deadline.getTime() - now.getTime() / (1000*3600*24));
+        return (int) ((deadline.getTime() - now.getTime()) / (1000*3600*24));
     }
 
 	public int getWeight() {

@@ -76,4 +76,8 @@ public class ASRoute {
 		point.setParent(points.get(0));
 		points.add(0,point);
 	}
+
+	public ArrayList<Point> getPoints() {
+		return points;
+	}
 }

@@ -1,8 +1,11 @@
 package kop.game;
 
 import kop.cargo.*;
+import kop.map.routecalculator.ASRoute;
+import kop.ports.NoRouteFoundException;
 import kop.ports.NoSuchPortException;
 import kop.ports.Port;
+import kop.ports.PortProxy;
 import kop.ships.EngineList;
 import kop.ships.ShipModel;
 import org.junit.Before;
@@ -98,12 +101,12 @@ public class GameTest {
 		instance.getPlayerCompany().addShip(ship);
 
 		// choose ports
-		Port fromPort = instance.getPortByName("Durban");
-		Port toPort = instance.getPortByName("Taranto");
+		PortProxy fromPort = instance.getPortByName("Durban").getProxy();
+		PortProxy toPort = instance.getPortByName("Taranto").getProxy();
 
 		// add freight from port A and port B
-		FreightMarket market = instance.getMarket();
-		Cargo cargo = FreightMarket.generateCargo(FreightMarket.getCargoTypes().getCargoTypeByPackaging(ship.getBlueprint().getCargoCapabilities().get(0)));
+		FreightMarket market = instance.getFreightMarket();
+		Cargo cargo = market.generateCargo(FreightMarket.getCargoTypes().getCargoTypeByPackaging(ship.getBlueprint().getCargoCapabilities().get(0)));
 		Freight freight = market.generateFreight(fromPort, toPort, cargo);
 		ship.addFreight(freight);
 
@@ -140,6 +143,18 @@ public class GameTest {
 		assertEquals("Current money does not equal expected value.", expected, currentMoney);
 	}
 
+	// TODO this test is broken, needs to be fixed.
+//	@Test
+
+	public void getRoute() throws NoSuchPortException, NoRouteFoundException {
+		PortProxy origin = Game.getInstance().getPortByName("Aberdeen").getProxy();
+		PortProxy destination = Game.getInstance().getPortByName("Durban").getProxy();
+//		ShipModel ship = Game.getInstance().;
+		ShipModel ship = null;
+		ASRoute route = Game.getInstance().getRoute(origin, destination, ship);
+		assertNotNull(route);
+	}
+
 	private static class MyGameStateListener implements GameStateListener {
 		public boolean state = false;
 
@@ -148,4 +163,6 @@ public class GameTest {
 			state = true;
 		}
 	}
+
+
 }

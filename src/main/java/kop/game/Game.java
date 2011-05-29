@@ -3,14 +3,10 @@ package kop.game;
 import kop.cargo.Freight;
 import kop.cargo.FreightMarket;
 import kop.company.Company;
+import kop.map.routecalculator.*;
 import kop.ports.*;
 import kop.ships.*;
-import kop.ui.MainWindow;
 
-import javax.swing.*;
-import javax.swing.text.DateFormatter;
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.util.*;
 
 /**
@@ -22,9 +18,9 @@ public class Game {
 	// 1970-01-01 00:00 + currentHour
 	private GregorianCalendar calendar;
 	private static Game instance;
-	private PortsOfTheWorld world;
+	private PortsOfTheWorld worldPorts;
 	private ShipClassList shipClasses;
-	private FreightMarket market;
+	private FreightMarket freightMarket;
 	private boolean paused = false;
 	private Company playerCompany;
 	private String playerName;
@@ -36,15 +32,21 @@ public class Game {
 	private ArrayList<GameStateListener> listeners;
 	private Random random;
 	private Map<Company, List<Freight>> deliveredFreights;
+	private NewWorld world;
 
 	/**
 	 * This constructor isn't meant to be used by the outside world
 	 * @see .getInstance()
 	 */
-	protected Game() {
-		world = new PortsOfTheWorld();
+	public Game() {
+		try {
+			worldPorts = new PortsOfTheWorld();
+			populatePorts();
+		} catch (Exception e) {
+			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+		}
 		calendar = new GregorianCalendar(1970,0,0,0,0);
-		market = new FreightMarket();
+		freightMarket = new FreightMarket(this);
 
 		companies = new ArrayList<Company>();
 		resetPlayerCompany();
@@ -53,7 +55,6 @@ public class Game {
 		random = new Random(0);
 		deliveredFreights = new HashMap<Company, List<Freight>>();
 
-		populatePorts();
 		populateShipClasses();
 	}
 
@@ -90,14 +91,14 @@ public class Game {
 	 * TODO why is this different from populateShipClasses?
 	 */
 
-	private void populatePorts() {
-		world.populatePorts();
+	private void populatePorts() throws Exception {
+		worldPorts.populatePorts();
 	}
 
 	/**
 	 * Returns the distance in nautical miles between two ports given a ship.
 	 * @deprecated should this be used at all? Probably not.
-	 * TODO is this in use?
+	 * TODO is this in use by anything except the test class?
 	 * @param origin
 	 * @param destination
 	 * @param ship
@@ -105,7 +106,7 @@ public class Game {
 	 * @throws NoRouteFoundException
 	 */
 	public double getDistance(Port origin, Port destination, ShipModel ship) throws NoRouteFoundException {
-		return world.getDistance(origin, destination, ship);
+		return worldPorts.getDistance(origin, destination, ship);
 	}
 
 	/**
@@ -178,8 +179,8 @@ public class Game {
 	 */
 
 	private void generateDailyFreights() {
-		for (Port p: world.getPortsAsList()) {
-			market.getFreightFromPort(p);
+		for (Port p: worldPorts.getPortsAsList()) {
+			freightMarket.getFreightFromPort(p.getProxy());
 		}
 	}
 
@@ -188,7 +189,11 @@ public class Game {
 	}
 
 	public Port getPortByName(String portName) throws NoSuchPortException {
-		return world.getPortByName(portName);
+		return worldPorts.getPortByName(portName);
+	}
+
+	public Port getPortByUnlocode(String unlocode) throws NoSuchPortException {
+		return worldPorts.getPortByUnlocode(unlocode);
 	}
 
 	public Company getPlayerCompany() {
@@ -241,12 +246,12 @@ public class Game {
 		return random;
 	}
 
-	protected PortsOfTheWorld getWorld() {
-		return world;
+	protected PortsOfTheWorld getWorldPorts() {
+		return worldPorts;
 	}
 
-	protected FreightMarket getMarket() {
-		return market;
+	public FreightMarket getFreightMarket() {
+		return freightMarket;
 	}
 
 	public void addDeliveredFreights(Company c, Freight f) {
@@ -273,4 +278,15 @@ public class Game {
 		companies.add(new Company());
 		playerCompany = companies.get(0);
 	}
+
+	public ASRoute getRoute(PortProxy origin, PortProxy destination, ShipModel ship) throws NoRouteFoundException {
+		AStarUtil util = new AStarUtil();
+		if (world == null) {
+			world = new RouteCalculator().calculateWorld(NewWorld.getWorld((float) 4.0));
+		}
+		ASDistance distance = util.aStar(origin, destination, world);
+
+		return distance.shortestRoute(ship);
+	}
+
 }

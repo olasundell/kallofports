@@ -5,6 +5,7 @@ import kop.ports.Port;
 import java.util.ArrayList;
 import java.util.List;
 
+import kop.ports.PortProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 /**
@@ -48,12 +49,12 @@ public class AStarUtil {
 	 * @param world The world to route in.
 	 * @return an ASDistance with routes via both canals and a direct route.
 	 */
-	public ASDistance aStar(Port start, Port goal, NewWorld world) {
+	public ASDistance aStar(PortProxy start, PortProxy goal, NewWorld world) {
 		// these are approximations
 		Point closestStartPoint = findClosestPointForPort(start, world);
 		Point closestGoalPoint = findClosestPointForPort(goal, world);
-		Point startPoint = new Point(start);
-		Point goalPoint = new Point(goal);
+		Point startPoint = start.getPosition();
+		Point goalPoint = goal.getPosition();
 
 		ASDistance distance = new ASDistance(start, goal);
 
@@ -64,8 +65,6 @@ public class AStarUtil {
 		if (closestGoalPoint == null) {
 			throw new NullPointerException("Cannot find end point for port " + goal);
 		}
-
-		// TODO refactor this, the code is too lengthy and full of duplicates.
 
 		// first, the direct route.
 		ASRoute route = aStar(closestStartPoint, closestGoalPoint, world);
@@ -179,7 +178,7 @@ public class AStarUtil {
 	 * @param world
 	 * @return
 	 */
-	protected Point findClosestPointForPort(Port port, NewWorld world) {
+	protected Point findClosestPointForPort(PortProxy port, NewWorld world) {
 		return findClosestPoint(new Point(port), world);
 	}
 
@@ -202,9 +201,26 @@ public class AStarUtil {
 					p.getLat(),
 					p.getLon());
 			List<Point> neighbours = point1.getNeighbours(world);
-			point = getLowestF(neighbours, point1, null);
+			if (neighbours.size() == 0) {
+				throw new IndexOutOfBoundsException("Could not find neighbours for "+p.toString());
+			}
+//			point = getLowestF(neighbours, point1, null);
+			Point nearest=neighbours.get(0);
+			for (Point n: neighbours) {
+				if (nearest==null) {
+					nearest = n;
+				}
+
+				if (n!=null && n.distance(p) > nearest.distance(p)) {
+					nearest = n;
+				}
+			}
+			point = nearest;
 		}
 
+		if (point == null) {
+			throw new NullPointerException("Couldn't find closest point for "+p.toString());
+		}
 
 		return point;
 	}
