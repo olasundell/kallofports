@@ -3,7 +3,8 @@ package kop.map.routecalculator;
 import org.simpleframework.xml.ElementArray;
 import org.simpleframework.xml.Root;
 
-import java.io.Serializable;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class NewWorld {
 
 	@ElementArray(empty = true)
 	LatitudeArr[] lats;
+	private WaterVerifier waterVerifier;
 
 	public NewWorld() {}
 
@@ -41,20 +43,39 @@ public class NewWorld {
 		}
 	}
 
-	public NewWorld(int latitudeSize, int longitudeSize) {
+	public NewWorld(int latitudeSize, int longitudeSize, WaterVerifier waterVerifier) {
+		setScale((float) (longitudeSize/360.0));
+		setWaterVerifier(waterVerifier);
 		lats = new LatitudeArr[latitudeSize];
 		for (int i=0;i<lats.length;i++) {
 			lats[i] = new LatitudeArr(longitudeSize);
 		}
 	}
 
-	public static NewWorld getWorld(float scale) {
+	public NewWorld(int latitudeSize, int longitudeSize) {
+		this(latitudeSize, longitudeSize, getDefaultWaterVerifier());
+	}
+
+	private void setWaterVerifier(WaterVerifier newWaterVerifier) {
+		waterVerifier = newWaterVerifier;
+		waterVerifier.setupInstance("data/shape/10m_ocean.shp");
+	}
+
+	public static NewWorld getWorld(float scale, WaterVerifier waterVerifier) {
 		RouteCalculator calculator = new RouteCalculator();
-		NewWorld newWorld = new NewWorld(Math.round(180*scale),Math.round(360*scale));
+		NewWorld newWorld = new NewWorld(Math.round(180*scale),Math.round(360*scale), waterVerifier);
 		newWorld.setScale(scale);
 		newWorld.setNorthOffset(0);
 		newWorld.setSouthOffset(0);
 		return calculator.calculateWorld(newWorld);
+	}
+
+	public static NewWorld getWorld(float scale) {
+		return getWorld(scale, getDefaultWaterVerifier());
+	}
+
+	public static OpenMapWaterVerifier getDefaultWaterVerifier() {
+		return new OpenMapWaterVerifier();
 	}
 
 	protected int reverseLat(double lat) {
@@ -179,6 +200,13 @@ public class NewWorld {
 		return s;
 	}
 
+	public WaterVerifier getWaterVerifier() {
+		if (waterVerifier == null) {
+			setWaterVerifier(getDefaultWaterVerifier());
+		}
+		return waterVerifier;
+	}
+
 	/**
 	 * Contains an array of Points which represent longitudes. Mainly used for persistence purposes.
 	 */
@@ -221,6 +249,37 @@ public class NewWorld {
 
 			return true;
 		}
+	}
+
+	public static NewWorld readFromFile(String filename) {
+		File file = new File(filename);
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			ArrayList<String> lines = new ArrayList<String>();
+			String line;
+
+			while ((line = reader.readLine())!=null) {
+				lines.add(line);
+			}
+			NewWorld world = new NewWorld(lines.size(), lines.get(0).length());
+			world.setScale(lines.size() / 180);
+			for (int i=0;i<lines.size();i++) {
+				for (int j=0;j<lines.get(i).length();j++) {
+					if (lines.get(i).charAt(j) == '.') {
+						world.lats[i].longitudes[j] = new Point(i,j,world.calcLat(i),world.calcLon(j));
+					} else {
+						world.lats[i].longitudes[j] = null;
+					}
+				}
+			}
+
+			return world;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+		} catch (IOException e) {
+			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+		}
+		return null;
 	}
 
 	@Override

@@ -2,17 +2,18 @@ package kop.ui;
 
 import kop.Main;
 import kop.game.Game;
+import kop.ships.ShipClassList;
+import kop.ships.ShipnameAlreadyExistsException;
 import kop.ships.blueprint.ShipBlueprint;
 import kop.ships.ShipClass;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.swing.*;
-import javax.swing.event.TableModelListener;
+import javax.swing.event.*;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -27,7 +28,14 @@ public class NewShipWindow implements Window {
 	private JButton purchase;
 	private JComboBox shipTypeSelector;
 	private JButton cancelButton;
-	private List<ShipClass> shipClasses;
+	private JSlider loanSlider;
+	private JLabel totalPrice;
+	private JLabel maxLoanLabel;
+	private JLabel currentCash;
+	private JLabel priceUpFront;
+	private JLabel cashAfterPurchase;
+	private JTextField shipName;
+	private ShipClassList shipClasses;
 	private NewShipTableModel tableModel;
 	private TableRowSorter<NewShipTableModel> sorter;
 
@@ -39,7 +47,20 @@ public class NewShipWindow implements Window {
 		purchase.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Game.getInstance().getPlayerCompany().purchaseShip(shipClasses.get(newShipTable.getSelectedRow()));
+				// TODO check validation here, does the company have enough money to purchase etc?
+				if (shipName.getText().length() == 0) {
+					// TODO display error message.
+					return;
+				}
+
+				try {
+					Game.getInstance().getPlayerCompany().purchaseShip(loanSlider.getValue(),
+							shipName.getText(),
+							shipClasses.get(newShipTable.getSelectedRow()));
+				} catch (ShipnameAlreadyExistsException e1) {
+					// TODO display error message
+					return;
+				}
 			}
 		});
 		shipTypeSelector.addActionListener(new ActionListener() {
@@ -48,7 +69,7 @@ public class NewShipWindow implements Window {
 				JComboBox source = (JComboBox) e.getSource();
 				Object o = source.getSelectedItem();
 				if (o instanceof ShipBlueprint.ShipType) {
-					sorter.setRowFilter(new ShipTypeRowFilter((ShipBlueprint.ShipType)o));
+					sorter.setRowFilter(new ShipTypeRowFilter((ShipBlueprint.ShipType) o));
 				} else {
 					sorter.setRowFilter(null);
 				}
@@ -60,6 +81,59 @@ public class NewShipWindow implements Window {
 				Main.displayFrame(new MainWindow());
 			}
 		});
+
+		loanSlider.setMajorTickSpacing(10);
+		loanSlider.setMinorTickSpacing(1);
+		loanSlider.setPaintTicks(true);
+		loanSlider.setPaintLabels(true);
+
+		loanSlider.addChangeListener(new ChangeListener() {
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				calcPrice(newShipTable.getSelectedRow());
+			}
+		});
+		newShipTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				ListSelectionModel model = (ListSelectionModel) e.getSource();
+
+				calcPrice(model.getLeadSelectionIndex());
+			}
+		});
+		calcPrice(-1);
+	}
+
+	private void calcPrice(int selected) {
+		double money = Game.getInstance().getPlayerCompany().getMoney();
+
+		currentCash.setText(String.format("%.2f", money));
+
+		loanSlider.setEnabled(selected > -1);
+
+		if (selected == -1) {
+			maxLoanLabel.setText("");
+			totalPrice.setText("");
+			priceUpFront.setText("");
+			cashAfterPurchase.setText(String.format("%.2f", money));
+
+			return;
+		}
+
+		int maxLoan=60;
+		maxLoanLabel.setText(String.format("%d%%",maxLoan));
+
+		ShipClass c = shipClasses.get(selected);
+		totalPrice.setText(String.format("%.2f", c.getPrice()));
+
+//		loanSlider.setExtent(c.getMaxLoanPercent());
+		loanSlider.setMinimum(0);
+		loanSlider.setExtent(100 - c.getMaxLoanPercent());
+		loanSlider.setMaximum(100);
+
+		double d = c.getPrice() * (100-loanSlider.getValue()) / 100;
+		priceUpFront.setText(String.format("%.2f", d));
+		cashAfterPurchase.setText(String.format("%.2f", money - d));
 	}
 
 	public JPanel getContentPane() {
@@ -86,19 +160,67 @@ public class NewShipWindow implements Window {
 		for (ShipBlueprint.ShipType type: ShipBlueprint.ShipType.values()) {
 			shipTypeSelector.addItem(type);
 		}
+
 	}
 
 	private class NewShipTableModel implements TableModel {
-		private List<ShipClass> shipClasses;
+		private ShipClassList shipClasses;
 
 		String columnNames[] = {
-			"Class type", "Class name", "Price"
+				"Class type",
+				"Class name",
+				"Price",
+				"Daily cost",
+				"Deadweight",
+				"Max speed",
+				"Max fuel",
+				"Fuel/day at 80%"
 		};
 		private Object filter = null;
 
-		NewShipTableModel(List<ShipClass> shipClasses) {
+		NewShipTableModel(ShipClassList shipClasses) {
 			this.shipClasses = shipClasses;
 		}
+
+		@Override
+		public Class<?> getColumnClass(int columnIndex) {
+			if (shipClasses.size() > 0) {
+				return getValueAt(0,columnIndex).getClass();
+			}
+
+			return null;
+		}
+
+		@Override
+		public Object getValueAt(int rowIndex, int columnIndex) {
+			ShipClass shipClass = shipClasses.get(rowIndex);
+			switch (columnIndex) {
+				case 0:
+					return shipClass.getClassType();
+				case 1:
+					return shipClass.getClassName();
+				case 2:
+					return shipClass.getPrice();
+				case 3:
+					return shipClass.getBlueprint().getDailyCost();
+				case 4:
+					return shipClass.getBlueprint().getDwt();
+				case 5:
+					return shipClass.getBlueprint().getMaxSpeed();
+				case 6:
+					return shipClass.getBlueprint().getMaxFuel();
+				case 7:
+					return 24*shipClass.getBlueprint().getFuelUsageFractionOfMaxPower(0.8);
+			}
+
+			throw new NotImplementedException();
+		}
+
+		@Override
+		public boolean isCellEditable(int rowIndex, int columnIndex) {
+			return false;  //To change body of implemented methods use File | Settings | File Templates.
+		}
+
 		@Override
 		public int getRowCount() {
 			return shipClasses.size();
@@ -112,38 +234,6 @@ public class NewShipWindow implements Window {
 		@Override
 		public String getColumnName(int columnIndex) {
 			return columnNames[columnIndex];
-		}
-
-		@Override
-		public Class<?> getColumnClass(int columnIndex) {
-			switch (columnIndex) {
-				case 0:
-				case 1:
-					return String.class;
-				case 2:
-					return Double.class;
-			}
-
-			return null;
-		}
-
-		@Override
-		public boolean isCellEditable(int rowIndex, int columnIndex) {
-			return false;  //To change body of implemented methods use File | Settings | File Templates.
-		}
-
-		@Override
-		public Object getValueAt(int rowIndex, int columnIndex) {
-			switch (columnIndex) {
-				case 0:
-					return shipClasses.get(rowIndex).getClassType();
-				case 1:
-					return shipClasses.get(rowIndex).getClassName();
-				case 2:
-					return shipClasses.get(rowIndex).getPrice();
-			}
-
-			throw new NotImplementedException();
 		}
 
 		@Override
@@ -169,7 +259,12 @@ public class NewShipWindow implements Window {
 		}
 		@Override
 		public boolean include(Entry<? extends NewShipTableModel, ? extends Integer> entry) {
-			return entry.getValue(0).equals(type.toString());
+			return entry.getValue(0).equals(type);
 		}
+	}
+
+	public static void main(String[] args) {
+		Game.getInstance().getPlayerCompany().setMoney(1000000000);
+		Main.displayFrame(new NewShipWindow());
 	}
 }

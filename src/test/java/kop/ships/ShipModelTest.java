@@ -50,7 +50,7 @@ public class ShipModelTest {
 	public void createShipFromShipClass() {
 		ShipClass c = ShipClass.getShipClasses().get(ShipBlueprint.ShipType.container, 0);
 
-		ShipModel ship = ShipModel.createShip(c);
+		ShipModel ship = ShipModel.createShip("Ship name",c);
 		assertNotNull(ship);
 		assertTrue(ship instanceof ContainerShipModel);
 	}

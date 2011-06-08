@@ -1,5 +1,6 @@
 package kop.map.routecalculator;
 
+import kop.ports.NoRouteFoundException;
 import kop.ports.Port;
 
 import java.util.ArrayList;
@@ -49,10 +50,16 @@ public class AStarUtil {
 	 * @param world The world to route in.
 	 * @return an ASDistance with routes via both canals and a direct route.
 	 */
-	public ASDistance aStar(PortProxy start, PortProxy goal, NewWorld world) {
+	public ASDistance aStar(PortProxy start, PortProxy goal, NewWorld world) throws NoRouteFoundException {
 		// these are approximations
-		Point closestStartPoint = findClosestPointForPort(start, world);
-		Point closestGoalPoint = findClosestPointForPort(goal, world);
+		Point closestStartPoint;
+		Point closestGoalPoint = null;
+		try {
+			closestStartPoint = findClosestPointForPort(start, world);
+			closestGoalPoint = findClosestPointForPort(goal, world);
+		} catch (CouldNotFindPointException e) {
+			throw new NoRouteFoundException(e);
+		}
 		Point startPoint = start.getPosition();
 		Point goalPoint = goal.getPosition();
 
@@ -95,7 +102,7 @@ public class AStarUtil {
 	 * @return
 	 */
 
-	protected ASRoute findRouteThroughSuezCanal(Point closestStartPoint, Point closestGoalPoint, NewWorld world) {
+	protected ASRoute findRouteThroughSuezCanal(Point closestStartPoint, Point closestGoalPoint, NewWorld world) throws NoRouteFoundException {
 		ASRoute route = findRouteThroughCanal(closestStartPoint, closestGoalPoint, suezMediterranean, suezIndianOcean, world);
 
 		route.setPassesSuez(true);
@@ -111,7 +118,7 @@ public class AStarUtil {
 	 * @return
 	 */
 
-	protected ASRoute findRouteThroughPanamaCanal(Point closestStartPoint, Point closestGoalPoint, NewWorld world) {
+	protected ASRoute findRouteThroughPanamaCanal(Point closestStartPoint, Point closestGoalPoint, NewWorld world) throws NoRouteFoundException {
 		ASRoute route = findRouteThroughCanal(closestStartPoint, closestGoalPoint, panamaPacific, panamaAtlantic, world);
 
 		route.setPassesPanama(true);
@@ -147,11 +154,17 @@ public class AStarUtil {
 										  Point closestGoalPoint,
 										  Point firstCanalEntrance,
 										  Point secondCanalEntrance,
-										  NewWorld world) {
+										  NewWorld world) throws NoRouteFoundException {
 		ASRoute route;
 		// TODO these points could be static and predefined, thus saving us a bit of time.
-		Point closestFirstEntrance = findClosestPoint(firstCanalEntrance, world);
-		Point closestSecondEntrance = findClosestPoint(secondCanalEntrance, world);
+		Point closestFirstEntrance = null;
+		Point closestSecondEntrance = null;
+		try {
+			closestFirstEntrance = findClosestPoint(firstCanalEntrance, world);
+			closestSecondEntrance = findClosestPoint(secondCanalEntrance, world);
+		} catch (CouldNotFindPointException e) {
+			throw new NoRouteFoundException(e);
+		}
 
 		if (closestStartPoint.distance(closestSecondEntrance) < closestStartPoint.distance(closestFirstEntrance)) {
 			route = aStar(closestStartPoint, closestSecondEntrance, world);
@@ -178,7 +191,7 @@ public class AStarUtil {
 	 * @param world
 	 * @return
 	 */
-	protected Point findClosestPointForPort(PortProxy port, NewWorld world) {
+	protected Point findClosestPointForPort(PortProxy port, NewWorld world) throws CouldNotFindPointException {
 		return findClosestPoint(new Point(port), world);
 	}
 
@@ -190,7 +203,7 @@ public class AStarUtil {
 	 * @param world
 	 * @return
 	 */
-	protected Point findClosestPoint(Point p, NewWorld world) {
+	protected Point findClosestPoint(Point p, NewWorld world) throws CouldNotFindPointException {
 		int i = world.reverseLat(p.getLat());
 		int j = world.reverseLon(p.getLon());
 
@@ -219,7 +232,7 @@ public class AStarUtil {
 		}
 
 		if (point == null) {
-			throw new NullPointerException("Couldn't find closest point for "+p.toString());
+			throw new CouldNotFindPointException("Couldn't find closest point for "+p.toString());
 		}
 
 		return point;

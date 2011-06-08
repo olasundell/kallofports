@@ -273,12 +273,6 @@
 			</port>
 		</entry>
 		<entry>
-			<string>Panama Canal</string>
-			<port name="Panama Canal">
-				<unlocode>PA PAN</unlocode>
-			</port>
-		</entry>
-		<entry>
 			<string>Map Ta Phut</string>
 			<port name="Map Ta Phut">
 				<unlocode>TH MAT</unlocode>
@@ -356,12 +350,6 @@
 					<min>55</min>
 					<hemisphere>W</hemisphere>
 				</longitude>
-			</port>
-		</entry>
-		<entry>
-			<string>Off- Denmark</string>
-			<port name="Off- Denmark">
-				<unlocode>DK 285</unlocode>
 			</port>
 		</entry>
 		<entry>
@@ -589,12 +577,6 @@
 			</port>
 		</entry>
 		<entry>
-			<string>Bandar Mahshahr</string>
-			<port name="Bandar Mahshahr">
-				<unlocode>IR BMR</unlocode>
-			</port>
-		</entry>
-		<entry>
 			<string>Augusta</string>
 			<port name="Augusta">
 				<unlocode>IT AUG</unlocode>
@@ -630,6 +612,16 @@
 			<string>Adelaide</string>
 			<port name="Adelaide">
 				<unlocode>AU PAE</unlocode>
+				<latitude>
+					<deg>34</deg>
+					<min>51</min>
+					<hemisphere>S</hemisphere>
+				</latitude>
+				<longitude>
+					<deg>138</deg>
+					<min>30</min>
+					<hemisphere>E</hemisphere>
+				</longitude>
 			</port>
 		</entry>
 		<entry>
@@ -876,6 +868,16 @@
 			<string>LOOP Terminal</string>
 			<port name="LOOP Terminal">
 				<unlocode>US LPP</unlocode>
+				<latitude>
+					<deg>28</deg>
+					<min>53</min>
+					<hemisphere>N</hemisphere>
+				</latitude>
+				<longitude>
+					<deg>90</deg>
+					<min>01</min>
+					<hemisphere>W</hemisphere>
+				</longitude>
 			</port>
 		</entry>
 		<entry>
@@ -1010,6 +1012,16 @@
 			<string>Ferndale</string>
 			<port name="Ferndale">
 				<unlocode>US FED</unlocode>
+				<latitude>
+					<deg>48</deg>
+					<min>49</min>
+					<hemisphere>N</hemisphere>
+				</latitude>
+				<longitude>
+					<deg>122</deg>
+					<min>42</min>
+					<hemisphere>W</hemisphere>
+				</longitude>
 			</port>
 		</entry>
 		<entry>
@@ -1272,6 +1284,16 @@
 			<string>Jose Terminal</string>
 			<port name="Jose Terminal">
 				<unlocode>VE 885</unlocode>
+				<latitude>
+					<deg>10</deg>
+					<min>12</min>
+					<hemisphere>S</hemisphere>
+				</latitude>
+				<longitude>
+					<deg>64</deg>
+					<min>47</min>
+					<hemisphere>W</hemisphere>
+				</longitude>
 			</port>
 		</entry>
 		<entry>
@@ -1371,12 +1393,6 @@
 			</port>
 		</entry>
 		<entry>
-			<string>Tanjung Uban</string>
-			<port name="Tanjung Uban">
-				<unlocode>ID TAN</unlocode>
-			</port>
-		</entry>
-		<entry>
 			<string>Port Gentil</string>
 			<port name="Port Gentil">
 				<unlocode>GA POG</unlocode>
@@ -1428,6 +1444,16 @@
 			<string>Burnie</string>
 			<port name="Burnie">
 				<unlocode>AU BUR</unlocode>
+				<latitude>
+					<deg>41</deg>
+					<min>3</min>
+					<hemisphere>S</hemisphere>
+				</latitude>
+				<longitude>
+					<deg>145</deg>
+					<min>54</min>
+					<hemisphere>E</hemisphere>
+				</longitude>
 			</port>
 		</entry>
 		<entry>
@@ -1444,12 +1470,6 @@
 					<min>18</min>
 					<hemisphere>E</hemisphere>
 				</longitude>
-			</port>
-		</entry>
-		<entry>
-			<string>Port Arthur</string>
-			<port name="Port Arthur">
-				<unlocode>US BMT</unlocode>
 			</port>
 		</entry>
 		<entry>
@@ -1514,12 +1534,6 @@
 					<min>09</min>
 					<hemisphere>E</hemisphere>
 				</longitude>
-			</port>
-		</entry>
-		<entry>
-			<string>Priolo</string>
-			<port name="Priolo">
-				<unlocode>IT PRI</unlocode>
 			</port>
 		</entry>
 		<entry>
@@ -1606,12 +1620,16 @@
 			<string>Qua Iboe Terminal</string>
 			<port name="Qua Iboe Terminal">
 				<unlocode>NG OBO</unlocode>
-			</port>
-		</entry>
-		<entry>
-			<string>Dzaoudzi</string>
-			<port name="Dzaoudzi">
-				<unlocode>KM DZA</unlocode>
+				<latitude>
+					<deg>4</deg>
+					<min>20</min>
+					<hemisphere>N</hemisphere>
+				</latitude>
+				<longitude>
+					<deg>7</deg>
+					<min>59</min>
+					<hemisphere>W</hemisphere>
+				</longitude>
 			</port>
 		</entry>
 		<entry>
@@ -1666,6 +1684,16 @@
 			<string>Negishi</string>
 			<port name="Negishi">
 				<unlocode>JP NGI</unlocode>
+				<latitude>
+					<deg>35</deg>
+					<min>24</min>
+					<hemisphere>N</hemisphere>
+				</latitude>
+				<longitude>
+					<deg>139</deg>
+					<min>38</min>
+					<hemisphere>E</hemisphere>
+				</longitude>
 			</port>
 		</entry>
 		<entry>
@@ -2008,6 +2036,16 @@
 			<string>Sungai Udang</string>
 			<port name="Sungai Udang">
 				<unlocode>MY SRE</unlocode>
+				<latitude>
+					<deg>2</deg>
+					<min>12</min>
+					<hemisphere>N</hemisphere>
+				</latitude>
+				<longitude>
+					<deg>102</deg>
+					<min>4</min>
+					<hemisphere>E</hemisphere>
+				</longitude>
 			</port>
 		</entry>
 		<entry>
@@ -2072,12 +2110,6 @@
 					<min>57</min>
 					<hemisphere>W</hemisphere>
 				</longitude>
-			</port>
-		</entry>
-		<entry>
-			<string>Devonport</string>
-			<port name="Devonport">
-				<unlocode>GB DVP</unlocode>
 			</port>
 		</entry>
 		<entry>
@@ -2272,12 +2304,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
-			<string>Keoje</string>
-			<port name="Keoje">
-				<unlocode>KR KJE</unlocode>
-			</port>
-		</entry>
+		<!--<entry>-->
+			<!--<string>Keoje</string>-->
+			<!--<port name="Keoje">-->
+				<!--<unlocode>KR KJE</unlocode>-->
+			<!--</port>-->
+		<!--</entry>-->
 		<entry>
 			<string>Cagliari</string>
 			<port name="Cagliari">
@@ -2313,7 +2345,17 @@
 		<entry>
 			<string>Hong Kong</string>
 			<port name="Hong Kong">
-				<unlocode>CN HOK</unlocode>
+				<unlocode>HK HKC</unlocode>
+				<latitude>
+					<deg>22</deg>
+					<min>22</min>
+					<hemisphere>N</hemisphere>
+				</latitude>
+				<longitude>
+					<deg>11</deg>
+					<min>40</min>
+					<hemisphere>E</hemisphere>
+				</longitude>
 			</port>
 		</entry>
 		<entry>
@@ -2348,12 +2390,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>St. Croix</string>
 			<port name="St. Croix">
 				<unlocode>VI SCX</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Halifax</string>
 			<port name="Halifax">
@@ -2594,12 +2636,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Ariake</string>
 			<port name="Ariake">
 				<unlocode>JP 929</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Karachi</string>
 			<port name="Karachi">
@@ -2936,12 +2978,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Wallsend</string>
 			<port name="Wallsend">
 				<unlocode>GB WTW</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Punta Quilla</string>
 			<port name="Punta Quilla">
@@ -3038,12 +3080,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Rayong</string>
 			<port name="Rayong">
 				<unlocode>TH RYG</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Darwin</string>
 			<port name="Darwin">
@@ -3284,12 +3326,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Aruba</string>
 			<port name="Aruba">
 				<unlocode>AN AUA</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Lake Charles</string>
 			<port name="Lake Charles">
@@ -3306,12 +3348,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Anacortes</string>
 			<port name="Anacortes">
 				<unlocode>US AOT</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Sydney</string>
 			<port name="Sydney">
@@ -3392,12 +3434,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Sendai</string>
 			<port name="Sendai">
 				<unlocode>JP SDJ</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Venice</string>
 			<port name="Venice">
@@ -3558,12 +3600,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Archangel</string>
 			<port name="Archangel">
 				<unlocode>RU ARH</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Fateh Terminal</string>
 			<port name="Fateh Terminal">
@@ -3804,7 +3846,7 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Marsa Bashayer</string>
 			<port name="Marsa Bashayer">
 				<unlocode>SD 358</unlocode>
@@ -3815,7 +3857,7 @@
 			<port name="Ash Shihr Terminal">
 				<unlocode>YE 194</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Buenaventura</string>
 			<port name="Buenaventura">
@@ -4536,12 +4578,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Bar</string>
 			<port name="Bar">
 				<unlocode>YU BAR</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Labuan</string>
 			<port name="Labuan">
@@ -4830,12 +4872,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Point Lisas</string>
 			<port name="Point Lisas">
 				<unlocode>TT PYS</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Marsaxlokk</string>
 			<port name="Marsaxlokk">
@@ -5076,12 +5118,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Meizhou</string>
 			<port name="Meizhou">
 				<unlocode>CN MEZ</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>San Diego</string>
 			<port name="San Diego">
@@ -5242,12 +5284,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Dubai</string>
 			<port name="Dubai">
 				<unlocode>AE DXB</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Das Island</string>
 			<port name="Das Island">
@@ -5712,12 +5754,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Nakagusuku</string>
 			<port name="Nakagusuku">
 				<unlocode>JP NAK</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Braefoot Bay</string>
 			<port name="Braefoot Bay">
@@ -5846,12 +5888,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Karsto</string>
 			<port name="Karsto">
 				<unlocode>NO KAR</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Shekou</string>
 			<port name="Shekou">
@@ -6076,12 +6118,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Azores</string>
 			<port name="Azores">
 				<unlocode>PT 964</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Kribi</string>
 			<port name="Kribi">
@@ -6226,12 +6268,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Daesan</string>
 			<port name="Daesan">
 				<unlocode>KR DAS</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>El Tablazo</string>
 			<port name="El Tablazo">
@@ -6248,12 +6290,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Pasir Gudang</string>
 			<port name="Pasir Gudang">
 				<unlocode>MY PGU</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Portland ME</string>
 			<port name="Portland ME">
@@ -6366,12 +6408,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>River Humber</string>
 			<port name="River Humber">
 				<unlocode>GB HMR</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Mumbai</string>
 			<port name="Mumbai">
@@ -6692,12 +6734,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Salina Cruz</string>
 			<port name="Salina Cruz">
 				<unlocode>MX SCZ</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Cadiz</string>
 			<port name="Cadiz">
@@ -6794,12 +6836,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Heianza</string>
 			<port name="Heianza">
 				<unlocode>JP HEI</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Shanghai</string>
 			<port name="Shanghai">
@@ -7424,12 +7466,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Ellesmere Port</string>
 			<port name="Ellesmere Port">
 				<unlocode>GB ELM</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Shibushi</string>
 			<port name="Shibushi">
@@ -7446,12 +7488,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Covenas</string>
 			<port name="Covenas">
 				<unlocode>CO CVE</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Monfalcone</string>
 			<port name="Monfalcone">
@@ -7468,12 +7510,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Santa Panagia</string>
 			<port name="Santa Panagia">
 				<unlocode>IT SPA</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Jose Ignacio</string>
 			<port name="Jose Ignacio">
@@ -7942,6 +7984,16 @@
 			<string>Zafiro Offshore Terminal</string>
 			<port name="Zafiro Offshore Terminal">
 				<unlocode>GQ 354</unlocode>
+				<latitude>
+					<deg>3</deg>
+					<min>51</min>
+					<hemisphere>N</hemisphere>
+				</latitude>
+				<longitude>
+					<deg>8</deg>
+					<min>7</min>
+					<hemisphere>E</hemisphere>
+				</longitude>
 			</port>
 		</entry>
 		<entry>
@@ -8024,12 +8076,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Ferrol</string>
 			<port name="Ferrol">
 				<unlocode>ES FER</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Kikuma</string>
 			<port name="Kikuma">
@@ -8094,12 +8146,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Bahrain</string>
 			<port name="Bahrain">
 				<unlocode>BH BAH</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Jorf Lasfar</string>
 			<port name="Jorf Lasfar">
@@ -8132,12 +8184,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Tabangao</string>
 			<port name="Tabangao">
 				<unlocode>PH TBG</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Chiriqui Grande Terminal</string>
 			<port name="Chiriqui Grande Terminal">
@@ -8270,6 +8322,16 @@
 			<string>Odudu Terminal</string>
 			<port name="Odudu Terminal">
 				<unlocode>NG 830</unlocode>
+				<latitude>
+					<deg>4</deg>
+					<min>0</min>
+					<hemisphere>N</hemisphere>
+				</latitude>
+				<longitude>
+					<deg>7</deg>
+					<min>46</min>
+					<hemisphere>E</hemisphere>
+				</longitude>				
 			</port>
 		</entry>
 		<entry>
@@ -8468,6 +8530,16 @@
 			<string>Kerteh Terminal</string>
 			<port name="Kerteh Terminal">
 				<unlocode>MY KET</unlocode>
+				<latitude>
+					<deg>4</deg>
+					<min>31</min>
+					<hemisphere>N</hemisphere>
+				</latitude>
+				<longitude>
+					<deg>103</deg>
+					<min>33</min>
+					<hemisphere>E</hemisphere>
+				</longitude>
 			</port>
 		</entry>
 		<entry>
@@ -8486,12 +8558,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Onsan</string>
 			<port name="Onsan">
 				<unlocode>KR ONS</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Gove</string>
 			<port name="Gove">
@@ -8876,12 +8948,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>King Fahd Port</string>
 			<port name="King Fahd Port">
 				<unlocode>SA KFH</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Merak</string>
 			<port name="Merak">
@@ -9810,12 +9882,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Tsu</string>
 			<port name="Tsu">
 				<unlocode>JP TSU</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Scapa Flow</string>
 			<port name="Scapa Flow">
@@ -9896,12 +9968,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Port Klang</string>
 			<port name="Port Klang">
 				<unlocode>MY PKL</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>El Guamache</string>
 			<port name="El Guamache">
@@ -10174,12 +10246,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Niigata</string>
 			<port name="Niigata">
 				<unlocode>JP KIJ</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Manta</string>
 			<port name="Manta">
@@ -10408,6 +10480,16 @@
 			<string>Hazira</string>
 			<port name="Hazira">
 				<unlocode>IN 850</unlocode>
+				<latitude>
+					<deg>21</deg>
+					<min>2</min>
+					<hemisphere>N</hemisphere>
+				</latitude>
+				<longitude>
+					<deg>72</deg>
+					<min>40</min>
+					<hemisphere>E</hemisphere>
+				</longitude>
 			</port>
 		</entry>
 		<entry>
@@ -10506,12 +10588,12 @@
 				</longitude>
 			</port>
 		</entry>
-		<entry>
+<!--		<entry>
 			<string>Point Tupper</string>
 			<port name="Point Tupper">
 				<unlocode>CA PTU</unlocode>
 			</port>
-		</entry>
+		</entry>-->
 		<entry>
 			<string>Piraeus</string>
 			<port name="Piraeus">

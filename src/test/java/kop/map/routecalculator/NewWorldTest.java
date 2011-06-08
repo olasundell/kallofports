@@ -5,9 +5,12 @@ import kop.ships.ModelSerializer;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.assertNotSame;
 
 /**
  * Created by IntelliJ IDEA.
@@ -17,6 +20,45 @@ import static junit.framework.Assert.assertNotNull;
  * To change this template use File | Settings | File Templates.
  */
 public class NewWorldTest {
+	@Test
+	public void equalsShouldWork() {
+		NewWorld world1 = new NewWorld(2,2);
+		world1.lats[0].longitudes[0] = null;
+		world1.lats[0].longitudes[1] = new Point(0,1,0,1);
+		world1.lats[1].longitudes[0] = new Point(1,0,1,0);
+		world1.lats[1].longitudes[1] = new Point(1,1,1,1);
+
+		NewWorld world2 = new NewWorld(2,2);
+
+		world2.lats[0].longitudes[0] = null;
+		world2.lats[0].longitudes[1] = new Point(0,1,0,1);
+		world2.lats[1].longitudes[0] = new Point(1,0,1,0);
+		world2.lats[1].longitudes[1] = new Point(1,1,1,1);
+
+		assertEquals(world1, world2);
+
+		world2.lats[1].longitudes[0] = null;
+
+		assertNotSame(world1,world2);
+	}
+	@Test
+	public void serializeDeserializeText() throws IOException {
+		RouteCalculator calculator = new RouteCalculator();
+
+		int scale = 2;
+		NewWorld world = new NewWorld(180* scale,360* scale);
+		world.setScale(scale);
+
+		world = calculator.calculateWorld(world);
+		File file = new File("worldoutput.txt");
+		FileWriter writer = new FileWriter(file);
+		writer.write(world.toString());
+		writer.close();
+
+		NewWorld readWorld = NewWorld.readFromFile("worldoutput.txt");
+
+		assertEquals(world, readWorld);
+	}
 	@Test
 	public void serializeDeserialize() throws Exception {
 		NewWorld world = new NewWorld();
@@ -72,4 +114,10 @@ public class NewWorldTest {
 		assertEquals(-15.0 - blankWorld.getNorthOffset(), (double) blankWorld.calcLat(210));
 	}
 
+	@Test
+	public void getWorldShouldMatchTestUtilCalculation() {
+		NewWorld utilWorld = Util.getSmallWorld((float) 0.5,0,180);
+		NewWorld newWorld = NewWorld.getWorld((float) 0.5);
+		assertEquals(utilWorld, newWorld);
+	}
 }

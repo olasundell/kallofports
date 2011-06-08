@@ -4,7 +4,7 @@ import kop.cargo.Freight;
 import kop.game.Game;
 import kop.ships.OutOfFuelException;
 import kop.ships.ShipClass;
-import kop.ships.model.ShipModel;
+import kop.ships.ShipnameAlreadyExistsException;import kop.ships.model.ShipModel;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -92,8 +92,30 @@ public class Company {
 		loans.add(loan);
 	}
 
+	public List<Loan> getLoans() {
+		return loans;
+	}
+
 	public ShipModel getShip(int index) {
 		return ships.get(index);
+	}
+
+	public boolean purchaseShip(int loanPercentage, String name, ShipClass shipClass) throws ShipnameAlreadyExistsException {
+		if (Game.getInstance().isShipNameTaken(name)) {
+			throw new ShipnameAlreadyExistsException();
+		}
+
+		double loanSize = shipClass.getPrice() * (loanPercentage / 100.0);
+		setMoney(getMoney() - shipClass.getPrice() + loanSize);
+		ShipModel model = ShipModel.createShip(name, shipClass);
+
+		Loan loan = new Loan(loanSize, Game.getInstance().getInterestRate());
+		loan.setSecurity(model);
+		addLoan(loan);
+
+		addShip(model);
+
+		return true;
 	}
 
 	/**
@@ -104,13 +126,14 @@ public class Company {
 	 * @return false if there isn't enough money for the transaction, in which case no ship will be purchased.
 	 */
 
+
 	public boolean purchaseShip(ShipClass shipClass) {
 		if (getMoney() < shipClass.getPrice()) {
 			return false;
 		}
 
 		setMoney(getMoney() - shipClass.getPrice());
-		addShip(ShipModel.createShip(shipClass));
+		addShip(ShipModel.createShip("Dummy", shipClass));
 
 		return true;
 	}
@@ -141,3 +164,4 @@ public class Company {
 		return costs;
 	}
 }
+

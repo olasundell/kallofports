@@ -35,6 +35,8 @@ public class Game {
 	private Random random;
 	private Map<Company, List<Freight>> deliveredFreights;
 	private NewWorld world;
+	// TODO hard-coded interest value.
+	private double interestRate = 4.0;
 
 	/**
 	 * This constructor isn't meant to be used by the outside world
@@ -261,7 +263,7 @@ public class Game {
 		return calendar.get(Calendar.HOUR) == calendar.getActualMaximum(Calendar.HOUR);
 	}
 
-	protected void resetPlayerCompany() {
+	public void resetPlayerCompany() {
 		companies.clear();
 		companies.add(new Company());
 		playerCompany = companies.get(0);
@@ -277,4 +279,19 @@ public class Game {
 		return distance.shortestRoute(ship);
 	}
 
+	public double getInterestRate() {
+		return interestRate;
+	}
+
+	public boolean isShipNameTaken(String name) {
+		for (Company c: companies) {
+			for (ShipModel s: c.getShips()) {
+				if (s.getName().equals(name)) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
 }

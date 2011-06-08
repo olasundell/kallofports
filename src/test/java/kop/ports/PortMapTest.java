@@ -6,6 +6,7 @@ import kop.ships.ModelSerializer;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertNotNull;
 
 /**
@@ -35,5 +36,16 @@ public class PortMapTest {
 		Port london = map.get("London");
 		assertNotNull(london);
 		assertEquals(51.30,london.getLatitude());
+	}
+
+	@Test
+	public void allPortsShouldHaveCompleteInformation() throws Exception {
+		for (Port p: PortsOfTheWorld.getPorts().values()) {
+			assertNotNull(p);
+			assertNotNull(String.format("Port %s lacks latitude!",p.toString()),p.latitude);
+			assertNotNull(String.format("Port %s lacks longitude!",p.toString()),p.longitude);
+			assertFalse(p.getLatitude() == 0.0);
+			assertFalse(p.getLongitude() == 0.0);
+		}
 	}
 }

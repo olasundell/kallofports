@@ -29,7 +29,6 @@ public class ASDistance {
 
 	/**
 	 * Returns the shortest ASRoute for this ASDistance
-	 * TODO we should use a ShipModel parameter and check for panamax and suezmax.
 	 * @return the shortest ASRoute
 	 */
 	public ASRoute shortestRoute() {
@@ -62,7 +61,6 @@ public class ASDistance {
 	 * Returns the shortest route's distance in nautical miles, given the provided ShipModel's size.
 	 * @param ship used to check for panamax and suezmax.
 	 * @return the shortest distance in nautical miles.
-	 * TODO use shortestRoute with parameters instead.
 	 */
 	public double shortestDistance(ShipModel ship) throws NoRouteFoundException {
 		return shortestRoute(ship).getTotalDistance();

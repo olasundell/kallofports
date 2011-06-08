@@ -90,8 +90,9 @@ public abstract class ShipModel {
 	 * @param shipClass
 	 * @return
 	 */
-	public static ShipModel createShip(ShipClass shipClass) {
+	public static ShipModel createShip(String name, ShipClass shipClass) {
 		ShipModel model;
+
 		switch (shipClass.getClassType()) {
 			case container:
 				model = new ContainerShipModel();
@@ -108,6 +109,7 @@ public abstract class ShipModel {
 		model.setBlueprint(shipClass.getBlueprint());
 		// TODO should we fill'er up by default? What if the player purchases a used vessel?
 		model.setCurrentFuel(model.getMaxFuel());
+		model.setName(name);
 
 		return model;
 	}

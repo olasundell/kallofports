@@ -3,17 +3,13 @@ package kop.map.routecalculator;
 import com.bbn.openmap.MapBean;
 import com.bbn.openmap.layer.location.*;
 import com.bbn.openmap.layer.shape.ShapeLayer;
-import com.bbn.openmap.omGraphics.OMGraphic;
-import com.bbn.openmap.omGraphics.OMGraphicList;
 import com.bbn.openmap.omGraphics.OMRect;
-import com.bbn.openmap.proj.Projection;
 import kop.ships.ModelSerializer;
 
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 import java.util.List;
 import java.util.concurrent.*;
@@ -25,7 +21,7 @@ import java.util.concurrent.*;
  * TODO low priority: refactor the duplicated LocationHandler code.
  */
 public class RouteCalculator {
-	ShapeLayer basicMapShape;
+//	ShapeLayer basicMapShape;
 	MapBean mapBean;
 
 	NewWorld points = null;
@@ -34,8 +30,8 @@ public class RouteCalculator {
 	public RouteCalculator() {
 		shapeList = new ArrayList<Shape>();
 		mapBean = new MapBean();
-		basicMapShape = createWorldLayer();
-		mapBean.add(basicMapShape);
+//		basicMapShape = createWorldLayer();
+//		mapBean.add(basicMapShape);
 	}
 
 	/**
@@ -164,22 +160,21 @@ public class RouteCalculator {
 	 * @return
 	 */
 	public NewWorld calculateWorld(NewWorld world) {
-		OMGraphicList list = basicMapShape.prepare();
-		Iterator<OMGraphic> iterator = list.iterator();
-
-		getShapes(iterator);
-
-		Projection projection = basicMapShape.getProjection();
-
 		points = world;
 
 		ExecutorService service = Executors.newFixedThreadPool(3);
 		ArrayList<WorldCreationWorker> workers = new ArrayList<WorldCreationWorker>();
 
+		// TODO dependency inject these.
+//		WaterVerifier waterVerifier = new OpenMapWaterVerifier("data/shape/10m_ocean.shp");
+//		WaterVerifier waterVerifier = new GeoToolsWaterVerifier("data/shape/10m_ocean.shp");
+		WaterVerifier waterVerifier = world.getWaterVerifier();
+
 		for (int i=0;i<points.lats.length;i++) {
 			System.out.println("i is "+i);
-			workers.add(new WorldCreationWorker(points, points.calcLat(i), i, projection, shapeList));
+			workers.add(new WorldCreationWorker(points, points.calcLat(i), i, (WaterVerifier)waterVerifier.clone()));
 		}
+
 		try {
 			service.invokeAll(workers);
 		} catch (InterruptedException e) {
@@ -187,21 +182,6 @@ public class RouteCalculator {
 		}
 
 		return points;
-	}
-
-	/**
-	 * Creates a list of Shapes used in isWater.
-	 * @param iterator
-	 */
-
-	private void getShapes(Iterator<OMGraphic> iterator) {
-		while (iterator.hasNext()) {
-			OMGraphic next = iterator.next();
-			if (next instanceof OMGraphicList) {
-				getShapes(((OMGraphicList) next).iterator());
-			}
-			shapeList.add(next.getShape());
-		}
 	}
 
 	/**
@@ -251,24 +231,6 @@ public class RouteCalculator {
 		portLocProps.setProperty(locationHandlerName,"override=true");
 		return portLocProps;
 	}
-
-	/**
-	 * Creates the world map layer, from the shapefile. This ShapeLayer is used for all the graticule calculations.
-	 * @return
-	 */
-
-	private ShapeLayer createWorldLayer() {
-		ShapeLayer shapeLayer = new ShapeLayer();
-		Properties shapeLayerProps = new Properties();
-		shapeLayerProps.put("prettyName", "Political Solid");
-		shapeLayerProps.put("lineColor", "000000");
-		shapeLayerProps.put("fillColor", "1111FF");
-		shapeLayerProps.put("shapeFile", "data/shape/10m_ocean.shp");
-		shapeLayerProps.put("shapeindex", "data/shape/10m_ocean.ssx");
-		shapeLayer.setProperties(shapeLayerProps);
-		return shapeLayer;
-	}
-
 	/**
 	 * isWater checks if a java.awt.Point p is contained by any shapes, and if so, returns true.
 	 * @deprecated the relevant implementation of this method is now in the WorldCreationWorker class.
@@ -420,23 +382,36 @@ public class RouteCalculator {
 		} catch (Exception e) {
 			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
 		}
-		JFrame frame = new JFrame("Simple Map");
-		frame.setSize(1024, 768);
 
-		calc.drawPointLayer();
-		calc.drawRoute(60, 0, 0, 75);
+		NewWorld newWorld = new NewWorld(720, 1440);
+		newWorld.setScale(4);
 
-		MapBean mapBean = calc.getMapBean();
-		frame.getContentPane().add(mapBean);
-//		ModelSerializer.saveToFile("world.xml", World.class, obj);
-
-		frame.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				System.exit(0);
-			}
-		});
-
-		frame.setVisible(true);
+		NewWorld world = calc.calculateWorld(newWorld);
+		File file = new File("world.txt");
+		try {
+			FileWriter writer = new FileWriter(file);
+			writer.write(world.toString());
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+		}
+//		JFrame frame = new JFrame("Simple Map");
+//		frame.setSize(1024, 768);
+//
+//		calc.drawPointLayer();
+//		calc.drawRoute(60, 0, 0, 75);
+//
+//		MapBean mapBean = calc.getMapBean();
+//		frame.getContentPane().add(mapBean);
+////		ModelSerializer.saveToFile("world.xml", World.class, obj);
+//
+//		frame.addWindowListener(new WindowAdapter() {
+//			public void windowClosing(WindowEvent e) {
+//				System.exit(0);
+//			}
+//		});
+//
+//		frame.setVisible(true);
 	}
 
 }

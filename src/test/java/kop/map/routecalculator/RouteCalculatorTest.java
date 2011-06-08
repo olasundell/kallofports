@@ -20,11 +20,20 @@ import static junit.framework.Assert.assertNotNull;
  */
 public class RouteCalculatorTest {
 	@Test
-	public void createWorld() {
-		NewWorld smallWorld = Util.getSmallWorld();
+	public void createWorldWithOpenMap() {
+		NewWorld smallWorld = Util.getSmallWorld(new OpenMapWaterVerifier());
 		assertNotNull(smallWorld);
 		Point[][] arr=smallWorld.getPointsAsArray();
 		assertNotNull(arr);
+
 		// TODO add more tests here.
+	}
+
+	@Test
+	public void createWorldWithGeoTools() {
+		NewWorld smallWorld = Util.getSmallWorld(new GeoToolsWaterVerifier());
+		assertNotNull(smallWorld);
+		Point[][] arr=smallWorld.getPointsAsArray();
+		assertNotNull(arr);
 	}
 }

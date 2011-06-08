@@ -33,7 +33,11 @@ public class Util {
 		return getSmallWorld(1,30,15);
 	}
 
-	public static NewWorld getSmallWorld(float scale, int northOffset, int latSize) {
+	public static NewWorld getSmallWorld(WaterVerifier waterVerifier) {
+		return getSmallWorld(1,30,15, waterVerifier);
+	}
+
+	public static NewWorld getSmallWorld(float scale, int northOffset, int latSize, WaterVerifier waterVerifier) {
 		if (world==null || world.getScale() == scale) {
 			RouteCalculator calculator = new RouteCalculator();
 			NewWorld newWorld = new NewWorld(Math.round(latSize*scale),Math.round(360*scale));
@@ -43,5 +47,9 @@ public class Util {
 			world = calculator.calculateWorld(newWorld);
 		}
 		return world;
+	}
+
+	public static NewWorld getSmallWorld(float scale, int northOffset, int latSize) {
+		return getSmallWorld(scale, northOffset, latSize, NewWorld.getDefaultWaterVerifier());
 	}
 }

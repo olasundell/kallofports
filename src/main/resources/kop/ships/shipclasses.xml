@@ -45,6 +45,20 @@
 	   </shipclass>
 	   -->
 	<list>
+		<!--<shipClass className="Stena VMax">-->
+			<!--<price>90000000</price>-->
+			<!--<ship class="kop.ships.blueprint.TankerShipBlueprint">-->
+				<!--<loa>333</loa>-->
+				<!--<beam>70</beam>-->
+				<!--<draft>19</draft>-->
+				<!--<dwt>314000</dwt>-->
+				<!--<grossTonnage>163761</grossTonnage>-->
+				<!--<engines>-->
+					<!--<engine>7,560 MC-C</engine>-->
+					<!--<engine>7,560 MC-C</engine>-->
+				<!--</engines>-->
+			<!--</ship>-->
+		<!--</shipClass>-->
 		<shipClass className="Delmas Libreville">
 			<price>15000000</price>
 			<ship class="kop.ships.blueprint.ContainerShipBlueprint">

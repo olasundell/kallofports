@@ -20,7 +20,7 @@ public abstract class ShipBlueprint {
 	private int dwt;
 	@Element
 	private int grossTonnage;
-	@Element
+	@Element(required = false)
 	private int netTonnage;
 	@Element
 	private double maxSpeed;
@@ -61,8 +61,12 @@ public abstract class ShipBlueprint {
 		return  list;
 	}
 
+	public double getBlockCoefficient() {
+		return 0.8;
+	}
+
 	public enum ShipType {
-		bulk { public String toString() { return "Bulk hauler"; } },
+		bulk {  public String toString() { return "Bulk hauler"; } },
 		container { public String toString() { return "Container ship"; } },
 		tanker { public String toString() { return "Tanker"; } },
 		lngcarrier{ public String toString() { return "LNG carrier"; } }
@@ -148,10 +152,32 @@ public abstract class ShipBlueprint {
 		return modelNames;
 	}
 
+	/**
+	 * Calculates fuel usage per hour at a fraction of max power output.
+	 * @param fraction fraction of max power output.
+	 * @return fuel usage for ship at a fraction of max power output.
+	 */
+	public double getFuelUsageFractionOfMaxPower(double fraction) {
+		double usage=0;
+
+		for (Engine e: engines) {
+			usage+=e.getFuelUsage(fraction);
+		}
+
+		return usage;
+	}
+
+	/**
+	 * Calculates fuel usage per hour at a given speed.
+	 * TODO this needs to be implemented properly, calculate towing resistance for the ship and use that.
+	 * @param speed the speed of the ship
+	 * @return fuel usage at a specific speed.
+	 */
 	public double getFuelUsage(double speed) {
 		double usage=0;
 
 		for (Engine e: engines) {
+			// this isn't correct at all.
 			usage+=e.getFuelUsage(speed/maxSpeed);
 		}
 
@@ -202,4 +228,25 @@ public abstract class ShipBlueprint {
 	}
 
 	public abstract ShipType getType();
+
+	public double holtropMennen() {
+		double L = getLoa() * 3.2808399;
+		double T = getDraft() * 3.28088399;
+		double B = getBeam() *  3.28088399;
+		double Cm = 0.98;
+		double Cb = getBlockCoefficient();
+		double Cw = Cb + 0.10;
+		double ABT = 25;
+
+		return Math.pow((L * (B + (2 * T)) * Cm),(((0.5) * (((0.453 + (0.4425 * Cb)) - (0.2862 * Cm)) + ((0.003467 * B) / T) + (0.3696 * Cw))) + ((19.65 * ABT) / Cb)));
+	}
+
+	public double dennyMumford() {
+		double L = getLoa() * 3.2808399;
+		double T = getDraft() * 3.28088399;
+		// should be displacement in square metres, but who cares?
+		double Vol = getDwt();
+
+		return 1.7*L*T + Vol/T;
+	}
 }

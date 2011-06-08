@@ -139,6 +139,14 @@ public class Port {
 
 	private void initializePosition() {
 		position = new Point();
+		if (latitude == null) {
+			throw new NullPointerException("");
+		}
+
+		if (longitude == null) {
+			throw new NullPointerException("");
+		}
+
 		setLatitude(latitude.deg, latitude.min, latitude.hemisphere);
 		setLongitude(longitude.deg, longitude.min, longitude.hemisphere);
 	}

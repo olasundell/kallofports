@@ -1,6 +1,7 @@
 package kop.map.routecalculator;
 
 import kop.game.Game;
+import kop.ports.NoRouteFoundException;
 import kop.ports.NoSuchPortException;
 import kop.ports.Port;
 import kop.ports.PortProxy;
@@ -99,21 +100,28 @@ public class AStarUtilTest {
 	}
 
 	@Test
-	public void findClosestPoint() throws NoSuchPortException {
-		Point p = aStarUtil.findClosestPointForPort(Game.getInstance().getPortByName("Aberdeen").getProxy(),
-				smallWorld);
-		assertNotNull(p);
+	public void findClosestPoint() throws NoSuchPortException, CouldNotFindPointException {
+		Point p = null;
+		try {
+			p = aStarUtil.findClosestPointForPort(Game.getInstance().getPortByName("Aberdeen").getProxy(),
+					smallWorld);
+			assertNotNull(p);
 
-		p = aStarUtil.findClosestPointForPort(Game.getInstance().getPortByName("Gothenburg").getProxy(),
-				smallWorld);
-		assertNotNull(p);
+			p = aStarUtil.findClosestPointForPort(Game.getInstance().getPortByName("Gothenburg").getProxy(),
+					smallWorld);
+			assertNotNull(p);
 
-		p = aStarUtil.findClosestPoint(AStarUtil.panamaPacific, smallWorld);
-		assertNotNull(p);
+			p = aStarUtil.findClosestPoint(AStarUtil.panamaPacific, smallWorld);
+			assertNotNull(p);
+		} catch (CouldNotFindPointException e) {
+			System.err.println(smallWorld.toString());
+			throw e;
+		}
+
 	}
 
 	@Test
-	public void findRouteThroughCanal() throws NoSuchPortException {
+	public void findRouteThroughCanal() throws NoSuchPortException, CouldNotFindPointException, NoRouteFoundException {
 		Point start = aStarUtil.findClosestPointForPort(Game.getInstance().getPortByName("Barcelona").getProxy(),
 				smallWorld);
 		Point goal = aStarUtil.findClosestPointForPort(Game.getInstance().getPortByName("Durban").getProxy(),
@@ -125,7 +133,7 @@ public class AStarUtilTest {
 
 	// this test is broken, needs to be fixed.
 //	@Test
-	public void findRouteBetweenTwoPorts() throws NoSuchPortException {
+	public void findRouteBetweenTwoPorts() throws NoSuchPortException, NoRouteFoundException {
 		PortProxy start = Game.getInstance().getPortByName("Gothenburg").getProxy();
 		PortProxy goal = Game.getInstance().getPortByName("Rio de Janeiro").getProxy();
 

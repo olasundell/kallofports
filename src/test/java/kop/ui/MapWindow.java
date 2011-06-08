@@ -43,7 +43,7 @@ public class MapWindow {
 //		ShipModel ship = ShipModel.createShip(Game.getInstance().getShipClasses().get(2));
 //		Game.getInstance().getPlayerCompany().addShip(ship);
 //		ship.setSail(Game.getInstance().getPortByName("Durban"), Game.getInstance().getPortByName("Taranto"), 10.0);
-		ShipModel ship = ShipModel.createShip(Game.getInstance().getShipClasses().get(0));
+		ShipModel ship = ShipModel.createShip("Durban Star", Game.getInstance().getShipClasses().get(0));
 		Game.getInstance().getPlayerCompany().addShip(ship);
 		ship.setSail(Game.getInstance().getPortByName("Durban").getProxy(), Game.getInstance().getPortByName("Taranto").getProxy(), 10.0);
 

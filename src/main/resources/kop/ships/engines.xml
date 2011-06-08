@@ -9,16 +9,11 @@
 		<!--]>-->
 
 <engineList xmlns="http://www.atrosys.se/kop/schema/engine">
-	<engine modelName="qwe">
-		<bsfc>0</bsfc>
-		<manufacturer>ladlas</manufacturer>
-		<kW>3</kW>
+	<engine modelName="TBD 645 L9">
+		<bsfc>178.0</bsfc>
+		<manufacturer>Deutz</manufacturer>
+		<kW>3825.0</kW>
 	</engine>
-   <engine modelName="TBD 645 L9">
-      <bsfc>178.0</bsfc>
-      <manufacturer>Deutz</manufacturer>
-      <kW>3825.0</kW>
-   </engine>
 	<engine modelName="B&amp;W 7S80MC">
 		<bsfc>167</bsfc>
 		<manufacturer>MAN Diesel</manufacturer>

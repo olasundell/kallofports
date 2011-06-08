@@ -97,7 +97,7 @@ public class GameTest {
 		instance.resetPlayerCompany();
 
 		// add a ship
-		ShipModel ship = ShipModel.createShip(instance.getShipClasses().get(0));
+		ShipModel ship = ShipModel.createShip("Dummy name",instance.getShipClasses().get(0));
 		instance.getPlayerCompany().addShip(ship);
 
 		// choose ports

@@ -20,7 +20,11 @@ public class ShipClassList extends ArrayList<ShipClass> {
 
 	@ElementList
 	public void setList(Collection<ShipClass> list) {
-		this.addAll(list);
+		for (ShipClass c: list) {
+			if (!this.contains(c)) {
+				this.add(c);
+			}
+		}
 	}
 
 	public ShipClassList() {
