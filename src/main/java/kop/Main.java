@@ -36,7 +36,9 @@ public class Main {
 		frameInitDone = true;
 	}
 
+	// TODO rewrite this so the calling party doesn't have to create a new instance, especially of MainWindow.
 	public static void displayFrame(kop.ui.Window window) {
+		// used for form debugging, the main method might not be in this class, it might be in a class bound to a form
 		if (!frameInitDone) {
 			initFrame();
 		}
@@ -45,15 +47,6 @@ public class Main {
 		frame.getContentPane().validate();
 		frame.setTitle(window.getTitle());
 	}
-
-
-	/*
-	public static void displayFrame(kop.ui.Window window) {
-		window.getContentPane();
-		frame.setTitle(window.getTitle());
-		frame.setContentPane(contentPane);
-	}
-	*/
 
 	public static void exit() {
 		frame.dispose();

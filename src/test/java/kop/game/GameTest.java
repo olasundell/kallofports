@@ -14,9 +14,7 @@ import org.junit.Test;
 import java.text.DateFormat;
 import java.util.*;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertTrue;
+import static junit.framework.Assert.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -55,6 +53,12 @@ public class GameTest {
 		assertNotNull(p);
 	}
 
+	@Test
+	public void generateDailyFreightsShouldCreateFreights() {
+		assertEquals(0,instance.getFreightMarket().getFreights().size());
+		instance.generateDailyFreights();
+		assertFalse("generateDailyFreights didn't generate any freights!", 0==instance.getFreightMarket().getFreights().size());
+	}
 	/**
 	 *  This is more of an integration test.
 	 */

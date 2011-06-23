@@ -2,6 +2,8 @@ package kop.company;
 
 import kop.cargo.Freight;
 import kop.game.Game;
+import kop.ports.Port;
+import kop.ports.PortProxy;
 import kop.ships.OutOfFuelException;
 import kop.ships.ShipClass;
 import kop.ships.ShipnameAlreadyExistsException;import kop.ships.model.ShipModel;
@@ -18,6 +20,7 @@ public class Company {
 	private List<ShipModel> ships;
 	private List<Loan> loans;
 	private String name;
+	private PortProxy homePort;
 
 	public Company() {
 		ships = new ArrayList<ShipModel>();
@@ -81,6 +84,7 @@ public class Company {
 	}
 
 	public void addShip(ShipModel shipModel) {
+		shipModel.setCurrentPort(homePort);
 		ships.add(shipModel);
 	}
 
@@ -162,6 +166,10 @@ public class Company {
 		}
 
 		return costs;
+	}
+
+	public void setHomePort(PortProxy port) {
+		homePort = port;
 	}
 }
 

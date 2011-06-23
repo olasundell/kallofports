@@ -27,4 +27,8 @@ public interface Cargo {
 	 * @return weight in MT.
 	 */
 	public int getWeight();
+
+	public CargoType getCargoType();
+
+	public double getPricePerUnit();
 }

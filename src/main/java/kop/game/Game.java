@@ -1,13 +1,13 @@
 package kop.game;
 
-import kop.cargo.Freight;
-import kop.cargo.FreightMarket;
+import kop.cargo.*;
 import kop.company.Company;
 import kop.map.routecalculator.*;
 import kop.ports.*;
 import kop.ships.*;
 import kop.ships.engine.EngineList;
 import kop.ships.model.ShipModel;
+import org.geotools.map.MapLayer;
 
 import java.util.*;
 
@@ -19,7 +19,7 @@ public class Game {
 	private List<Company> companies;
 	// 1970-01-01 00:00 + currentHour
 	private GregorianCalendar calendar;
-	private static Game instance;
+	private static volatile Game instance;
 	private PortsOfTheWorld worldPorts;
 	private ShipClassList shipClasses;
 	private FreightMarket freightMarket;
@@ -168,9 +168,19 @@ public class Game {
 	 * Creates new freights.
 	 */
 
-	private void generateDailyFreights() {
+	protected void generateDailyFreights() {
 		for (Port p: worldPorts.getPortsAsList()) {
-			freightMarket.getFreightFromPort(p.getProxy());
+			Cargo cargo = null;
+			try {
+				int index = getRandom().nextInt(FreightMarket.getCargoTypes().size());
+				cargo = freightMarket.generateCargo(FreightMarket.getCargoTypes().get(index));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			freightMarket.generateFreight(p.getProxy(),
+					worldPorts.getRandomDestination(p),
+					cargo);
 		}
 	}
 
@@ -221,7 +231,7 @@ public class Game {
 	}
 
 	public String getCurrentDateAsString() {
-		return calendar.toString();
+		return calendar.getTime().toString();
 	}
 
 	public ShipClassList getShipClasses() {
@@ -271,10 +281,7 @@ public class Game {
 
 	public ASRoute getRoute(PortProxy origin, PortProxy destination, ShipModel ship) throws NoRouteFoundException {
 		AStarUtil util = new AStarUtil();
-		if (world == null) {
-			world = new RouteCalculator().calculateWorld(NewWorld.getWorld((float) 4.0));
-		}
-		ASDistance distance = util.aStar(origin, destination, world);
+		ASDistance distance = util.aStar(origin, destination, getWorld());
 
 		return distance.shortestRoute(ship);
 	}
@@ -293,5 +300,13 @@ public class Game {
 		}
 
 		return false;
+	}
+
+	public NewWorld getWorld() {
+		if (world == null) {
+			world = NewWorld.readFromFile("worldoutput.txt");
+		}
+
+		return world;
 	}
 }

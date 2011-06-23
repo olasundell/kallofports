@@ -61,8 +61,14 @@ public class GeoToolsWaterVerifier implements WaterVerifier {
 
 	@Override
 	public boolean isWater(double lat, double lon) {
-		// TODO this is too magical. It needs to be extracted to a util method and tested properly.
-		com.vividsolutions.jts.geom.Point point = geometryFactory.createPoint(new Coordinate(lon-179.0, 89.0-lat));
+		double realLon = lon;
+		if (lon == -180.0) {
+			realLon = -179.9;
+		} else if (lon == 180.0) {
+			realLon = 179.9;
+		}
+		Coordinate coordinate = new Coordinate(realLon,lat);
+		com.vividsolutions.jts.geom.Point point = geometryFactory.createPoint(coordinate);
 		for (Geometry geometry: geometryList) {
 			if (geometry.contains(point)) {
 				return true;

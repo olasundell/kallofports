@@ -37,6 +37,10 @@ public class FreightMarket {
 		return f;
 	}
 
+	public List<Freight> getFreights() {
+		return market;
+	}
+
 	public List<Freight> getFreightFromPort(PortProxy origin) {
 		List<Freight> list = new ArrayList<Freight>();
 

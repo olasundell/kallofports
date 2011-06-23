@@ -1,15 +1,20 @@
 package kop.ui;
 
 import com.bbn.openmap.MapBean;
-import com.bbn.openmap.layer.shape.ShapeLayer;
+import kop.Main;
 import kop.game.Game;
 import kop.game.GameStateListener;
 import kop.map.MapBeanFactory;
+import org.geotools.map.MapLayer;
+import org.geotools.swing.JMapPane;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
+import javax.swing.event.AncestorListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Properties;
+import java.awt.event.MouseWheelListener;
+import java.util.logging.Logger;
 
 import static kop.Main.*;
 
@@ -21,15 +26,21 @@ import static kop.Main.*;
  * To change this template use File | Settings | File Templates.
  */
 public class MainWindow implements Window, GameStateListener {
-	private JButton startButton;
+	private JToggleButton startButton;
 	private JButton displayShips;
 	private JPanel contentPane;
 	private JButton newShip;
 	private JButton companyInfo;
 	private MapBean mapBean;
 	private JLabel currentDate;
+	private JMapPane mapPane;
+	private JLabel currentMoney;
+	private MapLayer shipLayer;
+	private org.slf4j.Logger logger = null;
 
 	public MainWindow() {
+		logger = LoggerFactory.getLogger(this.getClass());
+
 		displayShips.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -48,6 +59,18 @@ public class MainWindow implements Window, GameStateListener {
 				displayFrame(new CompanyInfoWindow());
 			}
 		});
+		startButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (startButton.getModel().isSelected()) {
+					logger.info("Selected");
+					startButton.setText("STOP");
+				} else {
+					logger.info("Not selected");
+					startButton.setText("START");
+				}
+			}
+		});
 	}
 
 	public JPanel getContentPane() {
@@ -61,13 +84,28 @@ public class MainWindow implements Window, GameStateListener {
 
 	private void createUIComponents() {
 		MapBeanFactory mapBeanFactory = new MapBeanFactory();
-		mapBean = mapBeanFactory.createMapBean();
+		mapBean = mapBeanFactory.createOpenMapBean();
+		mapBean.setVisible(false);
+
 		currentDate = new JLabel();
-		currentDate.setText(Game.getInstance().getCurrentDateAsString());
+		currentMoney = new JLabel();
+		mapPane = mapBeanFactory.createGeoToolsBean();
+		for (MapLayer layer: mapPane.getMapContext().getLayers()) {
+			if (layer.getTitle().equals(MapBeanFactory.SHIP_LAYER)) {
+				shipLayer = layer;
+			}
+		}
+		stateChanged();
 	}
 
 	@Override
 	public void stateChanged() {
-		// TODO do something relevant and nice.
+		currentDate.setText(Game.getInstance().getCurrentDateAsString());
+		currentMoney.setText(String.valueOf(Game.getInstance().getPlayerCompany().getMoney()));
+	}
+
+	public static void main(String[] args) {
+		Game.getInstance().getPlayerCompany().setMoney(1000000000);
+		Main.displayFrame(new MainWindow());
 	}
 }

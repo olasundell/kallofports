@@ -1,5 +1,6 @@
 package kop.ports;
 
+import kop.game.Game;
 import kop.ships.ModelSerializer;
 
 import java.util.*;
@@ -59,5 +60,18 @@ public class PortsOfTheWorld {
 		}
 
 		throw new NoSuchPortException(String.format("Could not find port based on unlocode %s", unlocode));
+	}
+
+	public PortProxy getRandomDestination(Port origin) {
+		ArrayList<Port> portList = new ArrayList<Port>(getPortsAsList());
+
+		int randomPortNum = Game.getInstance().getRandom().nextInt((portList.size() - 1));
+
+		// if we happen to pick the origin origin, move up a notch.
+		if (randomPortNum >= portList.indexOf(origin)) {
+			randomPortNum++;
+		}
+
+		return portList.get(randomPortNum).getProxy();
 	}
 }

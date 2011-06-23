@@ -17,6 +17,7 @@ public class NewWorld {
 	public static final int DEFAULT_SCALE = 2;
 	public static final int DEFAULT_SOUTH_OFFSET = 20;
 	public static final int DEFAULT_NORTH_OFFSET = 20;
+	public static final String SHAPE_FILENAME = "data/shape/10m_ocean.shp";
 
 	/**
 	 * Scale of lats and lons.
@@ -58,7 +59,7 @@ public class NewWorld {
 
 	private void setWaterVerifier(WaterVerifier newWaterVerifier) {
 		waterVerifier = newWaterVerifier;
-		waterVerifier.setupInstance("data/shape/10m_ocean.shp");
+		waterVerifier.setupInstance(SHAPE_FILENAME);
 	}
 
 	public static NewWorld getWorld(float scale, WaterVerifier waterVerifier) {

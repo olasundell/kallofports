@@ -39,9 +39,28 @@ public class NewWorldTest {
 
 		world2.lats[1].longitudes[0] = null;
 
-		assertNotSame(world1,world2);
+		assertNotSame(world1, world2);
 	}
-	@Test
+
+//	@Test
+	public void serializeDeserializeTextGeoToolsHEAVY() throws IOException {
+		RouteCalculator calculator = new RouteCalculator();
+
+		int scale = 2;
+		NewWorld world = new NewWorld(180* scale,361* scale, new GeoToolsWaterVerifier());
+		world.setScale(scale);
+
+		world = calculator.calculateWorld(world);
+		File file = new File("worldoutput.txt");
+		FileWriter writer = new FileWriter(file);
+		writer.write(world.toString());
+		writer.close();
+
+		NewWorld readWorld = NewWorld.readFromFile("worldoutput.txt");
+
+		assertEquals(world, readWorld);
+	}
+//	@Test
 	public void serializeDeserializeText() throws IOException {
 		RouteCalculator calculator = new RouteCalculator();
 
@@ -59,6 +78,7 @@ public class NewWorldTest {
 
 		assertEquals(world, readWorld);
 	}
+
 	@Test
 	public void serializeDeserialize() throws Exception {
 		NewWorld world = new NewWorld();
@@ -116,6 +136,7 @@ public class NewWorldTest {
 
 	@Test
 	public void getWorldShouldMatchTestUtilCalculation() {
+		Util.resetWorld();
 		NewWorld utilWorld = Util.getSmallWorld((float) 0.5,0,180);
 		NewWorld newWorld = NewWorld.getWorld((float) 0.5);
 		assertEquals(utilWorld, newWorld);

@@ -28,6 +28,7 @@ import org.geotools.map.DefaultMapContext;
 import org.geotools.map.MapContext;
 import org.geotools.swing.JMapFrame;
 import org.geotools.swing.data.JFileDataStoreChooser;
+import org.junit.Test;
 import org.opengis.feature.Feature;
 import org.opengis.feature.Property;
 import org.opengis.feature.simple.SimpleFeature;
@@ -39,6 +40,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import static junit.framework.Assert.assertTrue;
 
 /**
  * @author Ola Sundell
@@ -159,5 +162,10 @@ public class GeoToolsTest {
 				polygonGraphGenerator.add(geometry);
 			}
 		}
+	}
+
+	@Test
+	public void emptyTest() {
+		assertTrue(true);
 	}
 }

@@ -48,7 +48,7 @@ public class MapWindow {
 		ship.setSail(Game.getInstance().getPortByName("Durban").getProxy(), Game.getInstance().getPortByName("Taranto").getProxy(), 10.0);
 
 		// Create a MapBean
-		MapBean mapBean = new MapBeanFactory().createMapBean();
+		MapBean mapBean = new MapBeanFactory().createOpenMapBean();
 
 		// Add the map to the frame
 		frame.getContentPane().add(mapBean);

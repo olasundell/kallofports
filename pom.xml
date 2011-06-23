@@ -40,6 +40,17 @@
 			<version>2.7.1</version>
 		</dependency>
 		<dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-epsg-hsql</artifactId>
+			<version>2.7.1</version>
+		</dependency>
+		<dependency>
+			<artifactId>hsqldb</artifactId>
+			<groupId>org.hsqldb</groupId>
+			<version>1.8.0.10</version>
+		</dependency>
+
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.8.2</version>
@@ -61,6 +72,7 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>1.6.1</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>

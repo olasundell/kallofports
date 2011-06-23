@@ -44,4 +44,8 @@ public class PortProxy {
 			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
 		}
 	}
+
+	public String getName() {
+		return delegatePort.getName();
+	}
 }

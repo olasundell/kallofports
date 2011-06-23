@@ -59,6 +59,20 @@ public class CargoImpl implements Cargo {
 		return weight;
 	}
 
+	@Override
+	public CargoType getCargoType() {
+		return type;
+	}
+
+	@Override
+	public double getPricePerUnit() {
+		if (pricePerTon > pricePerVolume) {
+			return pricePerTon;
+		} else {
+			return pricePerVolume;
+		}
+	}
+
 	public void setWeight(int weight) {
 		this.weight = weight;
 //		if ((type.getPackaging() == CargoType.Packaging.wetbulk) || (type.getPackaging() == CargoType.Packaging.lng)) {

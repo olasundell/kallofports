@@ -1,7 +1,6 @@
 package kop.map;
 
 import com.bbn.openmap.MapBean;
-import junit.framework.TestCase;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertNotNull;
@@ -17,7 +16,7 @@ public class MapBeanFactoryTest {
 	@Test
 	public void createMapBeanShouldReturnValidObject() {
 		MapBeanFactory mapBeanFactory = new MapBeanFactory();
-		MapBean mapBean = mapBeanFactory.createMapBean();
+		MapBean mapBean = mapBeanFactory.createOpenMapBean();
 		assertNotNull(mapBean);
 	}
 }

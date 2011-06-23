@@ -37,6 +37,10 @@ public class Util {
 		return getSmallWorld(1,30,15, waterVerifier);
 	}
 
+	public static void resetWorld() {
+		world=null;
+	}
+
 	public static NewWorld getSmallWorld(float scale, int northOffset, int latSize, WaterVerifier waterVerifier) {
 		if (world==null || world.getScale() == scale) {
 			RouteCalculator calculator = new RouteCalculator();

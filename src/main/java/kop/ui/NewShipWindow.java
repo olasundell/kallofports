@@ -61,6 +61,8 @@ public class NewShipWindow implements Window {
 					// TODO display error message
 					return;
 				}
+
+				Main.displayFrame(new MainWindow());
 			}
 		});
 		shipTypeSelector.addActionListener(new ActionListener() {
