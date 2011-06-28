@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertTrue;
 
@@ -41,4 +42,15 @@ public class CargoTypeListTest {
 		assertNotNull(crudeList);
 		assertTrue("Returned list is empty when searching for cargo type" + cargoTypeSubstr, crudeList.size() > 0);
 	}
+
+	@Test
+	public void verifyAllCargoTypes() {
+		for (CargoType type: list) {
+			assertTrue("Cargo type density is zero" + type.toString(),type.getDensityAsDouble() > 0);
+			assertNotNull("Cargo type has no packaging" + type.toString(), type.getPackaging());
+			assertNotNull("Cargo type has no name" + type.toString(), type.getName());
+			assertFalse("Cargo type has empty name" + type.toString(), type.getName().isEmpty());
+		}
+	}
+
 }

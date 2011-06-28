@@ -171,5 +171,20 @@ public class Company {
 	public void setHomePort(PortProxy port) {
 		homePort = port;
 	}
+
+	public PortProxy getHomePort() {
+		return homePort;
+	}
+
+	public List<ShipModel> findShipsInPort(PortProxy portProxy) {
+		List<ShipModel> shipsInPort = new ArrayList<ShipModel>();
+		for (ShipModel ship: getShips()) {
+			if (ship.getCurrentPosition().isInPort() && ship.getCurrentPosition().getCurrentPort().equals(portProxy)) {
+				shipsInPort.add(ship);
+			}
+		}
+
+		return shipsInPort;
+	}
 }
 

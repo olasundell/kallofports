@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kop.cargo.Freight;
+import kop.cargo.FreightCarrier;
 import kop.map.routecalculator.ASRoute;
 import kop.ports.NoRouteFoundException;
 import kop.ports.PortProxy;
@@ -25,7 +26,7 @@ import org.simpleframework.xml.Root;
  * @author ola
  */
 @Root
-public abstract class ShipModel {
+public abstract class ShipModel implements FreightCarrier {
 	@Element
 	private double currentFuel;
 
@@ -102,6 +103,9 @@ public abstract class ShipModel {
 				break;
 			case bulk:
 				model = new BulkShipModel();
+				break;
+			case lngcarrier:
+				model = new LNGCarrierShipModel();
 				break;
 			default:
 				throw new IllegalArgumentException(String.format("Ship class has an illegal class type, %s", shipClass.getClassType()));
@@ -226,5 +230,9 @@ public abstract class ShipModel {
 
 	public boolean isInPort() {
 		return currentPosition.isInPort();
+	}
+
+	public String toString() {
+		return String.format("%s (%s)", name,blueprint.getType());
 	}
 }

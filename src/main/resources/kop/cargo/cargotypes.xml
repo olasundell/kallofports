@@ -5,7 +5,7 @@
 		<cargoType name="Chemicals">
 			<description>Lots of them</description>
 			<packaging>chemical</packaging>
-			<density>0.0</density>
+			<density>500.0</density>
 		</cargoType>
 
 		<!-- LNG/LPG -->

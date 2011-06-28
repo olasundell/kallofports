@@ -11,7 +11,7 @@ import java.util.*;
 /**
  * The FreightMarket contains all Freights which are in Ports. Ie, those that are on ships should not be here.
  */
-public class FreightMarket {
+public class FreightMarket implements FreightCarrier {
 	private List<Freight> market;
 	private static CargoTypeList cargoTypes;
 	private Game gameInstance;

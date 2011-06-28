@@ -48,4 +48,22 @@ public class PortProxy {
 	public String getName() {
 		return delegatePort.getName();
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		PortProxy portProxy = (PortProxy) o;
+
+		if (delegatePort != null ? !delegatePort.equals(portProxy.delegatePort) : portProxy.delegatePort != null)
+			return false;
+
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		return delegatePort != null ? delegatePort.hashCode() : 0;
+	}
 }

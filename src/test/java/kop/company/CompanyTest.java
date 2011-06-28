@@ -1,6 +1,7 @@
 package kop.company;
 
 import kop.game.Game;
+import kop.ports.NoSuchPortException;
 import kop.ships.*;
 import kop.ships.blueprint.ShipBlueprint;
 import kop.ships.model.ContainerShipModel;
@@ -12,9 +13,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertTrue;
+import static junit.framework.Assert.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -34,9 +33,10 @@ public class CompanyTest {
 	}
 
 	@Before
-	public void setup() {
+	public void setup() throws NoSuchPortException {
 		Game.getInstance().resetPlayerCompany();
 		company = Game.getInstance().getPlayerCompany();
+		company.setHomePort(Game.getInstance().getPortByName("Durban").getProxy());
 
 		ContainerShipModel shipModel = (ContainerShipModel) ShipModel.createShip(DUMMY_SHIP_NAME,
 				ShipClass.getShipClasses().get(ShipBlueprint.ShipType.container, 0));
@@ -117,5 +117,12 @@ public class CompanyTest {
 		}
 
 		assertTrue("Exception wasn't thrown!", exceptionThrown);
+	}
+
+	@Test
+	public void findShipsDockedAtASpecificPort() {
+		List<ShipModel> list = company.findShipsInPort(company.getHomePort());
+		assertNotNull(list);
+		assertEquals(company.getShips(), list);
 	}
 }
