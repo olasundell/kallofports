@@ -1,6 +1,8 @@
 package kop.map.routecalculator;
 
 import junit.framework.TestCase;
+import kop.game.Game;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,6 +11,7 @@ import java.util.List;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,6 +31,26 @@ public class PointTest {
 	@Test
 	public void getY() {
 		assertEquals(world.lats[0].longitudes.length - 1, world.lats[0].longitudes[0].getY(-1, world));
+	}
+
+	@Test
+	public void equalsShouldWork() {
+		NewWorld world = Game.getInstance().getWorld();
+		Point point = null;
+		Point oldPoint;
+		for (int i=0;i<world.lats.length;i++) {
+			for (int j=0;j<world.lats[i].longitudes.length;j++) {
+				if (world.lats[i].longitudes[j] != null) {
+					oldPoint = point;
+					point = world.lats[i].longitudes[j];
+					assertEquals("Point doesn't equal itself!",point, point);
+					assertEquals(point.hashCode(), point.hashCode());
+					if (oldPoint != null) {
+						assertTrue("Old point equals point! ARGH!",!oldPoint.equals(point));
+					}
+				}
+			}
+		}
 	}
 
 	@Test

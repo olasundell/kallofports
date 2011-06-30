@@ -5,6 +5,8 @@ import kop.map.routecalculator.Point;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Ola Sundell
@@ -12,8 +14,11 @@ import org.simpleframework.xml.Root;
 @Root
 public class PortProxy {
 	private Port delegatePort;
+	private Logger logger;
 
-	public PortProxy() {}
+	public PortProxy() {
+		logger = LoggerFactory.getLogger(this.getClass());
+	}
 
 	public PortProxy(Port port) {
 		delegatePort = port;
@@ -41,7 +46,7 @@ public class PortProxy {
 		try {
 			delegatePort = Game.getInstance().getPortByUnlocode(unlocode);
 		} catch (NoSuchPortException e) {
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			logger.error(String.format("Could not find port with unlocode %s", unlocode),e);
 		}
 	}
 
@@ -51,13 +56,18 @@ public class PortProxy {
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
 
 		PortProxy portProxy = (PortProxy) o;
 
-		if (delegatePort != null ? !delegatePort.equals(portProxy.delegatePort) : portProxy.delegatePort != null)
+		if (delegatePort != null ? !delegatePort.equals(portProxy.delegatePort) : portProxy.delegatePort != null) {
 			return false;
+		}
 
 		return true;
 	}

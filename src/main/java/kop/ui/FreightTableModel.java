@@ -15,7 +15,7 @@ import javax.swing.table.TableRowSorter;
 */
 class FreightTableModel extends AbstractTableModel {
 	private Object filter = null;
-	private FreightCarrier freightCarrier;
+	private transient FreightCarrier freightCarrier;
 
 	FreightTableModel() {
 		freightCarrier = Game.getInstance().getFreightMarket();
@@ -97,5 +97,9 @@ class FreightTableModel extends AbstractTableModel {
 			// TODO this is inherently buggy, two ports might have the same name.
 			return entry.getValue(0).equals(portProxy.getName());
 		}
+	}
+
+	public Freight getFreightAtRow(int rownum) {
+		return freightCarrier.getFreights().get(rownum);
 	}
 }

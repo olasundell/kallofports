@@ -4,7 +4,10 @@ import com.bbn.openmap.MapBean;
 import com.bbn.openmap.layer.location.*;
 import com.bbn.openmap.layer.shape.ShapeLayer;
 import com.bbn.openmap.omGraphics.OMRect;
+import kop.ports.NoRouteFoundException;
 import kop.ships.ModelSerializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.awt.*;
 import java.io.File;
@@ -23,6 +26,7 @@ import java.util.concurrent.*;
 public class RouteCalculator {
 //	ShapeLayer basicMapShape;
 	MapBean mapBean;
+	Logger logger;
 
 	NewWorld points = null;
 	List<Shape> shapeList;
@@ -30,6 +34,7 @@ public class RouteCalculator {
 	public RouteCalculator() {
 		shapeList = new ArrayList<Shape>();
 		mapBean = new MapBean();
+		logger = LoggerFactory.getLogger(this.getClass());
 //		basicMapShape = createWorldLayer();
 //		mapBean.add(basicMapShape);
 	}
@@ -47,7 +52,7 @@ public class RouteCalculator {
 				try {
 					ModelSerializer.saveToFile("newworld.xml", NewWorld.class, w);
 				} catch (Exception e1) {
-					e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+					logger.error("Failure to save world to XML file.",e1);
 				}
 				points = w;
 //			}
@@ -65,7 +70,7 @@ public class RouteCalculator {
 	 * @param lon2
 	 */
 
-	public void drawRoute(double lat1, double lon1, double lat2, double lon2) {
+	public void drawRoute(double lat1, double lon1, double lat2, double lon2) throws CouldNotFindPointException {
 		int i = points.reverseLat(lat1);
 		int i1 = points.reverseLon(lon1);
 		Point start = points.lats[i].longitudes[i1];
@@ -73,7 +78,7 @@ public class RouteCalculator {
 		int i3 = points.reverseLon(lon2);
 		Point goal = points.lats[i2].longitudes[i3];
 		if (start==null || goal == null) {
-			throw new NullPointerException("Either start or goal is null");
+			throw new CouldNotFindPointException("Either start or goal is null");
 		}
 		drawRoute(start, goal);
 	}
@@ -86,10 +91,13 @@ public class RouteCalculator {
 
 	private void drawRoute(Point start, Point goal) {
 		AStarUtil aStarUtil = new AStarUtil();
-		ASRoute route = aStarUtil.aStar(start, goal, points);
-		if (route!= null) {
+		ASRoute route = null;
+		try {
+			route = aStarUtil.aStar(start, goal, points);
 			LocationLayer routeLayer = createRouteLayer(route);
 			mapBean.add(routeLayer, 0);
+		} catch (NoRouteFoundException e) {
+			logger.error("No route found, thus we cannot create a map layer.",e);
 		}
 	}
 
@@ -171,14 +179,14 @@ public class RouteCalculator {
 		WaterVerifier waterVerifier = world.getWaterVerifier();
 
 		for (int i=0;i<points.lats.length;i++) {
-			System.out.println("i is "+i);
+			logger.debug("i is "+i);
 			workers.add(new WorldCreationWorker(points, points.calcLat(i), i, (WaterVerifier)waterVerifier.clone()));
 		}
 
 		try {
 			service.invokeAll(workers);
 		} catch (InterruptedException e) {
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			logger.error("Interrupted!", e);
 		}
 
 		return points;
@@ -320,7 +328,7 @@ public class RouteCalculator {
 	 * LocationHandler for the route layer.
 	 */
 
-	private class RouteLocationHandler extends AbstractLocationHandler {
+	private static class RouteLocationHandler extends AbstractLocationHandler {
 		private ASRoute route;
 
 		public RouteLocationHandler(ASRoute route) {
@@ -337,7 +345,7 @@ public class RouteCalculator {
 				retVector = vector;
 			}
 
-			for (Point p: route.points) {
+			for (Point p: route.getPoints()) {
 				if (p!=null) {
 					OMRect rect = new OMRect(p.getCoord().getLatitude(),
 							p.getCoord().getLongitude(),
@@ -376,24 +384,36 @@ public class RouteCalculator {
 	 */
 
 	public static void main(String[] args) {
+		Logger logger = LoggerFactory.getLogger(RouteCalculator.class);
 		RouteCalculator calc=null;
 		try {
 			calc = new RouteCalculator();
 		} catch (Exception e) {
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			logger.error("Could not create route calculator", e);
+			return;
 		}
 
 		NewWorld newWorld = new NewWorld(720, 1440);
 		newWorld.setScale(4);
 
 		NewWorld world = calc.calculateWorld(newWorld);
-		File file = new File("world.txt");
+		String pathname = "world.txt";
+		File file = new File(pathname);
+		FileWriter writer = null;
 		try {
-			FileWriter writer = new FileWriter(file);
+			writer = new FileWriter(file);
 			writer.write(world.toString());
 			writer.close();
 		} catch (IOException e) {
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			logger.error(String.format("Could not write to file %s", pathname),e);
+		} finally {
+			if (writer != null) {
+				try {
+					writer.close();
+				} catch (IOException e) {
+					logger.error("Could not close writer.",e);
+				}
+			}
 		}
 //		JFrame frame = new JFrame("Simple Map");
 //		frame.setSize(1024, 768);

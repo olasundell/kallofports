@@ -8,6 +8,8 @@ import kop.ships.*;
 import kop.ships.engine.EngineList;
 import kop.ships.model.ShipModel;
 import org.geotools.map.MapLayer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
@@ -27,11 +29,12 @@ public class Game {
 	private Company playerCompany;
 	private String playerName;
 	private EngineList engineList;
+	private Logger logger;
 
 	/**
 	 * TODO implement listeners where applicable, mainly UI. Work has started, but more can be done.
 	 */
-	private ArrayList<GameStateListener> listeners;
+	private List<GameStateListener> listeners;
 	private Random random;
 	private Map<Company, List<Freight>> deliveredFreights;
 	private NewWorld world;
@@ -43,11 +46,12 @@ public class Game {
 	 * @see .getInstance()
 	 */
 	public Game() {
+		logger = LoggerFactory.getLogger(this.getClass());
 		try {
 			worldPorts = new PortsOfTheWorld();
 			populatePorts();
 		} catch (Exception e) {
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			logger.error("Failed to populate ports",e);
 		}
 		calendar = new GregorianCalendar(1970,0,0,0,0);
 		freightMarket = new FreightMarket(this);
@@ -86,7 +90,7 @@ public class Game {
 		try {
 			shipClasses = (ShipClassList) ModelSerializer.readFromFile("kop/ships/shipclasses.xml", ShipClassList.class);
 		} catch (Exception e) {
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			logger.error("Could not populate ship classes list", e);
 		}
 	}
 
@@ -175,7 +179,7 @@ public class Game {
 				int index = getRandom().nextInt(FreightMarket.getCargoTypes().size());
 				cargo = freightMarket.generateCargo(FreightMarket.getCargoTypes().get(index));
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("Could not generate daily freights.",e);
 			}
 
 			freightMarket.generateFreight(p.getProxy(),
@@ -219,7 +223,7 @@ public class Game {
 			try {
 				engineList = (EngineList) ModelSerializer.readFromFile("kop/ships/engines.xml", EngineList.class);
 			} catch (Exception e) {
-				e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+				logger.error("Could not create instance of engine list", e);
 			}
 		}
 
@@ -238,8 +242,8 @@ public class Game {
 		return shipClasses;
 	}
 
-	public Date getFutureDate(int days) {
-		return new Date(calendar.getTime().getTime() + days * 3600*24*1000);
+	public Date getFutureDate(long days) {
+		return new Date(calendar.getTime().getTime() + (days * 3600 * 24 * 1000));
 	}
 
 	public Random getRandom() {
@@ -273,7 +277,7 @@ public class Game {
 		return calendar.get(Calendar.HOUR) == calendar.getActualMaximum(Calendar.HOUR);
 	}
 
-	public void resetPlayerCompany() {
+	public final void resetPlayerCompany() {
 		companies.clear();
 		companies.add(new Company());
 		playerCompany = companies.get(0);
@@ -281,7 +285,13 @@ public class Game {
 
 	public ASRoute getRoute(PortProxy origin, PortProxy destination, ShipModel ship) throws NoRouteFoundException {
 		AStarUtil util = new AStarUtil();
-		ASDistance distance = util.aStar(origin, destination, getWorld());
+		ASDistance distance = null;
+		try {
+			distance = util.aStar(origin, destination, getWorld());
+		} catch (CouldNotFindPointException e) {
+			logger.error("Could not find point", e);
+			return null;
+		}
 
 		return distance.shortestRoute(ship);
 	}

@@ -7,6 +7,8 @@ import com.bbn.openmap.omGraphics.OMRect;
 import kop.ports.Port;
 import kop.ports.PortMap;
 import kop.ports.PortsOfTheWorld;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.awt.*;
 import java.util.Vector;
@@ -15,6 +17,10 @@ import java.util.Vector;
  * LocationHandler for the mapBean.
  */
 public class PortLocationHandler extends AbstractLocationHandler {
+	private Logger logger;
+	PortLocationHandler() {
+		logger = LoggerFactory.getLogger(this.getClass());
+	}
 	@Override
 	public Vector get(float v, float v1, float v2, float v3, Vector vector) {
 		Vector retVector;
@@ -29,7 +35,8 @@ public class PortLocationHandler extends AbstractLocationHandler {
 		try {
 			ports = PortsOfTheWorld.getPorts();
 		} catch (Exception e) {
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			logger.error("Could not get port collection", e);
+			return null;
 		}
 
 		for (Port port: ports.values()) {

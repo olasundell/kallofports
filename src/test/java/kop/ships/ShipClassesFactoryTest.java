@@ -6,6 +6,7 @@ import kop.ships.engine.Engine;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -38,6 +39,6 @@ public class ShipClassesFactoryTest {
 	@Test
 	public void testCreateShipClasses() throws Exception {
 		ShipClassesFactory factory = new ShipClassesFactory();
-		ArrayList<ShipClass> list =  factory.createShipClasses("shipclasses.xml");
+		List<ShipClass> list =  factory.createShipClasses("shipclasses.xml");
 	}
 }

@@ -32,6 +32,8 @@ import org.geotools.swing.JMapPane;
 import org.opengis.feature.simple.SimpleFeature;
 import org.opengis.feature.simple.SimpleFeatureType;
 import org.opengis.filter.FilterFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.awt.*;
 import java.io.File;
@@ -48,9 +50,13 @@ public class MapBeanFactory {
 	public static final String MAP_LAYER = "Map layer";
 	public static final String PORT_LAYER = "Port layer";
 	public static final String SHIP_LAYER = "Ship layer";
+	private static final String PORTLOCATIONHANDLER = "portlocationhandler";
+	private static final String SHIPLOCATIONHANDLER = "shiplocationhandler";
+
+	Logger logger;
 
 	public MapBeanFactory() {
-
+		logger = LoggerFactory.getLogger(this.getClass());
 	}
 
 	public JMapPane createGeoToolsBean() {
@@ -61,7 +67,7 @@ public class MapBeanFactory {
 			store = FileDataStoreFinder.getDataStore(new File(NewWorld.SHAPE_FILENAME));
 			featureSource = store.getFeatureSource();
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("Could not create feature source", e);
 		}
 
 		// Create a map context and add our shapefile to it
@@ -79,7 +85,7 @@ public class MapBeanFactory {
 							"number:Integer" // a number attribute
 			);
 		} catch (SchemaException e) {
-			e.printStackTrace();
+			logger.error("Could not create SimpleFeatureType",e);
 		}
 		com.vividsolutions.jts.geom.GeometryFactory geometryFactory = new com.vividsolutions.jts.geom.GeometryFactory();
         SimpleFeatureBuilder featureBuilder = new SimpleFeatureBuilder(TYPE);
@@ -154,7 +160,8 @@ public class MapBeanFactory {
 		try {
 			map = PortsOfTheWorld.getPorts();
 		} catch (Exception e) {
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			logger.error("Could not get port collection", e);
+			return null;
 		}
 
 		for (Map.Entry<String, Port> entry: map.entrySet()) {
@@ -235,8 +242,8 @@ public class MapBeanFactory {
 		MapBean mapBean = new MapBean();
 
 		ShapeLayer politicalMapLayer = createPoliticalMapLayer();
-		LocationLayer portMapLayer = createPortOrShipLayer(new PortLocationHandler(), "portlocationhandler");
-		LocationLayer shipLayer = createPortOrShipLayer(new ShipLocationHandler(), "shiplocationhandler");
+		LocationLayer portMapLayer = createPortOrShipLayer(new PortLocationHandler(), PORTLOCATIONHANDLER);
+		LocationLayer shipLayer = createPortOrShipLayer(new ShipLocationHandler(), SHIPLOCATIONHANDLER);
 		mapBean.add(shipLayer);
 		mapBean.add(portMapLayer);
 		mapBean.add(politicalMapLayer);
@@ -273,10 +280,10 @@ public class MapBeanFactory {
 	private Properties createHandlerProperties() {
 		Properties portLocProps = new Properties();
 //		portLocProps.setProperty("portlocationhandler","locationColor=FF0000");
-		portLocProps.setProperty("portlocationhandler","nameColor=008C54");
-		portLocProps.setProperty("portlocationhandler","showNames=false");
-		portLocProps.setProperty("portlocationhandler","showLocations=true");
-		portLocProps.setProperty("portlocationhandler","override=true");
+		portLocProps.setProperty(PORTLOCATIONHANDLER,"nameColor=008C54");
+		portLocProps.setProperty(PORTLOCATIONHANDLER,"showNames=false");
+		portLocProps.setProperty(PORTLOCATIONHANDLER,"showLocations=true");
+		portLocProps.setProperty(PORTLOCATIONHANDLER,"override=true");
 		return portLocProps;
 	}
 

@@ -6,6 +6,8 @@ import kop.ports.Port;
 import kop.ports.PortMap;
 import kop.ports.PortsOfTheWorld;
 import kop.ships.ModelSerializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -61,7 +63,8 @@ public class ConvertUnlocodeToXML {
 					tsvPorts.add(port);
 				}
 			} catch (ArrayIndexOutOfBoundsException e) {
-				e.printStackTrace();
+				Logger logger = LoggerFactory.getLogger(ConvertUnlocodeToXML.class);
+				logger.error("Array out of bounds", e);
 			}
 		}
 
@@ -109,6 +112,8 @@ public class ConvertUnlocodeToXML {
 			}
 		}
 
+		portListReader.close();
+
 		return ports;
 	}
 
@@ -134,6 +139,7 @@ public class ConvertUnlocodeToXML {
 				String unlocode = portFileReader.readLine();
 				unlocode = unlocode.split("<td class=main.*>")[1];
 				if (!unlocode.matches("[A-Z]{5}")) {
+					portFileReader.close();
 					return null;
 				}
 
@@ -143,6 +149,8 @@ public class ConvertUnlocodeToXML {
 
 			}
 		}
+
+		portFileReader.close();
 
 		return null;
 	}
@@ -187,7 +195,7 @@ public class ConvertUnlocodeToXML {
 		String portName = line[3];
 		String facilities = line[7];
 
-		if (portCode.isEmpty() || !facilities.startsWith("1") || line[10].isEmpty()) {
+		if (portCode.isEmpty() || facilities.charAt(0) != '1' || line[10].isEmpty()) {
 			return null;
 		}
 

@@ -10,7 +10,7 @@ import org.simpleframework.xml.Root;
  * @see com.bbn.openmap.LatLonPoint
 */
 @Root
-public class LatLong {
+public final class LatLong implements Cloneable {
 	public enum Direction {
 		latitude,
 		longitude
@@ -98,7 +98,7 @@ public class LatLong {
 		return hemisphere;
 	}
 
-	public void setHemisphere(String hemisphere) {
+	public final void setHemisphere(String hemisphere) {
 		this.hemisphere = hemisphere;
 	}
 }

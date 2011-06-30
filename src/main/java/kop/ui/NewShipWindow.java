@@ -6,7 +6,6 @@ import kop.ships.ShipClassList;
 import kop.ships.ShipnameAlreadyExistsException;
 import kop.ships.blueprint.ShipBlueprint;
 import kop.ships.ShipClass;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -23,6 +22,7 @@ import java.awt.event.ActionListener;
  * To change this template use File | Settings | File Templates.
  */
 public class NewShipWindow implements Window {
+	private static final String MONEYFORMAT = "%.2f";
 	private JPanel contentPane;
 	private JTable newShipTable;
 	private JButton purchase;
@@ -40,9 +40,7 @@ public class NewShipWindow implements Window {
 	private TableRowSorter<NewShipTableModel> sorter;
 
 	public NewShipWindow() {
-		if (shipClasses == null) {
-			shipClasses = ShipClass.getShipClasses();
-		}
+		shipClasses = ShipClass.getShipClasses();
 
 		purchase.addActionListener(new ActionListener() {
 			@Override
@@ -109,7 +107,7 @@ public class NewShipWindow implements Window {
 	private void calcPrice(int selected) {
 		double money = Game.getInstance().getPlayerCompany().getMoney();
 
-		currentCash.setText(String.format("%.2f", money));
+		currentCash.setText(String.format(MONEYFORMAT, money));
 
 		loanSlider.setEnabled(selected > -1);
 
@@ -117,7 +115,7 @@ public class NewShipWindow implements Window {
 			maxLoanLabel.setText("");
 			totalPrice.setText("");
 			priceUpFront.setText("");
-			cashAfterPurchase.setText(String.format("%.2f", money));
+			cashAfterPurchase.setText(String.format(MONEYFORMAT, money));
 
 			return;
 		}
@@ -126,7 +124,7 @@ public class NewShipWindow implements Window {
 		maxLoanLabel.setText(String.format("%d%%",maxLoan));
 
 		ShipClass c = shipClasses.get(selected);
-		totalPrice.setText(String.format("%.2f", c.getPrice()));
+		totalPrice.setText(String.format(MONEYFORMAT, c.getPrice()));
 
 //		loanSlider.setExtent(c.getMaxLoanPercent());
 		loanSlider.setMinimum(0);
@@ -134,8 +132,8 @@ public class NewShipWindow implements Window {
 		loanSlider.setMaximum(100);
 
 		double d = c.getPrice() * (100-loanSlider.getValue()) / 100;
-		priceUpFront.setText(String.format("%.2f", d));
-		cashAfterPurchase.setText(String.format("%.2f", money - d));
+		priceUpFront.setText(String.format(MONEYFORMAT, d));
+		cashAfterPurchase.setText(String.format(MONEYFORMAT, money - d));
 	}
 
 	public JPanel getContentPane() {
@@ -165,7 +163,7 @@ public class NewShipWindow implements Window {
 
 	}
 
-	private class NewShipTableModel implements TableModel {
+	private static class NewShipTableModel implements TableModel {
 		private ShipClassList shipClasses;
 
 		String columnNames[] = {
@@ -215,7 +213,7 @@ public class NewShipWindow implements Window {
 					return 24*shipClass.getBlueprint().getFuelUsageFractionOfMaxPower(0.8);
 			}
 
-			throw new NotImplementedException();
+			return null;
 		}
 
 		@Override
@@ -254,7 +252,7 @@ public class NewShipWindow implements Window {
 		}
 	}
 
-	private class ShipTypeRowFilter extends RowFilter<NewShipTableModel, Integer> {
+	private static class ShipTypeRowFilter extends RowFilter<NewShipTableModel, Integer> {
 		ShipBlueprint.ShipType type;
 		public ShipTypeRowFilter(ShipBlueprint.ShipType type) {
 			this.type = type;

@@ -14,7 +14,7 @@ import java.util.List;
  * @deprecated
  */
 class ShipClassesFactory {
-	public ArrayList<ShipClass> createShipClasses(String fileName) throws Exception {
+	public List<ShipClass> createShipClasses(String fileName) throws Exception {
 		Serializer serializer = new Persister();
 
 		File source = new File(fileName);
@@ -31,7 +31,7 @@ class ShipClassesFactory {
 	250,000–280,000 DWT 	$47M 	$120M
 
 	 */
-	public void saveShipClasses(String fileName, ArrayList<ShipClass> list) throws Exception {
+	public void saveShipClasses(String fileName, List<ShipClass> list) throws Exception {
 		Serializer serializer = new Persister();
 		File result = new File(fileName);
 		ShipClassList scl = new ShipClassList();

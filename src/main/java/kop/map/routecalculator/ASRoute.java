@@ -3,6 +3,7 @@ package kop.map.routecalculator;
 import kop.ports.Port;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *  Contains the route Points between two destinations, keeps track of whether the ship passes either major canal.
@@ -13,7 +14,8 @@ public class ASRoute {
 	private boolean suez;
 	private boolean panama;
 
-	ArrayList<Point> points;
+	private List<Point> points;
+
 	public ASRoute() {
 		points = new ArrayList<Point>();
 	}
@@ -77,7 +79,7 @@ public class ASRoute {
 		points.add(0,point);
 	}
 
-	public ArrayList<Point> getPoints() {
+	public List<Point> getPoints() {
 		return points;
 	}
 }

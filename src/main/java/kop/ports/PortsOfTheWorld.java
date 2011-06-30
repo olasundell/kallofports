@@ -16,7 +16,7 @@ public class PortsOfTheWorld {
 		populatePorts();
 	}
 
-	public void populatePorts() throws Exception {
+	public final void populatePorts() throws Exception {
 		if (ports!=null) {
 			return;
 		}

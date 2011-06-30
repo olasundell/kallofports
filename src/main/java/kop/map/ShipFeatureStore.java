@@ -6,18 +6,15 @@ import com.vividsolutions.jts.geom.Point;
 import kop.game.Game;
 import kop.ships.model.ShipModel;
 import org.geotools.data.*;
-import org.geotools.data.memory.CollectionSource;
 import org.geotools.data.simple.SimpleFeatureReader;
-import org.geotools.data.store.ContentFeatureSource;
-import org.geotools.data.store.ContentFeatureStore;
 import org.geotools.feature.SchemaException;
 import org.geotools.feature.simple.SimpleFeatureBuilder;
-import org.geotools.geometry.jts.ReferencedEnvelope;
 import org.opengis.feature.simple.SimpleFeature;
 import org.opengis.feature.simple.SimpleFeatureType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -26,9 +23,11 @@ import java.util.NoSuchElementException;
  */
 public class ShipFeatureStore extends AbstractFeatureStore {
 	ShipDataStore shipDataStore = new ShipDataStore();
+	Logger logger;
 
 	public ShipFeatureStore() {
 		super();
+		logger = LoggerFactory.getLogger(this.getClass());
 	}
 
 	@Override
@@ -51,25 +50,28 @@ public class ShipFeatureStore extends AbstractFeatureStore {
 		try {
 			return shipDataStore.getSchema("");
 		} catch (IOException e) {
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			logger.error("Could not get schema from datastore", e);
 		}
 		return null;
 	}
 
 	public static class ShipDataStore extends AbstractDataStore {
-		SimpleFeatureType TYPE = null;
+		SimpleFeatureType type = null;
+		Logger logger;
+
 		public ShipDataStore() {
 			super();
+			logger = LoggerFactory.getLogger(this.getClass());
 
 			try {
-				TYPE = DataUtilities.createType("Location",
+				type = DataUtilities.createType("Location",
 //					"location:Point:srid=4326," // <- the geometry attribute: Point type
 						"location:Point:srid=4326," + // <- the geometry attribute: Point type
 								"name:String," + // <- a String attribute
 								"number:Integer" // a number attribute
 				);
 			} catch (SchemaException e) {
-				e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+				logger.error("Could not create SimpleFeatureType",e);
 			}
 		}
 
@@ -80,12 +82,12 @@ public class ShipFeatureStore extends AbstractFeatureStore {
 
 		@Override
 		public SimpleFeatureType getSchema(String s) throws IOException {
-			return TYPE;
+			return type;
 		}
 
 		@Override
 		protected FeatureReader<SimpleFeatureType, SimpleFeature> getFeatureReader(String s) throws IOException {
-			return new ShipFeatureReader(TYPE);
+			return new ShipFeatureReader(type);
 		}
 
 		private class ShipFeatureReader implements SimpleFeatureReader {
@@ -98,7 +100,7 @@ public class ShipFeatureStore extends AbstractFeatureStore {
 				featureType = type;
 				iterator =  Game.getInstance().getPlayerCompany().getShips().iterator();
 				geometryFactory = new GeometryFactory();
-				featureBuilder = new SimpleFeatureBuilder(TYPE);
+				featureBuilder = new SimpleFeatureBuilder(ShipDataStore.this.type);
 			}
 
 			@Override

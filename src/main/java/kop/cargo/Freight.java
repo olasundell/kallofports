@@ -52,4 +52,12 @@ public class Freight {
 				f.getCargo().equals(this.getCargo()) &&
 				f.getOrigin().equals(this.getOrigin());
 	}
+
+	@Override
+	public int hashCode() {
+		int result = origin != null ? origin.hashCode() : 0;
+		result = 31 * result + (destination != null ? destination.hashCode() : 0);
+		result = 31 * result + (cargo != null ? cargo.hashCode() : 0);
+		return result;
+	}
 }

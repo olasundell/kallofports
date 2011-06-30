@@ -7,6 +7,8 @@ import kop.ports.PortProxy;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +25,10 @@ public class Point implements Cloneable {
 	private int x;
 	@Attribute
 	private int y;
+	private Logger logger;
 
 	public Point() {
+		logger = LoggerFactory.getLogger(this.getClass());
 		coord = new LatLonPoint();
 	}
 
@@ -152,14 +156,38 @@ public class Point implements Cloneable {
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
 
 		Point point = (Point) o;
 
-		if (coord != null ? !coord.equals(point.coord) : point.coord != null) return false;
+		if (coord == null ||
+				coord.getLatitude() != point.getLat() ||
+				coord.getLongitude() != point.getLon()) {
+			return false;
+		}
+
+//		if (coord != null ? !coord.equals(point.coord) : point.coord != null) return false;
 
 		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		int result;
+		result = coord != null ? coord.hashCode() : 0;
+		//  we've removed parent from the hash code since two points are equal regardless of parentage.
+//		long temp;
+//		result = 31 * result + (parent != null ? parent.hashCode() : 0);
+//		temp = parentCost != +0.0d ? Double.doubleToLongBits(parentCost) : 0L;
+//		result = 31 * result + (int) (temp ^ (temp >>> 32));
+		result = 31 * result + x;
+		result = 31 * result + y;
+		return result;
 	}
 
 	@Element
@@ -186,7 +214,7 @@ public class Point implements Cloneable {
 		try {
 			return super.clone();
 		} catch (CloneNotSupportedException e) {
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			logger.error("Could not clone object",e);
 		}
 
 		return null;

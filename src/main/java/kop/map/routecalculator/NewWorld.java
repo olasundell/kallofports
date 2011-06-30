@@ -2,6 +2,8 @@ package kop.map.routecalculator;
 
 import org.simpleframework.xml.ElementArray;
 import org.simpleframework.xml.Root;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -30,13 +32,19 @@ public class NewWorld {
 	private int southOffset = DEFAULT_SOUTH_OFFSET;
 	private int northOffset = DEFAULT_NORTH_OFFSET;
 
+	private Logger logger;
+
 	@ElementArray(empty = true)
 	LatitudeArr[] lats;
 	private WaterVerifier waterVerifier;
 
-	public NewWorld() {}
+	public NewWorld() {
+		logger = LoggerFactory.getLogger(this.getClass());
+	}
 
 	public NewWorld(Point[][] points) {
+		this();
+
 		lats = new LatitudeArr[points.length];
 
 		for (int i=0;i<lats.length;i++) {
@@ -45,9 +53,12 @@ public class NewWorld {
 	}
 
 	public NewWorld(int latitudeSize, int longitudeSize, WaterVerifier waterVerifier) {
+		this();
 		setScale((float) (longitudeSize/360.0));
 		setWaterVerifier(waterVerifier);
+
 		lats = new LatitudeArr[latitudeSize];
+
 		for (int i=0;i<lats.length;i++) {
 			lats[i] = new LatitudeArr(longitudeSize);
 		}
@@ -88,23 +99,23 @@ public class NewWorld {
 	}
 
 	protected float calcLon(int j) {
-		return j / scale - 180;
+		return (float) ((j / scale) - 180);
 	}
 
 	protected float calcLat(int i) {
-		return 90 - northOffset - i/scale;
+		return (float) (90 - northOffset - (i / scale));
 	}
 
-	public float getScale() {
+	public double getScale() {
 		return scale;
 	}
 
-	public void setScale(float sc) {
+	public final void setScale(double sc) {
 		if (sc <= 0) {
 			throw new IllegalArgumentException("Trying to set scale to zero or below will have funky divide by zero side effects. Is this wanted?");
 		}
 
-		scale = sc;
+		scale = (float) sc;
 	}
 
 	public int getSouthOffset() {
@@ -160,45 +171,47 @@ public class NewWorld {
 	 * @return
 	 */
 	public String toString(ASRoute route) {
-		String s="";
+		StringBuffer s = new StringBuffer();
 
 		List<Point> travelRoute = null;
-		Point end = route.points.get(0);
-		Point start = route.points.get(route.points.size()-1);
 
-		if (route.points.size() > 2) {
-			travelRoute = route.points.subList(1,route.points.size()-1);
+		List<Point> points = route.getPoints();
+		Point end = points.get(0);
+		Point start = points.get(points.size()-1);
+
+		if (points.size() > 2) {
+			travelRoute = points.subList(1,points.size()-1);
 		}
 
 		for (int i=0;i<lats.length;i++) {
 			for (int j=0;j<lats[i].longitudes.length;j++) {
 				Point point = lats[i].longitudes[j];
 				if (point == null) {
-					s +="X";
+					s.append('X');
 				} else if (start.equals(point)) {
-					s+="S";
+					s.append('S');
 				} else if (end.equals(point)) {
-					s+="E";
+					s.append('E');
 				} else if (travelRoute!=null && travelRoute.contains(point)) {
-					s+="O";
+					s.append('O');
 				} else {
-					s+=".";
+					s.append('.');
 				}
 			}
-			s+="\n";
+			s.append('\n');
 		}
 
-		return s;
+		return s.toString();
 	}
 
 	public String toString() {
-		String s="";
+		StringBuilder s = new StringBuilder();
 
 		for (int i=0;i<lats.length;i++) {
-			s+=lats[i].toString() + "\n";
+			s.append(String.format("%s\n", lats[i].toString()));
 		}
 
-		return s;
+		return s.toString();
 	}
 
 	public WaterVerifier getWaterVerifier() {
@@ -222,31 +235,36 @@ public class NewWorld {
 		public LatitudeArr() {}
 
 		public LatitudeArr(int longitudeSize) {
-			longitudes = new Point[longitudeSize];
+			this(new Point[longitudeSize]);
 		}
 
 		public String toString() {
-			String s="";
+			StringBuffer s = new StringBuffer();
 
 			for (Point p: longitudes) {
 				if (p==null) {
-					s+="x";
+					s.append('x');
 				} else {
-					s+=".";
+					s.append('.');
 				}
 			}
 
-			return s;
+			return s.toString();
+		}
+
+		@Override
+		public int hashCode() {
+			return longitudes != null ? Arrays.hashCode(longitudes) : 0;
 		}
 
 		@Override
 		public boolean equals(Object o) {
-			if (this == o) return true;
-			if (o == null || getClass() != o.getClass()) return false;
+			if (this == o) { return true; }
+			if (o == null || getClass() != o.getClass()) { return false; }
 
 			LatitudeArr that = (LatitudeArr) o;
 
-			if (!Arrays.equals(longitudes, that.longitudes)) return false;
+			if (!Arrays.equals(longitudes, that.longitudes)) { return false; }
 
 			return true;
 		}
@@ -254,6 +272,7 @@ public class NewWorld {
 
 	public static NewWorld readFromFile(String filename) {
 		File file = new File(filename);
+		NewWorld world = null;
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			ArrayList<String> lines = new ArrayList<String>();
@@ -262,8 +281,11 @@ public class NewWorld {
 			while ((line = reader.readLine())!=null) {
 				lines.add(line);
 			}
-			NewWorld world = new NewWorld(lines.size(), lines.get(0).length());
-			world.setScale(lines.size() / 180);
+
+			reader.close();
+
+			world = new NewWorld(lines.size(), lines.get(0).length());
+			world.setScale(lines.size() / 180d);
 			for (int i=0;i<lines.size();i++) {
 				for (int j=0;j<lines.get(i).length();j++) {
 					if (lines.get(i).charAt(j) == '.') {
@@ -274,23 +296,36 @@ public class NewWorld {
 				}
 			}
 
-			return world;
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			Logger logger = LoggerFactory.getLogger(NewWorld.class);
+			logger.error(String.format("File %s could not be found.", filename), e);
 		} catch (IOException e) {
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			Logger logger = LoggerFactory.getLogger(NewWorld.class);
+			logger.error(String.format("Error reading from file %s", filename),e);
 		}
-		return null;
+
+		return world;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = (scale != +0.0f ? Float.floatToIntBits((float) scale) : 0);
+		result = 31 * result + southOffset;
+		result = 31 * result + northOffset;
+		result = 31 * result + (logger != null ? logger.hashCode() : 0);
+		result = 31 * result + (lats != null ? Arrays.hashCode(lats) : 0);
+		result = 31 * result + (waterVerifier != null ? waterVerifier.hashCode() : 0);
+		return result;
 	}
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if (this == o) { return true; }
+		if (o == null || getClass() != o.getClass()) { return false; }
 
 		NewWorld newWorld = (NewWorld) o;
 
-		if (!Arrays.equals(lats, newWorld.lats)) return false;
+		if (!Arrays.equals(lats, newWorld.lats)) { return false; }
 
 		return true;
 	}

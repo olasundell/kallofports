@@ -1,7 +1,9 @@
 package kop.ports;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -33,17 +35,18 @@ public class GenerateScriptForRouting {
 
 			writer.close();
 		} catch (Exception e) {
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			Logger logger = LoggerFactory.getLogger(GenerateScriptForRouting.class);
+			logger.error("Error while generating script", e);
 		}
 
 
 	}
 
 	private static String getPortString(Port port) {
-		String str;
-		str = port.getName().replaceAll(" ", "%20");
-		str += "%20";
-		str += "(" + port.getUnlocode().replaceAll(" ", "%20") + "%20%20)";
-		return str;
+		StringBuffer str = new StringBuffer();
+		str.append(port.getName().replaceAll(" ", "%20"));
+		str.append("%20");
+		str.append(String.format("(%s%20%20)", port.getUnlocode().replaceAll(" ", "%20")));
+		return str.toString();
 	}
 }

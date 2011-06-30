@@ -4,6 +4,7 @@ import kop.ports.NoRouteFoundException;
 import kop.ports.Port;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import kop.ports.PortProxy;
@@ -15,10 +16,10 @@ import org.slf4j.LoggerFactory;
  * TODO this class returns routes which are goal-first, start-last. Not quite what you'd expect.
  */
 public class AStarUtil {
-	public static Point suezMediterranean = new Point(31.28,32.34);
-	public static Point suezIndianOcean = new Point(29.93,32.56);
-	public static Point panamaAtlantic = new Point(9.31,-79.92);
-	public static Point panamaPacific = new Point(8.93,-79.56);
+	public final static Point suezMediterranean = new Point(31.28,32.34);
+	public final static Point suezIndianOcean = new Point(29.93,32.56);
+	public final static Point panamaAtlantic = new Point(9.31,-79.92);
+	public final static Point panamaPacific = new Point(8.93,-79.56);
 
 	Logger logger;
 	public AStarUtil() {
@@ -34,7 +35,7 @@ public class AStarUtil {
 	 * @param world
 	 * @return
 	 */
-	protected ASRoute aStar(int latStart, int lonStart, int latGoal, int lonGoal, NewWorld world) {
+	protected ASRoute aStar(int latStart, int lonStart, int latGoal, int lonGoal, NewWorld world) throws NoRouteFoundException {
 		Point start = world.lats[latStart].longitudes[lonStart];
 		Point goal = world.lats[latGoal].longitudes[lonGoal];
 		return aStar(start, goal, world);
@@ -50,7 +51,7 @@ public class AStarUtil {
 	 * @param world The world to route in.
 	 * @return an ASDistance with routes via both canals and a direct route.
 	 */
-	public ASDistance aStar(PortProxy start, PortProxy goal, NewWorld world) throws NoRouteFoundException {
+	public ASDistance aStar(PortProxy start, PortProxy goal, NewWorld world) throws NoRouteFoundException, CouldNotFindPointException {
 		// these are approximations
 		Point closestStartPoint;
 		Point closestGoalPoint = null;
@@ -66,11 +67,11 @@ public class AStarUtil {
 		ASDistance distance = new ASDistance(start, goal);
 
 		if (closestStartPoint == null) {
-			throw new NullPointerException("Cannot find starting point for port " + closestStartPoint);
+			throw new CouldNotFindPointException(String.format("Cannot find starting point for port %s", closestStartPoint));
 		}
 
 		if (closestGoalPoint == null) {
-			throw new NullPointerException("Cannot find end point for port " + goal);
+			throw new CouldNotFindPointException(String.format("Cannot find end point for port %s", goal));
 		}
 
 		// first, the direct route.
@@ -166,6 +167,7 @@ public class AStarUtil {
 			throw new NoRouteFoundException(e);
 		}
 
+		// TODO this could be refactored to more generalised code.
 		if (closestStartPoint.distance(closestSecondEntrance) < closestStartPoint.distance(closestFirstEntrance)) {
 			route = aStar(closestStartPoint, closestSecondEntrance, world);
 
@@ -277,28 +279,22 @@ public class AStarUtil {
 	 * @param goal goal point
 	 * @param world world to do some SPFing in.
 	 * @return the shortest route in the world given start and goal - hopefully...
+	 * @throws kop.ports.NoRouteFoundException whenever a route isn't found.
 	 * TODO optimise, optimise, optimise!
-	 * FIXME contains a bug which isn't the fault of the implementation, apparently the world isn't fine-grained enough so the Panama strip of land connecting NA and SA isn't there.
 	 */
-	public ASRoute aStar(Point start, Point goal, NewWorld world) {
-		ArrayList<Point> closedset = new ArrayList<Point>();
+	public ASRoute aStar(Point start, Point goal, NewWorld world) throws NoRouteFoundException {
+		HashSet<Point> closedset = new HashSet<Point>();
+		// TODO make the openset a priority queue based on lowest F, so getLowestF() calls are avoided.
 		ArrayList<Point> openset = new ArrayList<Point>();
+
 		openset.add(start);
+		long tries = 0;
 
 		while (openset.size() != 0) {
 			Point currentPoint = getLowestF(openset, start, goal);
 
 			// TODO this shouldn't be commented out, fix log4j settings.
-//			if (logger.isDebugEnabled()) {
-//				logger.debug(world.toString(reconstructPath(start, currentPoint)));
-//				if (world.getScale() < 1) {
-//					try {
-//						Thread.sleep(150);
-//					} catch (InterruptedException e) {
-//						e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-//					}
-//				}
-//			}
+//			logger.trace(world.toString(reconstructPath(start, currentPoint)));
 
 			if (currentPoint.equals(goal)) {
 				return reconstructPath(start, goal);
@@ -322,9 +318,14 @@ public class AStarUtil {
 					p.setParent(currentPoint);
 				}
 			}
+
+			tries++;
+			if (tries % 1000 == 0) {
+				logger.debug(String.format("Number of tries: %d",tries));
+			}
 		}
 
-		return null;
+		throw new NoRouteFoundException(String.format("No route could be found between %s and %s", start, goal));
 	}
 
 	/**

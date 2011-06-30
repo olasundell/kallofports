@@ -4,6 +4,8 @@ import kop.ships.blueprint.ShipBlueprint;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -21,12 +23,14 @@ public class ShipClass {
 	private int maxLoanPercent = 60;
 
 	private static ShipClassList shipClasses;
+	private Logger logger;
 
 	public ShipClass() {
-
+		logger = LoggerFactory.getLogger(this.getClass());
 	}
 
 	public ShipClass(ShipBlueprint ship, double price, String className) {
+		this();
 		this.price = price;
 		this.className = className;
 		this.ship = ship;
@@ -34,10 +38,12 @@ public class ShipClass {
 
 	public static ShipClassList getShipClasses() {
 		if (shipClasses == null) {
+			String resourceName = "kop/ships/shipclasses.xml";
 			try {
-				shipClasses = (ShipClassList) ModelSerializer.readFromFile("kop/ships/shipclasses.xml", ShipClassList.class);
+				shipClasses = (ShipClassList) ModelSerializer.readFromFile(resourceName, ShipClassList.class);
 			} catch (Exception e) {
-				e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+				Logger logger = LoggerFactory.getLogger(ShipClass.class);
+				logger.error(String.format("Could not deserialise ship classes from file %s", resourceName), e);
 				return null;
 			}
 		}

@@ -5,6 +5,8 @@ import com.bbn.openmap.layer.shape.ShapeLayer;
 import com.bbn.openmap.omGraphics.OMGraphic;
 import com.bbn.openmap.omGraphics.OMGraphicList;
 import com.bbn.openmap.proj.Projection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.awt.Shape;
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ import java.util.Properties;
 public class OpenMapWaterVerifier implements WaterVerifier {
 	private List<Shape> shapeList;
 	private Projection projection;
+	private Logger logger;
 
 	public void setupInstance(String shapeFileName) {
 		// we need the map bean to get a Projection.
@@ -28,6 +31,7 @@ public class OpenMapWaterVerifier implements WaterVerifier {
 	}
 
 	public OpenMapWaterVerifier() {
+		logger = LoggerFactory.getLogger(this.getClass());
 	}
 
 	/**
@@ -68,7 +72,7 @@ public class OpenMapWaterVerifier implements WaterVerifier {
 		try {
 			o = super.clone();	//To change body of overridden methods use File | Settings | File Templates.
 		} catch (CloneNotSupportedException e) {
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			logger.error("Could not clone object", e);
 		}
 
 		return o;
@@ -91,12 +95,16 @@ public class OpenMapWaterVerifier implements WaterVerifier {
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if (this == o) { return true; }
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
 
 		OpenMapWaterVerifier verifier = (OpenMapWaterVerifier) o;
 
-		if (shapeList != null ? !shapeList.equals(verifier.shapeList) : verifier.shapeList != null) return false;
+		if (shapeList != null ? !shapeList.equals(verifier.shapeList) : verifier.shapeList != null) {
+			return false;
+		}
 
 		return true;
 	}

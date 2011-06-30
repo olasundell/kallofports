@@ -2,10 +2,13 @@ package kop.ports;
 
 import com.bbn.openmap.proj.coords.DMSLatLonPoint;
 import kop.cargo.CargoType;
+import kop.map.routecalculator.CouldNotFindPointException;
 import kop.map.routecalculator.Point;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -34,8 +37,11 @@ public class Port {
 	@Element(required = false)
 	private PortCargoTypeList portCargoTypes;
 
+	private Logger logger;
+
 	// TODO this constructor should most probably be private, anyone who wants a port should use the factory methods.
 	public Port() {
+		logger = LoggerFactory.getLogger(this.getClass());
 		position = new Point();
 		position.setLat(-1);
 		position.setLon(-1);
@@ -53,12 +59,35 @@ public class Port {
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
 
 		Port port = (Port) o;
 
 		return !(name != null ? !name.equals(port.name) : port.name != null);
+	}
+
+	@Override
+	public int hashCode() {
+		int result = name != null ? name.hashCode() : 0;
+		result = 31 * result + (unlocode != null ? unlocode.hashCode() : 0);
+		result = 31 * result + (bunkerOil != null ? bunkerOil.hashCode() : 0);
+		result = 31 * result + (dieselOil != null ? dieselOil.hashCode() : 0);
+		result = 31 * result + (countryCode != null ? countryCode.hashCode() : 0);
+		result = 31 * result + (harbourSize != null ? harbourSize.hashCode() : 0);
+		result = 31 * result + (harbourType != null ? harbourType.hashCode() : 0);
+		result = 31 * result + (drydock != null ? drydock.hashCode() : 0);
+		result = 31 * result + (country != null ? country.hashCode() : 0);
+		result = 31 * result + (position != null ? position.hashCode() : 0);
+		result = 31 * result + (longitude != null ? longitude.hashCode() : 0);
+		result = 31 * result + (latitude != null ? latitude.hashCode() : 0);
+		result = 31 * result + (portCargoTypes != null ? portCargoTypes.hashCode() : 0);
+		result = 31 * result + (logger != null ? logger.hashCode() : 0);
+		return result;
 	}
 
 	public void setBunkerOil(String bunkerOil) {
@@ -98,7 +127,7 @@ public class Port {
 				0,
 				0,
 				0,
-				hemisphere.equals("E"),
+				hemisphere.equals("W"),
 				deg,
 				min,
 				0);
@@ -137,14 +166,14 @@ public class Port {
 		return getUnlocode() + " " + getName();
 	}
 
-	private void initializePosition() {
+	private void initializePosition() throws CouldNotFindPointException {
 		position = new Point();
 		if (latitude == null) {
-			throw new NullPointerException("");
+			throw new CouldNotFindPointException("Latitude is null");
 		}
 
 		if (longitude == null) {
-			throw new NullPointerException("");
+			throw new CouldNotFindPointException("Longitude is null");
 		}
 
 		setLatitude(latitude.deg, latitude.min, latitude.hemisphere);
@@ -153,14 +182,22 @@ public class Port {
 
 	public double getLatitude() {
 		if (position.getLat() == -1) {
-			initializePosition();
+			try {
+				initializePosition();
+			} catch (CouldNotFindPointException e) {
+				logger.error("Could not initialise position",e);
+			}
 		}
 		return position.getLat();
 	}
 
 	public double getLongitude() {
 		if (position==null || position.getLon() == -1.0) {
-			initializePosition();
+			try {
+				initializePosition();
+			} catch (CouldNotFindPointException e) {
+				logger.error("Could not initialise position", e);
+			}
 		}
 		return position.getLon();
 	}
@@ -175,7 +212,11 @@ public class Port {
 
 	public Point getPosition() {
 		if (position == null || position.getLat() == -1.0) {
-			initializePosition();
+			try {
+				initializePosition();
+			} catch (CouldNotFindPointException e) {
+				logger.error("Could not initialise position",e);
+			}
 		}
 		return position;
 	}

@@ -57,7 +57,7 @@ public class ShipLocationHandler extends AbstractLocationHandler {
 			if (ship.isAtSea()) {
 				// add route to map.
 				ASRoute route = ship.getCurrentRoute();
-				ArrayList<Point> points = route.getPoints();
+				List<Point> points = route.getPoints();
 				float f[] = new float[points.size()*2];
 				for (int i=0;i < points.size(); i++) {
 					f[i*2] = points.get(i).getLat();

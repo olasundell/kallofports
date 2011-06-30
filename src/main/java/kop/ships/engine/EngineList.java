@@ -3,6 +3,8 @@ package kop.ships.engine;
 import kop.ships.ModelSerializer;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -18,8 +20,10 @@ public class EngineList {
 	@ElementList(inline = true)
 	private List<Engine> engines;
 	private static final URL ENGINELIST_FILENAME = ClassLoader.getSystemClassLoader().getResource("kop/ships/engines.xml");
+	private Logger logger;
 
 	public EngineList() {
+		logger = LoggerFactory.getLogger(this.getClass());
 		engines = new ArrayList<Engine>();
 	}
 
@@ -38,12 +42,13 @@ public class EngineList {
 	}
 
 	public static EngineList getInstance() {
+		Logger logger = LoggerFactory.getLogger(EngineList.class);
 		if (instance == null) {
 			try {
 				URL r = ClassLoader.getSystemClassLoader().getResource("kop/ships/engines.xml");
 				instance = (EngineList) ModelSerializer.readFromFile(r, EngineList.class);
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("Could not create engine list",e);
 			}
 		}
 		return instance;

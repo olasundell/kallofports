@@ -73,7 +73,7 @@ public class CargoImpl implements Cargo {
 		}
 	}
 
-	public void setWeight(int weight) {
+	public final void setWeight(int weight) {
 		this.weight = weight;
 //		if ((type.getPackaging() == CargoType.Packaging.wetbulk) || (type.getPackaging() == CargoType.Packaging.lng)) {
 		setVolume((int) (weight / type.getDensityAsDouble()));
@@ -86,14 +86,14 @@ public class CargoImpl implements Cargo {
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if (this == o) { return true; }
+		if (o == null || getClass() != o.getClass()) { return false; }
 
 		CargoImpl cargo = (CargoImpl) o;
 
-		if (Double.compare(cargo.pricePerTon, pricePerTon) != 0) return false;
-		if (weight != cargo.weight) return false;
-		if (deadline != null ? !deadline.equals(cargo.deadline) : cargo.deadline != null) return false;
+		if (Double.compare(cargo.pricePerTon, pricePerTon) != 0) { return false; }
+		if (weight != cargo.weight) { return false; }
+		if (deadline != null ? !deadline.equals(cargo.deadline) : cargo.deadline != null) { return false; }
 		return !(type != null ? !type.equals(cargo.type) : cargo.type != null);
 	}
 
@@ -101,7 +101,7 @@ public class CargoImpl implements Cargo {
 		return pricePerTon;
 	}
 
-	public void setPricePerTon(double pricePerTon) {
+	public final void setPricePerTon(double pricePerTon) {
 		this.pricePerTon = pricePerTon;
 	}
 
@@ -117,7 +117,7 @@ public class CargoImpl implements Cargo {
 		return type;
 	}
 
-	public void setType(CargoType type) {
+	public final void setType(CargoType type) {
 		this.type = type;
 	}
 
@@ -125,7 +125,7 @@ public class CargoImpl implements Cargo {
 		return deadline;
 	}
 
-	public void setDeadline(Date deadline) {
+	public final void setDeadline(Date deadline) {
 		this.deadline = deadline;
 	}
 
@@ -133,8 +133,23 @@ public class CargoImpl implements Cargo {
 		return volume;
 	}
 
-	public void setVolume(int volume) {
+	public final void setVolume(int volume) {
 		this.volume = volume;
+	}
+
+	@Override
+	public int hashCode() {
+		int result;
+		long temp;
+		result = weight;
+		temp = pricePerTon != +0.0d ? Double.doubleToLongBits(pricePerTon) : 0L;
+		result = 31 * result + (int) (temp ^ (temp >>> 32));
+		temp = pricePerVolume != +0.0d ? Double.doubleToLongBits(pricePerVolume) : 0L;
+		result = 31 * result + (int) (temp ^ (temp >>> 32));
+		result = 31 * result + (type != null ? type.hashCode() : 0);
+		result = 31 * result + (deadline != null ? deadline.hashCode() : 0);
+		result = 31 * result + volume;
+		return result;
 	}
 
 	public String toString() {
