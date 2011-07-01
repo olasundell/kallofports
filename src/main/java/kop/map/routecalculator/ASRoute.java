@@ -55,7 +55,7 @@ public class ASRoute {
 	}
 
 	public void addRoute(ASRoute asRoute) {
-		points.addAll(asRoute.points);
+		points.addAll(0,asRoute.points);
 	}
 
 	public void setPassesPanama(boolean b) {

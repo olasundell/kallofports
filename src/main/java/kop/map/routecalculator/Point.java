@@ -18,6 +18,7 @@ import java.util.List;
  */
 @Root
 public class Point implements Cloneable {
+	private static final double SQRT2 = Math.sqrt(2);
 	private LatLonPoint coord;
 	private Point parent;
 	private double parentCost;
@@ -132,6 +133,19 @@ public class Point implements Cloneable {
 	}
 
 	public double distance(Point p) {
+
+//		          num _ Diagonal _ Steps = min{ | x a − xb |, | y a − y b |}
+//The number of straight steps that need to be taken is found using:
+//num _ Straight _ Steps = ( | x a − xb | + | y a − y b |) − 2 * num _ Diagonal _ Steps
+		int diagonalSteps = Math.min(Math.abs(getX() - p.getX()), Math.abs(getY()- p.getY()));
+		int straightSteps = Math.abs(getX() - p.getX()) + Math.abs(getY() - p.getY()) - 2 * diagonalSteps;
+
+		return straightSteps + diagonalSteps * SQRT2;
+
+//		return haversineDistance(p);
+	}
+
+	private double haversineDistance(Point p) {
 		double radius = 6371.009;
 		Point p1 = this;
 		Point p2 = p;
@@ -222,5 +236,13 @@ public class Point implements Cloneable {
 
 	public String toString() {
 		return String.format("lat %f lon %f x %d y %d",getLat(), getLon(), x, y);
+	}
+
+	protected int getY() {
+		return y;
+	}
+
+	protected int getX() {
+		return x;
 	}
 }

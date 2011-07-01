@@ -98,6 +98,8 @@ public class RouteCalculator {
 			mapBean.add(routeLayer, 0);
 		} catch (NoRouteFoundException e) {
 			logger.error("No route found, thus we cannot create a map layer.",e);
+		} catch (CouldNotFindPointException e) {
+			logger.error("No route found, thus we cannot create a map layer.",e);
 		}
 	}
 

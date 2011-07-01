@@ -20,6 +20,7 @@ public class AStarUtil {
 	public final static Point suezIndianOcean = new Point(29.93,32.56);
 	public final static Point panamaAtlantic = new Point(9.31,-79.92);
 	public final static Point panamaPacific = new Point(8.93,-79.56);
+	private static final int MAX_ASTAR_ITERATIONS = 50000;
 
 	Logger logger;
 	public AStarUtil() {
@@ -35,7 +36,7 @@ public class AStarUtil {
 	 * @param world
 	 * @return
 	 */
-	protected ASRoute aStar(int latStart, int lonStart, int latGoal, int lonGoal, NewWorld world) throws NoRouteFoundException {
+	protected ASRoute aStar(int latStart, int lonStart, int latGoal, int lonGoal, NewWorld world) throws NoRouteFoundException, CouldNotFindPointException {
 		Point start = world.lats[latStart].longitudes[lonStart];
 		Point goal = world.lats[latGoal].longitudes[lonGoal];
 		return aStar(start, goal, world);
@@ -81,16 +82,25 @@ public class AStarUtil {
 		distance.addRoute(route);
 
 		// then suez
-		route = findRouteThroughSuezCanal(closestStartPoint, closestGoalPoint, world);
-		addStartAndGoalToRoute(startPoint, goalPoint, route);
-
-		distance.addRoute(route);
-
-		// then panama
-		route = findRouteThroughPanamaCanal(closestStartPoint, closestGoalPoint, world);
-		addStartAndGoalToRoute(startPoint, goalPoint, route);
-
-		distance.addRoute(route);
+		// TODO disabled. Canal routing obviously needs more work.
+//		try {
+//			route = findRouteThroughSuezCanal(closestStartPoint, closestGoalPoint, world);
+//			addStartAndGoalToRoute(startPoint, goalPoint, route);
+//
+//			distance.addRoute(route);
+//		} catch (NoRouteFoundException e) {
+//			logger.debug("Failed to find route through Suez", e);
+//		}
+//
+//		// then panama
+//		try {
+//			route = findRouteThroughPanamaCanal(closestStartPoint, closestGoalPoint, world);
+//			addStartAndGoalToRoute(startPoint, goalPoint, route);
+//
+//			distance.addRoute(route);
+//		} catch (NoRouteFoundException e) {
+//			logger.debug("Failed to find route through Panama", e);
+//		}
 
 		return distance;
 	}
@@ -156,7 +166,7 @@ public class AStarUtil {
 										  Point firstCanalEntrance,
 										  Point secondCanalEntrance,
 										  NewWorld world) throws NoRouteFoundException {
-		ASRoute route;
+		ASRoute route = null;
 		// TODO these points could be static and predefined, thus saving us a bit of time.
 		Point closestFirstEntrance = null;
 		Point closestSecondEntrance = null;
@@ -167,21 +177,25 @@ public class AStarUtil {
 			throw new NoRouteFoundException(e);
 		}
 
-		// TODO this could be refactored to more generalised code.
-		if (closestStartPoint.distance(closestSecondEntrance) < closestStartPoint.distance(closestFirstEntrance)) {
-			route = aStar(closestStartPoint, closestSecondEntrance, world);
+		try {
+			// TODO this could be refactored to more generalised code.
+			if (closestStartPoint.distance(closestSecondEntrance) < closestStartPoint.distance(closestFirstEntrance)) {
+				route = aStar(closestStartPoint, closestSecondEntrance, world);
 
-			route.addPointFirst(secondCanalEntrance);
-			route.addPointFirst(firstCanalEntrance);
+//				route.addPointFirst(secondCanalEntrance);
+//				route.addPointFirst(firstCanalEntrance);
 
-			route.addRoute(aStar(closestFirstEntrance, closestGoalPoint, world));
-		} else {
-			route = aStar(closestStartPoint, closestFirstEntrance, world);
+				route.addRoute(aStar(closestFirstEntrance, closestGoalPoint, world));
+			} else {
+				route = aStar(closestStartPoint, closestFirstEntrance, world);
 
-			route.addPointFirst(firstCanalEntrance);
-			route.addPointFirst(secondCanalEntrance);
+//				route.addPointFirst(firstCanalEntrance);
+//				route.addPointFirst(secondCanalEntrance);
 
-			route.addRoute(aStar(closestSecondEntrance, closestGoalPoint, world));
+				route.addRoute(aStar(closestSecondEntrance, closestGoalPoint, world));
+			}
+		} catch (CouldNotFindPointException e) {
+			logger.error("Could not find start/goal point when trying to find a route through a canal. This should not happen!",e);
 		}
 
 		return route;
@@ -275,17 +289,20 @@ public class AStarUtil {
 	/**
 	 * This is what this class is about, ie the implementation of the shortest path first A* algorithm.
 	 * Should NOT go through canals, but it SHOULD go through Gibraltar and the Malacca sound.
-	 * @param start starting point
-	 * @param goal goal point
+	 * @param origStart starting point
+	 * @param origGoal goal point
 	 * @param world world to do some SPFing in.
 	 * @return the shortest route in the world given start and goal - hopefully...
 	 * @throws kop.ports.NoRouteFoundException whenever a route isn't found.
 	 * TODO optimise, optimise, optimise!
 	 */
-	public ASRoute aStar(Point start, Point goal, NewWorld world) throws NoRouteFoundException {
+	public ASRoute aStar(Point origStart, Point origGoal, NewWorld world) throws NoRouteFoundException, CouldNotFindPointException {
 		HashSet<Point> closedset = new HashSet<Point>();
 		// TODO make the openset a priority queue based on lowest F, so getLowestF() calls are avoided.
 		ArrayList<Point> openset = new ArrayList<Point>();
+
+		Point start = findClosestPoint(origStart, world);
+		Point goal = findClosestPoint(origGoal, world);
 
 		openset.add(start);
 		long tries = 0;
@@ -294,10 +311,10 @@ public class AStarUtil {
 			Point currentPoint = getLowestF(openset, start, goal);
 
 			// TODO this shouldn't be commented out, fix log4j settings.
-//			logger.trace(world.toString(reconstructPath(start, currentPoint)));
+//			logger.debug(world.toStringCutoff(reconstructPath(start, currentPoint)));
 
 			if (currentPoint.equals(goal)) {
-				return reconstructPath(start, goal);
+				return reconstructPath(start, goal, origGoal);
 			}
 
 			openset.remove(currentPoint);
@@ -323,9 +340,16 @@ public class AStarUtil {
 			if (tries % 1000 == 0) {
 				logger.debug(String.format("Number of tries: %d",tries));
 			}
+
+			if (tries > MAX_ASTAR_ITERATIONS) {
+				// something went wrong. Horribly wrong.
+				throw new NoRouteFoundException(
+						String.format("Maximum number of attempts (%d) exceeded, no route could be found between %s and %s",
+								MAX_ASTAR_ITERATIONS, start, goal));
+			}
 		}
 
-		throw new NoRouteFoundException(String.format("No route could be found between %s and %s", start, goal));
+		throw new NoRouteFoundException(String.format("No route could be found between %s and %s", start, origGoal));
 	}
 
 	/**
@@ -336,22 +360,26 @@ public class AStarUtil {
 	 * TODO reverse the ASRoute
 	 * TODO add start and goal here
 	 */
-	protected ASRoute reconstructPath(Point start, Point cameFrom) {
+	protected ASRoute reconstructPath(Point start, Point cameFrom, Point origGoal) {
 		ASRoute route = new ASRoute();
 
 		Point current = cameFrom;
 		Point parent;
 
+//		if (!current.equals(origGoal)) {
+//			route.addPoint(origGoal);
+//		}
+
 		while ((parent = current.getParent())!=null) {
 			route.addPoint((Point) current.clone());
 			current = parent;
-			parent.resetParent();
+//			parent.resetParent();
 		}
 
 		// it isn't as easy as this, mate!
 //		route.addPoint(start);
 		route.addPoint(current);
-		current.resetParent();
+//		current.resetParent();
 
 		return route;
 	}

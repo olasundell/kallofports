@@ -37,6 +37,8 @@ public class NewWorld {
 	@ElementArray(empty = true)
 	LatitudeArr[] lats;
 	private WaterVerifier waterVerifier;
+	private static final int LAT_PADDING = 1;
+	private static final int LON_PADDING = 1;
 
 	public NewWorld() {
 		logger = LoggerFactory.getLogger(this.getClass());
@@ -185,6 +187,76 @@ public class NewWorld {
 
 		for (int i=0;i<lats.length;i++) {
 			for (int j=0;j<lats[i].longitudes.length;j++) {
+				Point point = lats[i].longitudes[j];
+				if (point == null) {
+					s.append('X');
+				} else if (start.equals(point)) {
+					s.append('S');
+				} else if (end.equals(point)) {
+					s.append('E');
+				} else if (travelRoute!=null && travelRoute.contains(point)) {
+					s.append('O');
+				} else {
+					s.append('.');
+				}
+			}
+			s.append('\n');
+		}
+
+		return s.toString();
+	}
+
+	public String toStringCutoff(ASRoute route) {
+		StringBuffer s = new StringBuffer();
+
+		List<Point> travelRoute = null;
+
+		List<Point> points = route.getPoints();
+
+		if (points.size() == 0) {
+			return "";
+		}
+
+		Point end = points.get(0);
+		Point start = points.get(points.size()-1);
+		int latStart, latLength, lonStart, lonLength;
+
+		latStart = points.get(0).getX();
+		lonStart = points.get(0).getY();
+		latLength = points.get(0).getX() - latStart;
+		lonLength = points.get(0).getY() - lonStart;
+
+		for (Point p: points) {
+			if (p.getX() < latStart) {
+				latStart = p.getX();
+			}
+
+			if (p.getY() < lonStart) {
+				lonStart = p.getY();
+			}
+
+			if (p.getX() - latStart > latLength) {
+				latLength = p.getX() - latStart;
+			}
+
+			if (p.getY() - lonStart > lonLength) {
+				lonLength = p.getY() - lonStart;
+			}
+		}
+
+		latStart = 80;
+		lonStart = 420;
+		latLength = 30;
+		lonLength = 30;
+
+		if (points.size() > 2) {
+			travelRoute = points.subList(1,points.size()-1);
+		}
+
+		s.append('\n');
+
+		for (int i=latStart - LAT_PADDING; i < latStart + latLength + LAT_PADDING ; i++) {
+			for (int j=lonStart - LON_PADDING ; j < lonStart + lonLength + LON_PADDING ; j++) {
 				Point point = lats[i].longitudes[j];
 				if (point == null) {
 					s.append('X');

@@ -9,6 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static junit.framework.Assert.*;
 
@@ -74,7 +75,7 @@ public class AStarUtilTest {
 
 
 	@Test
-	public void aStar() throws NoRouteFoundException {
+	public void aStar() throws NoRouteFoundException, CouldNotFindPointException {
 		NewWorld world = Util.getBlankWorld(0.1,0,0);
 		for (int i=0;i<world.lats[2].longitudes.length;i++) {
 			if (i==1) {
@@ -105,7 +106,7 @@ public class AStarUtilTest {
 		Point goal = world.lats[10].longitudes[5];
 
 		ASRoute route = aStarUtil.aStar(start,goal,world);
-		assertNotNull(route);
+		assertRoute(start, goal, route);
 		assertNotSame(0, route.getNumberOfPoints());
 		float totalDistance = route.getTotalDistance();
 		assertTrue(totalDistance > 0);
@@ -117,13 +118,12 @@ public class AStarUtilTest {
 	public void findClosestPoint() throws NoSuchPortException, CouldNotFindPointException {
 		Point p = null;
 		try {
-			findClosestPointForWorld(getSmallWorld());
+//			findClosestPointForWorld(getSmallWorld());
 			findClosestPointForWorld(getRealWorld());
 		} catch (CouldNotFindPointException e) {
 			System.err.println(getSmallWorld().toString());
 			throw e;
 		}
-
 	}
 
 	private void findClosestPointForWorld(NewWorld world) throws CouldNotFindPointException, NoSuchPortException {
@@ -138,30 +138,69 @@ public class AStarUtilTest {
 
 		p = aStarUtil.findClosestPoint(AStarUtil.panamaPacific, world);
 		assertNotNull(p);
+		Point p2 = aStarUtil.findClosestPoint(AStarUtil.panamaAtlantic, world);
+		assertNotNull(p2);
+		assertNotSame("Points for Panama channel entrances are the same",p,p2);
+
+		p = aStarUtil.findClosestPoint(AStarUtil.suezIndianOcean, world);
+		assertNotNull(p);
+		p2 = aStarUtil.findClosestPoint(AStarUtil.suezMediterranean, world);
+		assertNotNull(p2);
+		assertNotSame("Points for Suez channel entrances are the same",p,p2);
 	}
 
-//	@Test
+	@Test
+	public void findRouteBetweenTwoPorts() throws NoSuchPortException, NoRouteFoundException, CouldNotFindPointException {
+		PortProxy start = Game.getInstance().getPortByName("Durban").getProxy();
+		PortProxy goal = Game.getInstance().getPortByName("Jeddah").getProxy();
+
+		ASDistance distance = aStarUtil.aStar(start, goal, getRealWorld());
+
+		assertDistance(start.getPosition(),  goal.getPosition(), distance);
+	}
+
+	@Test
+	public void findRouteBetweenPointAndCanalEntrance() throws NoSuchPortException, NoRouteFoundException, CouldNotFindPointException {
+//		PortProxy start = Game.getInstance().getPortByName("Jeddah").getProxy();
+		Point goal = AStarUtil.suezIndianOcean;
+
+//		Point p = new Point(24.5, 36.0);
+		Point p = new Point(25.0, 35.5);
+		Point closestStartPoint = aStarUtil.findClosestPoint(p, getRealWorld());
+		Point closestGoalPoint = aStarUtil.findClosestPoint(goal, getRealWorld());
+		ASRoute route = aStarUtil.aStar(closestStartPoint, closestGoalPoint, getRealWorld());
+//		assertRoute(start.getPosition(), goal, route);
+		assertRoute(closestStartPoint, closestGoalPoint, route);
+	}
+
+	@Test
 	// TODO this test fails miserably and needs to be fixed urgently,
 	// it indicates that something is horribly wrong in the routing code.
-	public void findRouteThroughCanal() throws NoSuchPortException, CouldNotFindPointException, NoRouteFoundException {
+	public void findRouteBetweenTwoPortsThroughCanal() throws NoSuchPortException, CouldNotFindPointException, NoRouteFoundException {
 		Point start = aStarUtil.findClosestPointForPort(Game.getInstance().getPortByName("Barcelona").getProxy(),
 				getRealWorld());
 		Point goal = aStarUtil.findClosestPointForPort(Game.getInstance().getPortByName("Durban").getProxy(),
 				getRealWorld());
 
-		ASRoute route = aStarUtil.findRouteThroughSuezCanal(goal, start, getRealWorld());
-		assertNotNull(route);
+		ASRoute suezRoute = aStarUtil.findRouteThroughSuezCanal(start, goal, getRealWorld());
+		assertRoute(start, goal, suezRoute);
+
+		ASRoute panamaRoute = aStarUtil.findRouteThroughPanamaCanal(start, goal, getRealWorld());
+		assertRoute(start, goal, panamaRoute);
 	}
 
-	// this test is broken, needs to be fixed.
-//	@Test
-	public void findRouteBetweenTwoPorts() throws NoSuchPortException, NoRouteFoundException, CouldNotFindPointException {
-		PortProxy start = Game.getInstance().getPortByName("Gothenburg").getProxy();
-		PortProxy goal = Game.getInstance().getPortByName("Rio de Janeiro").getProxy();
+	private void assertRoute(Point start, Point goal, ASRoute route) {
+		assertNotNull(route);
+		List<Point> points = route.getPoints();
+		assertEquals(goal.getLat(), points.get(0).getLat());
+		assertEquals(goal.getLon(), points.get(0).getLon());
 
-		ASDistance distance = aStarUtil.aStar(start, goal, getSmallWorld());
+		assertEquals(start.getLat(), points.get(points.size() - 1).getLat());
+		assertEquals(start.getLon(), points.get(points.size() - 1).getLon());
+	}
 
+	private void assertDistance(Point start, Point goal, ASDistance distance) {
 		assertNotNull(distance);
-		assertEquals((float) goal.getLatitude(), distance.shortestRoute().getPoints().get(0).getCoord().getLatitude());
+		assertRoute(start, goal, distance.shortestRoute());
 	}
 }
