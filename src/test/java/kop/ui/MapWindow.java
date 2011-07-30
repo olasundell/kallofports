@@ -11,7 +11,7 @@ import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import static junit.framework.Assert.assertNotNull;
+import static org.testng.Assert.assertNotNull;
 
 /**
  * Created by IntelliJ IDEA.

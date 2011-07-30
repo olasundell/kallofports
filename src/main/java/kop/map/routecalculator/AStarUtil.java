@@ -394,7 +394,7 @@ public class AStarUtil {
 		return null;
 	}
 
-	private class CompoundPortKey {
+	private static class CompoundPortKey {
 		private PortProxy start;
 		private PortProxy goal;
 

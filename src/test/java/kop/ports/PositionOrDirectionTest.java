@@ -1,6 +1,5 @@
 package kop.ports;
 
-import junit.framework.TestCase;
 import kop.game.Game;
 import org.testng.annotations.Test;
 

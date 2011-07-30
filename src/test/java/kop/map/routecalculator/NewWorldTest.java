@@ -1,6 +1,5 @@
 package kop.map.routecalculator;
 
-import junit.framework.TestCase;
 import kop.ships.ModelSerializer;
 import org.testng.annotations.Test;
 
@@ -8,9 +7,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertNotSame;
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertNotNull;
+import static org.testng.AssertJUnit.assertNotSame;
 
 /**
  * Created by IntelliJ IDEA.

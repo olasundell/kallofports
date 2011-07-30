@@ -1,13 +1,12 @@
 package kop.ports;
 
 import com.sun.org.apache.xpath.internal.operations.Mod;
-import junit.framework.TestCase;
 import kop.ships.ModelSerializer;
 import org.testng.annotations.Test;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertNotNull;
+import static org.testng.Assert.assertFalse;
+import static org.testng.AssertJUnit.assertNotNull;
+import static org.testng.AssertJUnit.assertEquals;
 
 /**
  * Created by IntelliJ IDEA.

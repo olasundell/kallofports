@@ -1,6 +1,5 @@
 package kop.map.routecalculator;
 
-import junit.framework.TestCase;
 import kop.game.Game;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;

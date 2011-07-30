@@ -1,6 +1,5 @@
 package kop.map.routecalculator;
 
-import junit.framework.TestCase;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertTrue;
