@@ -6,14 +6,17 @@ import kop.ships.*;
 import kop.ships.blueprint.ShipBlueprint;
 import kop.ships.model.ContainerShipModel;
 import kop.ships.model.ShipModel;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static junit.framework.Assert.*;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertEquals;
 
 /**
  * Created by IntelliJ IDEA.
@@ -32,7 +35,7 @@ public class CompanyTest {
 		Game.getInstance().resetPlayerCompany();
 	}
 
-	@Before
+	@BeforeMethod
 	public void setup() throws NoSuchPortException {
 		Game.getInstance().resetPlayerCompany();
 		company = Game.getInstance().getPlayerCompany();
@@ -116,7 +119,7 @@ public class CompanyTest {
 			exceptionThrown = true;
 		}
 
-		assertTrue("Exception wasn't thrown!", exceptionThrown);
+		assertTrue(exceptionThrown, "Exception wasn't thrown!");
 	}
 
 	@Test

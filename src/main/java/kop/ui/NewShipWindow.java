@@ -2,6 +2,7 @@ package kop.ui;
 
 import kop.Main;
 import kop.game.Game;
+import kop.game.GameTestUtil;
 import kop.ships.ShipClassList;
 import kop.ships.ShipnameAlreadyExistsException;
 import kop.ships.blueprint.ShipBlueprint;
@@ -21,7 +22,7 @@ import java.awt.event.ActionListener;
  * Time: 7:41 AM
  * To change this template use File | Settings | File Templates.
  */
-public class NewShipWindow implements Window {
+public class NewShipWindow implements KopWindow {
 	private static final String MONEYFORMAT = "%.2f";
 	private JPanel contentPane;
 	private JTable newShipTable;
@@ -264,7 +265,7 @@ public class NewShipWindow implements Window {
 	}
 
 	public static void main(String[] args) {
-		Game.getInstance().getPlayerCompany().setMoney(1000000000);
+		GameTestUtil.setupInstanceForTest();
 		Main.displayFrame(new NewShipWindow());
 	}
 }

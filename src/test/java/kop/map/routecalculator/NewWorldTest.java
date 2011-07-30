@@ -2,7 +2,7 @@ package kop.map.routecalculator;
 
 import junit.framework.TestCase;
 import kop.ships.ModelSerializer;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -134,7 +134,7 @@ public class NewWorldTest {
 		assertEquals(-15.0 - blankWorld.getNorthOffset(), (double) blankWorld.calcLat(210));
 	}
 
-	@Test
+	@Test(groups = {"heavy"})
 	public void getWorldShouldMatchTestUtilCalculation() {
 		Util.resetWorld();
 		NewWorld utilWorld = Util.getSmallWorld((float) 0.5,0,180);

@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
  * Time: 5:06 PM
  * To change this template use File | Settings | File Templates.
  */
-public class NewGameWindow implements Window {
+public class NewGameWindow implements KopWindow {
 	private JButton startGameButton;
 	private JTextField playerName;
 	private JTextField companyName;

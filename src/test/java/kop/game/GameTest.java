@@ -8,13 +8,13 @@ import kop.ports.Port;
 import kop.ports.PortProxy;
 import kop.ships.engine.EngineList;
 import kop.ships.model.ShipModel;
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.text.DateFormat;
 import java.util.*;
 
-import static junit.framework.Assert.*;
+import static org.testng.AssertJUnit.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -27,7 +27,7 @@ import static junit.framework.Assert.*;
 public class GameTest {
 	private Game instance;
 
-	@Before
+	@BeforeMethod
 	public void setUp() throws Exception {
 		instance = Game.getInstance();
 		String s = "1999-12-31 23:00";

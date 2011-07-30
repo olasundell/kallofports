@@ -1,9 +1,9 @@
 package kop.map;
 
 import com.bbn.openmap.MapBean;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
-import static junit.framework.Assert.assertNotNull;
+import static org.testng.Assert.assertNotNull;
 
 /**
  * Created by IntelliJ IDEA.

@@ -3,16 +3,15 @@ package kop.ships;
 import kop.ships.blueprint.ContainerShipBlueprint;
 import kop.ships.engine.Engine;
 import kop.ships.engine.EngineList;
-import org.junit.Test;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
+import org.testng.annotations.Test;
 
 import java.io.File;
 import java.util.List;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertTrue;
+import static org.testng.AssertJUnit.*;
+
 
 /**
  * Created by IntelliJ IDEA.

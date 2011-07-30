@@ -5,9 +5,10 @@ import kop.cargo.CargoTypeList;
 import kop.cargo.FreightMarket;
 import kop.game.Game;
 import kop.ships.ModelSerializer;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
-import static org.junit.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertTrue;
+
 
 /**
  * Created by IntelliJ IDEA.

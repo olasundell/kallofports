@@ -1,9 +1,14 @@
 package kop;
 
-import kop.ui.StartGameWindow;
+import kop.ui.*;
+import kop.ui.KopWindow;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 
 import static java.awt.BorderLayout.CENTER;
 
@@ -20,6 +25,8 @@ public class Main {
 	private static BorderLayout manager;
 	private static JPanel contentPane;
 	private static boolean frameInitDone=false;
+	private static Map<Class<? extends KopWindow>,KopWindow> contentPanes;
+	private static Logger logger = LoggerFactory.getLogger(Main.class);
 
 	public static void main(String[] args) {
 		initFrame();
@@ -34,10 +41,25 @@ public class Main {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frameInitDone = true;
+		contentPanes = new HashMap<Class<? extends KopWindow>, KopWindow>();
+	}
+
+	public static void displayFrame(Class<? extends KopWindow> aClass) {
+		KopWindow window = contentPanes.get(aClass);
+		if (window == null) {
+			try {
+				contentPanes.put(aClass, aClass.newInstance());
+			} catch (InstantiationException e) {
+				logger.error(String.format("Could not create a new instance of the class %s", aClass.getName()), e);
+			} catch (IllegalAccessException e) {
+				logger.error(String.format("Could not create a new instance of the class %s", aClass.getName()), e);
+			}
+		}
+		displayFrame(window);
 	}
 
 	// TODO rewrite this so the calling party doesn't have to create a new instance, especially of MainWindow.
-	public static void displayFrame(kop.ui.Window window) {
+	public static void displayFrame(KopWindow window) {
 		// used for form debugging, the main method might not be in this class, it might be in a class bound to a form
 		if (!frameInitDone) {
 			initFrame();

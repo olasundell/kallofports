@@ -2,16 +2,15 @@ package kop.map.routecalculator;
 
 import junit.framework.TestCase;
 import kop.game.Game;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNotNull;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertTrue;
+import static org.testng.Assert.assertNotNull;
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.internal.junit.ArrayAsserts.assertArrayEquals;
 
 /**
  * Created by IntelliJ IDEA.
@@ -23,7 +22,7 @@ import static org.junit.Assert.assertTrue;
 public class PointTest {
 	private NewWorld world;
 
-	@Before
+	@BeforeMethod
 	public void setUp() throws Exception {
 		world = Util.getBlankWorld();
 	}

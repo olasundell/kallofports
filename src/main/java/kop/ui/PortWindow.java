@@ -26,7 +26,7 @@ import java.util.List;
  * Time: 7:41 AM
  * To change this template use File | Settings | File Templates.
  */
-public class PortWindow implements Window {
+public class PortWindow implements KopWindow {
 	private PortProxy portProxy;
 	private JLabel nameOfPort;
 	private JTable portFreightTable;

@@ -9,17 +9,17 @@ import kop.ships.engine.Engine;
 import kop.ships.engine.EngineList;
 import kop.ships.model.ContainerShipModel;
 import kop.ships.model.ShipModel;
-import org.junit.Before;
-import org.junit.Test;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
+import org.testng.annotations.Test;
 
 import java.io.File;
 import java.util.List;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertEquals;
+
 
 /**
  * Created by IntelliJ IDEA.

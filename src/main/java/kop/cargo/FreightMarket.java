@@ -54,9 +54,13 @@ public class FreightMarket implements FreightCarrier {
 		return list;
 	}
 
-	public static CargoTypeList getCargoTypes() throws Exception {
+	public static CargoTypeList getCargoTypes() throws CouldNotLoadCargoTypesException {
 		if (cargoTypes == null) {
-			cargoTypes = (CargoTypeList) ModelSerializer.readFromFile("kop/cargo/cargotypes.xml", CargoTypeList.class);
+			try {
+				cargoTypes = (CargoTypeList) ModelSerializer.readFromFile("kop/cargo/cargotypes.xml", CargoTypeList.class);
+			} catch (Exception e) {
+				throw new CouldNotLoadCargoTypesException(e);
+			}
 		}
 
 		return cargoTypes;
@@ -81,5 +85,9 @@ public class FreightMarket implements FreightCarrier {
 	public void loadFreightOntoShip(ShipModel ship, Freight freight) {
 		market.remove(freight);
 		ship.addFreight(freight);
+	}
+
+	public void resetFreightMarket() {
+		market.clear();
 	}
 }

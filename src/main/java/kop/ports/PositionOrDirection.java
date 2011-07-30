@@ -37,6 +37,7 @@ public class PositionOrDirection {
 
 	public PositionOrDirection() {
 		currentPosition = new Point();
+		setCurrentSpeed(0.0);
 	}
 
 	public PortProxy getCurrentPort() {
@@ -55,6 +56,7 @@ public class PositionOrDirection {
 			setArrivedAtPortDate(Game.getInstance().getCurrentDate());
 			setCurrentLatitude(currentPort.getLatitude());
 			setCurrentLongitude(currentPort.getLongitude());
+			setCurrentSpeed(0.0);
 		}
 	}
 
@@ -87,6 +89,10 @@ public class PositionOrDirection {
 
 	public int getHoursToDest() {
 		return (int) Math.ceil(getDistanceLeft() / currentSpeed);
+	}
+
+	public Date getETA() {
+		return Game.getInstance().getFutureDate((long) Math.ceil(getHoursToDest()/24.0));
 	}
 
 	public PortProxy getOriginPort() {
@@ -146,6 +152,8 @@ public class PositionOrDirection {
 	}
 
 	void setCurrentSpeed(double currentSpeed) {
+		// TODO we should include a check here to see if the current speed is greater than the max speed.
+		// hard to do in ths class, we need to rethink and add the check somewhere else.
 		this.currentSpeed = currentSpeed;
 	}
 
@@ -204,5 +212,9 @@ public class PositionOrDirection {
 
 	public double getCurrentSpeed() {
 		return currentSpeed;
+	}
+
+	public Point getCurrentPosition() {
+		return currentPosition;
 	}
 }

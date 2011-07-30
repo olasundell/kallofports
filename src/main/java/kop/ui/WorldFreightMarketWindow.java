@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
  * Time: 7:42 AM
  * To change this template use File | Settings | File Templates.
  */
-public class WorldFreightMarketWindow implements Window {
+public class WorldFreightMarketWindow implements KopWindow {
 
 	private JTable freightTable;
 	private JButton closeButton;

@@ -28,10 +28,10 @@ import org.geotools.map.DefaultMapContext;
 import org.geotools.map.MapContext;
 import org.geotools.swing.JMapFrame;
 import org.geotools.swing.data.JFileDataStoreChooser;
-import org.junit.Test;
 import org.opengis.feature.Feature;
 import org.opengis.feature.Property;
 import org.opengis.feature.simple.SimpleFeature;
+import org.testng.annotations.Test;
 import sun.security.krb5.internal.KDCOptions;
 
 import java.awt.*;
@@ -41,7 +41,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import static junit.framework.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertTrue;
 
 /**
  * @author Ola Sundell

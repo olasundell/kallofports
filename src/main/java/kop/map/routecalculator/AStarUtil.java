@@ -3,9 +3,7 @@ package kop.map.routecalculator;
 import kop.ports.NoRouteFoundException;
 import kop.ports.Port;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 import kop.ports.PortProxy;
 import org.slf4j.Logger;
@@ -20,6 +18,7 @@ public class AStarUtil {
 	public final static Point suezIndianOcean = new Point(29.93,32.56);
 	public final static Point panamaAtlantic = new Point(9.31,-79.92);
 	public final static Point panamaPacific = new Point(8.93,-79.56);
+	public static HashMap<CompoundPortKey, ASDistance> cachedDistances = new HashMap<CompoundPortKey, ASDistance>();
 	private static final int MAX_ASTAR_ITERATIONS = 50000;
 
 	Logger logger;
@@ -53,6 +52,11 @@ public class AStarUtil {
 	 * @return an ASDistance with routes via both canals and a direct route.
 	 */
 	public ASDistance aStar(PortProxy start, PortProxy goal, NewWorld world) throws NoRouteFoundException, CouldNotFindPointException {
+		ASDistance cachedDistance = getCachedDistance(start, goal);
+		if (cachedDistance != null) {
+			return cachedDistance;
+		}
+
 		// these are approximations
 		Point closestStartPoint;
 		Point closestGoalPoint = null;
@@ -65,7 +69,6 @@ public class AStarUtil {
 		Point startPoint = start.getPosition();
 		Point goalPoint = goal.getPosition();
 
-		ASDistance distance = new ASDistance(start, goal);
 
 		if (closestStartPoint == null) {
 			throw new CouldNotFindPointException(String.format("Cannot find starting point for port %s", closestStartPoint));
@@ -75,10 +78,12 @@ public class AStarUtil {
 			throw new CouldNotFindPointException(String.format("Cannot find end point for port %s", goal));
 		}
 
+
 		// first, the direct route.
 		ASRoute route = aStar(closestStartPoint, closestGoalPoint, world);
 		addStartAndGoalToRoute(startPoint, goalPoint, route);
 
+		ASDistance distance = new ASDistance(start, goal);
 		distance.addRoute(route);
 
 		// then suez
@@ -101,6 +106,8 @@ public class AStarUtil {
 //		} catch (NoRouteFoundException e) {
 //			logger.debug("Failed to find route through Panama", e);
 //		}
+
+		cachedDistances.put(new CompoundPortKey(start, goal), distance);
 
 		return distance;
 	}
@@ -263,7 +270,8 @@ public class AStarUtil {
 	 * TODO obviously we're not using Point current.
 	 */
 
-	protected Point getLowestF(List<Point> openset, Point current, Point goal) {
+//	protected Point getLowestF(List<Point> openset, Point current, Point goal) {
+	protected Point getLowestF(Set<Point> openset, Point current, Point goal) {
 		double lowestF=-1;
 		double currentF;
 		Point retp=null;
@@ -299,7 +307,8 @@ public class AStarUtil {
 	public ASRoute aStar(Point origStart, Point origGoal, NewWorld world) throws NoRouteFoundException, CouldNotFindPointException {
 		HashSet<Point> closedset = new HashSet<Point>();
 		// TODO make the openset a priority queue based on lowest F, so getLowestF() calls are avoided.
-		ArrayList<Point> openset = new ArrayList<Point>();
+		HashSet<Point> openset = new HashSet<Point>();
+//		ArrayList<Point> openset = new ArrayList<Point>();
 
 		Point start = findClosestPoint(origStart, world);
 		Point goal = findClosestPoint(origGoal, world);
@@ -366,22 +375,52 @@ public class AStarUtil {
 		Point current = cameFrom;
 		Point parent;
 
-//		if (!current.equals(origGoal)) {
-//			route.addPoint(origGoal);
-//		}
-
 		while ((parent = current.getParent())!=null) {
 			route.addPoint((Point) current.clone());
 			current = parent;
-//			parent.resetParent();
 		}
 
-		// it isn't as easy as this, mate!
-//		route.addPoint(start);
-		route.addPoint(current);
-//		current.resetParent();
+		route.addPoint((Point) current.clone());
 
 		return route;
 	}
 
+	public ASDistance getCachedDistance(PortProxy start, PortProxy goal) {
+		CompoundPortKey key = new CompoundPortKey(start, goal);
+		if (cachedDistances.containsKey(key)) {
+			return cachedDistances.get(key);
+		}
+
+		return null;
+	}
+
+	private class CompoundPortKey {
+		private PortProxy start;
+		private PortProxy goal;
+
+		CompoundPortKey(PortProxy start, PortProxy goal) {
+			this.start = start;
+			this.goal = goal;
+		}
+
+		@Override
+		public boolean equals(Object o) {
+			if (this == o) return true;
+			if (o == null || getClass() != o.getClass()) return false;
+
+			CompoundPortKey that = (CompoundPortKey) o;
+
+			if (goal != null ? !goal.equals(that.goal) : that.goal != null) return false;
+			if (start != null ? !start.equals(that.start) : that.start != null) return false;
+
+			return true;
+		}
+
+		@Override
+		public int hashCode() {
+			int result = start != null ? start.hashCode() : 0;
+			result = 31 * result + (goal != null ? goal.hashCode() : 0);
+			return result;
+		}
+	}
 }

@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="kopAll" thread-count="1">
+	<test name="all">
+		<packages>
+			<package name="kop.*"/>
+		</packages>
+	</test>
+</suite>

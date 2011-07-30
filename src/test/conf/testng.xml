@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="kopLight" thread-count="1">
+	<test name="fast" thread-count="1">
+		<groups>
+			<run>
+				<exclude name="heavy"/>
+			</run>
+		</groups>
+		<packages>
+			<package name="kop.*"/>
+		</packages>
+	</test>
+</suite>

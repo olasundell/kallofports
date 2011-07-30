@@ -61,7 +61,7 @@ public class Engine {
 	 */
 	public double getFuelUsage(double fractionOfMaxKW) {
 		if (fractionOfMaxKW > 1 || fractionOfMaxKW < 0) {
-			throw new IllegalArgumentException("The fraction of max power output must be between 0.0 and 1.0");
+			throw new IllegalArgumentException(String.format("The fraction of max power output must be between 0.0 and 1.0, and it is %f", fractionOfMaxKW));
 		}
 		// without the 1000000 this would be grammes per hour. Dividing makes it metric tonnes.
 		return bsfc * kW * fractionOfMaxKW / 1000000;

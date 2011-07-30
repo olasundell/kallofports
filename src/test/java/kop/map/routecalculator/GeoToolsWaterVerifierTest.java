@@ -1,9 +1,9 @@
 package kop.map.routecalculator;
 
 import junit.framework.TestCase;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
-import static junit.framework.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertTrue;
 
 /**
  * @author Ola Sundell

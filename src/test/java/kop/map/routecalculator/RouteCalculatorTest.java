@@ -1,15 +1,11 @@
 package kop.map.routecalculator;
 
 import com.bbn.openmap.io.FormatException;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNotNull;
+import static org.testng.Assert.assertNotNull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -19,7 +15,7 @@ import static junit.framework.Assert.assertNotNull;
  * To change this template use File | Settings | File Templates.
  */
 public class RouteCalculatorTest {
-	@Test
+	@Test(groups = {"heavy"})
 	public void createWorldWithOpenMap() {
 		NewWorld smallWorld = Util.getSmallWorld(new OpenMapWaterVerifier());
 		assertNotNull(smallWorld);
@@ -29,7 +25,7 @@ public class RouteCalculatorTest {
 		// TODO add more tests here.
 	}
 
-	@Test
+	@Test(groups = {"heavy"})
 	public void createWorldWithGeoTools() {
 		NewWorld smallWorld = Util.getSmallWorld(new GeoToolsWaterVerifier());
 		assertNotNull(smallWorld);

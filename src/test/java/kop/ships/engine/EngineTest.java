@@ -3,10 +3,10 @@ package kop.ships.engine;
 import kop.ships.ModelSerializer;
 import kop.ships.engine.Engine;
 import kop.ships.engine.EngineList;
-import org.junit.Before;
-import org.junit.Test;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class EngineTest {
 	Engine engine;
-	@Before
+	@BeforeMethod
 	public void setup() {
 		engine = new Engine();
 		engine.setBsfc(178);

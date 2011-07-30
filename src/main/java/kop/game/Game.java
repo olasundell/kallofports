@@ -278,8 +278,12 @@ public class Game {
 	}
 
 	public final void resetPlayerCompany() {
-		companies.clear();
-		companies.add(new Company());
+		if (companies.size() == 0) {
+			companies.add(new Company());
+		} else {
+			companies.set(0, new Company());
+		}
+
 		playerCompany = companies.get(0);
 	}
 
@@ -289,6 +293,7 @@ public class Game {
 		try {
 			distance = util.aStar(origin, destination, getWorld());
 		} catch (CouldNotFindPointException e) {
+			// TODO should throw a NoRouteFoundException
 			logger.error("Could not find point", e);
 			return null;
 		}

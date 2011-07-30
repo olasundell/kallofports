@@ -221,7 +221,7 @@ public abstract class ShipBlueprint {
 
 	public double getFuelConsumption(double speed) {
 		double consumption=0;
-		for (Engine e:engines) {
+		for (Engine e: engines) {
 			consumption+=e.getFuelUsage(speed/getMaxSpeed());
 		}
 		return consumption;

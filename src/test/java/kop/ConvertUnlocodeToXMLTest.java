@@ -3,11 +3,14 @@ package kop;
 import kop.map.LatLong;
 import kop.ports.Port;
 import kop.ports.PortMap;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-import static junit.framework.Assert.*;
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertNull;
+import static org.testng.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertEquals;
 
 /**
  * Created by IntelliJ IDEA.

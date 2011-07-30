@@ -3,7 +3,7 @@ package kop.ships;
 import kop.ships.blueprint.ContainerShipBlueprint;
 import kop.ships.blueprint.ShipBlueprint;
 import kop.ships.engine.Engine;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;

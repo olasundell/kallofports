@@ -20,6 +20,7 @@ import kop.ships.ShipClass;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
+import org.w3c.dom.ls.LSProgressEvent;
 
 /**
  * The abstract ship model class, contains the majority of the logic and attributes for a ship model instance.
@@ -38,6 +39,7 @@ public abstract class ShipModel implements FreightCarrier {
 	private PositionOrDirection currentPosition;
 	@Element
 	protected ShipBlueprint blueprint;
+	protected ShipClass shipClass;
 
 	public ShipModel() {
 		currentPosition = new PositionOrDirection();
@@ -110,7 +112,7 @@ public abstract class ShipModel implements FreightCarrier {
 			default:
 				throw new IllegalArgumentException(String.format("Ship class has an illegal class type, %s", shipClass.getClassType()));
 		}
-		model.setBlueprint(shipClass.getBlueprint());
+		model.setShipClass(shipClass);
 		// TODO should we fill'er up by default? What if the player purchases a used vessel?
 		model.setCurrentFuel(model.getMaxFuel());
 		model.setName(name);
@@ -234,5 +236,70 @@ public abstract class ShipModel implements FreightCarrier {
 
 	public String toString() {
 		return String.format("%s (%s)", name,blueprint.getType());
+	}
+
+	public String getStatus() {
+		if (currentPosition.isAtSea()) {
+			return "At sea";
+		} else if (currentPosition.isInPort()) {
+			return "In port";
+		}
+
+		return "Undefined";
+	}
+
+	public String getDestination() {
+		if (currentPosition.getDestinationPort() != null) {
+			return currentPosition.getDestinationPort().getName();
+		} else {
+			return "N/A";
+		}
+	}
+
+	public String getPosition() {
+		if (currentPosition.isInPort()) {
+			return currentPosition.getCurrentPort().getName();
+		}
+		return currentPosition.getCurrentPosition().toString();
+	}
+
+	public String getETA() {
+		if (currentPosition.isAtSea()) {
+			// TODO we shouldn't return a string, we should return a Date and leave conversion to the other party.
+			return currentPosition.getETA().toString();
+		}
+
+		return "N/A";
+	}
+
+	public String getETD() {
+		if (currentPosition.isAtSea()) {
+			return String.format("%d", currentPosition.getHoursToDest());  //To change body of created methods use File | Settings | File Templates.
+		}
+
+		return "N/A";
+	}
+
+	public double getSpeed() {
+		return currentPosition.getCurrentSpeed();
+	}
+
+	// TODO implement a damage/wear/fouling system. Huge task if it should be done properly.
+	public String getCondition() {
+		return "Superb";
+	}
+
+	public double getCurrentWorth() {
+		// TODO add damage/wear/age stuff here.
+		return shipClass.getPrice();
+	}
+
+	public void setShipClass(ShipClass shipClass) {
+		this.shipClass = shipClass;
+		setBlueprint(shipClass.getBlueprint());
+	}
+
+	public ShipClass getShipClass() {
+		return shipClass;
 	}
 }

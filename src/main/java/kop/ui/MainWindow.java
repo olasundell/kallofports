@@ -10,11 +10,8 @@ import org.geotools.swing.JMapPane;
 import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
-import javax.swing.event.AncestorListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseWheelListener;
-import java.util.logging.Logger;
 
 import static kop.Main.*;
 
@@ -25,7 +22,7 @@ import static kop.Main.*;
  * Time: 2:01 PM
  * To change this template use File | Settings | File Templates.
  */
-public class MainWindow implements Window, GameStateListener {
+public class MainWindow implements KopWindow, GameStateListener {
 	private JToggleButton startButton;
 	private JButton displayShips;
 	private JPanel contentPane;

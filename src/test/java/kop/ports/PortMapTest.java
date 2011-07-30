@@ -3,7 +3,7 @@ package kop.ports;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import junit.framework.TestCase;
 import kop.ships.ModelSerializer;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;

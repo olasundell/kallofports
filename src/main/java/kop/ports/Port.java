@@ -68,7 +68,7 @@ public class Port {
 
 		Port port = (Port) o;
 
-		return !(name != null ? !name.equals(port.name) : port.name != null);
+		return !(unlocode!= null ? !unlocode.equals(port.getUnlocode()) : port.getUnlocode() != null);
 	}
 
 	@Override

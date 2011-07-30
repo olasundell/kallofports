@@ -186,5 +186,29 @@ public class Company {
 
 		return shipsInPort;
 	}
+
+	public double getGrossWorth() {
+		double worth = 0.0;
+		for (ShipModel s: getShips()) {
+			worth+=s.getCurrentWorth();
+		}
+
+		worth+=getMoney();
+
+		return worth;
+	}
+
+	public double getTotalLoans() {
+		double loanTotal=0.0;
+		for (Loan l: getLoans()) {
+			loanTotal += l.getCurrentDebt();
+		}
+
+		return loanTotal;
+	}
+
+	public double getNetWorth() {
+		return getGrossWorth() - getTotalLoans();
+	}
 }
 

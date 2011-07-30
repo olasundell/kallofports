@@ -3,17 +3,15 @@ package kop.cargo;
 import kop.game.Game;
 import kop.ports.Port;
 import kop.ports.PortProxy;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.testng.AssertJUnit.*;
+
 
 /**
  * Created by IntelliJ IDEA.

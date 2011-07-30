@@ -1,8 +1,9 @@
 package kop.company;
 
-import org.junit.Test;
 
-import static junit.framework.Assert.assertEquals;
+import org.testng.annotations.Test;
+
+import static org.testng.AssertJUnit.assertEquals;
 
 /**
  * Created by IntelliJ IDEA.

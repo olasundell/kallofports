@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
  * Time: 4:20 PM
  * To change this template use File | Settings | File Templates.
  */
-public class StartGameWindow implements Window {
+public class StartGameWindow implements KopWindow {
 	private JButton newGame;
 	private JButton loadSave;
 	private JButton options;
