@@ -22,7 +22,6 @@ import java.awt.event.ActionListener;
  * To change this template use File | Settings | File Templates.
  */
 public class CompanyInfoWindow implements KopWindow, GameStateListener {
-	public static final String MONEY_TEXT_FORMAT = "%,.2f";
 	public static final String COMPANY_NAME = "companyName";
 	public static final String CURRENT_FUNDS = "currentFunds";
 	public static final String NUMBER_OF_SHIPS = "numberOfShips";

@@ -47,6 +47,6 @@ public class CompanyInfoWindowTest {
 
 	private void checkLabel(Panel panel, String componentName, double value) {
 		JLabel label = panel.findSwingComponent(JLabel.class, componentName);
-		assertEquals(String.format(CompanyInfoWindow.MONEY_TEXT_FORMAT, value), label.getText());
+		assertEquals(String.format(KopWindow.MONEY_TEXT_FORMAT, value), label.getText());
 	}
 }

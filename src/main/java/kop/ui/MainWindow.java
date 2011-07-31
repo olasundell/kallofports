@@ -1,9 +1,12 @@
 package kop.ui;
 
 import com.bbn.openmap.MapBean;
+import com.jgoodies.forms.layout.CellConstraints;
+import com.jgoodies.forms.layout.FormLayout;
 import kop.Main;
 import kop.game.Game;
 import kop.game.GameStateListener;
+import kop.game.GameTestUtil;
 import kop.map.MapBeanFactory;
 import org.geotools.map.MapLayer;
 import org.geotools.swing.JMapPane;
@@ -30,12 +33,11 @@ public class MainWindow implements KopWindow, GameStateListener {
 	private JPanel contentPane;
 	private JButton newShip;
 	private JButton companyInfo;
-	private MapBean mapBean;
-	private JLabel currentDate;
 	private JMapPane mapPane;
 	private JLabel currentMoney;
-	private MapLayer shipLayer;
+	private JLabel currentDateTime;
 	private Logger logger = null;
+	private MapLayer shipLayer;
 
 	public MainWindow() {
 		$$$setupUI$$$();
@@ -84,10 +86,8 @@ public class MainWindow implements KopWindow, GameStateListener {
 
 	private void createUIComponents() {
 		MapBeanFactory mapBeanFactory = new MapBeanFactory();
-		mapBean = mapBeanFactory.createOpenMapBean();
-		mapBean.setVisible(false);
 
-		currentDate = new JLabel();
+		currentDateTime = new JLabel();
 		currentMoney = new JLabel();
 		mapPane = mapBeanFactory.createGeoToolsBean();
 		for (MapLayer layer : mapPane.getMapContext().getLayers()) {
@@ -100,12 +100,12 @@ public class MainWindow implements KopWindow, GameStateListener {
 
 	@Override
 	public void stateChanged() {
-		currentDate.setText(Game.getInstance().getCurrentDateAsString());
-		currentMoney.setText(String.valueOf(Game.getInstance().getPlayerCompany().getMoney()));
+		currentDateTime.setText(Game.getInstance().getCurrentDateAsString());
+		currentMoney.setText(String.format(KopWindow.MONEY_TEXT_FORMAT, Game.getInstance().getPlayerCompany().getMoney()));
 	}
 
 	public static void main(String[] args) {
-		Game.getInstance().getPlayerCompany().setMoney(1000000000);
+		GameTestUtil.setupInstanceForTest();
 		Main.displayFrame(new MainWindow());
 	}
 
@@ -119,22 +119,14 @@ public class MainWindow implements KopWindow, GameStateListener {
 	private void $$$setupUI$$$() {
 		createUIComponents();
 		contentPane = new JPanel();
-		contentPane.setLayout(new GridBagLayout());
+		contentPane.setLayout(new FormLayout("fill:d:noGrow,left:4dlu:noGrow,fill:55dlu:noGrow,left:5dlu:noGrow,fill:p:grow,left:5dlu:noGrow,fill:d:grow,left:5dlu:noGrow,fill:max(d;4px):noGrow,left:5dlu:noGrow,fill:d:noGrow", "center:d:noGrow,top:5dlu:noGrow,center:273px:grow,top:5dlu:noGrow,center:max(d;4px):noGrow,top:6dlu:noGrow,center:max(d;4px):noGrow,top:5dlu:noGrow,center:max(d;4px):noGrow,top:5dlu:noGrow,center:d:noGrow"));
 		displayShips = new JButton();
 		displayShips.setText("Show ships");
-		GridBagConstraints gbc;
-		gbc = new GridBagConstraints();
-		gbc.gridx = 7;
-		gbc.gridy = 6;
-		gbc.fill = GridBagConstraints.HORIZONTAL;
-		contentPane.add(displayShips, gbc);
+		CellConstraints cc = new CellConstraints();
+		contentPane.add(displayShips, cc.xy(9, 7));
 		newShip = new JButton();
 		newShip.setText("New ship");
-		gbc = new GridBagConstraints();
-		gbc.gridx = 7;
-		gbc.gridy = 3;
-		gbc.fill = GridBagConstraints.HORIZONTAL;
-		contentPane.add(newShip, gbc);
+		contentPane.add(newShip, cc.xy(9, 5));
 		startButton = new JToggleButton();
 		startButton.setActionCommand("startButton");
 		startButton.setHorizontalAlignment(0);
@@ -142,74 +134,19 @@ public class MainWindow implements KopWindow, GameStateListener {
 		startButton.setText("START");
 		startButton.setMnemonic('S');
 		startButton.setDisplayedMnemonicIndex(0);
-		gbc = new GridBagConstraints();
-		gbc.gridx = 0;
-		gbc.gridy = 3;
-		gbc.gridheight = 5;
-		gbc.weightx = 0.1;
-		gbc.fill = GridBagConstraints.BOTH;
-		gbc.ipadx = 10;
-		contentPane.add(startButton, gbc);
+		contentPane.add(startButton, cc.xywh(3, 5, 1, 5, CellConstraints.DEFAULT, CellConstraints.FILL));
 		companyInfo = new JButton();
 		companyInfo.setText("Company info");
-		gbc = new GridBagConstraints();
-		gbc.gridx = 7;
-		gbc.gridy = 7;
-		gbc.fill = GridBagConstraints.HORIZONTAL;
-		contentPane.add(companyInfo, gbc);
+		contentPane.add(companyInfo, cc.xy(9, 9));
 		final JLabel label1 = new JLabel();
 		label1.setText("Current date and time:");
-		gbc = new GridBagConstraints();
-		gbc.gridx = 3;
-		gbc.gridy = 3;
-		gbc.anchor = GridBagConstraints.WEST;
-		contentPane.add(label1, gbc);
-		gbc = new GridBagConstraints();
-		gbc.gridx = 4;
-		gbc.gridy = 3;
-		gbc.anchor = GridBagConstraints.WEST;
-		contentPane.add(currentDate, gbc);
-		gbc = new GridBagConstraints();
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		gbc.gridwidth = 8;
-		gbc.fill = GridBagConstraints.BOTH;
-		contentPane.add(mapBean, gbc);
-		gbc = new GridBagConstraints();
-		gbc.gridx = 0;
-		gbc.gridy = 1;
-		gbc.gridwidth = 8;
-		gbc.weightx = 1.0;
-		gbc.weighty = 1.0;
-		gbc.fill = GridBagConstraints.BOTH;
-		contentPane.add(mapPane, gbc);
+		contentPane.add(label1, cc.xy(5, 5));
+		contentPane.add(mapPane, cc.xyw(3, 3, 7, CellConstraints.DEFAULT, CellConstraints.FILL));
 		final JLabel label2 = new JLabel();
 		label2.setText("Current money:");
-		gbc = new GridBagConstraints();
-		gbc.gridx = 3;
-		gbc.gridy = 6;
-		gbc.anchor = GridBagConstraints.WEST;
-		contentPane.add(label2, gbc);
-		currentMoney.setText("");
-		gbc = new GridBagConstraints();
-		gbc.gridx = 5;
-		gbc.gridy = 6;
-		gbc.anchor = GridBagConstraints.WEST;
-		contentPane.add(currentMoney, gbc);
-		final JPanel spacer1 = new JPanel();
-		gbc = new GridBagConstraints();
-		gbc.gridx = 3;
-		gbc.gridy = 7;
-		gbc.weightx = 0.2;
-		gbc.fill = GridBagConstraints.HORIZONTAL;
-		contentPane.add(spacer1, gbc);
-		final JPanel spacer2 = new JPanel();
-		gbc = new GridBagConstraints();
-		gbc.gridx = 6;
-		gbc.gridy = 7;
-		gbc.weightx = 0.1;
-		gbc.fill = GridBagConstraints.HORIZONTAL;
-		contentPane.add(spacer2, gbc);
+		contentPane.add(label2, cc.xy(5, 7));
+		contentPane.add(currentDateTime, cc.xy(7, 5));
+		contentPane.add(currentMoney, cc.xy(7, 7, CellConstraints.DEFAULT, CellConstraints.FILL));
 	}
 
 	/**

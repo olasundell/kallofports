@@ -165,8 +165,7 @@ public class MapBeanFactory {
 		}
 
 		for (Map.Entry<String, Port> entry: map.entrySet()) {
-			// TODO it is beyond me why the longitude is reversed.
-			Point point = geometryFactory.createPoint(new Coordinate(entry.getValue().getLatitude(), -entry.getValue().getLongitude()));
+			Point point = geometryFactory.createPoint(new Coordinate(entry.getValue().getLatitude(), entry.getValue().getLongitude()));
 			featureBuilder.add(point);
 			featureBuilder.add(entry.getKey());
 			featureBuilder.add(0);
