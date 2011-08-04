@@ -1,11 +1,9 @@
 package kop.cargo;
 
 import kop.game.Game;
-import kop.ports.Port;
 import kop.ports.PortProxy;
-import kop.ports.PortsOfTheWorld;
-import kop.ships.ModelSerializer;
-import kop.ships.model.ShipModel;
+import kop.serialization.ModelSerializer;
+import kop.serialization.SerializationException;
 
 import java.util.*;
 
@@ -58,7 +56,7 @@ public class FreightMarket implements FreightCarrier {
 		if (cargoTypes == null) {
 			try {
 				cargoTypes = (CargoTypeList) ModelSerializer.readFromFile("kop/cargo/cargotypes.xml", CargoTypeList.class);
-			} catch (Exception e) {
+			} catch (SerializationException e) {
 				throw new CouldNotLoadCargoTypesException(e);
 			}
 		}
@@ -80,11 +78,6 @@ public class FreightMarket implements FreightCarrier {
 		cargo.setPricePerVolume(Math.abs(random.nextGaussian() * 10));
 		cargo.setDeadline(Game.getInstance().getFutureDate(1 + (int) Math.abs(random.nextGaussian()*100)));
 		return cargo;
-	}
-
-	public void loadFreightOntoShip(ShipModel ship, Freight freight) {
-		market.remove(freight);
-		ship.addFreight(freight);
 	}
 
 	public void resetFreightMarket() {

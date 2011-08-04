@@ -1,0 +1,13 @@
+<port name="New York">
+	<unlocode>US NYC</unlocode>
+	<latitude>
+		<deg>40</deg>
+		<min>42</min>
+		<hemisphere>N</hemisphere>
+	</latitude>
+	<longitude>
+		<deg>74</deg>
+		<min>01</min>
+		<hemisphere>W</hemisphere>
+	</longitude>
+</port>

@@ -1,8 +1,6 @@
 package kop.ships.engine;
 
-import kop.ships.ModelSerializer;
-import kop.ships.engine.Engine;
-import kop.ships.engine.EngineList;
+import kop.serialization.ModelSerializer;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 import org.testng.annotations.BeforeMethod;
@@ -33,7 +31,7 @@ public class EngineTest {
 	@Test
 	public void writeToDisk() throws Exception {
 		String fileName="engines.xml";
-		// TODO replace this factory with kop.ships.ModelSerializer usage.
+		// TODO replace this factory with kop.serialization.ModelSerializer usage.
 		Serializer serializer = new Persister();
 		File result = new File(fileName);
 		serializer.write(engine, result);

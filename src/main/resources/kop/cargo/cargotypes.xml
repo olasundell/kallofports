@@ -86,2043 +86,2069 @@
 
 
 		<!-- GENERAL DRY BULK -->
-		<cargoType name="Alfalfa, ground">
-			<density>256</density>
-			<packaging>drybulk</packaging>
-			<description>foo</description>
-		</cargoType>
-		<cargoType name="Alum, lumpy">
-			<density>881</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-		<cargoType name="Alum, pulverized">
-			<density>753</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Alumina">
-			<density>961</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Aluminum, oxide">
-			<density>1522</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Ammonia gas">
-			<density>0.77</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Ammonium Nitrate">
-			<density>730</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Ammonium Sulphate - dry">
-			<density>1130</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Ammonium Sulphate - wet">
-			<density>1290</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Andesite, solid">
-			<density>2771</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Antimony, cast">
-			<density>6696</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Apples">
-			<density>641</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Arsenic">
-			<density>5671</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Asbestos - shredded">
-			<density>320-400</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Asbestos rock">
-			<density>1600</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Ashes - wet">
-			<density>730-890</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Ashes - dry">
-			<density>570-650</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Asphalt, crushed">
-			<density>721</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Babbitt">
-			<density>7272</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Bagasse">
-			<density>120</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Bakelite, solid">
-			<density>1362</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Baking powder">
-			<density>721</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Barium">
-			<density>3780</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Bark, wood refuse">
-			<density>240</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Barley">
-			<density>609</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Barite, crushed">
-			<density>2883</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Basalt, broken">
-			<density>1954</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Basalt, solid">
-			<density>3011</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Bauxite, crushed">
+		<!-- right now we only care about the five big ones -->
+		<cargoType name="Bauxite">
 			<density>1281</density>
-			<description>foo</description>
+			<description>Bauxite and alumina.</description>
 			<packaging>drybulk</packaging>
 		</cargoType>
-
-		<cargoType name="Beans, castor">
-			<density>577</density>
-			<description>foo</description>
+		<cargoType name="Coal">
+			<density>1100</density>
+			<description>Bulk coal.</description>
 			<packaging>drybulk</packaging>
 		</cargoType>
-
-		<cargoType name="Beans, cocoa">
-			<density>593</density>
-			<description>foo</description>
+		<cargoType name="Grain">
+			<density>750</density>
+			<description>Bulk grain.</description>
 			<packaging>drybulk</packaging>
 		</cargoType>
-
-		<cargoType name="Beans, navy">
-			<density>801</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Beans, soy">
-			<density>721</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Beeswax">
-			<density>961</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Beets">
-			<density>721</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Bentonite">
-			<density>593</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Bicarbonate of soda">
-			<density>689</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Bismuth">
-			<density>9787</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Bones, pulverized">
-			<density>881</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Borax, fine">
-			<density>849</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Bran">
-			<density>256</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Brewers grain">
-			<density>432</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Brick, common red">
-			<density>1922</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Brick, fire clay">
-			<density>2403</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Brick, silica">
-			<density>2050</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Brick, chrome">
-			<density>2803</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Brick, magnesia">
-			<density>2563</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Buckwheat">
-			<density>657</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Butter">
-			<density>865</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Cadmium">
-			<density>8650</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Calcium carbide">
-			<density>1201</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Caliche">
-			<density>1442</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Carbon, solid">
-			<density>2146</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Carbon, powdered">
-			<density>80</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Carbon dioxide">
-			<density>1.98</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Carbon monoxide">
-			<density>1.25</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Cardboard">
-			<density>689</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Cement - clinker">
-			<density>1290-1540</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Cement, Portland">
-			<density>1506</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Cement, mortar">
-			<density>2162</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Cement, slurry">
-			<density>1442</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Chalk, solid">
-			<density>2499</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Chalk, lumpy">
-			<density>1442</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Chalk, fine">
-			<density>1121</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Charcoal">
-			<density>208</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Chloroform">
-			<density>1522</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Chocolate, powder">
-			<density>641</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Chromic acid, flake">
-			<density>1201</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Chromium">
-			<density>6856</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Chromium ore">
-			<density>2162</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Cinders, furnace">
-			<density>913</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Cinders, Coal, ash">
-			<density>641</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Clay, dry excavated">
-			<density>1089</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Clay, wet excavated">
-			<density>1826</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Clay, dry lump">
-			<density>1073</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Clay, fire">
-			<density>1362</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Clay, wet lump">
-			<density>1602</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Clay, compacted">
-			<density>1746</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Clover seed">
-			<density>769</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Coal, Anthracite, solid">
-			<density>1506</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Coal, Anthracite, broken">
-			<density>1105</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Coal, Bituminous, solid">
-			<density>1346</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Coal, Bituminous, broken">
-			<density>833</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Cobaltite ( cobolt ore )">
-			<density>6295</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Coconut, meal">
-			<density>513</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Coconut, shredded">
-			<density>352</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Coffee, fresh beans">
-			<density>561</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Coffee, roast beans">
-			<density>432</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Coke">
-			<density>570-650</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Concrete, Asphalt">
-			<density>2243</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Concrete, Gravel">
-			<density>2403</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Concrete, Limestone with Portland">
-			<density>2371</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Copper ore">
-			<density>1940-2590</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Copper sulfate, ground">
-			<density>3604</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Copra, medium size">
-			<density>529</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Copra, meal, ground">
-			<density>641</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Copra, expeller cake ground">
-			<density>513</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Copra, expeller cake chopped">
-			<density>465</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Cork, solid">
-			<density>240</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Cork, ground">
-			<density>160</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Corn, on the cob">
-			<density>721</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Corn, shelled">
-			<density>721</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Corn, grits">
-			<density>673</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Cottonseed, dry, de-linted">
-			<density>561</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Cottonseed, dry, not de-linted">
-			<density>320</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Cottonseed, cake, lumpy">
-			<density>673</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Cottonseed, hulls">
-			<density>192</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Cottonseed, meal">
-			<density>593</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Cottonseed, meats">
-			<density>641</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Cottonwood">
-			<density>416</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Cryolite">
-			<density>1602</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Cullet">
-			<density>1602</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Culm">
-			<density>753</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Dolomite, solid">
-			<density>2899</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Dolomite, pulverized">
-			<density>737</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Dolomite, lumpy">
-			<density>1522</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Earth, loam, dry, excavated">
-			<density>1249</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Earth, moist, excavated">
-			<density>1442</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Earth, wet, excavated">
-			<density>1602</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Earth, dense">
-			<density>2002</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Earth, soft loose mud">
-			<density>1730</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Earth, packed">
-			<density>1522</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Earth, Fullers, raw">
-			<density>673</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Emery">
-			<density>4005</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Ether">
-			<density>737</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Feldspar, solid">
-			<density>2563</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Feldspar, pulverized">
-			<density>1233</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Fertilizer, acid phosphate">
-			<density>961</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Fish, scrap">
-			<density>721</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Fish, meal">
-			<density>593</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Flaxseed, whole">
-			<density>721</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Flint - silica">
-			<density>1390</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Flour, wheat">
-			<density>593</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Flue dust">
-			<density>1450-2020</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Fluorspar, solid">
-			<density>3204</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Fluorspar, lumps">
-			<density>1602</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Fluorspar, pulverized">
-			<density>1442</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Fullers Earth - raw or burnt">
-			<density>570-730</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Galena ( lead ore )">
-			<density>7400-7600</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Garbage, household rubbish">
-			<density>481</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Glass - broken or cullet">
-			<density>1290-1940</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Glass, window">
-			<density>2579</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Glue, animal, flaked">
-			<density>561</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Glue, vegetable, powdered">
-			<density>641</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Gluten, meal">
-			<density>625</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Gneiss, bed in place">
-			<density>2867</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Gneiss, broken">
-			<density>1858</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Granite, solid">
-			<density>2691</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Granite, broken">
-			<density>1650</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Graphite, flake">
-			<density>641</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Grain - Maize">
-			<density>760</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Grain - Barley">
-			<density>600</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Grain - Millet">
-			<density>760-800</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Grain - Wheat">
-			<density>780-800</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Gravel, loose, dry">
-			<density>1522</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Gravel, with sand, natural">
-			<density>1922</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Gravel, dry 1/4 to 2 inch">
-			<density>1682</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Gravel, wet 1/4 to 2 inch">
-			<density>2002</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Gummite ( uranium ore )">
-			<density>3890-6400</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Gypsum, solid">
-			<density>2787</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Gypsum, broken">
-			<density>1290-1600</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Gypsum, crushed">
-			<density>1602</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Gypsum, pulverized">
-			<density>1121</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Halite (salt), solid">
-			<density>2323</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Halite (salt), broken">
-			<density>1506</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Hematite ( iron ore )">
-			<density>5095-5205</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Hemimorphite ( zinc ore )">
-			<density>3395-3490</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Hydrochloric acid 40%">
-			<density>1201</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Ice, solid">
-			<density>919</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Ice, crushed">
-			<density>593</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Ilmenite">
-			<density>2307</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Iridium">
-			<density>22154</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Iron ore - crushed - see metals table">
+		<cargoType name="Iron ore">
 			<density>2100-2900</density>
-			<description>foo</description>
+			<description>Crushed iron ore.</description>
 			<packaging>drybulk</packaging>
 		</cargoType>
-
-		<cargoType name="Iron oxide pigment">
-			<density>400</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Iron Pyrites">
-			<density>2400</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Iron sulphate - pickling tank - dry">
-			<density>1200</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Iron sulphate - pickling tank - wet">
-			<density>1290</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Ivory">
-			<density>1842</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Kaolin, green crushed">
-			<density>1025</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Kaolin, pulverized">
-			<density>352</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Lead, rolled - see metals table">
-			<density>11389</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Lead, red">
-			<density>3684</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Lead, white pigment">
-			<density>4085</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Leather">
-			<density>945</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Lignite, dry">
-			<density>801</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Lime, quick, lump">
-			<density>849</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Lime, quick, fine">
-			<density>1201</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Lime, stone, large">
-			<density>2691</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Lime, stone, lump">
-			<density>1538</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Lime, hydrated">
-			<density>481</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Lime, wet or mortar">
-			<density>1540</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Limonite, solid">
-			<density>3796</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Limonite, broken">
-			<density>2467</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Limestone, solid">
-			<density>2611</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Limestone, broken">
-			<density>1554</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Limestone, pulverized">
-			<density>1394</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Linseed, whole">
-			<density>753</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Linseed, meal">
-			<density>513</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Locust, dry">
-			<density>705</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Magnesite, solid">
-			<density>3011</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Magnesium oxide">
-			<density>1940</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Magnesium sulphate, crystal">
-			<density>1121</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Magnetite, solid ( iron ore )">
-			<density>5046</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Magnetite, broken">
-			<density>3284</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Malachite ( copper ore )">
-			<density>3750-3960</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Malt">
-			<density>336</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Manganese, solid">
-			<density>7609</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Manganese oxide">
-			<density>1922</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Manure">
-			<density>400</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Marble, solid">
-			<density>2563</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Marble, broken">
-			<density>1570</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Marl, wet, excavated">
-			<density>2243</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Mica, solid">
-			<density>2883</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Mica, broken">
-			<density>1602</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Mica - flake">
-			<density>520</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Mica - powder">
-			<density>986</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Milk, powdered">
-			<density>449</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Molybdenum ore">
-			<density>1600</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Mortar, wet">
-			<density>2403</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Mud, packed">
-			<density>1906</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Mud, fluid">
-			<density>1730</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Nickel ore">
-			<density>1600</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Nickel, rolled">
-			<density>8666</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Nickel silver">
-			<density>8442</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Nitric acid, 91%">
-			<density>1506</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Nitrogen">
-			<density>1.26</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Oak, red">
-			<density>705</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Oats">
-			<density>432</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Oats, rolled">
-			<density>304</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Oil cake">
-			<density>785</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Oil, linseed">
-			<density>942</density>
-			<description>foo</description>
-			<packaging>wetbulk</packaging>
-		</cargoType>
-
-		<cargoType name="Oil, petroleum">
-			<density>881</density>
-			<description>foo</description>
-			<packaging>wetbulk</packaging>
-		</cargoType>
-
-		<cargoType name="Oxygen">
-			<density>1.43</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Oyster shells, ground">
-			<density>849</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Paper, standard">
-			<density>1201</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Peanuts, shelled">
-			<density>641</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Peanuts, not shelled">
-			<density>272</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Peat, dry">
-			<density>400</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Peat, moist">
-			<density>801</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Peat, wet">
-			<density>1121</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Pecan wood">
-			<density>753</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Phosphate rock, broken">
+		<cargoType name="Phosphate rock">
 			<density>1762</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Phosphorus">
-			<density>2339</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Pitch">
-			<density>1153</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Plaster">
-			<density>849</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Platinum ore">
-			<density>2600</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Porcelain">
-			<density>2403</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Porphyry, solid">
-			<density>2547</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Porphyry, broken">
-			<density>1650</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Potash">
-			<density>1281</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Potassium chloride">
-			<density>2002</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Potatoes, white">
-			<density>769</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Pumice, stone">
-			<density>641</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Pyrite (fool's gold)">
-			<density>2400-5015</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Quartz, solid">
-			<density>2643</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Quartz, lump">
-			<density>1554</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Quartz sand">
-			<density>1201</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Resin, synthetic, crushed">
-			<density>561</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Rice, hulled">
-			<density>753</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Rice, rough">
-			<density>577</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Rice grits">
-			<density>689</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Rip-Rap">
-			<density>1602</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Rock - soft - excavated with shovel">
-			<density>1600-1780</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Rosin">
-			<density>1073</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Rubber, caoutchouc">
-			<density>945</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Rubber, manufactured">
-			<density>1522</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Rubber, ground scrap">
-			<density>481</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Rye">
-			<density>705</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Salt cake">
-			<density>1442</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Salt, course">
-			<density>801</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Salt, fine">
-			<density>1201</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Saltpeter">
-			<density>1201</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sand, wet">
-			<density>1922</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sand, wet, packed">
-			<density>2082</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sand, dry">
-			<density>1602</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sand, loose">
-			<density>1442</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sand, rammed">
-			<density>1682</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sand, water filled">
-			<density>1922</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sand with Gravel, dry">
-			<density>1650</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sand with Gravel, wet">
-			<density>2020</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sandstone, solid">
-			<density>2323</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sandstone, broken">
-			<density>1370-1450</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sawdust">
-			<density>210</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sewage, sludge">
-			<density>721</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Shale, solid">
-			<density>2675</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Shale, broken">
-			<density>1586</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Shells - oyster">
-			<density>800</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sinter">
-			<density>1600-2180</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Slag, solid">
-			<density>2114</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Slag, broken">
-			<density>1762</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Slag, crushed, 1/4 inch">
-			<density>1185</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Slag, furn. granulated">
-			<density>961</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Slate, solid">
-			<density>2691</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Slate, broken">
-			<density>1290-1450</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Slate, pulverized">
-			<density>1362</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Smithsonite ( zinc ore )">
-			<density>4300</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Snow, freshly fallen">
-			<density>160</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Snow, compacted">
-			<density>481</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Soap, solid">
-			<density>801</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Soap, chips">
-			<density>160</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Soap, flakes">
-			<density>160</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Soap, powdered">
-			<density>368</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Soapstone talc">
-			<density>2400</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Soda Ash, heavy">
-			<density>1080</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Soda Ash, light">
-			<density>432</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sodium">
-			<density>977</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sodium Aluminate, ground">
-			<density>1153</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sodium Nitrate, ground">
-			<density>1201</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Soy beans, whole">
-			<density>753</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Starch, powdered">
-			<density>561</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Stone, crushed">
-			<density>1602</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Stone (common, generic)">
-			<density>2515</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sugar, brown">
-			<density>721</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sugar, powdered">
-			<density>801</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sugar, granulated">
-			<density>849</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sugar, raw cane">
-			<density>961</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sugarbeet pulp, dry">
-			<density>208</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sugarbeet pulp, wet">
-			<density>561</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sugarcane">
-			<density>272</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sulphur, solid">
-			<density>2002</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sulphur, lump">
-			<density>1314</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Sulphur, pulverized">
-			<density>961</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Taconite">
-			<density>2803</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Talc, solid">
-			<density>2691</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Talc, broken">
-			<density>1746</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Tanbark, ground">
-			<density>881</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Tankage">
-			<density>961</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Tar">
-			<density>1153</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Tobacco">
-			<density>320</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Trap rock, solid">
-			<density>2883</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Trap rock, broken">
-			<density>1746</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Turf">
-			<density>400</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Turpentine">
-			<density>865</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Walnut, black, dry">
-			<density>609</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Water, pure">
-			<density>1000</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Water, sea (see liquids table)">
-			<density>1026</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Wheat">
-			<density>769</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Wheat, cracked">
-			<density>673</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Wool">
-			<density>1314</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
-
-		<cargoType name="Zinc oxide">
-			<density>400</density>
-			<description>foo</description>
-			<packaging>drybulk</packaging>
-		</cargoType>
+			<description>Broken phosphate rock.</description>
+			<packaging>drybulk</packaging>
+		</cargoType>
+		<!--<cargoType name="Alfalfa, ground">-->
+			<!--<density>256</density>-->
+			<!--<packaging>drybulk</packaging>-->
+			<!--<description>foo</description>-->
+		<!--</cargoType>-->
+		<!--<cargoType name="Alum, lumpy">-->
+			<!--<density>881</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+		<!--<cargoType name="Alum, pulverized">-->
+			<!--<density>753</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Alumina">-->
+			<!--<density>961</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Aluminum, oxide">-->
+			<!--<density>1522</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Ammonia gas">-->
+			<!--<density>0.77</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Ammonium Nitrate">-->
+			<!--<density>730</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Ammonium Sulphate - dry">-->
+			<!--<density>1130</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Ammonium Sulphate - wet">-->
+			<!--<density>1290</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Andesite, solid">-->
+			<!--<density>2771</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Antimony, cast">-->
+			<!--<density>6696</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Apples">-->
+			<!--<density>641</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Arsenic">-->
+			<!--<density>5671</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Asbestos - shredded">-->
+			<!--<density>320-400</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Asbestos rock">-->
+			<!--<density>1600</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Ashes - wet">-->
+			<!--<density>730-890</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Ashes - dry">-->
+			<!--<density>570-650</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Asphalt, crushed">-->
+			<!--<density>721</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Babbitt">-->
+			<!--<density>7272</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Bagasse">-->
+			<!--<density>120</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Bakelite, solid">-->
+			<!--<density>1362</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Baking powder">-->
+			<!--<density>721</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Barium">-->
+			<!--<density>3780</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Bark, wood refuse">-->
+			<!--<density>240</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Barley">-->
+			<!--<density>609</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Barite, crushed">-->
+			<!--<density>2883</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Basalt, broken">-->
+			<!--<density>1954</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Basalt, solid">-->
+			<!--<density>3011</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Bauxite, crushed">-->
+			<!--<density>1281</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Beans, castor">-->
+			<!--<density>577</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Beans, cocoa">-->
+			<!--<density>593</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Beans, navy">-->
+			<!--<density>801</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Beans, soy">-->
+			<!--<density>721</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Beeswax">-->
+			<!--<density>961</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Beets">-->
+			<!--<density>721</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Bentonite">-->
+			<!--<density>593</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Bicarbonate of soda">-->
+			<!--<density>689</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Bismuth">-->
+			<!--<density>9787</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Bones, pulverized">-->
+			<!--<density>881</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Borax, fine">-->
+			<!--<density>849</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Bran">-->
+			<!--<density>256</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Brewers grain">-->
+			<!--<density>432</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Brick, common red">-->
+			<!--<density>1922</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Brick, fire clay">-->
+			<!--<density>2403</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Brick, silica">-->
+			<!--<density>2050</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Brick, chrome">-->
+			<!--<density>2803</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Brick, magnesia">-->
+			<!--<density>2563</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Buckwheat">-->
+			<!--<density>657</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Butter">-->
+			<!--<density>865</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Cadmium">-->
+			<!--<density>8650</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Calcium carbide">-->
+			<!--<density>1201</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Caliche">-->
+			<!--<density>1442</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Carbon, solid">-->
+			<!--<density>2146</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Carbon, powdered">-->
+			<!--<density>80</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Carbon dioxide">-->
+			<!--<density>1.98</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Carbon monoxide">-->
+			<!--<density>1.25</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Cardboard">-->
+			<!--<density>689</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Cement - clinker">-->
+			<!--<density>1290-1540</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Cement, Portland">-->
+			<!--<density>1506</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Cement, mortar">-->
+			<!--<density>2162</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Cement, slurry">-->
+			<!--<density>1442</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Chalk, solid">-->
+			<!--<density>2499</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Chalk, lumpy">-->
+			<!--<density>1442</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Chalk, fine">-->
+			<!--<density>1121</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Charcoal">-->
+			<!--<density>208</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Chloroform">-->
+			<!--<density>1522</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Chocolate, powder">-->
+			<!--<density>641</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Chromic acid, flake">-->
+			<!--<density>1201</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Chromium">-->
+			<!--<density>6856</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Chromium ore">-->
+			<!--<density>2162</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Cinders, furnace">-->
+			<!--<density>913</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Cinders, Coal, ash">-->
+			<!--<density>641</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Clay, dry excavated">-->
+			<!--<density>1089</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Clay, wet excavated">-->
+			<!--<density>1826</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Clay, dry lump">-->
+			<!--<density>1073</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Clay, fire">-->
+			<!--<density>1362</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Clay, wet lump">-->
+			<!--<density>1602</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Clay, compacted">-->
+			<!--<density>1746</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Clover seed">-->
+			<!--<density>769</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Coal, Anthracite, solid">-->
+			<!--<density>1506</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Coal, Anthracite, broken">-->
+			<!--<density>1105</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Coal, Bituminous, solid">-->
+			<!--<density>1346</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Coal, Bituminous, broken">-->
+			<!--<density>833</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Cobaltite ( cobolt ore )">-->
+			<!--<density>6295</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Coconut, meal">-->
+			<!--<density>513</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Coconut, shredded">-->
+			<!--<density>352</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Coffee, fresh beans">-->
+			<!--<density>561</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Coffee, roast beans">-->
+			<!--<density>432</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Coke">-->
+			<!--<density>570-650</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Concrete, Asphalt">-->
+			<!--<density>2243</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Concrete, Gravel">-->
+			<!--<density>2403</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Concrete, Limestone with Portland">-->
+			<!--<density>2371</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Copper ore">-->
+			<!--<density>1940-2590</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Copper sulfate, ground">-->
+			<!--<density>3604</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Copra, medium size">-->
+			<!--<density>529</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Copra, meal, ground">-->
+			<!--<density>641</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Copra, expeller cake ground">-->
+			<!--<density>513</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Copra, expeller cake chopped">-->
+			<!--<density>465</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Cork, solid">-->
+			<!--<density>240</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Cork, ground">-->
+			<!--<density>160</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Corn, on the cob">-->
+			<!--<density>721</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Corn, shelled">-->
+			<!--<density>721</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Corn, grits">-->
+			<!--<density>673</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Cottonseed, dry, de-linted">-->
+			<!--<density>561</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Cottonseed, dry, not de-linted">-->
+			<!--<density>320</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Cottonseed, cake, lumpy">-->
+			<!--<density>673</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Cottonseed, hulls">-->
+			<!--<density>192</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Cottonseed, meal">-->
+			<!--<density>593</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Cottonseed, meats">-->
+			<!--<density>641</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Cottonwood">-->
+			<!--<density>416</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Cryolite">-->
+			<!--<density>1602</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Cullet">-->
+			<!--<density>1602</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Culm">-->
+			<!--<density>753</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Dolomite, solid">-->
+			<!--<density>2899</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Dolomite, pulverized">-->
+			<!--<density>737</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Dolomite, lumpy">-->
+			<!--<density>1522</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Earth, loam, dry, excavated">-->
+			<!--<density>1249</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Earth, moist, excavated">-->
+			<!--<density>1442</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Earth, wet, excavated">-->
+			<!--<density>1602</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Earth, dense">-->
+			<!--<density>2002</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Earth, soft loose mud">-->
+			<!--<density>1730</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Earth, packed">-->
+			<!--<density>1522</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Earth, Fullers, raw">-->
+			<!--<density>673</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Emery">-->
+			<!--<density>4005</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Ether">-->
+			<!--<density>737</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Feldspar, solid">-->
+			<!--<density>2563</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Feldspar, pulverized">-->
+			<!--<density>1233</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Fertilizer, acid phosphate">-->
+			<!--<density>961</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Fish, scrap">-->
+			<!--<density>721</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Fish, meal">-->
+			<!--<density>593</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Flaxseed, whole">-->
+			<!--<density>721</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Flint - silica">-->
+			<!--<density>1390</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Flour, wheat">-->
+			<!--<density>593</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Flue dust">-->
+			<!--<density>1450-2020</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Fluorspar, solid">-->
+			<!--<density>3204</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Fluorspar, lumps">-->
+			<!--<density>1602</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Fluorspar, pulverized">-->
+			<!--<density>1442</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Fullers Earth - raw or burnt">-->
+			<!--<density>570-730</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Galena ( lead ore )">-->
+			<!--<density>7400-7600</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Garbage, household rubbish">-->
+			<!--<density>481</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Glass - broken or cullet">-->
+			<!--<density>1290-1940</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Glass, window">-->
+			<!--<density>2579</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Glue, animal, flaked">-->
+			<!--<density>561</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Glue, vegetable, powdered">-->
+			<!--<density>641</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Gluten, meal">-->
+			<!--<density>625</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Gneiss, bed in place">-->
+			<!--<density>2867</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Gneiss, broken">-->
+			<!--<density>1858</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Granite, solid">-->
+			<!--<density>2691</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Granite, broken">-->
+			<!--<density>1650</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Graphite, flake">-->
+			<!--<density>641</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Grain - Maize">-->
+			<!--<density>760</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Grain - Barley">-->
+			<!--<density>600</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Grain - Millet">-->
+			<!--<density>760-800</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Grain - Wheat">-->
+			<!--<density>780-800</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Gravel, loose, dry">-->
+			<!--<density>1522</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Gravel, with sand, natural">-->
+			<!--<density>1922</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Gravel, dry 1/4 to 2 inch">-->
+			<!--<density>1682</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Gravel, wet 1/4 to 2 inch">-->
+			<!--<density>2002</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Gummite ( uranium ore )">-->
+			<!--<density>3890-6400</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Gypsum, solid">-->
+			<!--<density>2787</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Gypsum, broken">-->
+			<!--<density>1290-1600</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Gypsum, crushed">-->
+			<!--<density>1602</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Gypsum, pulverized">-->
+			<!--<density>1121</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Halite (salt), solid">-->
+			<!--<density>2323</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Halite (salt), broken">-->
+			<!--<density>1506</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Hematite ( iron ore )">-->
+			<!--<density>5095-5205</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Hemimorphite ( zinc ore )">-->
+			<!--<density>3395-3490</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Hydrochloric acid 40%">-->
+			<!--<density>1201</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Ice, solid">-->
+			<!--<density>919</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Ice, crushed">-->
+			<!--<density>593</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Ilmenite">-->
+			<!--<density>2307</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Iridium">-->
+			<!--<density>22154</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Iron ore - crushed - see metals table">-->
+			<!--<density>2100-2900</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Iron oxide pigment">-->
+			<!--<density>400</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Iron Pyrites">-->
+			<!--<density>2400</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Iron sulphate - pickling tank - dry">-->
+			<!--<density>1200</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Iron sulphate - pickling tank - wet">-->
+			<!--<density>1290</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Ivory">-->
+			<!--<density>1842</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Kaolin, green crushed">-->
+			<!--<density>1025</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Kaolin, pulverized">-->
+			<!--<density>352</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Lead, rolled - see metals table">-->
+			<!--<density>11389</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Lead, red">-->
+			<!--<density>3684</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Lead, white pigment">-->
+			<!--<density>4085</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Leather">-->
+			<!--<density>945</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Lignite, dry">-->
+			<!--<density>801</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Lime, quick, lump">-->
+			<!--<density>849</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Lime, quick, fine">-->
+			<!--<density>1201</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Lime, stone, large">-->
+			<!--<density>2691</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Lime, stone, lump">-->
+			<!--<density>1538</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Lime, hydrated">-->
+			<!--<density>481</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Lime, wet or mortar">-->
+			<!--<density>1540</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Limonite, solid">-->
+			<!--<density>3796</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Limonite, broken">-->
+			<!--<density>2467</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Limestone, solid">-->
+			<!--<density>2611</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Limestone, broken">-->
+			<!--<density>1554</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Limestone, pulverized">-->
+			<!--<density>1394</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Linseed, whole">-->
+			<!--<density>753</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Linseed, meal">-->
+			<!--<density>513</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Locust, dry">-->
+			<!--<density>705</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Magnesite, solid">-->
+			<!--<density>3011</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Magnesium oxide">-->
+			<!--<density>1940</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Magnesium sulphate, crystal">-->
+			<!--<density>1121</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Magnetite, solid ( iron ore )">-->
+			<!--<density>5046</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Magnetite, broken">-->
+			<!--<density>3284</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Malachite ( copper ore )">-->
+			<!--<density>3750-3960</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Malt">-->
+			<!--<density>336</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Manganese, solid">-->
+			<!--<density>7609</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Manganese oxide">-->
+			<!--<density>1922</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Manure">-->
+			<!--<density>400</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Marble, solid">-->
+			<!--<density>2563</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Marble, broken">-->
+			<!--<density>1570</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Marl, wet, excavated">-->
+			<!--<density>2243</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Mica, solid">-->
+			<!--<density>2883</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Mica, broken">-->
+			<!--<density>1602</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Mica - flake">-->
+			<!--<density>520</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Mica - powder">-->
+			<!--<density>986</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Milk, powdered">-->
+			<!--<density>449</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Molybdenum ore">-->
+			<!--<density>1600</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Mortar, wet">-->
+			<!--<density>2403</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Mud, packed">-->
+			<!--<density>1906</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Mud, fluid">-->
+			<!--<density>1730</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Nickel ore">-->
+			<!--<density>1600</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Nickel, rolled">-->
+			<!--<density>8666</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Nickel silver">-->
+			<!--<density>8442</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Nitric acid, 91%">-->
+			<!--<density>1506</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Nitrogen">-->
+			<!--<density>1.26</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Oak, red">-->
+			<!--<density>705</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Oats">-->
+			<!--<density>432</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Oats, rolled">-->
+			<!--<density>304</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Oil cake">-->
+			<!--<density>785</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Oil, linseed">-->
+			<!--<density>942</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>wetbulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Oil, petroleum">-->
+			<!--<density>881</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>wetbulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Oxygen">-->
+			<!--<density>1.43</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Oyster shells, ground">-->
+			<!--<density>849</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Paper, standard">-->
+			<!--<density>1201</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Peanuts, shelled">-->
+			<!--<density>641</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Peanuts, not shelled">-->
+			<!--<density>272</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Peat, dry">-->
+			<!--<density>400</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Peat, moist">-->
+			<!--<density>801</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Peat, wet">-->
+			<!--<density>1121</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Pecan wood">-->
+			<!--<density>753</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Phosphate rock, broken">-->
+			<!--<density>1762</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Phosphorus">-->
+			<!--<density>2339</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Pitch">-->
+			<!--<density>1153</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Plaster">-->
+			<!--<density>849</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Platinum ore">-->
+			<!--<density>2600</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Porcelain">-->
+			<!--<density>2403</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Porphyry, solid">-->
+			<!--<density>2547</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Porphyry, broken">-->
+			<!--<density>1650</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Potash">-->
+			<!--<density>1281</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Potassium chloride">-->
+			<!--<density>2002</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Potatoes, white">-->
+			<!--<density>769</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Pumice, stone">-->
+			<!--<density>641</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Pyrite (fool's gold)">-->
+			<!--<density>2400-5015</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Quartz, solid">-->
+			<!--<density>2643</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Quartz, lump">-->
+			<!--<density>1554</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Quartz sand">-->
+			<!--<density>1201</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Resin, synthetic, crushed">-->
+			<!--<density>561</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Rice, hulled">-->
+			<!--<density>753</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Rice, rough">-->
+			<!--<density>577</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Rice grits">-->
+			<!--<density>689</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Rip-Rap">-->
+			<!--<density>1602</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Rock - soft - excavated with shovel">-->
+			<!--<density>1600-1780</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Rosin">-->
+			<!--<density>1073</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Rubber, caoutchouc">-->
+			<!--<density>945</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Rubber, manufactured">-->
+			<!--<density>1522</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Rubber, ground scrap">-->
+			<!--<density>481</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Rye">-->
+			<!--<density>705</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Salt cake">-->
+			<!--<density>1442</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Salt, course">-->
+			<!--<density>801</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Salt, fine">-->
+			<!--<density>1201</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Saltpeter">-->
+			<!--<density>1201</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sand, wet">-->
+			<!--<density>1922</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sand, wet, packed">-->
+			<!--<density>2082</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sand, dry">-->
+			<!--<density>1602</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sand, loose">-->
+			<!--<density>1442</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sand, rammed">-->
+			<!--<density>1682</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sand, water filled">-->
+			<!--<density>1922</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sand with Gravel, dry">-->
+			<!--<density>1650</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sand with Gravel, wet">-->
+			<!--<density>2020</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sandstone, solid">-->
+			<!--<density>2323</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sandstone, broken">-->
+			<!--<density>1370-1450</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sawdust">-->
+			<!--<density>210</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sewage, sludge">-->
+			<!--<density>721</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Shale, solid">-->
+			<!--<density>2675</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Shale, broken">-->
+			<!--<density>1586</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Shells - oyster">-->
+			<!--<density>800</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sinter">-->
+			<!--<density>1600-2180</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Slag, solid">-->
+			<!--<density>2114</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Slag, broken">-->
+			<!--<density>1762</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Slag, crushed, 1/4 inch">-->
+			<!--<density>1185</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Slag, furn. granulated">-->
+			<!--<density>961</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Slate, solid">-->
+			<!--<density>2691</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Slate, broken">-->
+			<!--<density>1290-1450</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Slate, pulverized">-->
+			<!--<density>1362</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Smithsonite ( zinc ore )">-->
+			<!--<density>4300</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Snow, freshly fallen">-->
+			<!--<density>160</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Snow, compacted">-->
+			<!--<density>481</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Soap, solid">-->
+			<!--<density>801</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Soap, chips">-->
+			<!--<density>160</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Soap, flakes">-->
+			<!--<density>160</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Soap, powdered">-->
+			<!--<density>368</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Soapstone talc">-->
+			<!--<density>2400</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Soda Ash, heavy">-->
+			<!--<density>1080</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Soda Ash, light">-->
+			<!--<density>432</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sodium">-->
+			<!--<density>977</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sodium Aluminate, ground">-->
+			<!--<density>1153</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sodium Nitrate, ground">-->
+			<!--<density>1201</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Soy beans, whole">-->
+			<!--<density>753</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Starch, powdered">-->
+			<!--<density>561</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Stone, crushed">-->
+			<!--<density>1602</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Stone (common, generic)">-->
+			<!--<density>2515</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sugar, brown">-->
+			<!--<density>721</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sugar, powdered">-->
+			<!--<density>801</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sugar, granulated">-->
+			<!--<density>849</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sugar, raw cane">-->
+			<!--<density>961</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sugarbeet pulp, dry">-->
+			<!--<density>208</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sugarbeet pulp, wet">-->
+			<!--<density>561</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sugarcane">-->
+			<!--<density>272</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sulphur, solid">-->
+			<!--<density>2002</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sulphur, lump">-->
+			<!--<density>1314</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Sulphur, pulverized">-->
+			<!--<density>961</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Taconite">-->
+			<!--<density>2803</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Talc, solid">-->
+			<!--<density>2691</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Talc, broken">-->
+			<!--<density>1746</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Tanbark, ground">-->
+			<!--<density>881</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Tankage">-->
+			<!--<density>961</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Tar">-->
+			<!--<density>1153</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Tobacco">-->
+			<!--<density>320</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Trap rock, solid">-->
+			<!--<density>2883</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Trap rock, broken">-->
+			<!--<density>1746</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Turf">-->
+			<!--<density>400</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Turpentine">-->
+			<!--<density>865</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Walnut, black, dry">-->
+			<!--<density>609</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Water, pure">-->
+			<!--<density>1000</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Water, sea (see liquids table)">-->
+			<!--<density>1026</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Wheat">-->
+			<!--<density>769</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Wheat, cracked">-->
+			<!--<density>673</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Wool">-->
+			<!--<density>1314</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
+
+		<!--<cargoType name="Zinc oxide">-->
+			<!--<density>400</density>-->
+			<!--<description>foo</description>-->
+			<!--<packaging>drybulk</packaging>-->
+		<!--</cargoType>-->
 		<!--
 
 		           * Coal

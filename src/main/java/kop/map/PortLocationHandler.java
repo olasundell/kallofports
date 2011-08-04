@@ -7,6 +7,7 @@ import com.bbn.openmap.omGraphics.OMRect;
 import kop.ports.Port;
 import kop.ports.PortMap;
 import kop.ports.PortsOfTheWorld;
+import kop.serialization.SerializationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,7 +35,7 @@ public class PortLocationHandler extends AbstractLocationHandler {
 		PortMap ports = null;
 		try {
 			ports = PortsOfTheWorld.getPorts();
-		} catch (Exception e) {
+		} catch (SerializationException e) {
 			logger.error("Could not get port collection", e);
 			return null;
 		}

@@ -145,11 +145,11 @@ public class AStarUtilTest {
 
 	private void findClosestPointForWorld(NewWorld world) throws CouldNotFindPointException, NoSuchPortException {
 		Point p;
-		p = aStarUtil.findClosestPointForPort(Game.getInstance().getPortByName("Aberdeen").getProxy(),
+		p = aStarUtil.findClosestPointForPort(Game.getInstance().getPortByName("New York").getProxy(),
 				world);
 		assertNotNull(p);
 
-		p = aStarUtil.findClosestPointForPort(Game.getInstance().getPortByName("Gothenburg").getProxy(),
+		p = aStarUtil.findClosestPointForPort(Game.getInstance().getPortByName("Singapore").getProxy(),
 				world);
 		assertNotNull(p);
 

@@ -1,0 +1,13 @@
+<port name="Durban">
+	<unlocode>ZA DUR</unlocode>
+	<latitude>
+		<deg>29</deg>
+		<min>52</min>
+		<hemisphere>S</hemisphere>
+	</latitude>
+	<longitude>
+		<deg>31</deg>
+		<min>03</min>
+		<hemisphere>E</hemisphere>
+	</longitude>
+</port>

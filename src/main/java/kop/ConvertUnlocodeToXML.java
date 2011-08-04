@@ -5,7 +5,8 @@ import kop.map.LatLong;
 import kop.ports.Port;
 import kop.ports.PortMap;
 import kop.ports.PortsOfTheWorld;
-import kop.ships.ModelSerializer;
+import kop.serialization.ModelSerializer;
+import kop.serialization.SerializationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 public class ConvertUnlocodeToXML {
 	private static final String LONGLAT_REGEXP = "[0-9]{4}[NS] [0-9]{5}[EW]";
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws SerializationException, IOException {
 //		createLatLongFromTSV();
 		PortMap htmlPortMap = createPortMapFromHTML();
 
@@ -46,7 +47,7 @@ public class ConvertUnlocodeToXML {
 
 	}
 
-	private static void createLatLongFromTSV() throws Exception {
+	private static void createLatLongFromTSV() throws SerializationException, IOException {
 		File source = new File("unlocode.csv");
 		CSVReader reader = new CSVReader(new FileReader(source), ',');
 		String[] line;

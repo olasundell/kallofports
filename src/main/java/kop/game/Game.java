@@ -4,14 +4,14 @@ import kop.cargo.*;
 import kop.company.Company;
 import kop.map.routecalculator.*;
 import kop.ports.*;
+import kop.serialization.ModelSerializer;
+import kop.serialization.SerializationException;
 import kop.ships.*;
 import kop.ships.engine.EngineList;
 import kop.ships.model.ShipModel;
-import org.geotools.map.MapLayer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -91,7 +91,7 @@ public class Game {
 	private void populateShipClasses() {
 		try {
 			shipClasses = (ShipClassList) ModelSerializer.readFromFile("kop/ships/shipclasses.xml", ShipClassList.class);
-		} catch (Exception e) {
+		} catch (SerializationException e) {
 			logger.error("Could not populate ship classes list", e);
 		}
 	}
@@ -165,6 +165,10 @@ public class Game {
 			generateDailyFreights();
 		}
 
+		fireGameStateChanged();
+	}
+
+	private void fireGameStateChanged() {
 		for (GameStateListener listener:listeners) {
 			listener.stateChanged();
 		}
@@ -174,7 +178,7 @@ public class Game {
 	 * Creates new freights.
 	 */
 
-	protected void generateDailyFreights() {
+	public void generateDailyFreights() {
 		for (Port p: worldPorts.getPortsAsList()) {
 			Cargo cargo = null;
 			try {
@@ -224,8 +228,8 @@ public class Game {
 		if (engineList == null) {
 			try {
 				engineList = (EngineList) ModelSerializer.readFromFile("kop/ships/engines.xml", EngineList.class);
-			} catch (Exception e) {
-				logger.error("Could not create instance of engine list", e);
+			} catch (SerializationException e) {
+				e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
 			}
 		}
 
@@ -327,4 +331,11 @@ public class Game {
 
 		return world;
 	}
+
+	public void loadFreightOntoShip(ShipModel ship, Freight freight) {
+		getFreightMarket().getFreights().remove(freight);
+		ship.addFreight(freight);
+		fireGameStateChanged();
+	}
+
 }

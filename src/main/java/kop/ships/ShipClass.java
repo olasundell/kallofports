@@ -1,5 +1,7 @@
 package kop.ships;
 
+import kop.serialization.ModelSerializer;
+import kop.serialization.SerializationException;
 import kop.ships.blueprint.ShipBlueprint;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
@@ -41,7 +43,7 @@ public class ShipClass {
 			String resourceName = "kop/ships/shipclasses.xml";
 			try {
 				shipClasses = (ShipClassList) ModelSerializer.readFromFile(resourceName, ShipClassList.class);
-			} catch (Exception e) {
+			} catch (SerializationException e) {
 				Logger logger = LoggerFactory.getLogger(ShipClass.class);
 				logger.error(String.format("Could not deserialise ship classes from file %s", resourceName), e);
 				return null;

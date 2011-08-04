@@ -1,8 +1,11 @@
 package kop.ports;
 
 import kop.game.Game;
-import kop.ships.ModelSerializer;
+import kop.serialization.ModelSerializer;
+import kop.serialization.SerializationException;
 
+import javax.media.jai.remote.Serializer;
+import java.net.MalformedURLException;
 import java.util.*;
 
 /**
@@ -10,21 +13,26 @@ import java.util.*;
  */
 public class PortsOfTheWorld {
 	private PortMap ports;
-	// TODO remove this.
 
-	public PortsOfTheWorld() throws Exception {
+	public PortsOfTheWorld() throws SerializationException {
 		populatePorts();
 	}
 
-	public final void populatePorts() throws Exception {
+	public final void populatePorts() throws SerializationException {
 		if (ports!=null) {
 			return;
 		}
 
-		ports = (PortMap) ModelSerializer.readFromFile("kop/ports/ports.xml", PortMap.class);
+//		ports = (PortMap) ModelSerializer.readFromFile("kop/ports/ports.xml", PortMap.class);
+		ModelSerializer<Port> serializer = new ModelSerializer<Port>();
+		List<Port> list = serializer.readFromDirectory("src/main/resources/kop/ports/World",Port.class);
+		ports = new PortMap();
+		for (Port p: list) {
+			ports.put(p.getName(), p);
+		}
 	}
 
-	public static PortMap getPorts() throws Exception {
+	public static PortMap getPorts() throws SerializationException {
 		PortsOfTheWorld instance = new PortsOfTheWorld();
 		instance.populatePorts();
 		return instance.ports;

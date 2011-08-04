@@ -1,6 +1,7 @@
 package kop.ships.engine;
 
-import kop.ships.ModelSerializer;
+import kop.serialization.ModelSerializer;
+import kop.serialization.SerializationException;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 import org.slf4j.Logger;
@@ -47,7 +48,7 @@ public class EngineList {
 			try {
 				URL r = ClassLoader.getSystemClassLoader().getResource("kop/ships/engines.xml");
 				instance = (EngineList) ModelSerializer.readFromFile(r, EngineList.class);
-			} catch (Exception e) {
+			} catch (SerializationException e) {
 				logger.error("Could not create engine list",e);
 			}
 		}

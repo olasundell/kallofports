@@ -1,0 +1,14 @@
+<port name="Busan">
+	<unlocode>KR PUS</unlocode>
+	<latitude>
+		<deg>35</deg>
+		<min>06</min>
+		<hemisphere>N</hemisphere>
+	</latitude>
+	<longitude>
+		<deg>129</deg>
+		<min>04</min>
+		<hemisphere>E</hemisphere>
+	</longitude>
+</port>
+

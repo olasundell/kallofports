@@ -42,6 +42,7 @@ public class PortWindow implements KopWindow {
 	private JLabel shipDWT;
 	private JButton charterButton;
 	private JLabel availableDWT;
+	private JPanel shipInfoPanel;
 	private FreightTableModel shipFreightTableModel;
 	private FreightTableModel portFreightTableModel;
 	private Logger logger;
@@ -66,11 +67,13 @@ public class PortWindow implements KopWindow {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (portFreightTable.getSelectedRow() == -1) {
+					logger.debug("Port freight table doesn't have a selected row");
 					// TODO fire dialog
 					return;
 				}
 
 				if (shipsInPortListBox.getSelectedIndex() == -1) {
+					logger.debug("Ship list box doesn't have a selected row");
 					// TODO fire dialog
 					return;
 				}
@@ -80,8 +83,9 @@ public class PortWindow implements KopWindow {
 
 				// TODO add asserts, can the ship really take on the freight?
 				// if not, add a part of the freight.
-				Game.getInstance().getFreightMarket().loadFreightOntoShip(ship, f);
-				logger.debug("Loaded %s on %s", f, ship);
+				Game.getInstance().loadFreightOntoShip(ship, f);
+				portFreightTableModel.fireTableDataChanged();
+				logger.debug(String.format("Loaded %s on %s", f.toString(), ship.toString()));
 			}
 		});
 	}
@@ -140,58 +144,69 @@ public class PortWindow implements KopWindow {
 	private void $$$setupUI$$$() {
 		createUIComponents();
 		contentPane = new JPanel();
-		contentPane.setLayout(new FormLayout("fill:max(d;4px):noGrow,left:4dlu:noGrow,fill:max(d;4px):noGrow,left:4dlu:noGrow,fill:d:grow,left:4dlu:noGrow,fill:d:grow,left:4dlu:noGrow,fill:d:grow(0.5),left:4dlu:noGrow,fill:max(d;4px):grow(0.5),left:4dlu:noGrow,left:4dlu:noGrow", "center:221px:noGrow,top:5dlu:noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow"));
-		CellConstraints cc = new CellConstraints();
-		contentPane.add(nameOfPort, cc.xy(1, 5));
+		contentPane.setLayout(new FormLayout("left:5dlu:noGrow,fill:max(d;125dlu):grow(0.6),fill:d:noGrow,left:4dlu:noGrow,fill:max(d;60dlu):grow(0.30000000000000004),left:5dlu:noGrow,fill:max(d;60dlu):grow(0.30000000000000004),left:5dlu:noGrow,fill:d:noGrow", "center:d:noGrow,top:5dlu:noGrow,center:m:grow(0.1),top:5dlu:noGrow,center:max(d;4px):noGrow,center:d:noGrow,top:5dlu:noGrow,center:m:grow(0.1),top:5dlu:noGrow,center:d:noGrow,center:max(d;4px):noGrow,top:5dlu:noGrow,center:d:noGrow"));
 		final JScrollPane scrollPane1 = new JScrollPane();
-		contentPane.add(scrollPane1, cc.xyw(5, 1, 3, CellConstraints.FILL, CellConstraints.FILL));
+		CellConstraints cc = new CellConstraints();
+		contentPane.add(scrollPane1, cc.xyw(2, 3, 2, CellConstraints.FILL, CellConstraints.FILL));
+		shipFreightTable.setName("shipFreightTable");
 		scrollPane1.setViewportView(shipFreightTable);
 		final JScrollPane scrollPane2 = new JScrollPane();
-		contentPane.add(scrollPane2, cc.xywh(5, 7, 3, 13, CellConstraints.FILL, CellConstraints.FILL));
+		contentPane.add(scrollPane2, cc.xyw(2, 8, 2, CellConstraints.FILL, CellConstraints.FILL));
+		portFreightTable.setName("portFreightTable");
 		scrollPane2.setViewportView(portFreightTable);
 		final JScrollPane scrollPane3 = new JScrollPane();
-		contentPane.add(scrollPane3, cc.xyw(9, 1, 3, CellConstraints.FILL, CellConstraints.FILL));
+		contentPane.add(scrollPane3, cc.xyw(5, 3, 3, CellConstraints.FILL, CellConstraints.FILL));
 		shipsInPortListBox.setSelectionMode(0);
 		scrollPane3.setViewportView(shipsInPortListBox);
 		cancelButton = new JButton();
 		cancelButton.setText("Cancel");
 		cancelButton.setMnemonic('C');
 		cancelButton.setDisplayedMnemonicIndex(0);
-		contentPane.add(cancelButton, cc.xy(11, 21));
-		charterButton = new JButton();
-		charterButton.setText("Charter");
-		charterButton.setMnemonic('T');
-		charterButton.setDisplayedMnemonicIndex(4);
-		contentPane.add(charterButton, cc.xy(7, 4));
-		final JLabel label1 = new JLabel();
-		label1.setText("Ship name");
-		contentPane.add(label1, cc.xy(9, 7));
-		final JLabel label2 = new JLabel();
-		label2.setText("Ship type");
-		contentPane.add(label2, cc.xy(9, 9));
-		final JLabel label3 = new JLabel();
-		label3.setText("Max DWT");
-		contentPane.add(label3, cc.xy(9, 11));
-		shipName = new JLabel();
-		shipName.setText("Label");
-		contentPane.add(shipName, cc.xy(11, 7, CellConstraints.LEFT, CellConstraints.DEFAULT));
-		shipType = new JLabel();
-		shipType.setText("Label");
-		contentPane.add(shipType, cc.xy(11, 9, CellConstraints.LEFT, CellConstraints.DEFAULT));
-		shipDWT = new JLabel();
-		shipDWT.setText("Label");
-		contentPane.add(shipDWT, cc.xy(11, 11, CellConstraints.LEFT, CellConstraints.DEFAULT));
-		final JLabel label4 = new JLabel();
-		label4.setText("Available DWT");
-		contentPane.add(label4, cc.xy(9, 13));
-		availableDWT = new JLabel();
-		availableDWT.setText("Label");
-		contentPane.add(availableDWT, cc.xy(11, 13));
+		contentPane.add(cancelButton, cc.xy(7, 11));
 		okButton = new JButton();
 		okButton.setText("OK");
 		okButton.setMnemonic('O');
 		okButton.setDisplayedMnemonicIndex(0);
-		contentPane.add(okButton, cc.xy(9, 21));
+		contentPane.add(okButton, cc.xy(5, 11));
+		charterButton = new JButton();
+		charterButton.setName("charterButton");
+		charterButton.setText("Charter");
+		charterButton.setMnemonic('T');
+		charterButton.setDisplayedMnemonicIndex(4);
+		contentPane.add(charterButton, cc.xy(2, 5, CellConstraints.RIGHT, CellConstraints.DEFAULT));
+		shipInfoPanel = new JPanel();
+		shipInfoPanel.setLayout(new FormLayout("fill:d:grow(0.30000000000000004),left:4dlu:noGrow,fill:d:grow(0.19999999999999998)", "center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow"));
+		shipInfoPanel.setName("shipInfoPanel");
+		contentPane.add(shipInfoPanel, cc.xyw(5, 8, 3));
+		final JLabel label1 = new JLabel();
+		label1.setText("Ship name");
+		shipInfoPanel.add(label1, cc.xy(1, 1));
+		final JLabel label2 = new JLabel();
+		label2.setText("Ship type");
+		shipInfoPanel.add(label2, cc.xy(1, 3));
+		final JLabel label3 = new JLabel();
+		label3.setText("Max DWT");
+		shipInfoPanel.add(label3, cc.xy(1, 5));
+		shipName = new JLabel();
+		shipName.setName("shipName");
+		shipName.setText("Label");
+		shipInfoPanel.add(shipName, cc.xy(3, 1, CellConstraints.LEFT, CellConstraints.DEFAULT));
+		shipType = new JLabel();
+		shipType.setName("shipType");
+		shipType.setText("Label");
+		shipInfoPanel.add(shipType, cc.xy(3, 3, CellConstraints.LEFT, CellConstraints.DEFAULT));
+		shipDWT = new JLabel();
+		shipDWT.setName("maxDWT");
+		shipDWT.setText("Label");
+		shipInfoPanel.add(shipDWT, cc.xy(3, 5, CellConstraints.LEFT, CellConstraints.DEFAULT));
+		final JLabel label4 = new JLabel();
+		label4.setText("Available DWT");
+		shipInfoPanel.add(label4, cc.xy(1, 7));
+		availableDWT = new JLabel();
+		availableDWT.setName("availableDWT");
+		availableDWT.setText("Label");
+		shipInfoPanel.add(availableDWT, cc.xy(3, 7));
+		contentPane.add(nameOfPort, cc.xy(5, 5, CellConstraints.DEFAULT, CellConstraints.FILL));
 	}
 
 	/**

@@ -17,7 +17,7 @@ public class PositionOrDirectionTest {
 	@Test
 	public void setPortShouldUpdateLatLong() throws NoSuchPortException {
 		PositionOrDirection pos = new PositionOrDirection();
-		Port helsinki = Game.getInstance().getPortByName("Helsinki");
+		Port helsinki = Game.getInstance().getPortByName("New York");
 		pos.setCurrentPort(helsinki.getProxy());
 		assertEquals(helsinki.getLatitude(), pos.getLatitude());
 	}

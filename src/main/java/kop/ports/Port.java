@@ -34,7 +34,7 @@ public class Port {
 	LatLong longitude;
 	@Element(required = false)
 	LatLong latitude;
-	@Element(required = false)
+	@Element(name="exports", required = false)
 	private PortCargoTypeList portCargoTypes;
 
 	private Logger logger;

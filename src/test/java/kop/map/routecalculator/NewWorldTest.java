@@ -1,11 +1,13 @@
 package kop.map.routecalculator;
 
-import kop.ships.ModelSerializer;
+import kop.serialization.ModelSerializer;
+import kop.serialization.SerializationException;
 import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertNotNull;
@@ -79,7 +81,7 @@ public class NewWorldTest {
 	}
 
 	@Test
-	public void serializeDeserialize() throws Exception {
+	public void serializeDeserialize() throws SerializationException, MalformedURLException {
 		NewWorld world = new NewWorld();
 		world.lats = new NewWorld.LatitudeArr[18];
 		for (int i=0;i<world.lats.length;i++) {

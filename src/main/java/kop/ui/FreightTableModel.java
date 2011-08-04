@@ -3,6 +3,7 @@ package kop.ui;
 import kop.cargo.Freight;
 import kop.cargo.FreightCarrier;
 import kop.game.Game;
+import kop.game.GameStateListener;
 import kop.ports.PortProxy;
 import kop.ships.model.ShipModel;
 
@@ -13,15 +14,16 @@ import javax.swing.table.TableRowSorter;
 /**
 * @author Ola Sundell
 */
-class FreightTableModel extends AbstractTableModel {
+class FreightTableModel extends AbstractTableModel implements GameStateListener {
 	private Object filter = null;
 	private transient FreightCarrier freightCarrier;
 
 	FreightTableModel() {
-		freightCarrier = Game.getInstance().getFreightMarket();
+		this(Game.getInstance().getFreightMarket());
 	}
 
 	FreightTableModel(FreightCarrier freightCarrier) {
+		Game.getInstance().addListener(this);
 		this.freightCarrier = freightCarrier;
 	}
 
@@ -86,6 +88,12 @@ class FreightTableModel extends AbstractTableModel {
 	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 	}
+
+	@Override
+	public void stateChanged() {
+		fireTableDataChanged();
+	}
+
 	public static class PortRowFilter extends RowFilter<FreightTableModel, Integer> {
 		PortProxy portProxy;
 

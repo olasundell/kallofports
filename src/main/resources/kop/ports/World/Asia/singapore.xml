@@ -1,0 +1,13 @@
+<port name="Singapore">
+	<unlocode>SG SIN</unlocode>
+	<latitude>
+		<deg>1</deg>
+		<min>20</min>
+		<hemisphere>N</hemisphere>
+	</latitude>
+	<longitude>
+		<deg>103</deg>
+		<min>50</min>
+		<hemisphere>E</hemisphere>
+	</longitude>
+</port>

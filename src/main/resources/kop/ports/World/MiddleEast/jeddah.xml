@@ -1,0 +1,14 @@
+<port name="Jeddah">
+	<unlocode>SA JED</unlocode>
+	<latitude>
+		<deg>21</deg>
+		<min>28</min>
+		<hemisphere>N</hemisphere>
+	</latitude>
+	<longitude>
+		<deg>39</deg>
+		<min>10</min>
+		<hemisphere>E</hemisphere>
+	</longitude>
+</port>
+

@@ -1,7 +1,7 @@
 package kop.ports;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import kop.ships.ModelSerializer;
+import kop.serialization.ModelSerializer;
+import kop.serialization.SerializationException;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertFalse;
@@ -17,7 +17,7 @@ import static org.testng.AssertJUnit.assertEquals;
  */
 public class PortMapTest {
 	@Test
-	public void serializePortMap() throws Exception {
+	public void serializePortMap() throws SerializationException {
 		PortMap map = new PortMap();
 
 		Port port = new Port();
@@ -29,7 +29,7 @@ public class PortMapTest {
 	}
 
 //	@Test
-	public void deserializePortMap() throws Exception {
+	public void deserializePortMap() throws SerializationException {
 		PortMap map = (PortMap) ModelSerializer.readFromFile("portmap.xml", PortMap.class);
 		assertNotNull(map);
 		Port london = map.get("London");
@@ -38,7 +38,7 @@ public class PortMapTest {
 	}
 
 	@Test
-	public void allPortsShouldHaveCompleteInformation() throws Exception {
+	public void allPortsShouldHaveCompleteInformation() throws SerializationException {
 		for (Port p: PortsOfTheWorld.getPorts().values()) {
 			assertNotNull(p);
 			assertNotNull(String.format("Port %s lacks latitude!",p.toString()),p.latitude);

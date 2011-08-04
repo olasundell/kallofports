@@ -3,6 +3,7 @@ package kop.cargo;
 import kop.game.Game;
 import kop.ports.Port;
 import kop.ports.PortProxy;
+import kop.ships.model.ShipModel;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -57,8 +58,6 @@ public class FreightMarketTest {
 		checkCargoOK(cargo);
 		cargo = (CargoImpl) freightMarket.generateCargo(cargoTypeList.getCargoTypeByPackaging(CargoType.Packaging.container));
 		checkCargoOK(cargo);
-
-		System.out.println(cargo);
 	}
 
 	private void checkCargoOK(CargoImpl cargo) {
@@ -68,5 +67,21 @@ public class FreightMarketTest {
 		int daysLeft = cargo.getDaysLeft(time);
 		assertTrue(String.format("daysLeft should be above zero, time is %s, daysLeft are %d and deadline is %s.", time, daysLeft, cargo.getDeadline()),daysLeft > 0);
 		assertTrue(cargo.getTotalPrice() > 0);
+	}
+
+	@Test
+	public void loadFreightOntoShip() {
+		Game game = new Game();
+		game.generateDailyFreights();
+
+		ShipModel ship = ShipModel.createShip("Foo", instance.getShipClasses().get(0));
+		FreightMarket market = game.getFreightMarket();
+		int marketSizeBefore = market.getFreights().size();
+		// TODO this should fail if the ship isn't in the same port as the freight we're trying to load onto it.
+		game.loadFreightOntoShip(ship, market.getFreights().get(0));
+
+		assertEquals(market.getFreights().size(), marketSizeBefore - 1);
+		assertEquals(1,ship.getFreights().size());
+		assertFalse(market.getFreights().contains(ship.getFreights().get(0)));
 	}
 }

@@ -1,20 +1,17 @@
 package kop.ships;
 
 import kop.game.Game;
-import kop.ports.NoRouteFoundException;
 import kop.ports.Port;
 import kop.ports.PortProxy;
+import kop.serialization.ModelSerializer;
 import kop.ships.blueprint.ShipBlueprint;
 import kop.ships.engine.Engine;
 import kop.ships.engine.EngineList;
 import kop.ships.model.ContainerShipModel;
 import kop.ships.model.ShipModel;
-import org.simpleframework.xml.Serializer;
-import org.simpleframework.xml.core.Persister;
 import org.testng.annotations.Test;
 
 import java.io.File;
-import java.util.List;
 
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
@@ -57,7 +54,7 @@ public class ShipModelTest {
 
 	@Test
 	public void testSerializeDeserialize() throws Exception {
-		// TODO use kop.ships.ModelSerializer for this.
+		// TODO use kop.serialization.ModelSerializer for this.
 		ShipModel ship = new ContainerShipModel();
 		ship.setName("foobar");
 		ship.getBlueprint().addEngine(new Engine());

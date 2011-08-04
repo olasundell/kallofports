@@ -2,10 +2,9 @@ package kop.map.routecalculator;
 
 import com.bbn.openmap.MapBean;
 import com.bbn.openmap.layer.location.*;
-import com.bbn.openmap.layer.shape.ShapeLayer;
 import com.bbn.openmap.omGraphics.OMRect;
 import kop.ports.NoRouteFoundException;
-import kop.ships.ModelSerializer;
+import kop.serialization.ModelSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

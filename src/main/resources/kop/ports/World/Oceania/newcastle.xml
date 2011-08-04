@@ -1,0 +1,28 @@
+<port name="Newcastle, AU">
+	<unlocode>AU NTL</unlocode>
+	<latitude>
+		<deg>32</deg>
+		<min>54</min>
+		<hemisphere>S</hemisphere>
+	</latitude>
+	<longitude>
+		<deg>151</deg>
+		<min>46</min>
+		<hemisphere>E</hemisphere>
+	</longitude>
+	<exports class="kop.ports.PortCargoTypeList">
+		<export class="kop.ports.PortCargoType">
+			<typeName>Coal</typeName>
+			<destinations>
+				<destination>
+					<name>Japan</name>
+					<yearlyAmount>104800</yearlyAmount>
+				</destination>
+				<destination>
+					<name>Korea</name>
+					<yearlyAmount>43100</yearlyAmount>
+				</destination>
+			</destinations>
+		</export>
+	</exports>
+</port>

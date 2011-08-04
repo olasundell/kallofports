@@ -59,4 +59,14 @@ public class CargoTypeList extends ArrayList<CargoType> {
 
 		return list;
 	}
+
+	public CargoType getTypeByName(String typeName) throws NoSuchCargoTypeException {
+		for (CargoType type: this) {
+			if (type.getName().equalsIgnoreCase(typeName)) {
+				return type;
+			}
+		}
+
+		throw new NoSuchCargoTypeException(String.format("Could not find cargo type %s", typeName));
+	}
 }

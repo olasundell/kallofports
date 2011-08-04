@@ -1,10 +1,8 @@
 package kop.ports;
 
-import kop.cargo.CargoType;
-import kop.cargo.CargoTypeList;
 import kop.cargo.FreightMarket;
 import kop.game.Game;
-import kop.ships.ModelSerializer;
+import kop.serialization.ModelSerializer;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertTrue;

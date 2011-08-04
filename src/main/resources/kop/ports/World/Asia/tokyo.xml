@@ -1,0 +1,13 @@
+<port name="Tokyo">
+	<unlocode>JP TYO</unlocode>
+	<latitude>
+		<deg>35</deg>
+		<min>39</min>
+		<hemisphere>N</hemisphere>
+	</latitude>
+	<longitude>
+		<deg>139</deg>
+		<min>47</min>
+		<hemisphere>E</hemisphere>
+	</longitude>
+</port>

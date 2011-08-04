@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TODO replace this factory with kop.ships.ModelSerializer usage.
+ * TODO replace this factory with kop.serialization.ModelSerializer usage.
  * @deprecated
  */
 class ShipClassesFactory {
