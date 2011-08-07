@@ -1,6 +1,7 @@
 package kop.cargo;
 
 import kop.game.Game;
+import kop.ports.PortCargoType;
 import kop.ports.PortProxy;
 import kop.serialization.ModelSerializer;
 import kop.serialization.SerializationException;
@@ -82,5 +83,24 @@ public class FreightMarket implements FreightCarrier {
 
 	public void resetFreightMarket() {
 		market.clear();
+	}
+
+	public Cargo generateCargoPerYearlyAmount(CargoType type, double yearlyAmount) {
+		CargoImpl cargo = new CargoImpl(type);
+		Random random;
+		if (gameInstance == null) {
+			random = Game.getInstance().getRandom();
+		} else {
+			random = gameInstance.getRandom();
+		}
+
+//		cargo.setWeight((int) Math.abs(random.nextGaussian() * (yearlyAmount/365)));
+		cargo.setWeight((int) Math.round(random.nextDouble() * 2.0 * (yearlyAmount/365)));
+
+		// TODO the following numbers needs to be adjusted according to distance, demand and commodity.
+		cargo.setPricePerVolume(Math.abs(random.nextGaussian() * 10));
+		cargo.setDeadline(Game.getInstance().getFutureDate(1 + (int) Math.abs(random.nextGaussian()*100)));
+		return cargo;
+
 	}
 }

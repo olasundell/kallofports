@@ -44,17 +44,27 @@ public class Game {
 	private double interestRate = 4.0;
 
 	/**
+	 * this is used to avoid cyclic references within the code
+	 * ie a call to Game.getInstance() from code run by the Game() constructor.
+	 * this creates a chicken-and-egg scenario.
+	 */
+	private static boolean creationRunning = false;
+
+	/**
 	 * This constructor isn't meant to be used by the outside world
 	 * @see .getInstance()
 	 */
 	public Game() {
+		Game.creationRunning = true;
+
 		logger = LoggerFactory.getLogger(this.getClass());
 		try {
 			worldPorts = new PortsOfTheWorld();
 			populatePorts();
-		} catch (Exception e) {
-			logger.error("Failed to populate ports",e);
+		} catch (SerializationException e) {
+			logger.error("Failed to populate ports", e);
 		}
+
 		calendar = new GregorianCalendar(1970,0,0,0,0);
 		freightMarket = new FreightMarket(this);
 
@@ -66,6 +76,7 @@ public class Game {
 		deliveredFreights = new HashMap<Company, List<Freight>>();
 
 		populateShipClasses();
+		Game.creationRunning = false;
 	}
 
 	/**
@@ -81,6 +92,10 @@ public class Game {
 	 */
 
 	private static void createInstance() {
+		if (creationRunning) {
+			// a chicken-and-egg situation has occurred, which means that we have a cyclic reference somewhere in our code.
+			throw new ConcurrentModificationException("An object tried to retrieve a Game instance from within the Game() constructor.");
+		}
 		instance = new Game();
 	}
 
@@ -101,7 +116,7 @@ public class Game {
 	 * TODO why is this different from populateShipClasses?
 	 */
 
-	private void populatePorts() throws Exception {
+	private void populatePorts() throws SerializationException {
 		worldPorts.populatePorts();
 	}
 
@@ -176,21 +191,22 @@ public class Game {
 
 	/**
 	 * Creates new freights.
+	 * TODO rewrite needed, use the new Port exports information.
 	 */
 
 	public void generateDailyFreights() {
 		for (Port p: worldPorts.getPortsAsList()) {
 			Cargo cargo = null;
-			try {
-				int index = getRandom().nextInt(FreightMarket.getCargoTypes().size());
-				cargo = freightMarket.generateCargo(FreightMarket.getCargoTypes().get(index));
-			} catch (Exception e) {
-				logger.error("Could not generate daily freights.",e);
+			for (PortCargoType portCargoType: p.getPortCargoTypes()) {
+				for (PortCargoTypeDestination destination: portCargoType.getDestinations()) {
+					cargo = freightMarket.generateCargoPerYearlyAmount(portCargoType.getType(),
+							destination.getYearlyAmount());
+					freightMarket.generateFreight(p.getProxy(),
+							destination.getPortProxy(),
+							cargo);
+				}
 			}
 
-			freightMarket.generateFreight(p.getProxy(),
-					worldPorts.getRandomDestination(p),
-					cargo);
 		}
 	}
 

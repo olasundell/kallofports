@@ -235,6 +235,16 @@ public class Port {
 		return new PortProxy(this);
 	}
 
+	public PortCargoTypeList getPortCargoTypes() {
+		return portCargoTypes;
+	}
+
+	public void calculateDestinationPorts(PortsOfTheWorld ports) {
+		for (PortCargoType portCargoType: getPortCargoTypes()) {
+			portCargoType.calculateDestinationPorts(ports);
+		}
+	}
+
 	@Root
 	public static class LatLong {
 		@Element

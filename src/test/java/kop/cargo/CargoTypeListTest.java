@@ -41,6 +41,17 @@ public class CargoTypeListTest {
 		CargoTypeList crudeList = list.find(cargoTypeSubstr);
 		assertNotNull(crudeList);
 		assertTrue("Returned list is empty when searching for cargo type" + cargoTypeSubstr, crudeList.size() > 0);
+
+		boolean exceptionThrown = false;
+
+		try {
+			list.getTypeByName("Foobar");
+		} catch (NoSuchCargoTypeException e) {
+			// good
+			exceptionThrown = true;
+		}
+
+		assertTrue("Exception wasn't thrown when trying to find a non-existing cargo type",exceptionThrown);
 	}
 
 	@Test
@@ -52,5 +63,4 @@ public class CargoTypeListTest {
 			assertFalse("Cargo type has empty name" + type.toString(), type.getName().isEmpty());
 		}
 	}
-
 }
