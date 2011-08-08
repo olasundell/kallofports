@@ -24,7 +24,7 @@ public class GameTestUtil {
 	public static final String PORT_NAME = "Durban";
 	public static final String DEST_PORT_NAME = "Singapore";
 
-	public static synchronized void setupInstanceForTest() {
+	public static synchronized Game setupInstanceForTest() {
 		Logger logger = LoggerFactory.getLogger(GameTestUtil.class);
 
 		logger.debug("Setting up a test player company");
@@ -65,6 +65,7 @@ public class GameTestUtil {
 		playerCompany.addShip(shipModels[5]);
 
 		addCargoAndSetSail(logger, g, playerCompany, PORT_NAME, DEST_PORT_NAME, shipModels[5]);
+		return g;
 	}
 
 	private static void addCargoAndSetSail(Logger logger, Game g, Company playerCompany, String portName, String destPortName, ShipModel ship) {

@@ -4,6 +4,7 @@ import com.bbn.openmap.proj.coords.DMSLatLonPoint;
 import kop.cargo.CargoType;
 import kop.map.routecalculator.CouldNotFindPointException;
 import kop.map.routecalculator.Point;
+import kop.serialization.SerializationException;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
@@ -23,7 +24,6 @@ public class Port {
 	private String unlocode;
 	private String bunkerOil;
 	private String dieselOil;
-	private String countryCode;
 	private String harbourSize;
 	private String harbourType;
 	private String drydock;
@@ -77,7 +77,6 @@ public class Port {
 		result = 31 * result + (unlocode != null ? unlocode.hashCode() : 0);
 		result = 31 * result + (bunkerOil != null ? bunkerOil.hashCode() : 0);
 		result = 31 * result + (dieselOil != null ? dieselOil.hashCode() : 0);
-		result = 31 * result + (countryCode != null ? countryCode.hashCode() : 0);
 		result = 31 * result + (harbourSize != null ? harbourSize.hashCode() : 0);
 		result = 31 * result + (harbourType != null ? harbourType.hashCode() : 0);
 		result = 31 * result + (drydock != null ? drydock.hashCode() : 0);
@@ -96,11 +95,6 @@ public class Port {
 
 	public void setDieselOil(String dieselOil) {
 		this.dieselOil = dieselOil;
-	}
-
-
-	public void setCountryCode(String countryCode) {
-		this.countryCode = countryCode;
 	}
 
 	public void setLatitude(String deg, String min, String hemisphere) {
@@ -147,7 +141,7 @@ public class Port {
 	}
 
 	public String getCountryCode() {
-		return countryCode;
+		return unlocode.substring(0,2);
 	}
 
 	public void setCountry(String country) {
@@ -239,7 +233,7 @@ public class Port {
 		return portCargoTypes;
 	}
 
-	public void calculateDestinationPorts(PortsOfTheWorld ports) {
+	public void calculateDestinationPorts(PortsOfTheWorld ports) throws SerializationException {
 		for (PortCargoType portCargoType: getPortCargoTypes()) {
 			portCargoType.calculateDestinationPorts(ports);
 		}

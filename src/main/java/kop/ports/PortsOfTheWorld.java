@@ -1,5 +1,6 @@
 package kop.ports;
 
+import kop.cargo.CargoType;
 import kop.game.Game;
 import kop.serialization.ModelSerializer;
 import kop.serialization.SerializationException;
@@ -44,6 +45,32 @@ public class PortsOfTheWorld {
 		PortsOfTheWorld instance = new PortsOfTheWorld();
 		instance.populatePorts();
 		return instance.ports;
+	}
+
+	public List<Port> getPortsForCountry(String country) throws NoSuchPortException, Countries.NoSuchCountryException {
+		List<Port> retList = new ArrayList<Port>();
+		Countries countries = null;
+
+		try {
+			countries = Countries.getInstance();
+		} catch (SerializationException e) {
+			throw new NoSuchPortException(e);
+		}
+
+		String countryCode = countries.getCountryCode(country);
+
+		for (Port p: ports.values()) {
+			if (p.getCountryCode().equals(countryCode)) {
+				retList.add(p);
+			}
+		}
+
+		return retList;
+	}
+
+	public List<Port> getPortForCargoType(String countryName, CargoType type) throws Countries.NoSuchCountryException, NoSuchPortException {
+		// TODO filter ports.
+		return getPortsForCountry(countryName);
 	}
 
 	public Port putPort(String name) {

@@ -2,19 +2,19 @@ package kop.game;
 
 import kop.cargo.*;
 import kop.map.routecalculator.ASRoute;
-import kop.ports.NoRouteFoundException;
-import kop.ports.NoSuchPortException;
-import kop.ports.Port;
-import kop.ports.PortProxy;
+import kop.ports.*;
+import kop.serialization.SerializationException;
 import kop.ships.engine.EngineList;
 import kop.ships.model.ShipModel;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.*;
 
-import static org.testng.AssertJUnit.*;
+import static org.testng.Assert.*;
+
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,8 +28,8 @@ public class GameTest {
 	private Game instance;
 
 	@BeforeMethod
-	public void setUp() throws Exception {
-		instance = Game.getInstance();
+	public void setUp() throws ParseException {
+		instance = GameTestUtil.setupInstanceForTest();
 		String s = "1999-12-31 23:00";
 		Date d = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, new Locale("sv")).parse(s);
 		instance.setDate(d);
@@ -55,9 +55,14 @@ public class GameTest {
 
 	@Test
 	public void generateDailyFreightsShouldCreateFreights() {
-		assertEquals(0,instance.getFreightMarket().getFreights().size());
+		instance.getFreightMarket().resetFreightMarket();
 		instance.generateDailyFreights();
-		assertFalse("generateDailyFreights didn't generate any freights!", 0==instance.getFreightMarket().getFreights().size());
+		assertFalse(0==instance.getFreightMarket().getFreights().size(), "generateDailyFreights didn't generate any freights!");
+		for (Freight f: instance.getFreightMarket().getFreights()) {
+			assertNotNull(f.getCargo(), "A freight should always have a cargo");
+			assertNotNull(f.getDestination(), "A freight should always have a destination");
+			assertNotNull(f.getOrigin(), "A freight should always have a origin");
+		}
 	}
 	/**
 	 *  This is more of an integration test.
@@ -144,7 +149,7 @@ public class GameTest {
 		double currentMoney = instance.getPlayerCompany().getMoney();
 		double totalPrice = freight.getCargo().getTotalPrice();
 		double expected = money + totalPrice;
-		assertEquals("Current money does not equal expected value.", expected, currentMoney);
+		assertEquals(currentMoney, expected,  "Current money does not equal expected value.");
 	}
 
 	// TODO this test is broken, needs to be fixed.
@@ -157,6 +162,26 @@ public class GameTest {
 		ShipModel ship = null;
 		ASRoute route = Game.getInstance().getRoute(origin, destination, ship);
 		assertNotNull(route);
+	}
+
+	@Test
+	public void getPortsInCountry() throws Countries.NoSuchCountryException, NoSuchPortException {
+		List<Port> ports = Game.getInstance().getPortsInCountry("Japan");
+		assertNotNull(ports);
+		assertTrue(ports.size() > 0, "No ports in Japan? Strange.");
+	}
+
+	// TODO this fails. Something -is- wrong with the routing code.
+//	@Test(groups = {"heavy"})
+	public void testRoutesBetweenAllPorts() throws SerializationException, NoRouteFoundException {
+		List<Port> ports = new ArrayList<Port>(PortsOfTheWorld.getPorts().values());
+		ShipModel ship = ShipModel.createShip("Dummy name",instance.getShipClasses().get(0));
+
+		for (int i=0;i<ports.size();i++) {
+			for (int j=i+1;j<ports.size();j++) {
+				ASRoute route = Game.getInstance().getRoute(ports.get(i).getProxy(), ports.get(j).getProxy(), ship);
+			}
+		}
 	}
 
 	private static class MyGameStateListener implements GameStateListener {

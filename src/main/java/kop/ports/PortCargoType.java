@@ -1,8 +1,7 @@
 package kop.ports;
 
-import com.sun.java.swing.plaf.gtk.GTKConstants;
 import kop.cargo.*;
-import kop.game.Game;
+import kop.serialization.SerializationException;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
@@ -22,6 +21,7 @@ public class PortCargoType {
 	private org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
 //	@Element(name="typeName")
 	private String typeName;
+	@ElementList
 	private List<PortCargoTypeDestination> destinations;
 
 	public PortCargoType() {
@@ -33,12 +33,10 @@ public class PortCargoType {
 		type = cargoType;
 	}
 
-	@ElementList
 	public Collection<PortCargoTypeDestination> getDestinations() {
 		return destinations;
 	}
 
-	@ElementList
 	public void setDestinations(Collection<PortCargoTypeDestination> destinations) {
 		this.destinations.addAll(destinations);
 	}
@@ -46,24 +44,28 @@ public class PortCargoType {
 	/**
 	 * This needs to be run after all the ports are added to the PortsOfTheWorld portmap,
 	 * otherwise we'll have a chicken-and-egg scenario when we try to retrieve PortProxy results for our destinations.
-	 * @param ports we cannot use Game.getInstance() since we're setting up, remember?
 	 */
-	public void calculateDestinationPorts(PortsOfTheWorld ports) {
-		Continent continent = new Continent();
-		Country country = new Country();
+	public void calculateDestinationPorts(PortsOfTheWorld ports) throws SerializationException {
 
-		String unlocode = "";
+		Countries countries = null;
+
+		countries = Countries.getInstance();
+
+		PortProxy portProxy = null;
 		for (PortCargoTypeDestination destination: destinations) {
-			if (continent.isContinent(destination.getName())) {
-				unlocode = continent.getPortForCargoType(destination.getName(), type);
-			} else if (country.isCountry(destination.getName()))	{
-				unlocode = country.getPortForCargoType(destination.getName(), type);
-			}
 
 			try {
-				destination.setPortProxy(ports.getPortByUnlocode(unlocode).getProxy());
+//				if (continent.isContinent(destination.getName())) {
+//				unlocode = continent.getPortForCargoType(destination.getName(), type);
+//				} else
+				if (countries.isCountry(destination.getName()))	{
+					portProxy = ports.getPortForCargoType(destination.getName(), type).get(0).getProxy();
+				}
+				destination.setPortProxy(portProxy);
 			} catch (NoSuchPortException e) {
-				logger.error(String.format("Could not find port for PortCargoDestination %s, tried unlocode %s", destination.getName(), unlocode),e);
+				logger.error(String.format("Could not find port for PortCargoDestination %s", destination.getName()),e);
+			} catch (Countries.NoSuchCountryException e) {
+				logger.error(String.format("Could not find country for PortCargoDestination %s", destination.getName()),e);
 			}
 		}
 	}
@@ -88,57 +90,4 @@ public class PortCargoType {
 		return type;
 	}
 
-	// TODO these classes need a LOT of refactoring. Lots!
-	private static class Continent {
-		private String[] arr = {
-				"North America",
-				"South America",
-				"Oceania",
-				"Africa",
-				"Middle East",
-				"Asia",
-				"Europe"
-		};
-
-		public boolean isContinent(String name) {
-			for (String continent: arr) {
-				if (name.equalsIgnoreCase(continent)) {
-					return true;
-				}
-			}
-
-			return false;
-		}
-
-		public String getPortForCargoType(String name, CargoType type) {
-			return "";
-		}
-	}
-
-	private static class Country {
-		private String[] arr = {
-				"Japan",
-				"Korea"
-		};
-
-		public boolean isCountry(String name) {
-			for (String country: arr) {
-				if (name.equalsIgnoreCase(country)) {
-					return true;
-				}
-			}
-
-			return false;
-		}
-
-		public String getPortForCargoType(String name, CargoType type) {
-			if (name.equals("Japan")) {
-				return "JP TYO";
-			} else if (name.equals("Korea")) {
-				return "KR PUS";
-			} else {
-				return "";
-			}
-		}
-	}
 }

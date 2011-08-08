@@ -354,4 +354,7 @@ public class Game {
 		fireGameStateChanged();
 	}
 
+	public List<Port> getPortsInCountry(String country) throws Countries.NoSuchCountryException, NoSuchPortException {
+		return worldPorts.getPortsForCountry(country);
+	}
 }
