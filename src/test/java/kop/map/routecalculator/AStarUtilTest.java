@@ -195,9 +195,7 @@ public class AStarUtilTest {
 		assertRoute(closestStartPoint, closestGoalPoint, route);
 	}
 
-//	@Test
-	// TODO this test fails miserably and needs to be fixed urgently,
-	// it indicates that something is horribly wrong in the routing code.
+	@Test(groups = {"heavy"})
 	public void findRouteBetweenTwoPortsThroughCanal() throws NoSuchPortException, CouldNotFindPointException, NoRouteFoundException {
 		Point start = aStarUtil.findClosestPointForPort(Game.getInstance().getPortByName("Barcelona").getProxy(),
 				getRealWorld());
@@ -209,6 +207,17 @@ public class AStarUtilTest {
 
 		ASRoute panamaRoute = aStarUtil.findRouteThroughPanamaCanal(start, goal, getRealWorld());
 		assertRoute(start, goal, panamaRoute);
+	}
+
+	@Test
+	public void bayWorldRoute() throws CouldNotFindPointException, NoRouteFoundException {
+		NewWorld world = Util.getBayWorld();
+		ASRoute route = aStarUtil.aStar(world.lats[20].longitudes[11], world.lats[1].longitudes[11],world);
+		assertNotNull(route);
+		System.out.println(world.toString(route));
+		route = aStarUtil.aStar(world.lats[21].longitudes[11], world.lats[1].longitudes[11],world);
+		assertNotNull(route);
+		System.out.println(world.toString(route));
 	}
 
 	private void assertRoute(Point start, Point goal, ASRoute route) {

@@ -1,6 +1,7 @@
 package kop.company;
 
 import kop.game.Game;
+import kop.game.GameTestUtil;
 import kop.ports.NoSuchPortException;
 import kop.ships.*;
 import kop.ships.blueprint.ShipBlueprint;
@@ -11,6 +12,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.testng.Assert.assertFalse;
@@ -38,17 +40,20 @@ public class CompanyTest {
 	@BeforeMethod
 	public void setup() throws NoSuchPortException {
 		Game.getInstance().resetPlayerCompany();
-		company = Game.getInstance().getPlayerCompany();
-		company.setHomePort(Game.getInstance().getPortByName("Durban").getProxy());
-
-		ContainerShipModel shipModel = (ContainerShipModel) ShipModel.createShip(DUMMY_SHIP_NAME,
-				ShipClass.getShipClasses().get(ShipBlueprint.ShipType.container, 0));
-		shipModel.getBlueprint().setDailyCost(100);
-		company.addShip(shipModel);
-
-		Loan loan = new Loan(1000,12);
-		company.addLoan(loan);
-		shipClasses = ShipClass.getShipClasses();
+		company = GameTestUtil.setupInstanceForTest().getPlayerCompany();
+		shipClasses = Game.getInstance().getShipClasses();
+//		Game.getInstance().resetPlayerCompany();
+//		company = Game.getInstance().getPlayerCompany();
+//		company.setHomePort(Game.getInstance().getPortByName("Durban").getProxy());
+//
+//		ContainerShipModel shipModel = (ContainerShipModel) ShipModel.createShip(DUMMY_SHIP_NAME,
+//				ShipClass.getShipClasses().get(ShipBlueprint.ShipType.container, 0));
+//		shipModel.getBlueprint().setDailyCost(100);
+//		company.addShip(shipModel);
+//
+//		Loan loan = new Loan(1000,12);
+//		company.addLoan(loan);
+//		shipClasses = ShipClass.getShipClasses();
 	}
 
 	@AfterClass
@@ -65,14 +70,14 @@ public class CompanyTest {
 	public void testDoDailyCosts() throws Exception {
 		company.setMoney(1000);
 		company.doDailyCosts();
-		assertEquals(900.0, company.getMoney());
+		assertEquals(1000 - company.getDailyCosts(), company.getMoney());
 	}
 
 	@Test
 	public void testDoMonthlyCosts() throws Exception {
 		company.setMoney(1000);
 		company.doMonthlyCosts();
-		assertEquals(990.0, company.getMoney());
+		assertEquals(1000 - company.getMonthlyCosts(), company.getMoney());
 	}
 
 	@Test
@@ -86,8 +91,9 @@ public class CompanyTest {
 	public void purchaseShipAndAssertThatCurrentMoneyAddsUp() {
 		int money = 100000000;
 		company.setMoney(money);
+		int oldNoOfShips = company.getNumberOfShips();
 		assertTrue(company.purchaseShip(shipClasses.get(0)));
-		assertEquals(2,company.getNumberOfShips());
+		assertEquals(oldNoOfShips+1,company.getNumberOfShips());
 		assertEquals(money - shipClasses.get(0).getPrice(), company.getMoney());
 	}
 
@@ -99,9 +105,11 @@ public class CompanyTest {
 
 		assertEquals(1, company.getLoans().size());
 
+
+		int numberOfShips = company.getNumberOfShips();
 		company.purchaseShip(loanPercentage, "Dummy", shipClasses.get(0));
 
-		assertEquals(2, company.getNumberOfShips());
+		assertEquals(numberOfShips + 1, company.getNumberOfShips());
 
 		double v = ((100.0 - loanPercentage) / 100.0) * shipClasses.get(0).getPrice();
 
@@ -115,6 +123,7 @@ public class CompanyTest {
 		boolean exceptionThrown = false;
 		try {
 			company.purchaseShip(100, DUMMY_SHIP_NAME, shipClasses.get(0));
+			company.purchaseShip(100, DUMMY_SHIP_NAME, shipClasses.get(0));
 		} catch (ShipnameAlreadyExistsException e) {
 			exceptionThrown = true;
 		}
@@ -126,6 +135,12 @@ public class CompanyTest {
 	public void findShipsDockedAtASpecificPort() {
 		List<ShipModel> list = company.findShipsInPort(company.getHomePort());
 		assertNotNull(list);
-		assertEquals(company.getShips(), list);
+		List<ShipModel> shipsThatShouldBeThere = new ArrayList<ShipModel>();
+		for (ShipModel s: company.getShips()) {
+			if (s.isInPort() && s.getCurrentPosition().getCurrentPort().equals(company.getHomePort())) {
+				shipsThatShouldBeThere.add(s);
+			}
+		}
+		assertEquals(shipsThatShouldBeThere, list);
 	}
 }

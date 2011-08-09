@@ -81,6 +81,7 @@ public class Point implements Cloneable {
 
 	public void resetParent() {
 		parent = null;
+		setParentCost(0);
 	}
 
 	public void setParent(Point p) {
@@ -88,7 +89,7 @@ public class Point implements Cloneable {
 			throw new IllegalArgumentException("Trying to create a circular reference by setting parent to this!");
 		}
 
-		if (p.getParent() == this) {
+		if (p != null && p.getParent() == this) {
 			throw new IllegalArgumentException("Trying to create a circular reference by setting parent's parent to this!");
 		}
 		setParentCost(distance(p));

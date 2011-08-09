@@ -293,6 +293,16 @@ public class NewWorld {
 		return waterVerifier;
 	}
 
+	public void clean() {
+		for (int i=0;i<lats.length;i++) {
+			for (int j=0;j<lats[i].longitudes.length;j++) {
+				if (lats[i].longitudes[j] != null) {
+					lats[i].longitudes[j].resetParent();
+				}
+			}
+		}
+	}
+
 	/**
 	 * Contains an array of Points which represent longitudes. Mainly used for persistence purposes.
 	 */
@@ -343,6 +353,10 @@ public class NewWorld {
 	}
 
 	public static NewWorld readFromFile(String filename) {
+		return readFromFile(filename, DEFAULT_NORTH_OFFSET, DEFAULT_SOUTH_OFFSET);
+	}
+
+	public static NewWorld readFromFile(String filename, int northOffset, int southOffset) {
 		File file = new File(filename);
 		NewWorld world = null;
 		try {
@@ -357,6 +371,10 @@ public class NewWorld {
 			reader.close();
 
 			world = new NewWorld(lines.size(), lines.get(0).length());
+
+			world.setNorthOffset(northOffset);
+			world.setSouthOffset(southOffset);
+
 			world.setScale(lines.size() / 180d);
 			for (int i=0;i<lines.size();i++) {
 				for (int j=0;j<lines.get(i).length();j++) {

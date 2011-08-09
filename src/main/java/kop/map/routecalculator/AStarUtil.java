@@ -19,7 +19,7 @@ public class AStarUtil {
 	public final static Point panamaAtlantic = new Point(9.31,-79.92);
 	public final static Point panamaPacific = new Point(8.93,-79.56);
 	public static HashMap<CompoundPortKey, ASDistance> cachedDistances = new HashMap<CompoundPortKey, ASDistance>();
-	private static final int MAX_ASTAR_ITERATIONS = 50000;
+	private static final int MAX_ASTAR_ITERATIONS = 100000;
 
 	Logger logger;
 	public AStarUtil() {
@@ -88,24 +88,24 @@ public class AStarUtil {
 
 		// then suez
 		// TODO disabled. Canal routing obviously needs more work.
-//		try {
-//			route = findRouteThroughSuezCanal(closestStartPoint, closestGoalPoint, world);
-//			addStartAndGoalToRoute(startPoint, goalPoint, route);
-//
-//			distance.addRoute(route);
-//		} catch (NoRouteFoundException e) {
-//			logger.debug("Failed to find route through Suez", e);
-//		}
-//
+		try {
+			route = findRouteThroughSuezCanal(closestStartPoint, closestGoalPoint, world);
+			addStartAndGoalToRoute(startPoint, goalPoint, route);
+
+			distance.addRoute(route);
+		} catch (NoRouteFoundException e) {
+			logger.debug("Failed to find route through Suez", e);
+		}
+
 //		// then panama
-//		try {
-//			route = findRouteThroughPanamaCanal(closestStartPoint, closestGoalPoint, world);
-//			addStartAndGoalToRoute(startPoint, goalPoint, route);
-//
-//			distance.addRoute(route);
-//		} catch (NoRouteFoundException e) {
-//			logger.debug("Failed to find route through Panama", e);
-//		}
+		try {
+			route = findRouteThroughPanamaCanal(closestStartPoint, closestGoalPoint, world);
+			addStartAndGoalToRoute(startPoint, goalPoint, route);
+
+			distance.addRoute(route);
+		} catch (NoRouteFoundException e) {
+			logger.debug("Failed to find route through Panama", e);
+		}
 
 		cachedDistances.put(new CompoundPortKey(start, goal), distance);
 
@@ -320,10 +320,14 @@ public class AStarUtil {
 			Point currentPoint = getLowestF(openset, start, goal);
 
 			// TODO this shouldn't be commented out, fix log4j settings.
-//			logger.debug(world.toStringCutoff(reconstructPath(start, currentPoint)));
+//			logger.debug(world.toString(reconstructPath(currentPoint)));
 
 			if (currentPoint.equals(goal)) {
-				return reconstructPath(start, goal, origGoal);
+				// TODO world cleaning is necessary
+//				ASRoute route = reconstructPath(start, goal, origGoal);
+				ASRoute route = reconstructPath(goal);
+				world.clean();
+				return route;
 			}
 
 			openset.remove(currentPoint);
@@ -363,13 +367,13 @@ public class AStarUtil {
 
 	/**
 	 * Constructs an ASRoute from the points.
-	 * @param start obviously not used.
 	 * @param cameFrom
 	 * @return an ASRoute which is mirrored (ie goal first)
 	 * TODO reverse the ASRoute
 	 * TODO add start and goal here
 	 */
-	protected ASRoute reconstructPath(Point start, Point cameFrom, Point origGoal) {
+//	protected ASRoute reconstructPath(Point start, Point cameFrom, Point origGoal) {
+	protected ASRoute reconstructPath(Point cameFrom) {
 		ASRoute route = new ASRoute();
 
 		Point current = cameFrom;
@@ -381,6 +385,12 @@ public class AStarUtil {
 		}
 
 		route.addPoint((Point) current.clone());
+
+		for (int i=0;i<route.getNumberOfPoints()-1;i++) {
+			route.getPoints().get(i).setParent(route.getPoints().get(i+1));
+		}
+
+		route.getPoints().get(route.getNumberOfPoints()-1).resetParent();
 
 		return route;
 	}

@@ -26,7 +26,7 @@ public class ASRoute {
 	 */
 	public void addPoint(Point p) {
 		if (points.contains(p)) {
-			throw new IllegalArgumentException("The point which you are trying to add is already in the list!");
+			throw new IllegalArgumentException(String.format("The point which you are trying to add, %s, is already in the list!", p));
 		}
 		if (points.size() > 0) {
 			points.get(points.size()-1).setParent(p);

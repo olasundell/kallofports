@@ -1,0 +1,13 @@
+<port name="Barcelona">
+	<unlocode>ES BCN</unlocode>
+	<latitude>
+		<deg>41</deg>
+		<min>20</min>
+		<hemisphere>N</hemisphere>
+	</latitude>
+	<longitude>
+		<deg>2</deg>
+		<min>10</min>
+		<hemisphere>E</hemisphere>
+	</longitude>
+</port>

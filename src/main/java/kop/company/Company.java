@@ -64,11 +64,16 @@ public class Company {
 	 * Subtracts monthly costs from the company, including mortgage from loans.
 	 */
 	public void doMonthlyCosts() {
+		double costs = getMonthlyCosts();
+		setMoney(getMoney() - costs);
+	}
+
+	public double getMonthlyCosts() {
 		double costs = 0;
 		for (Loan l: loans) {
 			costs += l.doMortgage();
 		}
-		setMoney(getMoney() - costs);
+		return costs;
 	}
 
 	public String getName() {

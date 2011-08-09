@@ -10,6 +10,10 @@ package kop.map.routecalculator;
 public class Util {
 	private static NewWorld world = null;
 
+	public static NewWorld getBayWorld() {
+		return NewWorld.readFromFile("bayworldtest.txt", 0, 0);
+	}
+
 	public static NewWorld getBlankWorld() {
 		return getBlankWorld(1, 20, 0);
 	}
