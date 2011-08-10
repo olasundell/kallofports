@@ -1,8 +1,6 @@
 package kop.map.routecalculator;
 
 import com.bbn.openmap.LatLonPoint;
-import com.bbn.openmap.proj.Length;
-import kop.ports.Port;
 import kop.ports.PortProxy;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
@@ -27,6 +25,8 @@ public class Point implements Cloneable {
 	@Attribute
 	private int y;
 	private Logger logger;
+	private double distanceToGoal;
+	private double totalCost;
 
 	public Point() {
 		logger = LoggerFactory.getLogger(this.getClass());
@@ -60,7 +60,7 @@ public class Point implements Cloneable {
 	 * Calculates the total cost for a path from this point and backwards to its origin.
 	 * @return
 	 */
-	public double getTotalCost() {
+	protected void calcTotalCost() {
 		// TODO do we want to save this result for optimisation?
 		double v = parentCost;
 
@@ -72,11 +72,20 @@ public class Point implements Cloneable {
 			v += parent.getTotalCost();
 		}
 
-		return v;
+		totalCost = v;
+	}
+
+	public double getTotalCost() {
+		return totalCost;
+	}
+
+	public double getTotalCostIncludingDistance() {
+		return getTotalCost() + distanceToGoal;
 	}
 
 	private void setParentCost(double parentCost) {
 		this.parentCost = parentCost;
+		calcTotalCost();
 	}
 
 	public void resetParent() {
@@ -92,8 +101,8 @@ public class Point implements Cloneable {
 		if (p != null && p.getParent() == this) {
 			throw new IllegalArgumentException("Trying to create a circular reference by setting parent's parent to this!");
 		}
-		setParentCost(distance(p));
 		parent = p;
+		setParentCost(distance(p));
 	}
 
 	public Point getParent() {
@@ -141,9 +150,9 @@ public class Point implements Cloneable {
 		int diagonalSteps = Math.min(Math.abs(getX() - p.getX()), Math.abs(getY()- p.getY()));
 		int straightSteps = Math.abs(getX() - p.getX()) + Math.abs(getY() - p.getY()) - 2 * diagonalSteps;
 
-		return straightSteps + diagonalSteps * SQRT2;
+//		return straightSteps + diagonalSteps * SQRT2;
 
-//		return haversineDistance(p);
+		return haversineDistance(p);
 	}
 
 	private double haversineDistance(Point p) {
@@ -245,5 +254,9 @@ public class Point implements Cloneable {
 
 	protected int getX() {
 		return x;
+	}
+
+	public void setGoalDistance(Point goal) {
+		distanceToGoal = distance(goal);
 	}
 }

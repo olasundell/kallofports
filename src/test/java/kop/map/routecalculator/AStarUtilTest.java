@@ -8,9 +8,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 import static org.testng.AssertJUnit.*;
 
@@ -113,13 +111,14 @@ public class AStarUtilTest {
 			}
 		}
 
-		for (int i=5;i<world.lats.length-1;i++) {
+		for (int i=5;i<world.lats.length;i++) {
 			world.lats[i].longitudes[world.lats[i].longitudes.length-1] = null;
 		}
 
 		Point start = world.lats[15].longitudes[30];
 //		Point goal = world.lats[1].longitudes[1];
-		Point goal = world.lats[10].longitudes[5];
+//		Point goal = world.lats[10].longitudes[5];
+		Point goal = world.lats[14].longitudes[18];
 
 		ASRoute route = aStarUtil.aStar(start,goal,world);
 		assertRoute(start, goal, route);
@@ -218,6 +217,17 @@ public class AStarUtilTest {
 		route = aStarUtil.aStar(world.lats[21].longitudes[11], world.lats[1].longitudes[11],world);
 		assertNotNull(route);
 		System.out.println(world.toString(route));
+	}
+
+	@Test
+	public void priorityQueue() {
+		PriorityQueue<Point> queue = new PriorityQueue<Point>(1, new Comparator<Point>() {
+			@Override
+			public int compare(Point o1, Point o2) {
+				return (int) (o1.getTotalCostIncludingDistance() - o2.getTotalCostIncludingDistance());
+			}
+		});
+		queue.add(new Point());
 	}
 
 	private void assertRoute(Point start, Point goal, ASRoute route) {

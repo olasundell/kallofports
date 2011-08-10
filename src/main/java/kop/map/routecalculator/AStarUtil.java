@@ -3,6 +3,7 @@ package kop.map.routecalculator;
 import kop.ports.NoRouteFoundException;
 import kop.ports.Port;
 
+import java.lang.annotation.RetentionPolicy;
 import java.util.*;
 
 import kop.ports.PortProxy;
@@ -306,18 +307,22 @@ public class AStarUtil {
 	 */
 	public ASRoute aStar(Point origStart, Point origGoal, NewWorld world) throws NoRouteFoundException, CouldNotFindPointException {
 		HashSet<Point> closedset = new HashSet<Point>();
-		// TODO make the openset a priority queue based on lowest F, so getLowestF() calls are avoided.
-		HashSet<Point> openset = new HashSet<Point>();
-//		ArrayList<Point> openset = new ArrayList<Point>();
+		PriorityQueue<Point> openset = new PriorityQueue<Point>(1, new Comparator<Point>() {
+			@Override
+			public int compare(Point o1, Point o2) {
+				return (int) (o1.getTotalCostIncludingDistance() * 100 - o2.getTotalCostIncludingDistance() * 100);
+			}
+		});
 
 		Point start = findClosestPoint(origStart, world);
 		Point goal = findClosestPoint(origGoal, world);
 
+		start.setGoalDistance(goal);
 		openset.add(start);
 		long tries = 0;
 
 		while (openset.size() != 0) {
-			Point currentPoint = getLowestF(openset, start, goal);
+			Point currentPoint = openset.poll();
 
 			// TODO this shouldn't be commented out, fix log4j settings.
 //			logger.debug(world.toString(reconstructPath(currentPoint)));
@@ -330,7 +335,7 @@ public class AStarUtil {
 				return route;
 			}
 
-			openset.remove(currentPoint);
+//			openset.remove(currentPoint);
 			closedset.add(currentPoint);
 
 			List<Point> neighbours = currentPoint.getNeighbours(world);
@@ -341,9 +346,10 @@ public class AStarUtil {
 				}
 
 				if (!openset.contains(p)) {
-					openset.add(p);
 					p.setParent(currentPoint);
-				} else if (currentPoint.getTotalCost() + currentPoint.distance(p) < p.getTotalCost()) {
+					p.setGoalDistance(goal);
+					openset.add(p);
+				} else if ((currentPoint.getTotalCost() + currentPoint.distance(p)) < p.getTotalCost()) {
 					openset.remove(p);
 					p.setParent(currentPoint);
 				}
