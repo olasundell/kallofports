@@ -16,7 +16,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class ShipClassesFactoryTest {
-	@Test
+//	@Test
 	public void testSaveShipClasses() throws Exception {
 		ShipClassesFactory factory = new ShipClassesFactory();
 		ArrayList<ShipClass> list = new ArrayList<ShipClass>();
@@ -36,7 +36,7 @@ public class ShipClassesFactoryTest {
 		list.add(shipClass);
 		factory.saveShipClasses("shipclasses.xml", list);
 	}
-	@Test
+//	@Test
 	public void testCreateShipClasses() throws Exception {
 		ShipClassesFactory factory = new ShipClassesFactory();
 		List<ShipClass> list =  factory.createShipClasses("shipclasses.xml");

@@ -323,7 +323,7 @@ public class Game {
 		} catch (CouldNotFindPointException e) {
 			// TODO should throw a NoRouteFoundException
 			logger.error("Could not find point", e);
-			return null;
+			throw new NoRouteFoundException(e);
 		}
 
 		return distance.shortestRoute(ship);
