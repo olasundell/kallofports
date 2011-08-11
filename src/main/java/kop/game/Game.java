@@ -300,6 +300,11 @@ public class Game {
 		return calendar.get(Calendar.HOUR) == calendar.getActualMaximum(Calendar.HOUR);
 	}
 
+	public boolean isNextTimeStepNewMonth() {
+		return isNextTimeStepNewDay() &&
+				calendar.get(Calendar.DAY_OF_MONTH) == calendar.getActualMaximum(calendar.get(Calendar.MONTH));
+	}
+
 	public final void resetPlayerCompany() {
 		if (companies.size() == 0) {
 			companies.add(new Company());
@@ -357,4 +362,5 @@ public class Game {
 	public List<Port> getPortsInCountry(String country) throws Countries.NoSuchCountryException, NoSuchPortException {
 		return worldPorts.getPortsForCountry(country);
 	}
+
 }

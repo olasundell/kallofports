@@ -57,6 +57,7 @@ public class PositionOrDirection {
 			setCurrentLatitude(currentPort.getLatitude());
 			setCurrentLongitude(currentPort.getLongitude());
 			setCurrentSpeed(0.0);
+			setDistanceLeft(0.0);
 		}
 	}
 

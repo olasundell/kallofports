@@ -194,7 +194,7 @@ public class AStarUtilTest {
 		assertRoute(closestStartPoint, closestGoalPoint, route);
 	}
 
-	@Test(groups = {"heavy"})
+	@Test
 	public void findRouteBetweenTwoPortsThroughCanal() throws NoSuchPortException, CouldNotFindPointException, NoRouteFoundException {
 		Point start = aStarUtil.findClosestPointForPort(Game.getInstance().getPortByName("Barcelona").getProxy(),
 				getRealWorld());

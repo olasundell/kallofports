@@ -1,5 +1,6 @@
 package kop.map.routecalculator;
 
+import com.vividsolutions.jts.geom.prep.PreparedPoint;
 import kop.ports.NoRouteFoundException;
 import kop.ports.Port;
 
@@ -20,7 +21,7 @@ public class AStarUtil {
 	public final static Point panamaAtlantic = new Point(9.31,-79.92);
 	public final static Point panamaPacific = new Point(8.93,-79.56);
 	public static HashMap<CompoundPortKey, ASDistance> cachedDistances = new HashMap<CompoundPortKey, ASDistance>();
-	private static final int MAX_ASTAR_ITERATIONS = 100000;
+	private static final int MAX_ASTAR_ITERATIONS = 1000000;
 
 	Logger logger;
 	public AStarUtil() {
@@ -307,21 +308,24 @@ public class AStarUtil {
 	 */
 	public ASRoute aStar(Point origStart, Point origGoal, NewWorld world) throws NoRouteFoundException, CouldNotFindPointException {
 		HashSet<Point> closedset = new HashSet<Point>();
-		PriorityQueue<Point> openset = new PriorityQueue<Point>(1, new Comparator<Point>() {
-			@Override
-			public int compare(Point o1, Point o2) {
-				return (int) (o1.getTotalCostIncludingDistance() * 100 - o2.getTotalCostIncludingDistance() * 100);
-			}
-		});
+
+		// something befouls our world! Probably a test.
+		world.clean();
 
 		Point start = findClosestPoint(origStart, world);
 		Point goal = findClosestPoint(origGoal, world);
 
-		start.setGoalDistance(goal);
+		OpenSet openset = new OpenSet(goal);
+
 		openset.add(start);
 		long tries = 0;
 
+
 		while (openset.size() != 0) {
+			if (tries == 2430) {
+				int afaa=0;
+			}
+
 			Point currentPoint = openset.poll();
 
 			// TODO this shouldn't be commented out, fix log4j settings.
@@ -347,7 +351,6 @@ public class AStarUtil {
 
 				if (!openset.contains(p)) {
 					p.setParent(currentPoint);
-					p.setGoalDistance(goal);
 					openset.add(p);
 				} else if ((currentPoint.getTotalCost() + currentPoint.distance(p)) < p.getTotalCost()) {
 					openset.remove(p);
@@ -356,7 +359,7 @@ public class AStarUtil {
 			}
 
 			tries++;
-			if (tries % 1000 == 0) {
+			if (tries % 5000 == 0) {
 				logger.debug(String.format("Number of tries: %d",tries));
 			}
 
@@ -421,13 +424,22 @@ public class AStarUtil {
 
 		@Override
 		public boolean equals(Object o) {
-			if (this == o) return true;
-			if (o == null || getClass() != o.getClass()) return false;
+			if (this == o) {
+				return true;
+			}
+			if (o == null || getClass() != o.getClass()) {
+				return false;
+			}
 
 			CompoundPortKey that = (CompoundPortKey) o;
 
-			if (goal != null ? !goal.equals(that.goal) : that.goal != null) return false;
-			if (start != null ? !start.equals(that.start) : that.start != null) return false;
+			if (goal != null ? !goal.equals(that.goal) : that.goal != null) {
+				return false;
+			}
+
+			if (start != null ? !start.equals(that.start) : that.start != null) {
+				return false;
+			}
 
 			return true;
 		}
@@ -437,6 +449,95 @@ public class AStarUtil {
 			int result = start != null ? start.hashCode() : 0;
 			result = 31 * result + (goal != null ? goal.hashCode() : 0);
 			return result;
+		}
+	}
+
+	/**
+	 * This class uses a HashSet to keep track of contains() and a PriorityQueue to keep track of ordering.
+	 * The best of two worlds. :-)
+	 * It contains quite a bit of test code and assertions to check if we run into problems with the A* algorithm.
+	 */
+
+	private static class OpenSet {
+		HashSet<Point> hashSet;
+		PriorityQueue<Point> queue;
+		Point goal;
+		List<Point> removedFromQueue;
+		List<Point> removedFromSet;
+
+		public OpenSet(Point goal) {
+			removedFromQueue = new ArrayList<Point>();
+			removedFromSet = new ArrayList<Point>();
+
+			hashSet = new HashSet<Point>();
+			queue = new PriorityQueue<Point>(1, new Comparator<Point>() {
+				@Override
+				public int compare(Point o1, Point o2) {
+					return (int) (o1.getTotalCostIncludingDistance() * 100 - o2.getTotalCostIncludingDistance() * 100);
+				}
+			});
+			this.goal = goal;
+		}
+
+		public void add(Point p) {
+			p.setGoalDistance(goal);
+			boolean s = hashSet.add(p);
+			boolean q = queue.add(p);
+
+			if (s ^ q) {
+				throw new AssertionError(String.format("Could not add %s",p));
+			}
+		}
+
+		public int size() {
+			if (queue.size() != hashSet.size()) {
+				// test code used if we get problems with the A* algorithm.
+//				ArrayList<Point> diff1 = new ArrayList<Point>();
+//				ArrayList<Point> diff2 = new ArrayList<Point>();
+//				Iterator<Point> iter = queue.iterator();
+//				while (iter.hasNext()) {
+//					Point p = iter.next();
+//					if (!hashSet.contains(p)) {
+//						diff1.add(p);
+//					}
+//				}
+//
+//				iter = hashSet.iterator();
+//
+//				while (iter.hasNext()) {
+//					Point p = iter.next();
+//					if (!queue.contains(p)) {
+//						diff2.add(p);
+//					}
+//				}
+				throw new AssertionError("Priority queue and hash set aren't the same size! Yikes!");
+			}
+			return hashSet.size();
+		}
+
+		public boolean contains(Point p) {
+			return hashSet.contains(p);
+		}
+
+		public void remove(Point p) {
+			boolean q = queue.remove(p);
+			boolean s = hashSet.remove(p);
+			if (s ^ q) {
+				throw new AssertionError(String.format("Could not remove %s",p));
+			}
+			removedFromQueue.add(p);
+			removedFromSet.add(p);
+		}
+
+		public Point poll() {
+			Point p = queue.poll();
+			if (p!=null && !hashSet.contains(p)) {
+				throw new AssertionError(String.format("Could not remove %s",p));
+			}
+
+			hashSet.remove(p);
+
+			return p;
 		}
 	}
 }

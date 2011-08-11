@@ -15,7 +15,7 @@ import java.util.List;
  * purposes but has outgrown original purpose.
  */
 @Root
-public class NewWorld {
+public class NewWorld implements Cloneable {
 	public static final int DEFAULT_SCALE = 2;
 	public static final int DEFAULT_SOUTH_OFFSET = 20;
 	public static final int DEFAULT_NORTH_OFFSET = 20;
@@ -97,11 +97,11 @@ public class NewWorld {
 	}
 
 	protected int reverseLon(double lon) {
-		return (int) (Math.round((180+lon)*scale));
+		return (int) (Math.round((180.0+lon)*scale));
 	}
 
 	protected float calcLon(int j) {
-		return (float) ((j / scale) - 180);
+		return (float) ((j / scale) - 180.0);
 	}
 
 	protected float calcLat(int i) {
@@ -154,11 +154,13 @@ public class NewWorld {
 	}
 
 	public int getLatitudeSize() {
-		return (int) ((180 - getNorthOffset() - getSouthOffset())* getScale());
+//		return (int) ((180 - getNorthOffset() - getSouthOffset())* getScale());
+		return lats.length;
 	}
 
 	public int getLongitudeSize() {
-		return (int) (360* getScale());
+//		return (int) (360* getScale());
+		return lats[0].longitudes.length;
 	}
 
 	/**
@@ -376,6 +378,7 @@ public class NewWorld {
 			world.setSouthOffset(southOffset);
 
 			world.setScale(lines.size() / 180d);
+
 			for (int i=0;i<lines.size();i++) {
 				for (int j=0;j<lines.get(i).length();j++) {
 					if (lines.get(i).charAt(j) == '.') {
@@ -418,5 +421,17 @@ public class NewWorld {
 		if (!Arrays.equals(lats, newWorld.lats)) { return false; }
 
 		return true;
+	}
+
+	@Override
+	public Object clone() {
+		Object ret = null;
+		try {
+			ret = super.clone();
+		} catch (CloneNotSupportedException e) {
+			logger.error("Couldn't clone a NewWorld",e);
+		}
+
+		return ret;
 	}
 }

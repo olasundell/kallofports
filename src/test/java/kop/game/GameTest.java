@@ -100,7 +100,7 @@ public class GameTest {
 	}
 
 	// TODO this test is disabled until routing is fixed.
-//	@Test
+	@Test
 	public void sailShipBuyAndDeliverCargo() throws Exception {
 		instance = Game.getInstance();
 		instance.resetPlayerCompany();
@@ -111,7 +111,7 @@ public class GameTest {
 
 		// choose ports
 		PortProxy fromPort = instance.getPortByName("Durban").getProxy();
-		PortProxy toPort = instance.getPortByName("Taranto").getProxy();
+		PortProxy toPort = instance.getPortByName("Barcelona").getProxy();
 
 		// add freight from port A and port B
 		FreightMarket market = instance.getFreightMarket();
@@ -130,7 +130,7 @@ public class GameTest {
 		// time step until arrived, make sure that freight is delivered properly.
 
 		// after this we've almost arrived
-		while (ship.getDistanceLeft() > 10) {
+		while (ship.getDistanceLeft() >= 10) {
 			instance.stepTime();
 		}
 
@@ -141,6 +141,17 @@ public class GameTest {
 			// if the day rolls here we will be slammed by daily costs, which will break the calculations below.
 			money -= instance.getPlayerCompany().getDailyCosts();
 		}
+		if (instance.isNextTimeStepNewMonth()) {
+			money -= instance.getPlayerCompany().getMonthlyCosts();
+		}
+
+		// fast-forward to next day so we'll get our money.
+		while (!instance.isNextTimeStepNewDay()) {
+			instance.stepTime();
+		}
+
+		// remove daily costs.
+		money -= instance.getPlayerCompany().getDailyCosts();
 		instance.stepTime();
 
 		// freight should have been delivered, money should be in the account.
@@ -172,7 +183,7 @@ public class GameTest {
 	}
 
 	// TODO this fails. Something -is- wrong with the routing code.
-//	@Test(groups = {"heavy"})
+	@Test(groups = {"heavy"})
 	public void testRoutesBetweenAllPorts() throws SerializationException, NoRouteFoundException {
 		List<Port> ports = new ArrayList<Port>(PortsOfTheWorld.getPorts().values());
 		ShipModel ship = ShipModel.createShip("Dummy name",instance.getShipClasses().get(0));

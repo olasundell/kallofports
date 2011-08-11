@@ -1,5 +1,6 @@
 package kop.map.routecalculator;
 
+import kop.game.Game;
 import kop.serialization.ModelSerializer;
 import kop.serialization.SerializationException;
 import org.testng.annotations.Test;
@@ -9,9 +10,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertNotNull;
-import static org.testng.AssertJUnit.assertNotSame;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertNotSame;
+
 
 /**
  * Created by IntelliJ IDEA.
@@ -36,11 +38,31 @@ public class NewWorldTest {
 		world2.lats[1].longitudes[0] = new Point(1,0,1,0);
 		world2.lats[1].longitudes[1] = new Point(1,1,1,1);
 
-		assertEquals(world1, world2);
+		assertEquals(world2, world1);
 
 		world2.lats[1].longitudes[0] = null;
 
-		assertNotSame(world1, world2);
+		assertNotSame(world2, world1);
+	}
+
+	@Test
+	public void correctLatLon() {
+		NewWorld world = Game.getInstance().getWorld();
+		assertEquals(world.getScale(), 2.0);
+		for (int i=0;i<world.getLatitudeSize();i++) {
+			for (int j=0;j<world.getLongitudeSize();j++) {
+				float expectedLon = (float) (j/world.getScale() - 180.0);
+				Point longitude = world.lats[i].longitudes[j];
+				if (longitude!=null) {
+					assertEquals(longitude.getLon(), expectedLon);
+					if (j==0) {
+						assertEquals(expectedLon, -180.0f);
+					} else if (j==world.getLongitudeSize() - 1) {
+						assertEquals(expectedLon, 180.0f);
+					}
+				}
+			}
+		}
 	}
 
 //	@Test
@@ -59,7 +81,7 @@ public class NewWorldTest {
 
 		NewWorld readWorld = NewWorld.readFromFile("worldoutput.txt");
 
-		assertEquals(world, readWorld);
+		assertEquals(readWorld, world);
 	}
 //	@Test
 	public void serializeDeserializeText() throws IOException {
@@ -77,7 +99,7 @@ public class NewWorldTest {
 
 		NewWorld readWorld = NewWorld.readFromFile("worldoutput.txt");
 
-		assertEquals(world, readWorld);
+		assertEquals(readWorld, world);
 	}
 
 	@Test
@@ -100,39 +122,39 @@ public class NewWorldTest {
 		ModelSerializer.saveToFile("newworld.xml",NewWorld.class, world);
 		NewWorld readWorld = (NewWorld) ModelSerializer.readFromFile(new File("newworld.xml").toURI().toURL(), NewWorld.class);
 		assertNotNull(readWorld);
-		assertEquals(world,readWorld);
+		assertEquals(readWorld, world);
 	}
 
 	@Test
 	public void reverseLat() {
 		NewWorld blankWorld = Util.getBlankWorld(1,0,0);
 
-		assertEquals(0, blankWorld.reverseLat(90));
-		assertEquals(Math.round(20 * blankWorld.getScale()), blankWorld.reverseLat(70));
-		assertEquals(Math.round(90 * blankWorld.getScale()), blankWorld.reverseLat(0));
-		assertEquals(Math.round(105* blankWorld.getScale()), blankWorld.reverseLat(-15));
-		assertEquals(Math.round(180* blankWorld.getScale()), blankWorld.reverseLat(-90));
+		assertEquals(blankWorld.reverseLat(90), 0);
+		assertEquals(blankWorld.reverseLat(70), Math.round(20 * blankWorld.getScale()));
+		assertEquals(blankWorld.reverseLat(0), Math.round(90 * blankWorld.getScale()));
+		assertEquals(blankWorld.reverseLat(-15), Math.round(105 * blankWorld.getScale()));
+		assertEquals(blankWorld.reverseLat(-90), Math.round(180 * blankWorld.getScale()));
 		blankWorld.setNorthOffset(20);
-		assertEquals(0, blankWorld.reverseLat(70));
-		assertEquals(Math.round(-20* blankWorld.getScale()), blankWorld.reverseLat(90));
+		assertEquals(blankWorld.reverseLat(70), 0);
+		assertEquals(blankWorld.reverseLat(90), Math.round(-20 * blankWorld.getScale()));
 
 	}
 	@Test
 	public void reverseLon() {
 		NewWorld blankWorld = Util.getBlankWorld(1,0,0);
-		assertEquals(Math.round(blankWorld.getScale()*180),blankWorld.reverseLon(0));
-		assertEquals(Math.round(blankWorld.getScale()*(180+75)),blankWorld.reverseLon(75));
-		assertEquals(Math.round(blankWorld.getScale()*(180-75)),blankWorld.reverseLon(-75));
+		assertEquals(blankWorld.reverseLon(0), Math.round(blankWorld.getScale() * 180));
+		assertEquals(blankWorld.reverseLon(75), Math.round(blankWorld.getScale() * (180 + 75)));
+		assertEquals(blankWorld.reverseLon(-75), Math.round(blankWorld.getScale() * (180 - 75)));
 	}
 
 	@Test
 	public void calcLatLong() {
 		NewWorld blankWorld = Util.getBlankWorld(2,0,0);
 
-		assertEquals(-175.0,(double) blankWorld.calcLon(10));
-		assertEquals(85.0 - blankWorld.getNorthOffset(), (double) blankWorld.calcLat(10));
-		assertEquals(45.0 - blankWorld.getNorthOffset(), (double) blankWorld.calcLat(90));
-		assertEquals(-15.0 - blankWorld.getNorthOffset(), (double) blankWorld.calcLat(210));
+		assertEquals((double) blankWorld.calcLon(10), -175.0);
+		assertEquals((double) blankWorld.calcLat(10), 85.0 - blankWorld.getNorthOffset());
+		assertEquals((double) blankWorld.calcLat(90), 45.0 - blankWorld.getNorthOffset());
+		assertEquals((double) blankWorld.calcLat(210), -15.0 - blankWorld.getNorthOffset());
 	}
 
 	@Test(groups = {"heavy"})
@@ -140,6 +162,6 @@ public class NewWorldTest {
 		Util.resetWorld();
 		NewWorld utilWorld = Util.getSmallWorld((float) 0.5,0,180);
 		NewWorld newWorld = NewWorld.getWorld((float) 0.5);
-		assertEquals(utilWorld, newWorld);
+		assertEquals(newWorld, utilWorld);
 	}
 }

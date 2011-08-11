@@ -147,8 +147,8 @@ public class Point implements Cloneable {
 //		          num _ Diagonal _ Steps = min{ | x a − xb |, | y a − y b |}
 //The number of straight steps that need to be taken is found using:
 //num _ Straight _ Steps = ( | x a − xb | + | y a − y b |) − 2 * num _ Diagonal _ Steps
-		int diagonalSteps = Math.min(Math.abs(getX() - p.getX()), Math.abs(getY()- p.getY()));
-		int straightSteps = Math.abs(getX() - p.getX()) + Math.abs(getY() - p.getY()) - 2 * diagonalSteps;
+//		int diagonalSteps = Math.min(Math.abs(getX() - p.getX()), Math.abs(getY()- p.getY()));
+//		int straightSteps = Math.abs(getX() - p.getX()) + Math.abs(getY() - p.getY()) - 2 * diagonalSteps;
 
 //		return straightSteps + diagonalSteps * SQRT2;
 
