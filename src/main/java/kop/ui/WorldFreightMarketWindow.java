@@ -1,6 +1,7 @@
 package kop.ui;
 
 import kop.Main;
+import kop.game.Game;
 import kop.game.GameTestUtil;
 
 import javax.swing.*;
@@ -47,7 +48,7 @@ public class WorldFreightMarketWindow implements KopWindow {
 	}
 
 	private void createUIComponents() {
-		FreightTableModel freightTableModel = new FreightTableModel();
+		FreightTableModel freightTableModel = new FreightTableModel(Game.getInstance().getFreightMarket());
 		freightTable = new JTable(freightTableModel);
 		TableRowSorter<FreightTableModel> sorter = new TableRowSorter<FreightTableModel>(freightTableModel);
 		freightTable.setRowSorter(sorter);

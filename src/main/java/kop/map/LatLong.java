@@ -11,6 +11,9 @@ import org.simpleframework.xml.Root;
 */
 @Root
 public final class LatLong implements Cloneable {
+	/**
+	 * Used for deserialization.
+	 */
 	public enum Direction {
 		latitude,
 		longitude
@@ -60,8 +63,10 @@ public final class LatLong implements Cloneable {
 		this.hemisphere = hemisphere;
 	}
 
-	public LatLong clone() {
-		return new LatLong(deg, min, hemisphere);
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
+//		return new LatLong(deg, min, hemisphere);
 	}
 
 	public double getCoordinate() {

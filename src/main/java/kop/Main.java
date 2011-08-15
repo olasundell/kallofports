@@ -45,8 +45,7 @@ public class Main {
 	}
 
 	public static void displayFrame(Class<? extends KopWindow> aClass) {
-		KopWindow window = contentPanes.get(aClass);
-		if (window == null) {
+		if (!contentPanes.containsKey(aClass)) {
 			try {
 				contentPanes.put(aClass, aClass.newInstance());
 			} catch (InstantiationException e) {
@@ -55,10 +54,10 @@ public class Main {
 				logger.error(String.format("Could not create a new instance of the class %s", aClass.getName()), e);
 			}
 		}
+		KopWindow window = contentPanes.get(aClass);
 		displayFrame(window);
 	}
 
-	// TODO rewrite this so the calling party doesn't have to create a new instance, especially of MainWindow.
 	public static void displayFrame(KopWindow window) {
 		// used for form debugging, the main method might not be in this class, it might be in a class bound to a form
 		if (!frameInitDone) {

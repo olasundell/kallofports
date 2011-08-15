@@ -42,7 +42,6 @@ public class Countries {
 		return countries.containsValue(name) || countries.containsKey(name);
 	}
 
-
 	public String getCountryCode(String country) throws NoSuchCountryException {
 		if (countries.containsKey(country)) {
 			// supplied argument is already a country code!

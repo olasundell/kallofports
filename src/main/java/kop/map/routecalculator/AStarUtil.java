@@ -20,10 +20,10 @@ public class AStarUtil {
 	public final static Point suezIndianOcean = new Point(29.93,32.56);
 	public final static Point panamaAtlantic = new Point(9.31,-79.92);
 	public final static Point panamaPacific = new Point(8.93,-79.56);
-	public static HashMap<CompoundPortKey, ASDistance> cachedDistances = new HashMap<CompoundPortKey, ASDistance>();
+	public static Map<CompoundPortKey, ASDistance> cachedDistances = new HashMap<CompoundPortKey, ASDistance>();
 	private static final int MAX_ASTAR_ITERATIONS = 1000000;
+	final Logger logger;
 
-	Logger logger;
 	public AStarUtil() {
 		logger = LoggerFactory.getLogger(this.getClass());
 	}
@@ -90,24 +90,26 @@ public class AStarUtil {
 
 		// then suez
 		// TODO disabled. Canal routing obviously needs more work.
-		try {
-			route = findRouteThroughSuezCanal(closestStartPoint, closestGoalPoint, world);
-			addStartAndGoalToRoute(startPoint, goalPoint, route);
-
-			distance.addRoute(route);
-		} catch (NoRouteFoundException e) {
-			logger.debug("Failed to find route through Suez", e);
-		}
+//		try {
+//			route = findRouteThroughSuezCanal(closestStartPoint, closestGoalPoint, world);
+//			addStartAndGoalToRoute(startPoint, goalPoint, route);
+//
+//			distance.addRoute(route);
+//		} catch (NoRouteFoundException e) {
+////			logger.debug("Failed to find route through Suez", e);
+//			throw e;
+//		}
 
 //		// then panama
-		try {
-			route = findRouteThroughPanamaCanal(closestStartPoint, closestGoalPoint, world);
-			addStartAndGoalToRoute(startPoint, goalPoint, route);
-
-			distance.addRoute(route);
-		} catch (NoRouteFoundException e) {
-			logger.debug("Failed to find route through Panama", e);
-		}
+//		try {
+//			route = findRouteThroughPanamaCanal(closestStartPoint, closestGoalPoint, world);
+//			addStartAndGoalToRoute(startPoint, goalPoint, route);
+//
+//			distance.addRoute(route);
+//		} catch (NoRouteFoundException e) {
+////			logger.debug("Failed to find route through Panama", e);
+//			throw e;
+//		}
 
 		cachedDistances.put(new CompoundPortKey(start, goal), distance);
 
@@ -307,9 +309,11 @@ public class AStarUtil {
 	 * TODO optimise, optimise, optimise!
 	 */
 	public ASRoute aStar(Point origStart, Point origGoal, NewWorld world) throws NoRouteFoundException, CouldNotFindPointException {
+		// used to trace the aStar algorithm. Warning! Uses HUGE amounts of disk space.
+		NewWorld.WorldDebugger worldDebugger = null;
 		HashSet<Point> closedset = new HashSet<Point>();
 
-		// something befouls our world! Probably a test.
+		// something befouls our world! It is most probably a test which does this horrid thing!
 		world.clean();
 
 		Point start = findClosestPoint(origStart, world);
@@ -320,16 +324,16 @@ public class AStarUtil {
 		openset.add(start);
 		long tries = 0;
 
+		if (logger.isTraceEnabled()) {
+			worldDebugger = new NewWorld.WorldDebugger(world);
+		}
 
 		while (openset.size() != 0) {
-			if (tries == 2430) {
-				int afaa=0;
-			}
-
 			Point currentPoint = openset.poll();
 
-			// TODO this shouldn't be commented out, fix log4j settings.
-//			logger.debug(world.toString(reconstructPath(currentPoint)));
+			if (logger.isTraceEnabled() && worldDebugger != null) {
+				worldDebugger.write(reconstructPath(currentPoint), openset, closedset, goal);
+			}
 
 			if (currentPoint.equals(goal)) {
 				// TODO world cleaning is necessary
@@ -359,9 +363,9 @@ public class AStarUtil {
 			}
 
 			tries++;
-			if (tries % 5000 == 0) {
-				logger.debug(String.format("Number of tries: %d",tries));
-			}
+//			if (tries % 5000 == 0) {
+//				logger.debug(String.format("Number of tries: %d",tries));
+//			}
 
 			if (tries > MAX_ASTAR_ITERATIONS) {
 				// something went wrong. Horribly wrong.
@@ -458,7 +462,7 @@ public class AStarUtil {
 	 * It contains quite a bit of test code and assertions to check if we run into problems with the A* algorithm.
 	 */
 
-	private static class OpenSet {
+	public static class OpenSet {
 		HashSet<Point> hashSet;
 		PriorityQueue<Point> queue;
 		Point goal;
@@ -538,6 +542,10 @@ public class AStarUtil {
 			hashSet.remove(p);
 
 			return p;
+		}
+
+		public Point peek() {
+			return queue.peek();
 		}
 	}
 }

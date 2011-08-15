@@ -122,8 +122,8 @@ public class CompanyTest {
 	public void purchaseShipWithExistingNameShouldFail() {
 		boolean exceptionThrown = false;
 		try {
-			company.purchaseShip(100, DUMMY_SHIP_NAME, shipClasses.get(0));
-			company.purchaseShip(100, DUMMY_SHIP_NAME, shipClasses.get(0));
+			Game.getInstance().getPlayerCompany().purchaseShip(100, DUMMY_SHIP_NAME, shipClasses.get(0));
+			Game.getInstance().getPlayerCompany().purchaseShip(100, DUMMY_SHIP_NAME, shipClasses.get(0));
 		} catch (ShipnameAlreadyExistsException e) {
 			exceptionThrown = true;
 		}

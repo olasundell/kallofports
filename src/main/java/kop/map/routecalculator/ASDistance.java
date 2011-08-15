@@ -17,12 +17,21 @@ public class ASDistance {
 
 	private List<ASRoute> routes;
 
+	/**
+	 * Constructor
+	 * @param origin originating port
+	 * @param destination destination port
+	 */
 	public ASDistance(PortProxy origin, PortProxy destination) {
 		this.origin = origin;
 		this.destination = destination;
 		routes = new ArrayList<ASRoute>();
 	}
 
+	/**
+	 * Adds route to the Collection of distances.
+	 * @param route the route to add
+	 */
 	protected void addRoute(ASRoute route) {
 		routes.add(route);
 	}
@@ -51,7 +60,7 @@ public class ASDistance {
 
 	/**
 	 * Returns the shortest route's distance in nautical miles.
-	 * @return
+	 * @return the shortest distance found.
 	 */
 	public double shortestDistance() {
 		return shortestRoute().getTotalDistance();
@@ -65,6 +74,13 @@ public class ASDistance {
 	public double shortestDistance(ShipModel ship) throws NoRouteFoundException {
 		return shortestRoute(ship).getTotalDistance();
 	}
+
+	/**
+	 * Retrieves the shortest ASRoute for a ship, checks for canal passage and whatnot.
+	 * @param ship a ShipModel to check whether it's viable to pass the major canals.
+	 * @return the shortest ASRoute given the given ShipModel
+	 * @throws NoRouteFoundException if there's no ASRoutes in the ASDistance, or if the given ship is too big to pass any of the ASRoutes.
+	 */
 
 	public ASRoute shortestRoute(ShipModel ship) throws NoRouteFoundException {
 		if (routes.size() == 0) {
@@ -84,10 +100,18 @@ public class ASDistance {
 		return route;
 	}
 
+	/**
+	 * Getter.
+	 * @return the origin PortProxy
+	 */
 	public PortProxy getOrigin() {
 		return origin;
 	}
 
+	/**
+	 * Getter.
+	 * @return the destination PortProxy
+	 */
 	public PortProxy getDestination() {
 		return destination;
 	}

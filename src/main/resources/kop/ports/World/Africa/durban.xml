@@ -10,4 +10,15 @@
 		<min>03</min>
 		<hemisphere>E</hemisphere>
 	</longitude>
+	<exports class="kop.ports.PortCargoTypeList">
+		<export class="kop.ports.PortCargoType">
+			<typeName>Coal</typeName>
+			<destinations>
+				<destination>
+					<name>Spain</name>
+					<yearlyAmount>17000</yearlyAmount>
+				</destination>
+			</destinations>
+		</export>
+	</exports>
 </port>

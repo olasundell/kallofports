@@ -1,5 +1,6 @@
 package kop.ui;
 
+import kop.company.Company;
 import kop.game.Game;
 import kop.game.GameTestUtil;
 import kop.ports.NoSuchPortException;
@@ -29,13 +30,14 @@ public class PortWindowTest {
 		UISpec4J.init();
 	}
 
-	@BeforeClass
-	public static void beforeClass() {
-		GameTestUtil.setupInstanceForTest();
-	}
+//	@BeforeClass
+//	public static void beforeClass() {
+//		GameTestUtil.setupInstanceForTest();
+//	}
 
 	@BeforeMethod
 	public void beforeMethod() throws NoSuchPortException {
+		Game game = GameTestUtil.setupInstanceForTest();
 		window = new PortWindow(Game.getInstance().getPortByName("Durban").getProxy());
 		panel = new Panel(window.getContentPane());
 		shipInfoPanel = new Panel(panel.findSwingComponent(JPanel.class, "shipInfoPanel"));

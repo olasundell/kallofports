@@ -1,10 +1,14 @@
 package kop.cargo;
 
 import kop.game.Game;
+import kop.ports.Port;
 import kop.ports.PortCargoType;
 import kop.ports.PortProxy;
+import kop.ports.PortsOfTheWorld;
 import kop.serialization.ModelSerializer;
 import kop.serialization.SerializationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
@@ -15,9 +19,11 @@ public class FreightMarket implements FreightCarrier {
 	private List<Freight> market;
 	private static CargoTypeList cargoTypes;
 	private Game gameInstance;
+	private Logger logger;
 
 	public FreightMarket() {
 		market = new ArrayList<Freight>();
+		logger = LoggerFactory.getLogger(this.getClass());
 	}
 
 	public FreightMarket(Game game) {
@@ -102,5 +108,21 @@ public class FreightMarket implements FreightCarrier {
 		cargo.setDeadline(Game.getInstance().getFutureDate(1 + (int) Math.abs(random.nextGaussian()*100)));
 		return cargo;
 
+	}
+
+	public Freight generateDummyFreight() {
+		Freight dummy = null;
+		try {
+			Port origin = new Port();
+			origin.setName("DUMMY origin");
+
+			Port destination = new Port();
+			destination.setName("DUMMY destination");
+
+			dummy = generateFreight(origin.getProxy(), destination.getProxy(), new CargoImpl(1,getCargoTypes().get(0),1.0,new Date()));
+		} catch (CouldNotLoadCargoTypesException e) {
+			logger.error("Could not load cargo types", e);
+		}
+		return dummy;
 	}
 }

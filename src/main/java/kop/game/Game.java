@@ -159,6 +159,7 @@ public class Game {
 				c.moveShips();
 			} catch (OutOfFuelException e) {
 				// TODO do something here.
+				logger.debug("We ran out of fuel!");
 			}
 
 			// a new day dawns for the current company.
@@ -195,8 +196,9 @@ public class Game {
 	 */
 
 	public void generateDailyFreights() {
+		Cargo cargo;
+
 		for (Port p: worldPorts.getPortsAsList()) {
-			Cargo cargo = null;
 			for (PortCargoType portCargoType: p.getPortCargoTypes()) {
 				for (PortCargoTypeDestination destination: portCargoType.getDestinations()) {
 					cargo = freightMarket.generateCargoPerYearlyAmount(portCargoType.getType(),
@@ -257,8 +259,7 @@ public class Game {
 	}
 
 	public String getCurrentDateAsString() {
-		String format = new SimpleDateFormat().format(calendar.getTime());
-		return format;
+		return new SimpleDateFormat().format(calendar.getTime());
 	}
 
 	public ShipClassList getShipClasses() {
@@ -353,7 +354,15 @@ public class Game {
 		return world;
 	}
 
-	public void loadFreightOntoShip(ShipModel ship, Freight freight) {
+	public void loadFreightOntoShip(ShipModel ship, Freight freight) throws CouldNotLoadFreightOntoShipException {
+		if (!ship.getCurrentPosition().isInPort()) {
+			throw new CouldNotLoadFreightOntoShipException("Ship isn't in port!");
+		}
+
+		if (!ship.getCurrentPosition().getCurrentPort().equals(freight.getOrigin())) {
+			throw new CouldNotLoadFreightOntoShipException("Freight and ship isn't in the same port!");
+		}
+
 		getFreightMarket().getFreights().remove(freight);
 		ship.addFreight(freight);
 		fireGameStateChanged();

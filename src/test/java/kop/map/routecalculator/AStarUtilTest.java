@@ -194,6 +194,15 @@ public class AStarUtilTest {
 		assertRoute(closestStartPoint, closestGoalPoint, route);
 	}
 
+	// TODO one of these days we will fix the bugs in the A* algorithm. We'll use this test to verify when the day comes.
+//	@Test
+	public void previouslyFailingRouteTests() throws CouldNotFindPointException, NoRouteFoundException {
+//		No route could be found between lat 9,500000 lon -79,000000 x 121 y 202 and lat 41,000000 lon 1,500000 x 58 y 363
+		NewWorld world = getRealWorld();
+		ASRoute route = aStarUtil.aStar(world.lats[121].longitudes[202], world.lats[58].longitudes[363], world);
+		assertNotNull(route);
+	}
+
 	@Test
 	public void findRouteBetweenTwoPortsThroughCanal() throws NoSuchPortException, CouldNotFindPointException, NoRouteFoundException {
 		Point start = aStarUtil.findClosestPointForPort(Game.getInstance().getPortByName("Barcelona").getProxy(),

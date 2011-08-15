@@ -6,9 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Contains real arrays with lats and lons (no Collections here), originally used for XML persisting
@@ -105,7 +103,7 @@ public class NewWorld implements Cloneable {
 	}
 
 	protected float calcLat(int i) {
-		return (float) (90 - northOffset - (i / scale));
+		return (float) (90.0 - northOffset - (i / scale));
 	}
 
 	public double getScale() {
@@ -175,6 +173,10 @@ public class NewWorld implements Cloneable {
 	 * @return
 	 */
 	public String toString(ASRoute route) {
+		return toString(route, null, null, null);
+	}
+
+	public String toString(ASRoute route, AStarUtil.OpenSet openset, HashSet<Point> closedset, Point goal) {
 		StringBuffer s = new StringBuffer();
 
 		List<Point> travelRoute = null;
@@ -197,7 +199,18 @@ public class NewWorld implements Cloneable {
 				} else if (end.equals(point)) {
 					s.append('E');
 				} else if (travelRoute!=null && travelRoute.contains(point)) {
-					s.append('O');
+					s.append('T');
+				} else if (closedset!=null && closedset.contains(point)) {
+					s.append('C');
+				} else if (openset!=null && openset.contains(point)) {
+					Point peek = openset.peek();
+					if (peek!=null && peek.equals(point)) {
+						s.append('1');
+					} else {
+						s.append('O');
+					}
+				} else if (goal!=null && point.equals(goal)){
+					s.append('G');
 				} else {
 					s.append('.');
 				}
@@ -313,7 +326,7 @@ public class NewWorld implements Cloneable {
 		public Point[] longitudes;
 
 		public LatitudeArr(Point[] points) {
-			longitudes = points;
+			longitudes = points.clone();
 		}
 
 		public LatitudeArr() {}
@@ -433,5 +446,52 @@ public class NewWorld implements Cloneable {
 		}
 
 		return ret;
+	}
+
+	public static class WorldDebugger {
+		int tries;
+		NewWorld world;
+		File tmpdir = null;
+		Logger logger;
+
+		public WorldDebugger(NewWorld world) {
+			logger = LoggerFactory.getLogger(this.getClass());
+			tries = 0;
+			this.world = world;
+			try {
+				tmpdir = File.createTempFile("worlddebug",Long.toString(System.nanoTime()));
+
+				if (!tmpdir.delete()) {
+					logger.error(String.format("Could not delete temporary file %s", tmpdir.getAbsolutePath()));
+				}
+
+				if (!tmpdir.mkdir()) {
+					logger.error(String.format("Could not create temporary directory %s", tmpdir.getAbsolutePath()));
+				}
+			} catch (IOException e) {
+				logger.error("Could not create a WorldDebugger",e);
+			}
+		}
+
+		public void write(ASRoute route, AStarUtil.OpenSet openset, HashSet<Point> closedset, Point goal) {
+			// create string.
+			String s = world.toString(route, openset, closedset, goal);
+			// create directory
+			File currDir = new File(String.format("%s/%d", tmpdir.getAbsolutePath(), tries));
+			if (!currDir.mkdir()) {
+				logger.error(String.format("Could not create temporary directory %s", currDir.getAbsolutePath()));
+				return;
+			}
+			// write file
+			File file = new File(currDir,String.format("worldoutput-%d.txt",tries));
+			try {
+				FileWriter writer = new FileWriter(file);
+				writer.write(s);
+				writer.close();
+			} catch (IOException e) {
+				logger.error(String.format("Could not write to file %s", file.getAbsolutePath()));
+			}
+			tries++;
+		}
 	}
 }

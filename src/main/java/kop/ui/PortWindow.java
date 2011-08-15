@@ -5,6 +5,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import kop.Main;
 import kop.cargo.Freight;
 import kop.company.Company;
+import kop.game.CouldNotLoadFreightOntoShipException;
 import kop.game.Game;
 import kop.game.GameTestUtil;
 import kop.ports.NoSuchPortException;
@@ -49,8 +50,8 @@ public class PortWindow implements KopWindow {
 
 	public PortWindow(PortProxy portProxy) {
 		this.portProxy = portProxy;
-		$$$setupUI$$$();
 		logger = LoggerFactory.getLogger(this.getClass());
+		$$$setupUI$$$();
 
 		shipsInPortListBox.addListSelectionListener(new ListSelectionListener() {
 			@Override
@@ -83,7 +84,12 @@ public class PortWindow implements KopWindow {
 
 				// TODO add asserts, can the ship really take on the freight?
 				// if not, add a part of the freight.
-				Game.getInstance().loadFreightOntoShip(ship, f);
+				try {
+					Game.getInstance().loadFreightOntoShip(ship, f);
+				} catch (CouldNotLoadFreightOntoShipException e1) {
+					// TODO fire dialog box.
+					logger.error("Couldn't load freight on ship for some reason.", e1);
+				}
 				portFreightTableModel.fireTableDataChanged();
 				logger.debug(String.format("Loaded %s on %s", f.toString(), ship.toString()));
 			}
@@ -102,7 +108,7 @@ public class PortWindow implements KopWindow {
 
 	private void createUIComponents() {
 
-		portFreightTableModel = new FreightTableModel();
+		portFreightTableModel = new FreightTableModel(Game.getInstance().getFreightMarket());
 		portFreightTable = new JTable(portFreightTableModel);
 		TableRowSorter<FreightTableModel> portTableSorter = new TableRowSorter<FreightTableModel>(portFreightTableModel);
 		portFreightTable.setRowSorter(portTableSorter);
@@ -114,7 +120,14 @@ public class PortWindow implements KopWindow {
 		shipsInPortListBox = new JList(shipsInPortList.toArray());
 
 		// TODO this is fugly-hacked at the moment.
-		FreightTableModel shipFreightTableModel = new FreightTableModel(shipsInPortList.get(0));
+		FreightTableModel shipFreightTableModel = null;
+
+		if (shipsInPortList.size() > 0) {
+			shipFreightTableModel = new FreightTableModel(shipsInPortList.get(0));
+		} else {
+			shipFreightTableModel = new FreightTableModel(null);
+		}
+
 		shipFreightTable = new JTable(shipFreightTableModel);
 		TableRowSorter<FreightTableModel> shipTableSorter = new TableRowSorter<FreightTableModel>(shipFreightTableModel);
 		shipFreightTable.setRowSorter(shipTableSorter);

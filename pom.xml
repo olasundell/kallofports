@@ -15,6 +15,18 @@
 			<url>http://download.osgeo.org/webdav/geotools/</url>
 		</repository>
 	</repositories>
+	<profile>
+    <id>Sonargraph</id>
+    <activation>
+      <activeByDefault>true</activeByDefault>
+    </activation>
+    <pluginRepositories>
+      <pluginRepository>
+        <id>hello2morrow.maven.repository</id>
+        <url>http://maven.hello2morrow.com/repository</url>
+      </pluginRepository>
+    </pluginRepositories>
+  </profile>
 
 	<dependencies>
 		<!--<dependency>-->
@@ -66,12 +78,12 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!--<dependency>-->
-			<!--<groupId>junit</groupId>-->
-			<!--<artifactId>junit</artifactId>-->
-			<!--<version>4.8.2</version>-->
-			<!--<scope>test</scope>-->
-		<!--</dependency>-->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<scope>test</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>net.sf.opencsv</groupId>

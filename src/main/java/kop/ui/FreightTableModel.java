@@ -2,9 +2,11 @@ package kop.ui;
 
 import kop.cargo.Freight;
 import kop.cargo.FreightCarrier;
+import kop.cargo.FreightMarket;
 import kop.game.Game;
 import kop.game.GameStateListener;
 import kop.ports.PortProxy;
+import kop.ships.model.BulkShipModel;
 import kop.ships.model.ShipModel;
 
 import javax.swing.*;
@@ -18,7 +20,7 @@ class FreightTableModel extends AbstractTableModel implements GameStateListener 
 	private Object filter = null;
 	private transient FreightCarrier freightCarrier;
 
-	FreightTableModel() {
+	private FreightTableModel() {
 		this(Game.getInstance().getFreightMarket());
 	}
 
@@ -39,6 +41,10 @@ class FreightTableModel extends AbstractTableModel implements GameStateListener 
 	@Override
 	public int getRowCount() {
 //		return Game.getInstance().getFreightMarket().getFreights().size();
+		if (freightCarrier==null) {
+			return 0;
+		}
+
 		return freightCarrier.getFreights().size();
 	}
 
@@ -54,7 +60,8 @@ class FreightTableModel extends AbstractTableModel implements GameStateListener 
 
 	@Override
 	public Class<?> getColumnClass(int columnIndex) {
-		return getValueAt(0,columnIndex).getClass();
+//		return getValueAt(0,columnIndex).getClass();
+		return getValueFromFreight(columnIndex, Game.getInstance().getFreightMarket().generateDummyFreight()).getClass();
 	}
 
 	@Override
@@ -64,7 +71,16 @@ class FreightTableModel extends AbstractTableModel implements GameStateListener 
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		Freight freight = Game.getInstance().getFreightMarket().getFreights().get(rowIndex);
+		if (freightCarrier == null) {
+			return null;
+		}
+
+		Freight freight = freightCarrier.getFreights().get(rowIndex);
+
+		return getValueFromFreight(columnIndex, freight);
+	}
+
+	private Object getValueFromFreight(int columnIndex, Freight freight) {
 		switch (columnIndex) {
 			case 0:
 				return freight.getOrigin().getName();

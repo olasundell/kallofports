@@ -8,7 +8,7 @@ package kop.ships.model;
 /**
  * Model for bulk ships.
  */
-class BulkShipModel extends ShipModel {
+public class BulkShipModel extends ShipModel {
     public BulkShipModel(String name) {
         super(name);
     }

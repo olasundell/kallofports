@@ -1,7 +1,9 @@
 package kop.cargo;
 
 import com.sun.media.jai.util.MathJAI;
+import kop.game.CouldNotLoadFreightOntoShipException;
 import kop.game.Game;
+import kop.game.GameTestUtil;
 import kop.ports.Port;
 import kop.ports.PortProxy;
 import kop.ships.model.ShipModel;
@@ -27,7 +29,7 @@ public class FreightMarketTest {
 	private static Game instance;
 	@BeforeClass
 	public static void init() {
-		instance = new Game();
+		instance = GameTestUtil.setupInstanceForTest();
 	}
 
 	@Test
@@ -72,18 +74,21 @@ public class FreightMarketTest {
 	}
 
 	@Test
-	public void loadFreightOntoShip() {
-		Game game = new Game();
-		game.generateDailyFreights();
+	public void loadFreightOntoShip() throws CouldNotLoadFreightOntoShipException {
+//		Game game = new Game();
+//		game.generateDailyFreights();
 
-		ShipModel ship = ShipModel.createShip("Foo", instance.getShipClasses().get(0));
-		FreightMarket market = game.getFreightMarket();
+//		ShipModel ship = ShipModel.createShip("Foo", instance.getShipClasses().get(0));
+		ShipModel ship = instance.getPlayerCompany().getShip(0);
+		FreightMarket market = instance.getFreightMarket();
 		int marketSizeBefore = market.getFreights().size();
 		// TODO this should fail if the ship isn't in the same port as the freight we're trying to load onto it.
-		game.loadFreightOntoShip(ship, market.getFreights().get(0));
+		instance.loadFreightOntoShip(ship, market.getFreightFromPort(instance.getPlayerCompany().getHomePort()).get(0));
 
 		assertEquals(market.getFreights().size(), marketSizeBefore - 1);
 		assertEquals(1,ship.getFreights().size());
 		assertFalse(market.getFreights().contains(ship.getFreights().get(0)));
+
+//		game.loadFreightOntoShip();
 	}
 }

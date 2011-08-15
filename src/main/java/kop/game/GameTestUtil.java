@@ -19,7 +19,7 @@ import java.util.Locale;
 /**
  * @author Ola Sundell
  */
-public class GameTestUtil {
+public abstract class GameTestUtil {
 	public static ShipModel[] shipModels;
 	public static final String PORT_NAME = "Durban";
 	public static final String DEST_PORT_NAME = "Singapore";
@@ -32,6 +32,7 @@ public class GameTestUtil {
 		Locale.setDefault(new Locale("sv","se"));
 
 		Game g = Game.getInstance();
+//		Game g = new Game();
 
 		g.resetPlayerCompany();
 		g.getFreightMarket().resetFreightMarket();
@@ -101,6 +102,10 @@ public class GameTestUtil {
 		ships[3] = ShipModel.createShip("Ares Passion", g.getShipClasses().get(ShipBlueprint.ShipType.container, 0));
 		ships[4] = ShipModel.createShip("Ares Spirit", g.getShipClasses().get(ShipBlueprint.ShipType.container, 0));
 		ships[5] = ShipModel.createShip("Ares Zeal", g.getShipClasses().get(ShipBlueprint.ShipType.tanker, 0));
+
+		for (int i=0;i<ships.length;i++) {
+			ships[i].setCurrentPort(g.getPlayerCompany().getHomePort());
+		}
 
 		return ships;
 	}
