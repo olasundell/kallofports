@@ -15,18 +15,6 @@
 			<url>http://download.osgeo.org/webdav/geotools/</url>
 		</repository>
 	</repositories>
-	<profile>
-    <id>Sonargraph</id>
-    <activation>
-      <activeByDefault>true</activeByDefault>
-    </activation>
-    <pluginRepositories>
-      <pluginRepository>
-        <id>hello2morrow.maven.repository</id>
-        <url>http://maven.hello2morrow.com/repository</url>
-      </pluginRepository>
-    </pluginRepositories>
-  </profile>
 
 	<dependencies>
 		<!--<dependency>-->
