@@ -69,17 +69,17 @@ public class PortWindow implements KopWindow {
 			public void actionPerformed(ActionEvent e) {
 				if (portFreightTable.getSelectedRow() == -1) {
 					logger.debug("Port freight table doesn't have a selected row");
-					// TODO fire dialog
+					Main.fireDialog("Port freight table doesn't have a selected row");
 					return;
 				}
 
 				if (shipsInPortListBox.getSelectedIndex() == -1) {
 					logger.debug("Ship list box doesn't have a selected row");
-					// TODO fire dialog
+					Main.fireDialog("Ship list box doesn't have a selected row");
 					return;
 				}
 
-				Freight f = portFreightTableModel.getFreightAtRow(portFreightTable.getSelectedRow());
+				Freight f = portFreightTableModel.getFreightAtRow(portFreightTable.convertRowIndexToModel(portFreightTable.getSelectedRow()));
 				ShipModel ship = (ShipModel) shipsInPortListBox.getSelectedValue();
 
 				// TODO add asserts, can the ship really take on the freight?
@@ -89,9 +89,13 @@ public class PortWindow implements KopWindow {
 				} catch (CouldNotLoadFreightOntoShipException e1) {
 					// TODO fire dialog box.
 					logger.error("Couldn't load freight on ship for some reason.", e1);
+					Main.fireDialog("Couldn't load freight on ship for some reason.");
+					return;
 				}
 				portFreightTableModel.fireTableDataChanged();
-				logger.debug(String.format("Loaded %s on %s", f.toString(), ship.toString()));
+				String msg = String.format("Loaded %s on %s", f.toString(), ship.toString());
+				logger.debug(msg);
+				Main.fireDialog(msg);
 			}
 		});
 	}
@@ -107,12 +111,11 @@ public class PortWindow implements KopWindow {
 	}
 
 	private void createUIComponents() {
-
 		portFreightTableModel = new FreightTableModel(Game.getInstance().getFreightMarket());
 		portFreightTable = new JTable(portFreightTableModel);
 		TableRowSorter<FreightTableModel> portTableSorter = new TableRowSorter<FreightTableModel>(portFreightTableModel);
-		portFreightTable.setRowSorter(portTableSorter);
 		portTableSorter.setRowFilter(new FreightTableModel.PortRowFilter(portProxy));
+		portFreightTable.setRowSorter(portTableSorter);
 
 		Company playerCompany = Game.getInstance().getPlayerCompany();
 		List<ShipModel> shipsInPortList = playerCompany.findShipsInPort(portProxy);

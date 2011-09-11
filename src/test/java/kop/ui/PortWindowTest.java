@@ -4,6 +4,7 @@ import kop.company.Company;
 import kop.game.Game;
 import kop.game.GameTestUtil;
 import kop.ports.NoSuchPortException;
+import kop.ports.PortProxy;
 import kop.ships.model.ShipModel;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -24,21 +25,22 @@ public class PortWindowTest {
 	private PortWindow window;
 	private Panel panel;
 	private Panel shipInfoPanel;
+	private static PortProxy proxy;
 
 	static {
 		System.setProperty("uispec4j.test.library","testng");
 		UISpec4J.init();
 	}
 
-//	@BeforeClass
-//	public static void beforeClass() {
-//		GameTestUtil.setupInstanceForTest();
-//	}
+	@BeforeClass
+	public static void beforeClass() throws NoSuchPortException {
+		proxy = Game.getInstance().getPortByName("Durban").getProxy();
+	}
 
 	@BeforeMethod
 	public void beforeMethod() throws NoSuchPortException {
 		Game game = GameTestUtil.setupInstanceForTest();
-		window = new PortWindow(Game.getInstance().getPortByName("Durban").getProxy());
+		window = new PortWindow(proxy);
 		panel = new Panel(window.getContentPane());
 		shipInfoPanel = new Panel(panel.findSwingComponent(JPanel.class, "shipInfoPanel"));
 	}
@@ -56,9 +58,15 @@ public class PortWindowTest {
 	}
 
 	@Test
-	public void portFreightTableShouldContainFreights() {
+	public void portFreightTableShouldOnlyContainFreightsFromCurrentPort() {
 		Table portFreightTable = panel.getTable("portFreightTable");
 		assertTrue(portFreightTable.getRowCount() > 0);
+		JTable jTable = portFreightTable.getJTable();
+		FreightTableModel model = (FreightTableModel) jTable.getModel();
+		for (int i=0;i<jTable.getRowCount();i++) {
+			PortProxy origin = model.getFreightAtRow(jTable.convertRowIndexToModel(i)).getOrigin();
+			assertEquals(origin,proxy);
+		}
 	}
 
 //	@Test

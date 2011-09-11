@@ -72,4 +72,8 @@ public class Main {
 	public static void exit() {
 		frame.dispose();
 	}
+
+	public static void fireDialog(String s) {
+		JOptionPane.showMessageDialog(frame, s, "Hmmm...", JOptionPane.WARNING_MESSAGE);
+	}
 }

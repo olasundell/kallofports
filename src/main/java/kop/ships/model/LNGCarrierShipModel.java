@@ -1,7 +1,5 @@
 package kop.ships.model;
 
-import sun.util.resources.LocaleNames;
-
 /**
  * @author Ola Sundell
  */
