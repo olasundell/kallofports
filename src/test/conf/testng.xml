@@ -5,6 +5,7 @@
 		<groups>
 			<run>
 				<exclude name="heavy"/>
+				<exclude name="system"/>
 			</run>
 		</groups>
 		<packages>

@@ -191,6 +191,10 @@ public abstract class ShipModel implements FreightCarrier {
 	}
 
 	public void setCurrentFuel(double currentFuel) {
+		if (currentFuel < 0.0 || currentFuel > getMaxFuel()) {
+			String format = String.format("Trying to set current fuel level to %f, which is an invalid amount", currentFuel);
+			throw new IllegalArgumentException(format);
+		}
 		this.currentFuel = currentFuel;
 	}
 

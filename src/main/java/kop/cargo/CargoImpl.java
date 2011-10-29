@@ -92,9 +92,7 @@ public class CargoImpl implements Cargo {
 		CargoImpl cargo = (CargoImpl) o;
 
 		if (Double.compare(cargo.pricePerTon, pricePerTon) != 0) { return false; }
-		if (weight != cargo.weight) { return false; }
-		if (deadline != null ? !deadline.equals(cargo.deadline) : cargo.deadline != null) { return false; }
-		return !(type != null ? !type.equals(cargo.type) : cargo.type != null);
+		return (weight == cargo.weight) && !(deadline != null ? !deadline.equals(cargo.deadline) : cargo.deadline != null) && !(type != null ? !type.equals(cargo.type) : cargo.type != null);
 	}
 
 	public double getPricePerTon() {

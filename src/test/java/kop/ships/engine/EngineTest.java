@@ -10,6 +10,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.fail;
+
 /**
  * Created by IntelliJ IDEA.
  * User: ola
@@ -44,5 +48,27 @@ public class EngineTest {
 
 		EngineList el = new EngineList(l);
 		ModelSerializer.saveToFile("enginelist.xml", EngineList.class, el);
+	}
+
+	@Test
+	public void getFuelUsageShouldThrowExceptionForIllegalParameterData() {
+		try {
+			engine.getFuelUsage(-0.1);
+			fail("engine.getFuelUsage() did not throw expected exception for garbage parameter data");
+		} catch (IllegalArgumentException e) {
+		}
+
+		try {
+			engine.getFuelUsage(1.1);
+			fail("engine.getFuelUsage() did not throw expected exception for garbage parameter data");
+		} catch (IllegalArgumentException e) {
+
+		}
+	}
+
+	@Test
+	public void getProxyShouldReturnInstance() {
+		EngineProxy proxy = engine.getProxy();
+		assertNotNull(proxy);
 	}
 }

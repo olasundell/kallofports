@@ -1,6 +1,8 @@
 package kop.ships;
 
 import kop.game.Game;
+import kop.ports.NoRouteFoundException;
+import kop.ports.NoSuchPortException;
 import kop.ports.Port;
 import kop.ports.PortProxy;
 import kop.serialization.ModelSerializer;
@@ -9,6 +11,8 @@ import kop.ships.engine.Engine;
 import kop.ships.engine.EngineList;
 import kop.ships.model.ContainerShipModel;
 import kop.ships.model.ShipModel;
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -16,6 +20,7 @@ import java.io.File;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.fail;
 
 
 /**
@@ -27,6 +32,15 @@ import static org.testng.AssertJUnit.assertEquals;
  */
 public class ShipModelTest {
 	private static final double SPEED = 10.0;
+	private static final String NAME = "name";
+	private ShipModel ship;
+	private ShipClass containerShipClass;
+
+	@BeforeMethod
+	protected void setUp() throws Exception {
+		containerShipClass = ShipClass.getShipClasses().get(ShipBlueprint.ShipType.container, 0);
+		ship = ShipModel.createShip(NAME, containerShipClass);
+	}
 
 	@Test
 	public void testGetAvailableDWT() throws Exception {
@@ -45,9 +59,7 @@ public class ShipModelTest {
 
 	@Test
 	public void createShipFromShipClass() {
-		ShipClass c = ShipClass.getShipClasses().get(ShipBlueprint.ShipType.container, 0);
-
-		ShipModel ship = ShipModel.createShip("Ship name",c);
+		ShipModel ship = ShipModel.createShip("Ship name", containerShipClass);
 		assertNotNull(ship);
 		assertTrue(ship instanceof ContainerShipModel);
 	}
@@ -55,8 +67,6 @@ public class ShipModelTest {
 	@Test
 	public void testSerializeDeserialize() throws Exception {
 		// TODO use kop.serialization.ModelSerializer for this.
-		ShipModel ship = new ContainerShipModel();
-		ship.setName("foobar");
 		ship.getBlueprint().addEngine(new Engine());
 
 		EngineList engineList = EngineList.getInstance();
@@ -69,15 +79,11 @@ public class ShipModelTest {
 		ShipModel r = (ShipModel) ModelSerializer.readFromFile(new File(fileName).toURI().toURL(), ContainerShipModel.class);
 		assertEquals(ship.getName(), r.getName());
 		assertNotNull(ship.getCurrentPosition().getCurrentPort());
-		assertEquals(singapore.getUnlocode(),ship.getCurrentPosition().getCurrentPort().getUnlocode());
+		assertEquals(singapore.getUnlocode(), ship.getCurrentPosition().getCurrentPort().getUnlocode());
 	}
 
-	// TODO rewrite this using the correct factory methods for ShipModel instancing.
-//	@Test
+	@Test
 	public void testTravel() throws Exception {
-		ShipModel ship = new ContainerShipModel();
-		ship.setName("foobar");
-
 		PortProxy origin = Game.getInstance().getPortByName("Durban").getProxy();
 		PortProxy destination = Game.getInstance().getPortByName("New York").getProxy();
 
@@ -85,19 +91,53 @@ public class ShipModelTest {
 		ship.setCurrentFuel(ship.getMaxFuel());
 		ship.setSail(origin, destination, SPEED);
 		assertEquals(true, ship.isAtSea());
-		assertEquals(7571.0, ship.getDistanceLeft());
-		assertEquals(758, ship.getHoursToDestination());
+		long distanceLeft = Math.round(ship.getDistanceLeft());
+		assertEquals(distanceLeft, 7911);
+		int hoursToDestination = ship.getHoursToDestination();
+		assertEquals(hoursToDestination, 792);
 
-		assertEquals(-29.867, ship.getLatitude());
-		assertEquals(31.05, ship.getLongitude());
+		assertEquals(Math.round(ship.getLatitude()), -30);
+		assertEquals(Math.round(ship.getLongitude()), 31);
 		// TODO check if -179.39 (which is returned from the method) is correct
 //		assertEquals(123.4, ship.getBearing());
 
 		ship.travel();
 		assertTrue(ship.getCurrentFuel() < ship.getMaxFuel());
-		assertEquals(7561.0, ship.getDistanceLeft());
-		assertEquals(757, ship.getHoursToDestination());
+		assertEquals(Math.round(distanceLeft - SPEED), Math.round(ship.getDistanceLeft()));
+		assertEquals(hoursToDestination - 1, ship.getHoursToDestination());
 	}
 
+	@Test
+	public void travelWithoutEnoughFuelShouldThrowException() throws NoRouteFoundException, NoSuchPortException {
+		PortProxy origin = Game.getInstance().getPortByName("Durban").getProxy();
+		PortProxy destination = Game.getInstance().getPortByName("New York").getProxy();
 
+		ship.setCurrentPort(origin);
+		ship.setCurrentFuel(ship.getMaxFuel());
+		ship.setSail(origin, destination, SPEED);
+		ship.setCurrentFuel(0.1);
+		try {
+			ship.travel();
+			fail("Exception wasn't thrown when ship ran out of fuel.");
+		} catch (OutOfFuelException e) {
+			// ignore
+		}
+	}
+
+	@Test
+	public void setCurrentFuelParametersShouldRangeCheck() {
+		try {
+			ship.setCurrentFuel(-0.1);
+			Assert.fail("Range check failed");
+		} catch (IllegalArgumentException e) {
+			// ignore
+		}
+
+		try {
+			ship.setCurrentFuel(ship.getMaxFuel() + 1.0);
+			Assert.fail("Range check failed");
+		} catch (IllegalArgumentException e) {
+			// ignore
+		}
+	}
 }

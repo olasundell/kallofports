@@ -9,7 +9,7 @@ import kop.ships.blueprint.ContainerShipBlueprint;
 public class ContainerShipModel extends ShipModel {
     private int currentTeus;
 
-	public ContainerShipModel() {
+	ContainerShipModel() {
 		super();
 		blueprint = new ContainerShipBlueprint();
 	}

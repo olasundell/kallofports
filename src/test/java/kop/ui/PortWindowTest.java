@@ -21,25 +21,19 @@ import static org.testng.Assert.assertTrue;
 /**
  * @author Ola Sundell
  */
-public class PortWindowTest {
+public class PortWindowTest extends KopUITest {
 	private PortWindow window;
 	private Panel panel;
 	private Panel shipInfoPanel;
 	private static PortProxy proxy;
 
-	static {
-		System.setProperty("uispec4j.test.library","testng");
-		UISpec4J.init();
-	}
-
-	@BeforeClass
-	public static void beforeClass() throws NoSuchPortException {
-		proxy = Game.getInstance().getPortByName("Durban").getProxy();
+	public PortWindowTest() throws NoSuchPortException {
+		super();
+		proxy = gameInstance.getPortByName("Durban").getProxy();
 	}
 
 	@BeforeMethod
 	public void beforeMethod() throws NoSuchPortException {
-		Game game = GameTestUtil.setupInstanceForTest();
 		window = new PortWindow(proxy);
 		panel = new Panel(window.getContentPane());
 		shipInfoPanel = new Panel(panel.findSwingComponent(JPanel.class, "shipInfoPanel"));
@@ -69,8 +63,7 @@ public class PortWindowTest {
 		}
 	}
 
-//	@Test
-	// TODO doesn't work.
+	@Test
 	public void charterFreight() {
 		ListBox shipsInPort = panel.getListBox();
 		Table portFreightTable = panel.getTable("portFreightTable");

@@ -1,22 +1,19 @@
 package kop.cargo;
 
-import com.sun.media.jai.util.MathJAI;
 import kop.game.CouldNotLoadFreightOntoShipException;
 import kop.game.Game;
 import kop.game.GameTestUtil;
 import kop.ports.Port;
 import kop.ports.PortProxy;
+import kop.ports.PortsOfTheWorld;
+import kop.serialization.SerializationException;
 import kop.ships.model.ShipModel;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
-import static org.testng.AssertJUnit.*;
-
+import static org.testng.Assert.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -44,7 +41,7 @@ public class FreightMarketTest {
 		market.generateFreight(origin, destination, cargo);
 		List<Freight> list = market.getFreightFromPort(origin);
 		assertNotNull(list);
-		assertEquals("The list returned form the port wasn't what we expected.",1, list.size());
+		assertEquals(list.size(), 1, "The list returned form the port wasn't what we expected.");
 	}
 
 	@Test
@@ -69,16 +66,12 @@ public class FreightMarketTest {
 		assertTrue(cargo.getWeight() > 0);
 		Date time = instance.getCurrentDate();
 		int daysLeft = cargo.getDaysLeft(time);
-		assertTrue(String.format("daysLeft should be above zero, time is %s, daysLeft are %d and deadline is %s.", time, daysLeft, cargo.getDeadline()),daysLeft > 0);
+		assertTrue(daysLeft > 0, String.format("daysLeft should be above zero, time is %s, daysLeft are %d and deadline is %s.", time, daysLeft, cargo.getDeadline()));
 		assertTrue(cargo.getTotalPrice() > 0);
 	}
 
 	@Test
 	public void loadFreightOntoShip() throws CouldNotLoadFreightOntoShipException {
-//		Game game = new Game();
-//		game.generateDailyFreights();
-
-//		ShipModel ship = ShipModel.createShip("Foo", instance.getShipClasses().get(0));
 		ShipModel ship = instance.getPlayerCompany().getShip(0);
 		FreightMarket market = instance.getFreightMarket();
 		int marketSizeBefore = market.getFreights().size();
@@ -90,5 +83,34 @@ public class FreightMarketTest {
 		assertFalse(market.getFreights().contains(ship.getFreights().get(0)));
 
 //		game.loadFreightOntoShip();
+	}
+
+	@Test
+	public void loadFreightOntoShipShouldFailIfShipAndFreightAreInDifferentPorts() throws SerializationException {
+		ShipModel ship = instance.getPlayerCompany().getShip(0);
+		FreightMarket market = instance.getFreightMarket();
+
+		// TODO this should fail if the ship isn't in the same port as the freight we're trying to load onto it.
+		PortProxy currentPort = ship.getCurrentPosition().getCurrentPort();
+		List<Freight> fromPort = null;
+
+		for (Port port: PortsOfTheWorld.getPorts().getMap().values()) {
+			PortProxy proxy = port.getProxy();
+			if (!proxy.equals(currentPort) && !market.getFreightFromPort(proxy).isEmpty()) {
+				fromPort = market.getFreightFromPort(proxy);
+			}
+		}
+
+		assertNotNull(fromPort, "Could not find freights in other ports than the current");
+
+		boolean exceptionThrown = false;
+
+		try {
+			instance.loadFreightOntoShip(ship, fromPort.get(0));
+		} catch (CouldNotLoadFreightOntoShipException e) {
+			exceptionThrown = true;
+		}
+
+		assertTrue(exceptionThrown, "Exception wasn't thrown when we tried to load cargo from a port to a ship which was in another port");
 	}
 }

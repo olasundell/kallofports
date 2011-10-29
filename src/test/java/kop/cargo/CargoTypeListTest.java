@@ -63,4 +63,5 @@ public class CargoTypeListTest {
 			assertFalse("Cargo type has empty name" + type.toString(), type.getName().isEmpty());
 		}
 	}
+
 }

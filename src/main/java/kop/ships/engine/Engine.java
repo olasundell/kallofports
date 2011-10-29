@@ -66,4 +66,8 @@ public class Engine {
 		// without the 1000000 this would be grammes per hour. Dividing makes it metric tonnes.
 		return bsfc * kW * fractionOfMaxKW / 1000000;
 	}
+
+	public EngineProxy getProxy() {
+		return new EngineProxy(this);
+	}
 }
