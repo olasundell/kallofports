@@ -38,7 +38,7 @@ public class CompanyTest {
 	}
 
 	@BeforeMethod
-	public void setup() throws NoSuchPortException {
+	public void setup() throws NoSuchPortException, ShipnameAlreadyExistsException {
 		Game.getInstance().resetPlayerCompany();
 		company = GameTestUtil.setupInstanceForTest().getPlayerCompany();
 		shipClasses = Game.getInstance().getShipClasses();

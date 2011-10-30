@@ -4,6 +4,7 @@ import kop.cargo.*;
 import kop.map.routecalculator.ASRoute;
 import kop.ports.*;
 import kop.serialization.SerializationException;
+import kop.ships.ShipnameAlreadyExistsException;
 import kop.ships.engine.EngineList;
 import kop.ships.model.ShipModel;
 import org.testng.annotations.BeforeMethod;
@@ -28,8 +29,9 @@ public class GameTest {
 	private Game instance;
 
 	@BeforeMethod
-	public void setUp() throws ParseException {
+	public void setUp() throws ParseException, ShipnameAlreadyExistsException {
 		instance = GameTestUtil.setupInstanceForTest();
+		Game.setInstance(instance);
 		String s = "1999-12-31 23:00";
 		Date d = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, new Locale("sv")).parse(s);
 		instance.setDate(d);

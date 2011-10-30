@@ -5,6 +5,7 @@ import kop.game.Game;
 import kop.game.GameTestUtil;
 import kop.ports.NoSuchPortException;
 import kop.ports.PortProxy;
+import kop.ships.ShipnameAlreadyExistsException;
 import kop.ships.model.ShipModel;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -25,15 +26,15 @@ public class PortWindowTest extends KopUITest {
 	private PortWindow window;
 	private Panel panel;
 	private Panel shipInfoPanel;
-	private static PortProxy proxy;
+	private PortProxy proxy;
 
-	public PortWindowTest() throws NoSuchPortException {
+	public PortWindowTest() throws NoSuchPortException, ShipnameAlreadyExistsException {
 		super();
-		proxy = gameInstance.getPortByName("Durban").getProxy();
 	}
 
 	@BeforeMethod
 	public void beforeMethod() throws NoSuchPortException {
+		proxy = gameInstance.getPortByName("Durban").getProxy();
 		window = new PortWindow(proxy);
 		panel = new Panel(window.getContentPane());
 		shipInfoPanel = new Panel(panel.findSwingComponent(JPanel.class, "shipInfoPanel"));

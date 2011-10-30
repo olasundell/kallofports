@@ -109,7 +109,7 @@ public class ShipFeatureStore extends AbstractFeatureStore {
 			}
 
 			@Override
-			public SimpleFeature next() throws IOException, IllegalArgumentException, NoSuchElementException {
+			public SimpleFeature next() throws IOException {
 				ShipModel ship = iterator.next();
 
 				Point point = geometryFactory.createPoint(new Coordinate(ship.getCurrentPosition().getLongitude(), ship.getCurrentPosition().getLongitude()));

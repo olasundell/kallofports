@@ -6,6 +6,7 @@ import kop.Main;
 import kop.company.Company;
 import kop.game.Game;
 import kop.game.GameTestUtil;
+import kop.ships.ShipnameAlreadyExistsException;
 import kop.ships.model.ShipModel;
 
 import javax.swing.*;
@@ -205,7 +206,7 @@ public class CompanyShipsWindow implements KopWindow {
 		return "Ship list";  //To change body of implemented methods use File | Settings | File Templates.
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ShipnameAlreadyExistsException {
 		GameTestUtil.setupInstanceForTest();
 		Main.displayFrame(new CompanyShipsWindow());
 	}

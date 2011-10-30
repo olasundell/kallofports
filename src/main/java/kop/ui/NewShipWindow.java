@@ -355,7 +355,7 @@ public class NewShipWindow implements KopWindow {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ShipnameAlreadyExistsException {
 		GameTestUtil.setupInstanceForTest();
 		Main.displayFrame(new NewShipWindow());
 	}

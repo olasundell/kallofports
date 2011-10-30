@@ -8,6 +8,7 @@ import kop.game.Game;
 import kop.game.GameStateListener;
 import kop.game.GameTestUtil;
 import kop.map.MapBeanFactory;
+import kop.ships.ShipnameAlreadyExistsException;
 import org.geotools.map.MapLayer;
 import org.geotools.swing.JMapPane;
 import org.slf4j.Logger;
@@ -104,7 +105,7 @@ public class MainWindow implements KopWindow, GameStateListener {
 		currentMoney.setText(String.format(KopWindow.MONEY_TEXT_FORMAT, Game.getInstance().getPlayerCompany().getMoney()));
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ShipnameAlreadyExistsException {
 		GameTestUtil.setupInstanceForTest();
 		Main.displayFrame(new MainWindow());
 	}

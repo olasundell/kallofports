@@ -107,9 +107,9 @@ public class RouteCalculator {
 	 * @return
 	 * @throws Exception
 	 */
-	public NewWorld readWorldFromFile() throws Exception {
+/*	public NewWorld readWorldFromFile() throws Exception {
 		return (NewWorld) ModelSerializer.readFromFile(new File("newworld.xml").toURI().toURL(), NewWorld.class);
-	}
+	}*/
 
 	/**
 	 * Creates route layer from an ASRoute.

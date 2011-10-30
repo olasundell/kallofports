@@ -60,4 +60,9 @@ public class Freight {
 		result = 31 * result + (cargo != null ? cargo.hashCode() : 0);
 		return result;
 	}
+
+	@Override
+	public String toString() {
+		return String.format("Freight{origin=%s, destination=%s, cargo=%s}", origin, destination, cargo);
+	}
 }

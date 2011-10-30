@@ -74,14 +74,17 @@ public class CargoImpl implements Cargo {
 	}
 
 	public final void setWeight(int weight) {
+		// quick fix. :-)
+		if (weight == 0) {
+			weight = 1;
+		}
+
+		if (weight * 1000 < type.getDensityAsDouble()) {
+			throw new IllegalArgumentException(String.format("Trying to set weight (%d mt) to a number below cargo density (%s kg/m3), which will result in a zero cubic metre cargo", weight, type.getDensity()));
+		}
+
 		this.weight = weight;
-//		if ((type.getPackaging() == CargoType.Packaging.wetbulk) || (type.getPackaging() == CargoType.Packaging.lng)) {
-		setVolume((int) (weight / type.getDensityAsDouble()));
-//		}
-		// TODO handle TEU in some nice way.
-//		else if (type.getPackaging() == CargoType.Packaging.container) {
-//			setTEU()
-//		}
+		setVolume((int) (weight * 1000 / type.getDensityAsDouble()));
 	}
 
 	@Override

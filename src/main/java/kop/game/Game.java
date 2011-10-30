@@ -79,6 +79,10 @@ public class Game {
 		Game.creationRunning = false;
 	}
 
+	public static void setInstance(Game instance) {
+		Game.instance = instance;
+	}
+
 	/**
 	 * Registers listener for game update events.
 	 * @param listener
@@ -372,4 +376,7 @@ public class Game {
 		return worldPorts.getPortsForCountry(country);
 	}
 
+	public String getPlayerName() {
+		return playerName;
+	}
 }

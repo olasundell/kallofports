@@ -7,6 +7,7 @@ import kop.company.Company;
 import kop.game.Game;
 import kop.game.GameStateListener;
 import kop.game.GameTestUtil;
+import kop.ships.ShipnameAlreadyExistsException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -116,7 +117,7 @@ public class CompanyInfoWindow implements KopWindow, GameStateListener {
 		updateLabels();
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ShipnameAlreadyExistsException {
 		GameTestUtil.setupInstanceForTest();
 		CompanyInfoWindow window = new CompanyInfoWindow();
 		Main.displayFrame(window);

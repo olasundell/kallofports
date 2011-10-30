@@ -2,6 +2,7 @@ package kop.ui;
 
 import kop.game.Game;
 import kop.game.GameTestUtil;
+import kop.ships.ShipnameAlreadyExistsException;
 import org.uispec4j.UISpec4J;
 
 /**
@@ -15,7 +16,8 @@ public class KopUITest {
 		UISpec4J.init();
 	}
 
-	public KopUITest() {
+	public KopUITest() throws ShipnameAlreadyExistsException {
 		gameInstance = GameTestUtil.setupInstanceForTest();
+		Game.setInstance(gameInstance);
 	}
 }

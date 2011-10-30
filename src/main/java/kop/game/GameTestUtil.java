@@ -24,15 +24,16 @@ public abstract class GameTestUtil {
 	public static final String PORT_NAME = "Durban";
 	public static final String DEST_PORT_NAME = "Singapore";
 
-	public static synchronized Game setupInstanceForTest() {
+	public static synchronized Game setupInstanceForTest() throws ShipnameAlreadyExistsException {
 		Logger logger = LoggerFactory.getLogger(GameTestUtil.class);
 
 		logger.debug("Setting up a test player company");
 
 		Locale.setDefault(new Locale("sv","se"));
 
-		Game g = Game.getInstance();
-//		Game g = new Game();
+//		Game g = Game.getInstance();
+		Game g = new Game();
+		Game.setInstance(g);
 
 		g.resetPlayerCompany();
 		g.getFreightMarket().resetFreightMarket();
@@ -58,6 +59,7 @@ public abstract class GameTestUtil {
 			playerCompany.purchaseShip(40, shipModels[2].getName(), shipModels[2].getShipClass());
 		} catch (ShipnameAlreadyExistsException e) {
 			logger.error("Tried to purchase a test ship, it failed miserably!", e);
+			throw e;
 		}
 
 		playerCompany.addShip(shipModels[3]);

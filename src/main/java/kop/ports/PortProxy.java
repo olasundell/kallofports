@@ -76,4 +76,9 @@ public class PortProxy {
 	public int hashCode() {
 		return delegatePort != null ? delegatePort.hashCode() : 0;
 	}
+
+	@Override
+	public String toString() {
+		return String.format("PortProxy{port name=%s}", delegatePort.getName());
+	}
 }

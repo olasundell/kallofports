@@ -2,7 +2,9 @@ package kop.ui;
 
 import kop.game.Game;
 import kop.game.GameTestUtil;
+import kop.ships.ShipnameAlreadyExistsException;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.uispec4j.Panel;
 import org.uispec4j.UISpec4J;
@@ -14,17 +16,19 @@ import static org.testng.AssertJUnit.assertEquals;
 /**
  * @author Ola Sundell
  */
-public class CompanyInfoWindowTest {
+public class CompanyInfoWindowTest extends KopUITest {
+	private CompanyInfoWindow window;
 
-	private static CompanyInfoWindow window;
+	public CompanyInfoWindowTest() throws ShipnameAlreadyExistsException {
+		super();
+	}
 
 	static {
 		UISpec4J.init();
 	}
 
-	@BeforeClass
-	public static void beforeClass() {
-		GameTestUtil.setupInstanceForTest();
+	@BeforeMethod
+	public void beforeMethod() {
 		window = new CompanyInfoWindow();
 		window.stateChanged();
 	}

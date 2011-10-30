@@ -82,6 +82,10 @@ public class FreightMarket implements FreightCarrier {
 
 		cargo.setWeight((int) Math.abs(random.nextGaussian() * 10000));
 
+		if (cargo.getWeight() < type.getDensityAsDouble()) {
+			cargo.setVolume((int) type.getDensityAsDouble());
+		}
+
 		cargo.setPricePerVolume(Math.abs(random.nextGaussian() * 10));
 		cargo.setDeadline(Game.getInstance().getFutureDate(1 + (int) Math.abs(random.nextGaussian()*100)));
 		return cargo;
@@ -101,7 +105,11 @@ public class FreightMarket implements FreightCarrier {
 		}
 
 //		cargo.setWeight((int) Math.abs(random.nextGaussian() * (yearlyAmount/365)));
-		cargo.setWeight((int) Math.round(random.nextDouble() * 2.0 * (yearlyAmount/365)));
+		long round = Math.round(random.nextDouble() * 2.0 * (yearlyAmount / 365));
+		if (round < type.getDensityAsDouble()) {
+			round = (long) Math.ceil(type.getDensityAsDouble());
+		}
+		cargo.setWeight((int) round);
 
 		// TODO the following numbers needs to be adjusted according to distance, demand and commodity.
 		cargo.setPricePerVolume(Math.abs(random.nextGaussian() * 10));

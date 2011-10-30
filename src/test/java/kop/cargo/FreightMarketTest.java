@@ -7,8 +7,10 @@ import kop.ports.Port;
 import kop.ports.PortProxy;
 import kop.ports.PortsOfTheWorld;
 import kop.serialization.SerializationException;
+import kop.ships.ShipnameAlreadyExistsException;
 import kop.ships.model.ShipModel;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.*;
@@ -24,10 +26,17 @@ import static org.testng.Assert.*;
  */
 public class FreightMarketTest {
 	private static Game instance;
+//	private Game instance;
+
 	@BeforeClass
-	public static void init() {
+	public static void init() throws ShipnameAlreadyExistsException {
 		instance = GameTestUtil.setupInstanceForTest();
 	}
+
+//	@BeforeMethod
+//	public void beforeMethod() {
+//		instance = GameTestUtil.setupInstanceForTest();
+//	}
 
 	@Test
 	public void testGenerateFreight() throws Exception {
@@ -52,37 +61,50 @@ public class FreightMarketTest {
 	}
 
 	@Test
-	public void generateCargo() throws Exception {
+	public void generateCargo() throws CouldNotLoadCargoTypesException {
 		FreightMarket freightMarket = instance.getFreightMarket();
-		CargoTypeList cargoTypeList = freightMarket.getCargoTypes();
+		CargoTypeList cargoTypeList = FreightMarket.getCargoTypes();
 		CargoImpl cargo = (CargoImpl) freightMarket.generateCargo(cargoTypeList.get(1));
 		checkCargoOK(cargo);
 		cargo = (CargoImpl) freightMarket.generateCargo(cargoTypeList.getCargoTypeByPackaging(CargoType.Packaging.container));
 		checkCargoOK(cargo);
 	}
 
+	@Test
+	public void cargoShouldNotHaveWeightLessThanDensity() throws CouldNotLoadCargoTypesException {
+		FreightMarket freightMarket = instance.getFreightMarket();
+		CargoTypeList cargoTypeList = FreightMarket.getCargoTypes();
+		CargoImpl cargo = (CargoImpl) freightMarket.generateCargo(cargoTypeList.get(1));
+		try {
+			cargo.setWeight(-1);
+			fail("Setting a weight below the cargo density would result in a zero cubic metre volume cargo, which is invalid");
+		} catch (IllegalArgumentException e) {
+			// ignore
+		}
+	}
+
 	private void checkCargoOK(CargoImpl cargo) {
 		assertNotNull(cargo);
-		assertTrue(cargo.getWeight() > 0);
+		assertTrue(cargo.getWeight() > 0, "Cargo does not have a weight above zero");
+		assertTrue(cargo.getVolume() > 0, "Cargo does not have a volume above zero");
 		Date time = instance.getCurrentDate();
 		int daysLeft = cargo.getDaysLeft(time);
 		assertTrue(daysLeft > 0, String.format("daysLeft should be above zero, time is %s, daysLeft are %d and deadline is %s.", time, daysLeft, cargo.getDeadline()));
-		assertTrue(cargo.getTotalPrice() > 0);
+		assertTrue(cargo.getTotalPrice() > 0, "Total price for cargo is less than or equal to zero.");
 	}
 
 	@Test
-	public void loadFreightOntoShip() throws CouldNotLoadFreightOntoShipException {
+	public synchronized void loadFreightOntoShip() throws CouldNotLoadFreightOntoShipException {
 		ShipModel ship = instance.getPlayerCompany().getShip(0);
 		FreightMarket market = instance.getFreightMarket();
 		int marketSizeBefore = market.getFreights().size();
-		// TODO this should fail if the ship isn't in the same port as the freight we're trying to load onto it.
+
+		// TODO this fires a GameStateChanged event, and since we are reusing the game instance we'll have loads of listeners who will update stuff.
 		instance.loadFreightOntoShip(ship, market.getFreightFromPort(instance.getPlayerCompany().getHomePort()).get(0));
 
+		assertEquals(ship.getFreights().size(), 1);
 		assertEquals(market.getFreights().size(), marketSizeBefore - 1);
-		assertEquals(1,ship.getFreights().size());
 		assertFalse(market.getFreights().contains(ship.getFreights().get(0)));
-
-//		game.loadFreightOntoShip();
 	}
 
 	@Test

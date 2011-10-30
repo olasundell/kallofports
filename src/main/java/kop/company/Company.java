@@ -111,7 +111,7 @@ public class Company {
 
 	public boolean purchaseShip(int loanPercentage, String name, ShipClass shipClass) throws ShipnameAlreadyExistsException {
 		if (Game.getInstance().isShipNameTaken(name)) {
-			throw new ShipnameAlreadyExistsException();
+			throw new ShipnameAlreadyExistsException(name);
 		}
 
 		double loanSize = shipClass.getPrice() * (loanPercentage / 100.0);

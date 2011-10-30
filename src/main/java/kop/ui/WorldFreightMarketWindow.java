@@ -3,6 +3,7 @@ package kop.ui;
 import kop.Main;
 import kop.game.Game;
 import kop.game.GameTestUtil;
+import kop.ships.ShipnameAlreadyExistsException;
 
 import javax.swing.*;
 import javax.swing.table.TableRowSorter;
@@ -56,7 +57,7 @@ public class WorldFreightMarketWindow implements KopWindow {
 		componentsCreated = true;
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ShipnameAlreadyExistsException {
 		GameTestUtil.setupInstanceForTest();
 		Main.displayFrame(new WorldFreightMarketWindow());
 	}

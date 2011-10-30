@@ -66,6 +66,10 @@ public class CargoType {
 		return String.valueOf(density);
 	}
 
+	/**
+	 * Cargo type density
+	 * @return density in kilogrammes
+	 */
 	public double getDensityAsDouble() {
 		return density;
 	}
