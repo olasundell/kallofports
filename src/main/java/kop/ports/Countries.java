@@ -17,7 +17,7 @@ import java.util.Map;
 @Root
 public class Countries {
 	@ElementMap
-	private Map<String, String> countries;
+	private final Map<String, String> countries;
 
 	private static volatile Countries instance = null;
 

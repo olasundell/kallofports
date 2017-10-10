@@ -17,7 +17,7 @@ import java.util.List;
 @Root
 public class Point implements Cloneable {
 	private static final double SQRT2 = Math.sqrt(2);
-	private LatLonPoint coord;
+	private final LatLonPoint coord;
 	private Point parent;
 	private double parentCost;
 	@Attribute

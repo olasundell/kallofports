@@ -18,7 +18,7 @@ import javax.swing.table.TableRowSorter;
 */
 class FreightTableModel extends AbstractTableModel implements GameStateListener {
 	private Object filter = null;
-	private transient FreightCarrier freightCarrier;
+	private final transient FreightCarrier freightCarrier;
 
 	private FreightTableModel() {
 		this(Game.getInstance().getFreightMarket());
@@ -29,7 +29,7 @@ class FreightTableModel extends AbstractTableModel implements GameStateListener 
 		this.freightCarrier = freightCarrier;
 	}
 
-	String[] columnNames = {
+	final String[] columnNames = {
 			"Origin",
 			"Destination",
 			"Type of cargo",
@@ -111,7 +111,7 @@ class FreightTableModel extends AbstractTableModel implements GameStateListener 
 	}
 
 	public static class PortRowFilter extends RowFilter<FreightTableModel, Integer> {
-		PortProxy portProxy;
+		final PortProxy portProxy;
 
 		public PortRowFilter(PortProxy portProxy) {
 			this.portProxy=portProxy;

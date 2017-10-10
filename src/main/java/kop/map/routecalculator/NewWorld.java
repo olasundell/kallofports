@@ -30,7 +30,7 @@ public class NewWorld implements Cloneable {
 	private int southOffset = DEFAULT_SOUTH_OFFSET;
 	private int northOffset = DEFAULT_NORTH_OFFSET;
 
-	private Logger logger;
+	private final Logger logger;
 
 	@ElementArray(empty = true)
 	LatitudeArr[] lats;
@@ -450,9 +450,9 @@ public class NewWorld implements Cloneable {
 
 	public static class WorldDebugger {
 		int tries;
-		NewWorld world;
+		final NewWorld world;
 		File tmpdir = null;
-		Logger logger;
+		final Logger logger;
 
 		public WorldDebugger(NewWorld world) {
 			logger = LoggerFactory.getLogger(this.getClass());

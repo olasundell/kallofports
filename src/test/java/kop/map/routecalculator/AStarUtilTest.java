@@ -74,8 +74,7 @@ public class AStarUtilTest {
 
 		list.remove(current);
 
-		HashSet<Point> set = new HashSet<Point>();
-		set.addAll(list);
+		HashSet<Point> set = new HashSet<Point>(list);
 
 		Point ret = aStarUtil.getLowestF(set, current, world.lats[3].longitudes[3]);
 		assertNotNull(ret);

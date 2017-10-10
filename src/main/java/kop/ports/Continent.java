@@ -7,7 +7,7 @@ import kop.cargo.CargoType;
 */
 
 class Continent {
-	private String[] arr = {
+	private final String[] arr = {
 			"North America",
 			"South America",
 			"Oceania",

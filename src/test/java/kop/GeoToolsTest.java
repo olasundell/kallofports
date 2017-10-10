@@ -1,45 +1,26 @@
 package kop;
 
-import com.bbn.openmap.geo.Geo;
-import com.vividsolutions.jts.geom.*;
+import com.vividsolutions.jts.geom.Coordinate;
+import com.vividsolutions.jts.geom.Geometry;
+import com.vividsolutions.jts.geom.GeometryFactory;
+import com.vividsolutions.jts.geom.MultiPolygon;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.Polygon;
 import kop.map.routecalculator.NewWorld;
-import org.geotools.data.FileDataStore;
 import org.geotools.data.FileDataStoreFinder;
 import org.geotools.data.shapefile.ShapefileDataStore;
-import org.geotools.data.shapefile.ShapefileDataStoreFactory;
-import org.geotools.data.shapefile.ShapefileFeatureStore;
-import org.geotools.data.shapefile.ShapefileUtilities;
 import org.geotools.data.simple.SimpleFeatureCollection;
 import org.geotools.data.simple.SimpleFeatureIterator;
 import org.geotools.data.simple.SimpleFeatureSource;
-import org.geotools.data.simple.SimpleFeatureStore;
-import org.geotools.feature.FeatureCollections;
 import org.geotools.feature.FeatureIterator;
-import org.geotools.graph.build.basic.BasicGraphBuilder;
-import org.geotools.graph.build.feature.FeatureGraphGenerator;
-import org.geotools.graph.build.line.LineStringGraphGenerator;
 import org.geotools.graph.build.polygon.PolygonGraphGenerator;
-import org.geotools.graph.structure.Edge;
-import org.geotools.graph.structure.Graph;
-import org.geotools.graph.util.geom.GeometryUtil;
-import org.geotools.map.DefaultMapContext;
-import org.geotools.map.MapContext;
-import org.geotools.swing.JMapFrame;
-import org.geotools.swing.data.JFileDataStoreChooser;
-import org.opengis.feature.Feature;
-import org.opengis.feature.Property;
 import org.opengis.feature.simple.SimpleFeature;
 import org.testng.annotations.Test;
-import sun.security.krb5.internal.KDCOptions;
 
-import java.awt.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import static org.testng.AssertJUnit.assertTrue;
 

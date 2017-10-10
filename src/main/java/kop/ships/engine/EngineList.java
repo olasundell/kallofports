@@ -19,12 +19,11 @@ import java.util.List;
 public class EngineList {
 	private static EngineList instance = null;
 	@ElementList(inline = true)
-	private List<Engine> engines;
+	private final List<Engine> engines;
 	private static final URL ENGINELIST_FILENAME = ClassLoader.getSystemClassLoader().getResource("kop/ships/engines.xml");
-	private Logger logger;
 
 	public EngineList() {
-		logger = LoggerFactory.getLogger(this.getClass());
+		Logger logger = LoggerFactory.getLogger(this.getClass());
 		engines = new ArrayList<Engine>();
 	}
 

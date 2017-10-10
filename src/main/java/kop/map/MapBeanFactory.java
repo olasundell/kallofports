@@ -53,7 +53,7 @@ public class MapBeanFactory {
 	private static final String PORTLOCATIONHANDLER = "portlocationhandler";
 	private static final String SHIPLOCATIONHANDLER = "shiplocationhandler";
 
-	Logger logger;
+	final Logger logger;
 
 	public MapBeanFactory() {
 		logger = LoggerFactory.getLogger(this.getClass());

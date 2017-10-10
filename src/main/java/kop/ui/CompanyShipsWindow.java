@@ -103,8 +103,8 @@ public class CompanyShipsWindow implements KopWindow {
 	}
 
 	private static class MyTableModel implements TableModel {
-		Company company;
-		String columns[] = {
+		final Company company;
+		final String[] columns = {
 				"Name",
 				"Status",
 				"Position",

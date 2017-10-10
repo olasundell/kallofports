@@ -39,12 +39,11 @@ public class CompanyInfoWindow implements KopWindow, GameStateListener {
 	private JLabel grossWorth;
 	private JLabel totalLoans;
 	private JLabel netWorth;
-	private Logger logger;
 	private boolean componentsCreated = false;
 
 	public CompanyInfoWindow() {
 		$$$setupUI$$$();
-		logger = LoggerFactory.getLogger(this.getClass());
+		Logger logger = LoggerFactory.getLogger(this.getClass());
 
 		if (!componentsCreated) {
 			createUIComponents();

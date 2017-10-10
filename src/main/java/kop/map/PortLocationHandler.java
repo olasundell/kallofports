@@ -18,7 +18,7 @@ import java.util.Vector;
  * LocationHandler for the mapBean.
  */
 public class PortLocationHandler extends AbstractLocationHandler {
-	private Logger logger;
+	private final Logger logger;
 	PortLocationHandler() {
 		logger = LoggerFactory.getLogger(this.getClass());
 	}

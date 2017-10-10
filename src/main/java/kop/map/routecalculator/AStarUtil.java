@@ -20,7 +20,7 @@ public class AStarUtil {
 	public final static Point suezIndianOcean = new Point(29.93,32.56);
 	public final static Point panamaAtlantic = new Point(9.31,-79.92);
 	public final static Point panamaPacific = new Point(8.93,-79.56);
-	public static Map<CompoundPortKey, ASDistance> cachedDistances = new HashMap<CompoundPortKey, ASDistance>();
+	public static final Map<CompoundPortKey, ASDistance> cachedDistances = new HashMap<CompoundPortKey, ASDistance>();
 	private static final int MAX_ASTAR_ITERATIONS = 1000000;
 	final Logger logger;
 
@@ -418,8 +418,8 @@ public class AStarUtil {
 	}
 
 	private static class CompoundPortKey {
-		private PortProxy start;
-		private PortProxy goal;
+		private final PortProxy start;
+		private final PortProxy goal;
 
 		CompoundPortKey(PortProxy start, PortProxy goal) {
 			this.start = start;
@@ -463,11 +463,11 @@ public class AStarUtil {
 	 */
 
 	public static class OpenSet {
-		HashSet<Point> hashSet;
-		PriorityQueue<Point> queue;
-		Point goal;
-		List<Point> removedFromQueue;
-		List<Point> removedFromSet;
+		final HashSet<Point> hashSet;
+		final PriorityQueue<Point> queue;
+		final Point goal;
+		final List<Point> removedFromQueue;
+		final List<Point> removedFromSet;
 
 		public OpenSet(Point goal) {
 			removedFromQueue = new ArrayList<Point>();

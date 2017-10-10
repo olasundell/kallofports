@@ -14,7 +14,7 @@ public class ASRoute {
 	private boolean suez;
 	private boolean panama;
 
-	private List<Point> points;
+	private final List<Point> points;
 
 	public ASRoute() {
 		points = new ArrayList<Point>();

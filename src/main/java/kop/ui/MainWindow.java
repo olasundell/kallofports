@@ -38,7 +38,6 @@ public class MainWindow implements KopWindow, GameStateListener {
 	private JLabel currentMoney;
 	private JLabel currentDateTime;
 	private Logger logger = null;
-	private MapLayer shipLayer;
 
 	public MainWindow() {
 		$$$setupUI$$$();
@@ -93,7 +92,7 @@ public class MainWindow implements KopWindow, GameStateListener {
 		mapPane = mapBeanFactory.createGeoToolsBean();
 		for (MapLayer layer : mapPane.getMapContext().getLayers()) {
 			if (layer.getTitle().equals(MapBeanFactory.SHIP_LAYER)) {
-				shipLayer = layer;
+				MapLayer shipLayer = layer;
 			}
 		}
 		stateChanged();

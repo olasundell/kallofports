@@ -24,7 +24,7 @@ public class GeoToolsWaterVerifier implements WaterVerifier {
 
 	private List<Geometry> geometryList;
 	private GeometryFactory geometryFactory;
-	Logger logger = LoggerFactory.getLogger(this.getClass());
+	final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	public void setupInstance(String shapeFileName) {
 		File file = new File(shapeFileName);

@@ -8,23 +8,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The ASDistance (A* or A Star Distance) class contains all relevant ASRoutes between two Ports and helper methods to use them.
+ * The ASDistance (A* or A Star Distance) class contains all relevant
+ * ASRoutes between two Ports and helper methods to use them.
  * @see ASRoute
  */
 public class ASDistance {
-	private PortProxy origin;
-	private PortProxy destination;
+	private final PortProxy origin;
+	private final PortProxy destination;
 
-	private List<ASRoute> routes;
+	private final List<ASRoute> routes;
 
 	/**
-	 * Constructor
-	 * @param origin originating port
-	 * @param destination destination port
+	 * Constructor.
+	 * @param originPort originating port
+	 * @param destinationPort destination port
 	 */
-	public ASDistance(PortProxy origin, PortProxy destination) {
-		this.origin = origin;
-		this.destination = destination;
+	public ASDistance(final PortProxy originPort, final PortProxy destinationPort) {
+		this.origin = originPort;
+		this.destination = destinationPort;
 		routes = new ArrayList<ASRoute>();
 	}
 
@@ -32,12 +33,12 @@ public class ASDistance {
 	 * Adds route to the Collection of distances.
 	 * @param route the route to add
 	 */
-	protected void addRoute(ASRoute route) {
+	protected void addRoute(final ASRoute route) {
 		routes.add(route);
 	}
 
 	/**
-	 * Returns the shortest ASRoute for this ASDistance
+	 * Returns the shortest ASRoute for this ASDistance.
 	 * @return the shortest ASRoute
 	 */
 	public ASRoute shortestRoute() {
@@ -71,7 +72,7 @@ public class ASDistance {
 	 * @param ship used to check for panamax and suezmax.
 	 * @return the shortest distance in nautical miles.
 	 */
-	public double shortestDistance(ShipModel ship) throws NoRouteFoundException {
+	public double shortestDistance(final ShipModel ship) throws NoRouteFoundException {
 		return shortestRoute(ship).getTotalDistance();
 	}
 
@@ -79,10 +80,11 @@ public class ASDistance {
 	 * Retrieves the shortest ASRoute for a ship, checks for canal passage and whatnot.
 	 * @param ship a ShipModel to check whether it's viable to pass the major canals.
 	 * @return the shortest ASRoute given the given ShipModel
-	 * @throws NoRouteFoundException if there's no ASRoutes in the ASDistance, or if the given ship is too big to pass any of the ASRoutes.
+	 * @throws NoRouteFoundException if there's no ASRoutes in the ASDistance, or if the given ship is too big to
+	 *                               pass any of the ASRoutes.
 	 */
 
-	public ASRoute shortestRoute(ShipModel ship) throws NoRouteFoundException {
+	public ASRoute shortestRoute(final ShipModel ship) throws NoRouteFoundException {
 		if (routes.size() == 0) {
 			throw new NoRouteFoundException("Route list is empty");
 		}

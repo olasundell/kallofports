@@ -41,7 +41,6 @@ public class NewShipWindow implements KopWindow {
 	private JTextField shipName;
 	private JScrollPane tableScrollPane;
 	private ShipClassList shipClasses;
-	private NewShipTableModel tableModel;
 	private TableRowSorter<NewShipTableModel> sorter;
 
 	public NewShipWindow() {
@@ -156,7 +155,7 @@ public class NewShipWindow implements KopWindow {
 			shipClasses = ShipClass.getShipClasses();
 		}
 
-		tableModel = new NewShipTableModel(shipClasses);
+		NewShipTableModel tableModel = new NewShipTableModel(shipClasses);
 		sorter = new TableRowSorter<NewShipTableModel>(tableModel);
 		newShipTable = new JTable(tableModel);
 		newShipTable.setRowSorter(sorter);
@@ -254,9 +253,9 @@ public class NewShipWindow implements KopWindow {
 	}
 
 	private static class NewShipTableModel implements TableModel {
-		private ShipClassList shipClasses;
+		private final ShipClassList shipClasses;
 
-		String columnNames[] = {
+		final String[] columnNames = {
 				"Class type",
 				"Class name",
 				"Price",
@@ -343,7 +342,7 @@ public class NewShipWindow implements KopWindow {
 	}
 
 	private static class ShipTypeRowFilter extends RowFilter<NewShipTableModel, Integer> {
-		ShipBlueprint.ShipType type;
+		final ShipBlueprint.ShipType type;
 
 		public ShipTypeRowFilter(ShipBlueprint.ShipType type) {
 			this.type = type;
