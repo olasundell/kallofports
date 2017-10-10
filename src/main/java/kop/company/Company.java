@@ -38,7 +38,7 @@ public class Company {
 
 			s.travel();
 
-			// TODO fix this, preferrably with a shipModel.justArrivedAtPortDamnit() or something akin to that.
+			// TODO fix this, preferably with a shipModel.justArrivedAtPortDamnit() or something akin to that.
 			if (atSea && s.isInPort()) {
 				// arrived
 
