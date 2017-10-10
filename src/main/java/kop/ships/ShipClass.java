@@ -20,15 +20,11 @@ public class ShipClass {
 	private String className;
 	@Element
 	private ShipBlueprint ship;
-	// TODO this should be an element in the ship class XML.
-//	@Element
-	private int maxLoanPercent = 60;
 
 	private static ShipClassList shipClasses;
-	private Logger logger;
 
 	public ShipClass() {
-		logger = LoggerFactory.getLogger(this.getClass());
+		Logger logger = LoggerFactory.getLogger(this.getClass());
 	}
 
 	public ShipClass(ShipBlueprint ship, double price, String className) {
@@ -78,6 +74,7 @@ public class ShipClass {
 	}
 
 	public int getMaxLoanPercent() {
+		int maxLoanPercent = 60;
 		return maxLoanPercent;
 	}
 }

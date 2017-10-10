@@ -18,11 +18,11 @@ import java.util.*;
 @Root(name = "export")
 public class PortCargoType {
 	private CargoType type;
-	private org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
+	private final org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
 //	@Element(name="typeName")
 	private String typeName;
 	@ElementList
-	private List<PortCargoTypeDestination> destinations;
+	private final List<PortCargoTypeDestination> destinations;
 
 	public PortCargoType() {
 		destinations = new ArrayList<PortCargoTypeDestination>();

@@ -20,28 +20,25 @@ import java.util.*;
  * TODO we might want to delegate out even more things here
  */
 public class Game {
-	private List<Company> companies;
+	private final List<Company> companies;
 	// 1970-01-01 00:00 + currentHour
-	private GregorianCalendar calendar;
+	private final GregorianCalendar calendar;
 	private static volatile Game instance;
 	private PortsOfTheWorld worldPorts;
 	private ShipClassList shipClasses;
-	private FreightMarket freightMarket;
-	private boolean paused = false;
+	private final FreightMarket freightMarket;
 	private Company playerCompany;
 	private String playerName;
 	private EngineList engineList;
-	private Logger logger;
+	private final Logger logger;
 
 	/**
 	 * TODO implement listeners where applicable, mainly UI. Work has started, but more can be done.
 	 */
-	private List<GameStateListener> listeners;
-	private Random random;
-	private Map<Company, List<Freight>> deliveredFreights;
+	private final List<GameStateListener> listeners;
+	private final Random random;
+	private final Map<Company, List<Freight>> deliveredFreights;
 	private NewWorld world;
-	// TODO hard-coded interest value.
-	private double interestRate = 4.0;
 
 	/**
 	 * this is used to avoid cyclic references within the code
@@ -217,6 +214,7 @@ public class Game {
 	}
 
 	public boolean isRunning() {
+		boolean paused = false;
 		return !paused;
 	}
 
@@ -335,6 +333,7 @@ public class Game {
 	}
 
 	public double getInterestRate() {
+		double interestRate = 4.0;
 		return interestRate;
 	}
 

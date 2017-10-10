@@ -10,10 +10,10 @@ import java.util.concurrent.*;
  * Thread run by RouteCalculator to calculate graticules, it checks a NewWorld.LatitudeArr for isWater.
  */
 public class WorldCreationWorker implements Callable<NewWorld.LatitudeArr> {
-	private NewWorld points;
-	private float lat;
-	private int i;
-	private WaterVerifier waterVerifier;
+	private final NewWorld points;
+	private final float lat;
+	private final int i;
+	private final WaterVerifier waterVerifier;
 
 	public WorldCreationWorker(NewWorld points, float lat, int i, WaterVerifier waterVerifier) {
 		this.points = points;

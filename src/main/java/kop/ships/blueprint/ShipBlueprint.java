@@ -34,7 +34,7 @@ public abstract class ShipBlueprint {
 	private double maxFuel;
 	@Element
 	private double dailyCost;
-	private List<Engine> engines;
+	private final List<Engine> engines;
 
 	/**
 	 * TODO fix this method and the corresponding XML so this isn't made up, ie use real values instead.

@@ -17,7 +17,7 @@ import java.util.Properties;
 public class OpenMapWaterVerifier implements WaterVerifier {
 	private List<Shape> shapeList;
 	private Projection projection;
-	private Logger logger;
+	private final Logger logger;
 
 	public void setupInstance(String shapeFileName) {
 		// we need the map bean to get a Projection.

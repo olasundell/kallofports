@@ -1,16 +1,9 @@
 package kop.serialization;
 
-import com.sun.org.apache.bcel.internal.generic.ObjectType;
-import kop.serialization.SerializationException;
 import org.simpleframework.xml.Serializer;
-import org.simpleframework.xml.convert.AnnotationStrategy;
 import org.simpleframework.xml.core.Persister;
-import org.simpleframework.xml.strategy.Strategy;
 
 import java.io.File;
-import java.io.FilenameFilter;
-import java.lang.annotation.Annotation;
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;

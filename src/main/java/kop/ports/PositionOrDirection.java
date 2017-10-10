@@ -31,7 +31,7 @@ public class PositionOrDirection {
 	@Element(required = false)
 	private Date arrivedAtPortDate;
 	@Element
-	private Point currentPosition;
+	private final Point currentPosition;
 	private ASRoute route;
 	private int routeLeg;
 

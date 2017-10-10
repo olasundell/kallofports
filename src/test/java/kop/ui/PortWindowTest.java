@@ -23,7 +23,6 @@ import static org.testng.Assert.assertTrue;
  * @author Ola Sundell
  */
 public class PortWindowTest extends KopUITest {
-	private PortWindow window;
 	private Panel panel;
 	private Panel shipInfoPanel;
 	private PortProxy proxy;
@@ -35,7 +34,7 @@ public class PortWindowTest extends KopUITest {
 	@BeforeMethod
 	public void beforeMethod() throws NoSuchPortException {
 		proxy = gameInstance.getPortByName("Durban").getProxy();
-		window = new PortWindow(proxy);
+		PortWindow window = new PortWindow(proxy);
 		panel = new Panel(window.getContentPane());
 		shipInfoPanel = new Panel(panel.findSwingComponent(JPanel.class, "shipInfoPanel"));
 	}

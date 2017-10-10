@@ -1,5 +1,6 @@
 package kop.ports;
 
+//import com.bbn.openmap.proj.coords.DMSLatLonPoint;
 import com.bbn.openmap.proj.coords.DMSLatLonPoint;
 import kop.cargo.CargoType;
 import kop.map.routecalculator.CouldNotFindPointException;
@@ -35,9 +36,9 @@ public class Port {
 	@Element(required = false)
 	LatLong latitude;
 	@Element(name="exports", required = false)
-	private PortCargoTypeList portCargoTypes;
+	private final PortCargoTypeList portCargoTypes;
 
-	private Logger logger;
+	private final Logger logger;
 
 	// TODO this constructor should most probably be private, anyone who wants a port should use the factory methods.
 	public Port() {

@@ -22,8 +22,8 @@ import java.util.NoSuchElementException;
  * @author Ola Sundell
  */
 public class ShipFeatureStore extends AbstractFeatureStore {
-	ShipDataStore shipDataStore = new ShipDataStore();
-	Logger logger;
+	final ShipDataStore shipDataStore = new ShipDataStore();
+	final Logger logger;
 
 	public ShipFeatureStore() {
 		super();
@@ -57,7 +57,7 @@ public class ShipFeatureStore extends AbstractFeatureStore {
 
 	public static class ShipDataStore extends AbstractDataStore {
 		SimpleFeatureType type = null;
-		Logger logger;
+		final Logger logger;
 
 		public ShipDataStore() {
 			super();
@@ -92,9 +92,9 @@ public class ShipFeatureStore extends AbstractFeatureStore {
 
 		private class ShipFeatureReader implements SimpleFeatureReader {
 			Iterator<ShipModel> iterator;
-			private SimpleFeatureType featureType;
-			private SimpleFeatureBuilder featureBuilder;
-			private GeometryFactory geometryFactory;
+			private final SimpleFeatureType featureType;
+			private final SimpleFeatureBuilder featureBuilder;
+			private final GeometryFactory geometryFactory;
 
 			ShipFeatureReader(SimpleFeatureType type) {
 				featureType = type;

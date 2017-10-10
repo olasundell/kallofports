@@ -24,11 +24,11 @@ import java.util.concurrent.*;
  */
 public class RouteCalculator {
 //	ShapeLayer basicMapShape;
-	MapBean mapBean;
-	Logger logger;
+final MapBean mapBean;
+	final Logger logger;
 
 	NewWorld points = null;
-	List<Shape> shapeList;
+	final List<Shape> shapeList;
 
 	public RouteCalculator() {
 		shapeList = new ArrayList<Shape>();
@@ -330,7 +330,7 @@ public class RouteCalculator {
 	 */
 
 	private static class RouteLocationHandler extends AbstractLocationHandler {
-		private ASRoute route;
+		private final ASRoute route;
 
 		public RouteLocationHandler(ASRoute route) {
 			this.route = route;

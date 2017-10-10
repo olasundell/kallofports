@@ -22,11 +22,10 @@ import static java.awt.BorderLayout.CENTER;
 public class Main {
 	private static JFrame frame;
 	private static JInternalFrame internalFrame;
-	private static BorderLayout manager;
 	private static JPanel contentPane;
 	private static boolean frameInitDone=false;
 	private static Map<Class<? extends KopWindow>,KopWindow> contentPanes;
-	private static Logger logger = LoggerFactory.getLogger(Main.class);
+	private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
 	public static void main(String[] args) {
 		initFrame();
@@ -36,7 +35,7 @@ public class Main {
 	private static void initFrame() {
 		frame = new JFrame();
 		frame.setMinimumSize(new Dimension(1024,768));
-		manager = new BorderLayout();
+		BorderLayout manager = new BorderLayout();
 		frame.setLayout(manager);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);

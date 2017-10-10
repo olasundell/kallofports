@@ -34,9 +34,9 @@ public abstract class ShipModel implements FreightCarrier {
 	@Attribute
 	private String name;
 
-    private List<Freight> freightList;
+    private final List<Freight> freightList;
 	@Element
-	private PositionOrDirection currentPosition;
+	private final PositionOrDirection currentPosition;
 	@Element
 	protected ShipBlueprint blueprint;
 	protected ShipClass shipClass;

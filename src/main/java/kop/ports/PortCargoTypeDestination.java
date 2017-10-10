@@ -16,11 +16,10 @@ public class PortCargoTypeDestination {
 	@Element
 	private double yearlyAmount;
 
-	private org.slf4j.Logger logger;
 	private PortProxy portProxy = null;
 
 	public PortCargoTypeDestination() {
-		logger = LoggerFactory.getLogger(this.getClass());
+		org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
 	}
 
 	public String getName() {

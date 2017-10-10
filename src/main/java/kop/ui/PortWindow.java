@@ -31,7 +31,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class PortWindow implements KopWindow {
-	private PortProxy portProxy;
+	private final PortProxy portProxy;
 	private JLabel nameOfPort;
 	private JTable portFreightTable;
 	private JPanel contentPane;
@@ -47,7 +47,7 @@ public class PortWindow implements KopWindow {
 	private JPanel shipInfoPanel;
 	private FreightTableModel shipFreightTableModel;
 	private FreightTableModel portFreightTableModel;
-	private Logger logger;
+	private final Logger logger;
 
 	public PortWindow(PortProxy portProxy) {
 		this.portProxy = portProxy;

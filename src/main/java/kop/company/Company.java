@@ -1,24 +1,24 @@
 package kop.company;
 
-import kop.cargo.Freight;
-import kop.game.Game;
-import kop.ports.Port;
-import kop.ports.PortProxy;
-import kop.ships.OutOfFuelException;
-import kop.ships.ShipClass;
-import kop.ships.ShipnameAlreadyExistsException;import kop.ships.model.ShipModel;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import kop.cargo.Freight;
+import kop.game.Game;
+import kop.ports.PortProxy;
+import kop.ships.OutOfFuelException;
+import kop.ships.ShipClass;
+import kop.ships.ShipnameAlreadyExistsException;
+import kop.ships.model.ShipModel;
 
 /**
  * Represents a Company, either a player company or an AI dito (should we ever write an AI...)
  */
 public class Company {
 	private double money;
-	private List<ShipModel> ships;
-	private List<Loan> loans;
+	private final List<ShipModel> ships;
+	private final List<Loan> loans;
 	private String name;
 	private PortProxy homePort;
 
@@ -38,7 +38,7 @@ public class Company {
 
 			s.travel();
 
-			// TODO fix this, preferrably with a shipModel.justArrivedAtPortDamnit() or something akin to that.
+			// TODO fix this, preferably with a shipModel.justArrivedAtPortDamnit() or something akin to that.
 			if (atSea && s.isInPort()) {
 				// arrived
 
